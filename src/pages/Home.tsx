@@ -1,3 +1,7 @@
+import classNames from "classnames";
+import { useState } from "react";
+import ArrowLeft from "src/assets/arrow-left.svg";
+import ArrowRight from "src/assets/arrow-right.svg";
 import BlockAnalyticaLogo from "src/assets/block-analytica-logo.svg";
 import ActivityIcon from "src/assets/tabler-icon-activity-heartbeat.svg";
 import ArrowRightIcon from "src/assets/tabler-icon-arrow-arrow-right.svg";
@@ -8,6 +12,15 @@ import SquareWaveIcon from "src/assets/tabler-icon-wave-square.svg";
 import { Footer } from "src/components/Footer";
 
 export function Home() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  function handlePreviousSlide() {
+    setActiveSlide((prev) => prev - 1);
+  }
+  function handleNextSlide() {
+    setActiveSlide((prev) => prev + 1);
+  }
+
   return (
     <>
       {/* Hero */}
@@ -150,59 +163,100 @@ export function Home() {
       </div>
 
       {/* Core fundamentals */}
-      <div className="px-24 py-16 bg-neutral-200">
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <h2 className="font-chakra text-h5 leading-normal mb-6">
-            Core Protocol Fundamentals
-          </h2>
+      <div className="px-24 py-16 bg-neutral-200 grid grid-cols-2 gap-40 overflow-x-hidden">
+        <div className="flex flex-col justify-between">
+          <h2 className="font-chakra text-h3">Core Protocol Fundamentals</h2>
+          <div className="flex gap-2">
+            <button
+              onClick={handlePreviousSlide}
+              disabled={activeSlide === 0}
+              className={classNames(
+                "w-12 h-12 rounded-full border border-neutral-900 flex items-center justify-center",
+                {
+                  "opacity-50": activeSlide === 0,
+                },
+              )}
+            >
+              <img src={ArrowLeft} />
+            </button>
+            <button
+              onClick={handleNextSlide}
+              disabled={activeSlide === 2}
+              className={classNames(
+                "w-12 h-12 rounded-full border border-neutral-900 flex items-center justify-center",
+                {
+                  "opacity-50": activeSlide === 2,
+                },
+              )}
+            >
+              <img src={ArrowRight} />
+            </button>
+          </div>
         </div>
-        <div className="flex gap-6">
-          <div className="bg-neutral-100 p-9 rounded-sm space-y-9 flex-1 text-neutral-600">
-            {/* Image placeholder */}
-            <div className="bg-neutral-200 rounded-sm h-80"></div>
-            <p className="mb-6">
-              Long traders earn a fixed rate. They deposit assets today and get
-              an agreed-upon future value, calculated by Hyperdrive's novel
-              pricing model.
-            </p>
-            <p>
-              Opening a Long position lowers the market's fixed rate. Longs
-              always profit if held to maturity.
-            </p>
-          </div>
-          <div className="bg-neutral-100 p-9 rounded-sm space-y-9 flex-1 text-neutral-600">
-            {/* Image placeholder */}
-            <div className="bg-neutral-200 rounded-sm h-80"></div>
-            <p className="mb-6">
-              Shorts earn multiplied variable rate. They pay a fixed rate, which
-              is the market's sentiment about the pool capital's future growth,
-              and earn variable yield on the full capital.
-            </p>
-            <p>
-              Opening shorts increases the market's fixed rate. Furthermore,
-              short positions take variable yield from LPs.
-            </p>
+        {/* Carousel overflow container */}
+        <div className="relative">
+          {/* Carousel */}
+          {/* TODO: Maybe there's a better way to avoid setting a fixed width? */}
+          <div className="flex flex-nowrap gap-6 w-[9999px] [&>*]:w-[480px] [&>*]:bg-neutral-100 [&>*]:p-6 [&>*]:rounded-sm [&>*]:transition-all [&>*]:duration-500 [&>*]:opacity-50 [&>*]:blur-sm">
+            {/* Slide */}
+            <div
+              className={classNames({
+                "!opacity-100 !blur-none": activeSlide === 0,
+                "scale-50 -mr-[480px]": activeSlide > 0,
+              })}
+            >
+              <p className="mb-6">
+                Long traders earn a fixed rate. They deposit assets today and
+                get an agreed-upon future value, calculated by Hyperdrive's
+                novel pricing model.
+              </p>
+              <p>
+                Opening a Long position lowers the market's fixed rate. Longs
+                always profit if held to maturity.
+              </p>
+            </div>
+            {/* Slide */}
+            <div
+              className={classNames({
+                "!opacity-100 !blur-none": activeSlide === 1,
+                "scale-50 -mr-[480px]": activeSlide > 1,
+              })}
+            >
+              <p className="mb-6">
+                Shorts earn multiplied variable rate. They pay a fixed rate,
+                which is the market's sentiment about the pool capital's future
+                growth, and earn variable yield on the full capital.
+              </p>
+              <p>
+                Opening shorts increases the market's fixed rate. Furthermore,
+                short positions take variable yield from LPs.
+              </p>
 
-            <p>
-              Shorts can have a large upside, but they can also incur losses if
-              the variable rate underperforms the fixed rate.
-            </p>
-          </div>
-          <div className="bg-neutral-100 p-9 rounded-sm space-y-9 flex-1 text-neutral-600">
-            {/* Image placeholder */}
-            <div className="bg-neutral-200 rounded-sm h-80"></div>
-            <p className="mb-6">
-              LPs deposit single-sided liquidity. LP funds are utilized to take
-              the other side of traders' Longs and Shorts.
-            </p>
-            <p>
-              Long positions generate more variable yield for LPs, and
-              conversely, Short positions take variable yield from LPs.
-            </p>
-            <p>
-              Unutilized capital earns the underlying yield source variable
-              rate. LPs also earn fees from all trading activity in the pool.
-            </p>
+              <p>
+                Shorts can have a large upside, but they can also incur losses
+                if the variable rate underperforms the fixed rate.
+              </p>
+            </div>
+            {/* Slide */}
+            <div
+              className={classNames({
+                "!opacity-100 !blur-none": activeSlide === 2,
+                "scale-50 -mr-[480px]": activeSlide > 2,
+              })}
+            >
+              <p className="mb-6">
+                LPs deposit single-sided liquidity. LP funds are utilized to
+                take the other side of traders' Longs and Shorts.
+              </p>
+              <p>
+                Long positions generate more variable yield for LPs, and
+                conversely, Short positions take variable yield from LPs.
+              </p>
+              <p>
+                Unutilized capital earns the underlying yield source variable
+                rate. LPs also earn fees from all trading activity in the pool.
+              </p>
+            </div>
           </div>
         </div>
       </div>
