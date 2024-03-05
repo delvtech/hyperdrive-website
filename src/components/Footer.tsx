@@ -147,7 +147,9 @@ export function Footer() {
         <div className="flex items-center">
           <p className="mr-6">Follow us:</p>
           <div className="flex gap-3">
-            <img className="h-4" src={XLogo}></img>
+            <a href="https://twitter.com/delv_tech/">
+              <img className="h-4" src={XLogo}></img>
+            </a>
           </div>
         </div>
       </div>

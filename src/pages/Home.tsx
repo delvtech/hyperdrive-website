@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ArrowLeft from "src/assets/arrow-left.svg";
 import ArrowRight from "src/assets/arrow-right.svg";
 import BlockAnalyticaLogo from "src/assets/block-analytica-logo.svg";
@@ -12,13 +12,94 @@ import SquareWaveIcon from "src/assets/tabler-icon-wave-square.svg";
 import { Footer } from "src/components/Footer";
 
 export function Home() {
-  const [activeSlide, setActiveSlide] = useState(0);
+  // Scroll jack for security carousel
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const scrollPositionRef = useRef(scrollPosition);
+  const scrollJackStartRef = useRef(Infinity);
+  const scrollJackLengthRef = useRef(0);
+  const scrollJackSectionSizeRef = useRef(0);
+  const isTickingRef = useRef(false);
+  function onScroll(e: WheelEvent) {
+    e.preventDefault();
+    const direction = e.deltaY > 0 ? 1 : -1;
+    let isScrollJacked = false;
 
-  function handlePreviousSlide() {
-    setActiveSlide((prev) => prev - 1);
+    if (
+      direction === 1 &&
+      window.scrollY >= scrollJackStartRef.current &&
+      scrollPositionRef.current < scrollJackLengthRef.current
+    ) {
+      isScrollJacked = true;
+    }
+
+    if (
+      direction === -1 &&
+      window.scrollY <= scrollJackStartRef.current &&
+      scrollPositionRef.current > 0
+    ) {
+      isScrollJacked = true;
+    }
+
+    if (!isScrollJacked) {
+      window.scrollBy(0, e.deltaY);
+    }
+
+    if (!isTickingRef.current && isScrollJacked) {
+      window.requestAnimationFrame(() => {
+        scrollPositionRef.current += e.deltaY;
+        setScrollPosition(scrollPositionRef.current);
+        isTickingRef.current = false;
+      });
+      isTickingRef.current = true;
+    }
   }
-  function handleNextSlide() {
-    setActiveSlide((prev) => prev + 1);
+  useEffect(() => {
+    window.addEventListener("wheel", onScroll, { passive: false });
+    return () => window.removeEventListener("wheel", onScroll);
+  }, []);
+
+  // Core Fundamental Carousel
+  const [activeCoreFundamentalsSlide, setActiveCoreFundamentalsSlide] =
+    useState(0);
+  function handlePrevCoreFundamentalsSlide() {
+    setActiveCoreFundamentalsSlide((prev) => prev - 1);
+  }
+  function handleNextCoreFundamentalsSlide() {
+    setActiveCoreFundamentalsSlide((prev) => prev + 1);
+  }
+
+  function getSecuritySlideStyle(index: number) {
+    // The scroll length of each section
+    const sectionSize = scrollJackSectionSizeRef.current;
+    // The start of the given section
+    const sectionStart = sectionSize * index;
+    // The relative scroll position within the section
+    const relativeScrollPosition = Math.max(0, scrollPosition - sectionStart);
+    // The ratio of the section that has been scrolled (0-1)
+    const scrollRatio = Math.min(1, relativeScrollPosition / sectionSize);
+    const inverseRatio = 1 - scrollRatio;
+
+    if (index === 0) {
+      console.log({
+        inverseRatio,
+        margin: 440 * scrollRatio,
+        extraSpace: 56 * inverseRatio,
+        result: 440 * scrollRatio + 56 * inverseRatio,
+      });
+    }
+
+    let baseStyles = {
+      marginBottom: `${index === 4 ? 0 : -440 * scrollRatio + 56 * inverseRatio}px`,
+    };
+
+    return scrollRatio > 0
+      ? {
+          ...baseStyles,
+          transform: `scale(${inverseRatio})`,
+          filter: `blur(${4 * scrollRatio}px)`,
+          opacity: inverseRatio,
+        }
+      : baseStyles;
   }
 
   return (
@@ -116,48 +197,89 @@ export function Home() {
       </div>
 
       {/* Security */}
-      <div className="px-24 py-16">
+      <div
+        className="px-24 py-16"
+        ref={(node) => {
+          if (node) {
+            scrollJackStartRef.current =
+              window.scrollY + node.getBoundingClientRect().top - 64; // 64 is the header height
+          }
+        }}
+      >
         <div className="max-w-2xl mx-auto text-center mb-16">
           <h2 className="font-chakra text-h5 leading-normal mb-6">Security</h2>
         </div>
-
-        <div className="flex flex-wrap gap-14 justify-center">
-          <div className="space-y-4 basis-1/4 p-5 pb-6 bg-neutral-200 rounded-sm">
-            <img src={SawWaveIcon} />
-            <h3 className="text-h7 leading-normal">Audits</h3>
-            <p className="text-neutral-600">
-              Four audits of the Hyperdrive protocol have been completed by
-              industry leaders in blockchain security.
-            </p>
-          </div>
-          <div className="space-y-4 basis-1/4 p-5 pb-6 bg-neutral-200 rounded-sm">
-            <img src={ListIcon} />
-            <h3 className="text-h7 leading-normal">Formal Verification</h3>
-            <p className="text-neutral-600">
-              Mathematical certainty of the code base was proven by Certora, an
-              industry leader in formal verification.
-            </p>
-          </div>
-          <div className="space-y-4 basis-1/4 p-5 pb-6 bg-neutral-200 rounded-sm">
-            <img src={ActivityIcon} />
-            <h3 className="text-h7 leading-normal">Fuzz Testing</h3>
-            <p className="text-neutral-600">
-              Hyperdrive is tested using a robust fuzzing system that combines
-              traditional solidity input sweeps with Python-based smart agents.
-            </p>
-          </div>
-          <div className="space-y-4 basis-1/4 p-5 pb-6 bg-neutral-200 rounded-sm">
-            <img src={SquareWaveIcon} />
-            <h3 className="text-h7 leading-normal">Active Threat Monitoring</h3>
-            <p className="text-neutral-600">
-              Hyperdrive's smart contracts are actively monitored to get ahead
-              of potential threats and leverage collective security
-              intelligence.
-            </p>
-          </div>
-          <div className="flex flex-col justify-between basis-1/4 p-5 pb-6 bg-neutral-200 rounded-sm">
-            <h3 className="text-h7 leading-normal">Hyperdrive Security</h3>
-            <img className="w-8" src={ArrowRightIcon} />
+        {/* Security carousel overflow container */}
+        <div className="relative h-[480px] overflow-y-hidden">
+          {/* Security carousel */}
+          <div
+            className="[&>*]:h-[440px] [&>*]:bg-neutral-200 [&>*]:p-6 [&>*]:rounded-sm [&>*]:relative [&>*]:mb-14"
+            ref={(node) => {
+              if (node && !scrollJackLengthRef.current) {
+                const { height } = node.getBoundingClientRect();
+                scrollJackSectionSizeRef.current = height / 5; // 5 is the number of slides
+                scrollJackLengthRef.current =
+                  height - scrollJackSectionSizeRef.current;
+              }
+            }}
+          >
+            {/* Slide */}
+            <div
+              className={classNames("space-y-4 p-5 pb-6")}
+              style={getSecuritySlideStyle(0)}
+            >
+              <img src={SawWaveIcon} />
+              <h3 className="text-h7 leading-normal">Audits</h3>
+              <p className="text-neutral-600">
+                Four audits of the Hyperdrive protocol have been completed by
+                industry leaders in blockchain security.
+              </p>
+            </div>
+            {/* Slide */}
+            <div
+              className="space-y-4 p-5 pb-6"
+              style={getSecuritySlideStyle(1)}
+            >
+              <img src={ListIcon} />
+              <h3 className="text-h7 leading-normal">Formal Verification</h3>
+              <p className="text-neutral-600">
+                Mathematical certainty of the code base was proven by Certora,
+                an industry leader in formal verification.
+              </p>
+            </div>
+            {/* Slide */}
+            <div
+              className="space-y-4 p-5 pb-6"
+              style={getSecuritySlideStyle(2)}
+            >
+              <img src={ActivityIcon} />
+              <h3 className="text-h7 leading-normal">Fuzz Testing</h3>
+              <p className="text-neutral-600">
+                Hyperdrive is tested using a robust fuzzing system that combines
+                traditional solidity input sweeps with Python-based smart
+                agents.
+              </p>
+            </div>
+            {/* Slide */}
+            <div
+              className="space-y-4 p-5 pb-6"
+              style={getSecuritySlideStyle(3)}
+            >
+              <img src={SquareWaveIcon} />
+              <h3 className="text-h7 leading-normal">
+                Active Threat Monitoring
+              </h3>
+              <p className="text-neutral-600">
+                Hyperdrive's smart contracts are actively monitored to get ahead
+                of potential threats and leverage collective security
+                intelligence.
+              </p>
+            </div>
+            {/* Slide */}
+            <div className="flex flex-col justify-between p-5 pb-6">
+              <h3 className="text-h7 leading-normal">Hyperdrive Security</h3>
+              <img className="w-8" src={ArrowRightIcon} />
+            </div>
           </div>
         </div>
       </div>
@@ -166,26 +288,28 @@ export function Home() {
       <div className="px-24 py-16 bg-neutral-200 grid grid-cols-2 gap-40 overflow-x-hidden">
         <div className="flex flex-col justify-between">
           <h2 className="font-chakra text-h3">Core Protocol Fundamentals</h2>
+
+          {/* Core Fundamental Carousel Nav */}
           <div className="flex gap-2">
             <button
-              onClick={handlePreviousSlide}
-              disabled={activeSlide === 0}
+              onClick={handlePrevCoreFundamentalsSlide}
+              disabled={activeCoreFundamentalsSlide === 0}
               className={classNames(
                 "w-12 h-12 rounded-full border border-neutral-900 flex items-center justify-center",
                 {
-                  "opacity-50": activeSlide === 0,
+                  "opacity-50": activeCoreFundamentalsSlide === 0,
                 },
               )}
             >
               <img src={ArrowLeft} />
             </button>
             <button
-              onClick={handleNextSlide}
-              disabled={activeSlide === 2}
+              onClick={handleNextCoreFundamentalsSlide}
+              disabled={activeCoreFundamentalsSlide === 2}
               className={classNames(
                 "w-12 h-12 rounded-full border border-neutral-900 flex items-center justify-center",
                 {
-                  "opacity-50": activeSlide === 2,
+                  "opacity-50": activeCoreFundamentalsSlide === 2,
                 },
               )}
             >
@@ -196,13 +320,13 @@ export function Home() {
         {/* Carousel overflow container */}
         <div className="relative">
           {/* Carousel */}
-          {/* TODO: Maybe there's a better way to avoid setting a fixed width? */}
-          <div className="flex flex-nowrap gap-6 w-[9999px] [&>*]:w-[480px] [&>*]:bg-neutral-100 [&>*]:p-6 [&>*]:rounded-sm [&>*]:transition-all [&>*]:duration-500 [&>*]:opacity-50 [&>*]:blur-sm">
+          {/* TODO: Maybe there's a better way to avoid setting a fixed */}
+          <div className="w-[9999px] flex flex-nowrap [&>*]:mr-6 [&>*]:w-[480px] [&>*]:bg-neutral-100 [&>*]:p-6 [&>*]:rounded-sm [&>*]:transition-all [&>*]:duration-700 [&>*]:opacity-50 [&>*]:blur-sm">
             {/* Slide */}
             <div
               className={classNames({
-                "!opacity-100 !blur-none": activeSlide === 0,
-                "scale-50 -mr-[480px]": activeSlide > 0,
+                "!opacity-100 !blur-none": activeCoreFundamentalsSlide === 0,
+                "scale-50 !-mr-[480px]": activeCoreFundamentalsSlide > 0,
               })}
             >
               <p className="mb-6">
@@ -218,8 +342,8 @@ export function Home() {
             {/* Slide */}
             <div
               className={classNames({
-                "!opacity-100 !blur-none": activeSlide === 1,
-                "scale-50 -mr-[480px]": activeSlide > 1,
+                "!opacity-100 !blur-none": activeCoreFundamentalsSlide === 1,
+                "scale-50 !-mr-[480px]": activeCoreFundamentalsSlide > 1,
               })}
             >
               <p className="mb-6">
@@ -240,8 +364,8 @@ export function Home() {
             {/* Slide */}
             <div
               className={classNames({
-                "!opacity-100 !blur-none": activeSlide === 2,
-                "scale-50 -mr-[480px]": activeSlide > 2,
+                "!opacity-100 !blur-none": activeCoreFundamentalsSlide === 2,
+                "scale-50 !-mr-[480px]": activeCoreFundamentalsSlide > 2,
               })}
             >
               <p className="mb-6">
