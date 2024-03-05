@@ -1,11 +1,16 @@
-import hyperdriveLogo from './assets/hyperdrive-logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import { Header } from "src/components/Header";
+import { Home } from "src/pages/Home";
+import "./App.css";
 
 function App() {
   return (
     <>
-      <img src={hyperdriveLogo} className="logo" alt="Hyperdrive" />
-      <h1>Vite + React</h1>
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </>
   );
 }
