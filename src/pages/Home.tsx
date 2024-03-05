@@ -1,9 +1,11 @@
+import BlockAnalyticaLogo from "src/assets/block-analytica-logo.svg";
 import ActivityIcon from "src/assets/tabler-icon-activity-heartbeat.svg";
 import ArrowRightIcon from "src/assets/tabler-icon-arrow-arrow-right.svg";
 import FileCheckIcon from "src/assets/tabler-icon-file-check.svg";
 import ListIcon from "src/assets/tabler-icon-staggered-list.svg";
 import SawWaveIcon from "src/assets/tabler-icon-wave-saw-tool.svg";
 import SquareWaveIcon from "src/assets/tabler-icon-wave-square.svg";
+import { Footer } from "src/components/Footer";
 
 export function Home() {
   return (
@@ -206,12 +208,69 @@ export function Home() {
       </div>
 
       {/* Strategies */}
+      <div className="px-28 py-20 flex justify-between">
+        <h2 className="font-chakra text-h5 leading-normal mb-6 w-64">
+          Trading Strategies
+        </h2>
+        <div className="grid grid-cols-2 gap-9 basis-2/3">
+          <div className="p-6 bg-neutral-200">
+            <h3 className="font-chakra mb-4 text-h7 leading-normal">
+              Hold to Maturity
+            </h3>
+            <p className="text-neutral-700">
+              Obtain a predictable fixed rate of return, or maximize your
+              exposure to the variable rate if you believe it will outperform
+              over the term.
+            </p>
+          </div>
+          <div className="p-6 bg-neutral-200">
+            <h3 className="font-chakra mb-4 text-h7 leading-normal">
+              Rates Speculation
+            </h3>
+            <p className="text-neutral-700">
+              Speculate on the anticipated directionality of the rates and seek
+              to close your position early at a profit.
+            </p>
+          </div>
+          <div className="p-6 bg-neutral-200">
+            <h3 className="font-chakra mb-4 text-h7 leading-normal">
+              Rates Arbitraging
+            </h3>
+            <p className="text-neutral-700">
+              Maintain optimal yield performance by opening shorts or longs
+              &mdash; whichever earns you a higher rate &mdash; to bring the
+              fixed and variable rates closer together.
+            </p>
+          </div>
+          <div className="p-6 bg-neutral-200">
+            <h3 className="font-chakra mb-4 text-h7 leading-normal">
+              Volatility Harvesting
+            </h3>
+            <p className="text-neutral-700">
+              Provide liquidity to a market and seek a profit from
+              volatility-driven trading fees, while still earning the yield
+              source rate on idle capital.
+            </p>
+          </div>
+        </div>
+      </div>
 
       {/* Partners */}
+      <div className="px-24 py-16 bg-neutral-200">
+        <div className="max-w-2xl mx-auto text-center mb-16">
+          <h2 className="text-h7 font-chakra mb-14">
+            Integrators &amp; Partners
+          </h2>
+          <div className="flex gap-14 justify-center">
+            <img src={BlockAnalyticaLogo} />
+            <img src={BlockAnalyticaLogo} />
+            <img src={BlockAnalyticaLogo} />
+            <img src={BlockAnalyticaLogo} />
+          </div>
+        </div>
+      </div>
 
-      {/* Footer */}
-
-      {/* Sub-footer */}
+      <Footer />
     </>
   );
 }
