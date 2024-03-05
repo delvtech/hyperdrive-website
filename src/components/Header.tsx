@@ -12,7 +12,7 @@ export function Header() {
       className={classNames(
         "flex justify-between items-center px-16 py-6 fixed top-0 left-0 right-0 z-10 bg-neutral-200/60 backdrop-blur transition-all",
         {
-          "py-2": isScrolled,
+          "!py-2": isScrolled,
         },
       )}
     >
@@ -20,7 +20,7 @@ export function Header() {
         <img
           src={hyperdriveLogo}
           className={classNames("h-9 transition-all", {
-            "h-7": isScrolled,
+            "!h-7": isScrolled,
           })}
           alt="Hyperdrive"
         />
