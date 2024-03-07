@@ -22,6 +22,7 @@ export default {
           300: "#A1FFDD",
           400: "#73FFCD",
           DEFAULT: "#15FFAB",
+          fade: "#BDFFD7",
           500: "#15FFAB",
           600: "#11CC89",
           700: "#086644",
@@ -40,7 +41,14 @@ export default {
           800: "#393636",
           900: "#161616",
         },
-        "aquamarine-fade": "#BDFFD7",
+        midnight: {
+          100: "#4C618C",
+          400: "#222C40",
+          DEFAULT: "#07090D",
+        },
+        content: {
+          DEFAULT: "#A4ABBA",
+        },
         sky: "#14D3F9",
         pacific: "#00A7CC",
         "non-photo-blue": "#95ECFF",

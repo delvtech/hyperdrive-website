@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .button {
+    @apply px-6 h-12 font-mono text-body-sm border uppercase flex justify-center items-center font-medium tracking-widest;
+  }
+
+  .bg-card-gradient {
+    @apply bg-gradient-to-b from-[#4C618C]/20 to-[#222C40]/20;
+  }
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -14,7 +24,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  @apply text-neutral-900 bg-neutral-100
+  @apply text-content bg-midnight;
 }
 
 /* @media (prefers-color-scheme: light) {

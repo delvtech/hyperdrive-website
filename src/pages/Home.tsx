@@ -1,128 +1,106 @@
 import classNames from "classnames";
-import { useEffect, useRef, useState } from "react";
-import ArrowLeft from "src/assets/arrow-left.svg";
-import ArrowRight from "src/assets/arrow-right.svg";
-import BlockAnalyticaLogo from "src/assets/block-analytica-logo.svg";
-import ActivityIcon from "src/assets/tabler-icon-activity-heartbeat.svg";
-import ArrowRightIcon from "src/assets/tabler-icon-arrow-arrow-right.svg";
-import FileCheckIcon from "src/assets/tabler-icon-file-check.svg";
-import ListIcon from "src/assets/tabler-icon-staggered-list.svg";
-import SawWaveIcon from "src/assets/tabler-icon-wave-saw-tool.svg";
-import SquareWaveIcon from "src/assets/tabler-icon-wave-square.svg";
+import { useRef, useState } from "react";
+import arrowLeft from "src/assets/arrow-left.svg";
+import arrowRight from "src/assets/arrow-right.svg";
+import blockAnalyticaLogo from "src/assets/block-analytica-logo.svg";
+import dotMatrixCar from "src/assets/dot-matrix-hero-car.png";
+import heroPulseLine from "src/assets/hero-pulse-line.svg";
+import heroStraightLine from "src/assets/hero-straight-line.svg";
+import activityIcon from "src/assets/tabler-icon-activity-heartbeat.svg";
+import arrowRightIcon from "src/assets/tabler-icon-arrow-arrow-right.svg";
+import fileCheckIcon from "src/assets/tabler-icon-file-check.svg";
+import listIcon from "src/assets/tabler-icon-staggered-list.svg";
+import sawWaveIcon from "src/assets/tabler-icon-wave-saw-tool.svg";
+import squareWaveIcon from "src/assets/tabler-icon-wave-square.svg";
 import { Footer } from "src/components/Footer";
+import { GradientBorderButton } from "src/components/GradientButton";
+import { Header } from "src/components/Header";
+import { ScrollCarousel } from "src/components/ScrollCarousel";
+import { useScrollPosition } from "src/hooks/useScrollPosition";
 
 export function Home() {
-  // Scroll jack for security carousel
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const scrollPositionRef = useRef(scrollPosition);
-  const scrollJackStartRef = useRef(Infinity);
-  const scrollJackLengthRef = useRef(0);
-  const scrollJackSectionSizeRef = useRef(0);
-  const isTickingRef = useRef(false);
-  function onScroll(e: WheelEvent) {
-    e.preventDefault();
-    const direction = e.deltaY > 0 ? 1 : -1;
-    let isScrollJacked = false;
+  const scrollPosition = useScrollPosition();
+  const heroHeightRef = useRef(Infinity);
 
-    if (
-      direction === 1 &&
-      window.scrollY >= scrollJackStartRef.current &&
-      scrollPositionRef.current < scrollJackLengthRef.current
-    ) {
-      isScrollJacked = true;
-    }
-
-    if (
-      direction === -1 &&
-      window.scrollY <= scrollJackStartRef.current &&
-      scrollPositionRef.current > 0
-    ) {
-      isScrollJacked = true;
-    }
-
-    if (!isScrollJacked) {
-      window.scrollBy(0, e.deltaY);
-    }
-
-    if (!isTickingRef.current && isScrollJacked) {
-      window.requestAnimationFrame(() => {
-        scrollPositionRef.current += e.deltaY;
-        setScrollPosition(scrollPositionRef.current);
-        isTickingRef.current = false;
-      });
-      isTickingRef.current = true;
-    }
-  }
-  useEffect(() => {
-    window.addEventListener("wheel", onScroll, { passive: false });
-    return () => window.removeEventListener("wheel", onScroll);
-  }, []);
-
-  // Core Fundamental Carousel
   const [activeCoreFundamentalsSlide, setActiveCoreFundamentalsSlide] =
     useState(0);
+
   function handlePrevCoreFundamentalsSlide() {
     setActiveCoreFundamentalsSlide((prev) => prev - 1);
   }
+
   function handleNextCoreFundamentalsSlide() {
     setActiveCoreFundamentalsSlide((prev) => prev + 1);
   }
 
-  function getSecuritySlideStyle(index: number) {
-    // The scroll length of each section
-    const sectionSize = scrollJackSectionSizeRef.current;
-    // The start of the given section
-    const sectionStart = sectionSize * index;
-    // The relative scroll position within the section
-    const relativeScrollPosition = Math.max(0, scrollPosition - sectionStart);
-    // The ratio of the section that has been scrolled (0-1)
-    const scrollRatio = Math.min(1, relativeScrollPosition / sectionSize);
-    const inverseRatio = 1 - scrollRatio;
-
-    if (index === 0) {
-      console.log({
-        inverseRatio,
-        margin: 440 * scrollRatio,
-        extraSpace: 56 * inverseRatio,
-        result: 440 * scrollRatio + 56 * inverseRatio,
-      });
-    }
-
-    let baseStyles = {
-      marginBottom: `${index === 4 ? 0 : -440 * scrollRatio + 56 * inverseRatio}px`,
-    };
-
-    return scrollRatio > 0
-      ? {
-          ...baseStyles,
-          transform: `scale(${inverseRatio})`,
-          filter: `blur(${4 * scrollRatio}px)`,
-          opacity: inverseRatio,
-        }
-      : baseStyles;
-  }
+  const isScrolledPastHero = scrollPosition > heroHeightRef.current - 30;
 
   return (
     <>
+      <Header
+        theme={isScrolledPastHero ? "dark" : "light"}
+        collapsibleMenu={isScrolledPastHero}
+        showSectionMenu={isScrolledPastHero}
+        sections={[
+          { id: "overview", title: "Overview" },
+          { id: "security", title: "Security" },
+          { id: "protocol", title: "Protocol" },
+          { id: "strategies", title: "Strategies" },
+          { id: "partners", title: "Partners" },
+        ]}
+      />
+
       {/* Hero */}
-      <div className="h-screen flex items-center justify-center relative bg-neutral-200">
-        <div className="max-w-2xl mb-10">
-          <h1 className="text-h3 font-chakra text-center leading-normal">
+      <div
+        className="h-screen flex items-center justify-center relative bg-gradient-to-r from-aquamarine-500 to-aquamarine-fade text-midnight"
+        ref={(node) => {
+          if (node) {
+            heroHeightRef.current = node.getBoundingClientRect().height;
+          }
+        }}
+      >
+        <div className="mb-10 w-full flex items-center justify-center">
+          {/* Lines */}
+          <img
+            src={heroPulseLine}
+            className="absolute left-1/2 -translate-x-1/2 top-1/2 pointer-events-none"
+          />
+          <img
+            src={heroStraightLine}
+            className="absolute w-screen left-0 top-2/3 pointer-events-none"
+          />
+          <img
+            src={dotMatrixCar}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+          />
+          <h1 className="text-h3 font-chakra text-center max-w-2xl leading-normal font-medium relative">
             Fixed and variable yields at your control
           </h1>
         </div>
-        <a
-          href="#"
-          className="absolute uppercase px-6 py-4 rounded-full bg-neutral-100 text-neutral-900 font-mono font-medium bottom-28 text-caption-lg"
-        >
-          Learn more
-        </a>
+        <div className="absolute bottom-28 left-1/2 -translate-x-1/2 flex gap-14">
+          <GradientBorderButton
+            borderFrom="#6E6B6B"
+            borderTo="#3B3939"
+            href="https://hyperdrive-app.delv.tech"
+            className="button w-64"
+          >
+            Launch App
+          </GradientBorderButton>
+          <GradientBorderButton
+            borderFrom="#C8BDBD"
+            borderTo="#7BFFC6"
+            href="https://docs.hyperdrive.com"
+            className="button w-64 bg-neutral-100/50"
+          >
+            Learn more
+          </GradientBorderButton>
+        </div>
       </div>
 
-      {/* What is Hyperdrive */}
-      <div className="px-24 py-16">
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <h2 className="font-chakra text-h5 leading-normal mb-6">
+      {/* Overview */}
+      <div id="overview" className="px-24 py-40 grid grid-cols-2">
+        <div className="max-w-md mx-auto mt-32">
+          <h2 className="font-chakra text-h5 bg-gradient-to-tr from-aquamarine to-aquamarine-fade bg-clip-text text-transparent leading-normal mb-6">
             What is Hyperdrive?
           </h2>
           <p>
@@ -132,48 +110,54 @@ export function Home() {
           </p>
         </div>
 
-        <div className="flex gap-14">
-          <div className="space-y-4 flex-1">
-            <img src={SawWaveIcon} />
-            <h3 className="text-h7 leading-normal">Fixed rate exposure</h3>
-            <p className="text-neutral-600">
-              Get simple, predictable fixed rates on ETH, stETH, DAI, or sDAI
-              with principal-protected returns.
-            </p>
+        <div className="flex gap-3">
+          <div className="space-y-3 flex-1">
+            <div className="space-y-4 bg-card-gradient p-6 h-96">
+              <img src={sawWaveIcon} />
+              <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">Fixed rate exposure</h3>
+              <p className="text-neutral-600">
+                Get simple, predictable fixed rates on ETH, stETH, DAI, or sDAI
+                with principal-protected returns.
+              </p>
+            </div>
+            <div className="space-y-4 bg-card-gradient p-6 h-96">
+              <img src={listIcon} />
+              <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">
+                Multiplied variable rate exposure
+              </h3>
+              <p className="text-neutral-600">
+                Get multiplied variable rate exposure and speculate on rate
+                movements by opening a Short, or LP to earn passive variable
+                yield without being exposed to impermanent loss.
+              </p>
+            </div>
           </div>
-          <div className="space-y-4 flex-1">
-            <img src={ListIcon} />
-            <h3 className="text-h7 leading-normal">
-              Multiplied variable rate exposure
-            </h3>
-            <p className="text-neutral-600">
-              Get multiplied variable rate exposure and speculate on rate
-              movements by opening a Short, or LP to earn passive variable yield
-              without being exposed to impermanent loss.
-            </p>
-          </div>
-          <div className="space-y-4 flex-1">
-            <img src={ActivityIcon} />
-            <h3 className="text-h7 leading-normal">Fixed rate borrow</h3>
-            <p className="text-neutral-600">
-              Turn a variable rate borrow position on Morpho or Spark into a
-              fixed rate borrow position on Hyperdrive.
-            </p>
-            <p>coming soon</p>
-          </div>
-          <div className="space-y-4 flex-1">
-            <img src={SquareWaveIcon} />
-            <h3 className="text-h7 leading-normal">Fixed rate as collateral</h3>
-            <p className="text-neutral-600">
-              Turn a variable rate borrow position on Morpho or Spark into a
-              fixed rate borrow position on Hyperdrive.
-            </p>
-            <p>coming soon</p>
+          <div className="space-y-3 flex-1 mt-16">
+            <div className="space-y-4 bg-card-gradient p-6 h-96">
+              <img src={activityIcon} />
+              <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">Fixed rate borrow</h3>
+              <p className="text-neutral-600">
+                Turn a variable rate borrow position on Morpho or Spark into a
+                fixed rate borrow position on Hyperdrive.
+              </p>
+              <p>coming soon</p>
+            </div>
+            <div className="space-y-4 bg-card-gradient p-6 h-96">
+              <img src={squareWaveIcon} />
+              <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">
+                Fixed rate as collateral
+              </h3>
+              <p className="text-neutral-600">
+                Turn a variable rate borrow position on Morpho or Spark into a
+                fixed rate borrow position on Hyperdrive.
+              </p>
+              <p>coming soon</p>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Hypercharge your LP returns by earning in 3 ways */}
+      {/* LP Returns */}
       <div className="px-24 py-16 bg-neutral-200">
         <div className="max-w-2xl mx-auto text-center mb-16">
           <h2 className="font-chakra text-h5 leading-normal mb-6">
@@ -182,110 +166,83 @@ export function Home() {
         </div>
         <div className="flex gap-10">
           <div className="bg-neutral-100 flex-1 p-6 flex flex-col justify-between rounded-sm gap-10">
-            <img src={FileCheckIcon} className="w-16" />
+            <img src={fileCheckIcon} className="w-16" />
             <p className="text-h6">Fees from trading activity</p>
           </div>
           <div className="bg-neutral-100 flex-1 p-6 flex flex-col justify-between rounded-sm gap-10">
-            <img src={FileCheckIcon} className="w-16" />
+            <img src={fileCheckIcon} className="w-16" />
             <p className="text-h6">Variable yield on idle capital</p>
           </div>
           <div className="bg-neutral-100 flex-1 p-6 flex flex-col justify-between rounded-sm gap-10">
-            <img src={FileCheckIcon} className="w-16" />
+            <img src={fileCheckIcon} className="w-16" />
             <p className="text-h6">PnL from balancing market activity</p>
           </div>
         </div>
       </div>
 
       {/* Security */}
-      <div
-        className="px-24 py-16"
-        ref={(node) => {
-          if (node) {
-            scrollJackStartRef.current =
-              window.scrollY + node.getBoundingClientRect().top - 64; // 64 is the header height
-          }
-        }}
-      >
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <h2 className="font-chakra text-h5 leading-normal mb-6">Security</h2>
-        </div>
-        {/* Security carousel overflow container */}
-        <div className="relative h-[480px] overflow-y-hidden">
-          {/* Security carousel */}
-          <div
-            className="[&>*]:h-[440px] [&>*]:bg-neutral-200 [&>*]:p-6 [&>*]:rounded-sm [&>*]:relative [&>*]:mb-14"
-            ref={(node) => {
-              if (node && !scrollJackLengthRef.current) {
-                const { height } = node.getBoundingClientRect();
-                scrollJackSectionSizeRef.current = height / 5; // 5 is the number of slides
-                scrollJackLengthRef.current =
-                  height - scrollJackSectionSizeRef.current;
-              }
-            }}
-          >
-            {/* Slide */}
-            <div
-              className={classNames("space-y-4 p-5 pb-6")}
-              style={getSecuritySlideStyle(0)}
-            >
-              <img src={SawWaveIcon} />
-              <h3 className="text-h7 leading-normal">Audits</h3>
-              <p className="text-neutral-600">
-                Four audits of the Hyperdrive protocol have been completed by
-                industry leaders in blockchain security.
-              </p>
-            </div>
-            {/* Slide */}
-            <div
-              className="space-y-4 p-5 pb-6"
-              style={getSecuritySlideStyle(1)}
-            >
-              <img src={ListIcon} />
-              <h3 className="text-h7 leading-normal">Formal Verification</h3>
-              <p className="text-neutral-600">
-                Mathematical certainty of the code base was proven by Certora,
-                an industry leader in formal verification.
-              </p>
-            </div>
-            {/* Slide */}
-            <div
-              className="space-y-4 p-5 pb-6"
-              style={getSecuritySlideStyle(2)}
-            >
-              <img src={ActivityIcon} />
-              <h3 className="text-h7 leading-normal">Fuzz Testing</h3>
-              <p className="text-neutral-600">
-                Hyperdrive is tested using a robust fuzzing system that combines
-                traditional solidity input sweeps with Python-based smart
-                agents.
-              </p>
-            </div>
-            {/* Slide */}
-            <div
-              className="space-y-4 p-5 pb-6"
-              style={getSecuritySlideStyle(3)}
-            >
-              <img src={SquareWaveIcon} />
-              <h3 className="text-h7 leading-normal">
-                Active Threat Monitoring
-              </h3>
-              <p className="text-neutral-600">
-                Hyperdrive's smart contracts are actively monitored to get ahead
-                of potential threats and leverage collective security
-                intelligence.
-              </p>
-            </div>
-            {/* Slide */}
-            <div className="flex flex-col justify-between p-5 pb-6">
-              <h3 className="text-h7 leading-normal">Hyperdrive Security</h3>
-              <img className="w-8" src={ArrowRightIcon} />
-            </div>
+      <ScrollCarousel
+        id="security"
+        className="px-24 py-16 min-h-screen"
+        slideHeight={440}
+        slideGap={56}
+        heading={
+          <div className="max-w-2xl mx-auto text-center mb-16">
+            <h2 className="font-chakra text-h5 leading-normal mb-6">
+              Security
+            </h2>
           </div>
-        </div>
-      </div>
+        }
+        slides={[
+          <div className="space-y-4 p-5 pb-6 bg-neutral-200 rounded-sm relative h-[440px]">
+            <img src={sawWaveIcon} />
+            <h3 className="text-h7 leading-normal">Audits</h3>
+            <p className="text-neutral-600">
+              Four audits of the Hyperdrive protocol have been completed by
+              industry leaders in blockchain security.
+            </p>
+          </div>,
 
-      {/* Core fundamentals */}
-      <div className="px-24 py-16 bg-neutral-200 grid grid-cols-2 gap-40 overflow-x-hidden">
+          <div className="space-y-4 p-5 pb-6 bg-neutral-200 rounded-sm relative h-[440px]">
+            <img src={listIcon} />
+            <h3 className="text-h7 leading-normal">Formal Verification</h3>
+            <p className="text-neutral-600">
+              Mathematical certainty of the code base was proven by Certora, an
+              industry leader in formal verification.
+            </p>
+          </div>,
+
+          <div className="space-y-4 p-5 pb-6 bg-neutral-200 rounded-sm relative h-[440px]">
+            <img src={activityIcon} />
+            <h3 className="text-h7 leading-normal">Fuzz Testing</h3>
+            <p className="text-neutral-600">
+              Hyperdrive is tested using a robust fuzzing system that combines
+              traditional solidity input sweeps with Python-based smart agents.
+            </p>
+          </div>,
+
+          <div className="space-y-4 p-5 pb-6 bg-neutral-200 rounded-sm relative h-[440px]">
+            <img src={squareWaveIcon} />
+            <h3 className="text-h7 leading-normal">Active Threat Monitoring</h3>
+            <p className="text-neutral-600">
+              Hyperdrive's smart contracts are actively monitored to get ahead
+              of potential threats and leverage collective security
+              intelligence.
+            </p>
+          </div>,
+
+          <div className="flex flex-col justify-between p-5 pb-6 bg-neutral-200 rounded-sm relative h-[440px]">
+            <h3 className="text-h7 leading-normal">Hyperdrive Security</h3>
+            <img className="w-8" src={arrowRightIcon} />
+          </div>,
+        ]}
+      />
+
+      {/* Protocol */}
+      <div
+        id="protocol"
+        className="px-24 py-16 bg-neutral-200 grid grid-cols-2 gap-40 overflow-x-hidden"
+      >
         <div className="flex flex-col justify-between">
           <h2 className="font-chakra text-h3">Core Protocol Fundamentals</h2>
 
@@ -301,7 +258,7 @@ export function Home() {
                 },
               )}
             >
-              <img src={ArrowLeft} />
+              <img src={arrowLeft} />
             </button>
             <button
               onClick={handleNextCoreFundamentalsSlide}
@@ -313,7 +270,7 @@ export function Home() {
                 },
               )}
             >
-              <img src={ArrowRight} />
+              <img src={arrowRight} />
             </button>
           </div>
         </div>
@@ -386,7 +343,7 @@ export function Home() {
       </div>
 
       {/* Strategies */}
-      <div className="px-28 py-20 flex justify-between">
+      <div id="strategies" className="px-28 py-20 flex justify-between">
         <h2 className="font-chakra text-h5 leading-normal mb-6 w-64">
           Trading Strategies
         </h2>
@@ -434,16 +391,16 @@ export function Home() {
       </div>
 
       {/* Partners */}
-      <div className="px-24 py-16 bg-neutral-200">
+      <div id="partners" className="px-24 py-16 bg-neutral-200">
         <div className="max-w-2xl mx-auto text-center mb-16">
           <h2 className="text-h7 font-chakra mb-14">
             Integrators &amp; Partners
           </h2>
           <div className="flex gap-14 justify-center">
-            <img src={BlockAnalyticaLogo} />
-            <img src={BlockAnalyticaLogo} />
-            <img src={BlockAnalyticaLogo} />
-            <img src={BlockAnalyticaLogo} />
+            <img src={blockAnalyticaLogo} />
+            <img src={blockAnalyticaLogo} />
+            <img src={blockAnalyticaLogo} />
+            <img src={blockAnalyticaLogo} />
           </div>
         </div>
       </div>

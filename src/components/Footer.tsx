@@ -1,5 +1,5 @@
 import hyperdriveLogo from "src/assets/hyperdrive-logo-white.svg";
-import XLogo from "src/assets/x-logo.svg";
+import xLogo from "src/assets/x-logo.svg";
 
 export function Footer() {
   return (
@@ -148,7 +148,7 @@ export function Footer() {
           <p className="mr-6">Follow us:</p>
           <div className="flex gap-3">
             <a href="https://twitter.com/delv_tech/">
-              <img className="h-4" src={XLogo}></img>
+              <img className="h-4" src={xLogo}></img>
             </a>
           </div>
         </div>
