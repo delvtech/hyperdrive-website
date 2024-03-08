@@ -4,7 +4,15 @@
 
 @layer components {
   .button {
-    @apply px-6 h-12 font-mono text-body-sm border uppercase flex justify-center items-center font-medium tracking-widest;
+    @apply px-6 h-12 font-mono text-body-sm border uppercase flex gap-3 justify-center items-center font-medium tracking-widest text-neutral-100;
+  }
+
+  .button-primary {
+    @apply bg-neutral-600/50;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-aquamarine-500 to-sky text-transparent bg-clip-text;
   }
 
   .bg-card-gradient {
@@ -24,7 +32,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  @apply text-content bg-midnight;
+  @apply text-content bg-neutral-900;
 }
 
 /* @media (prefers-color-scheme: light) {

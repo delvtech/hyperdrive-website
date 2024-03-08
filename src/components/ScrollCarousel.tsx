@@ -32,7 +32,10 @@ export function ScrollCarousel({
   // Tracks the scroll position relative to the carousel, 0 meaning the carousel
   // hasn't been reached or has been scrolled to the top.
   const [scrollPosition, setScrollPosition] = useState(0);
+  // The scroll position is also tracked in a ref which is updated on every tick
+  // of the scroll event to prevent the state from being updated too frequently.
   const scrollPositionRef = useRef(scrollPosition);
+  // Whether the carousel is in view
   const isIntersectingRef = useRef(false);
 
   // The Y position of the carousel on the page where default scrolling behavior
@@ -43,7 +46,8 @@ export function ScrollCarousel({
   // reaches this value, default scrolling behavior is restored.
   const carouselScrollHeightRef = useRef(0);
 
-  // Tracks the last Y position of the touch event during a swipe.
+  // Tracks the last Y position of the touch event during a swipe so we can
+  // calculate the delta for scrolling.
   const lastTouchYRef = useRef<number | undefined>();
 
   // Debounce tracker

@@ -1,10 +1,10 @@
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import hyperdriveLogoWhite from "src/assets/hyperdrive-logo-white.svg";
 import hyperdriveLogo from "src/assets/hyperdrive-logo.svg";
-import menuIcon from "src/assets/menu-icon.svg";
-import xIcon from "src/assets/x-icon.svg";
+import menuIcon from "src/assets/icons/menu-icon.svg";
+import xIcon from "src/assets/icons/x-icon.svg";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
 
 interface HeaderProps {
@@ -17,9 +17,9 @@ interface HeaderProps {
    * Set to `"light"` to use colors suitable for a light background, or `"dark"`
    * for a dark background.
    *
-   * @default "light"
+   * @default "dark"
    */
-  theme: "light" | "dark" | Record<number, "light" | "dark">;
+  theme?: "dark" | "light" | Record<number, "light" | "dark">;
   /**
    * Set to `true` to make the menu collapsible with a menu button
    * @default false
@@ -43,14 +43,13 @@ interface HeaderProps {
 
 export function Header({
   className,
-  theme = "light",
+  theme = "dark",
   collapsibleMenu = false,
   defaultMenuCollapsed = true,
   sections = [],
   showSectionMenu = true,
 }: HeaderProps) {
-  const { pathname } = useLocation();
-  const [isMenuOpen, setIsMenuOpen] = useState(defaultMenuCollapsed);
+  const [isMenuOpen, setIsMenuOpen] = useState(!defaultMenuCollapsed);
 
   function toggleMenu() {
     setIsMenuOpen((prev) => !prev);
@@ -118,9 +117,7 @@ export function Header({
       <Link to="/">
         <img
           src={activeTheme === "light" ? hyperdriveLogo : hyperdriveLogoWhite}
-          className={classNames("h-9 transition-all duration-300", {
-            "!h-7": scrollPosition > 0,
-          })}
+          className="h-6 transition-all duration-300"
           alt="Hyperdrive"
         />
       </Link>
@@ -173,23 +170,25 @@ export function Header({
             },
           )}
         >
-          <Link
+          <a
             className="p-3 hover:font-bold transition-[font-weight] duration-300"
-            to="https://docs.hyperdrive.com"
+            href="https://docs.hyperdrive.com"
           >
             Docs
-          </Link>
-          <Link
-            className={classNames(
-              "p-3 hover:font-bold transition-[font-weight] duration-300",
-              {
-                "font-bold": pathname === "/build",
-              },
-            )}
+          </a>
+          <NavLink
+            className={(isActive) =>
+              classNames(
+                "p-3 hover:font-bold transition-[font-weight] duration-300",
+                {
+                  "font-bold": isActive,
+                },
+              )
+            }
             to="/build"
           >
             Build
-          </Link>
+          </NavLink>
           <Link
             className="p-3 hover:font-bold transition-[font-weight] duration-300"
             to="#"

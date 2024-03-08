@@ -4,7 +4,7 @@ import xLogo from "src/assets/x-logo.svg";
 export function Footer() {
   return (
     <>
-      <div className="px-28 py-20 flex justify-between bg-neutral-800 text-neutral-200">
+      <div className="px-28 py-20 flex justify-between bg-gradient-to-b from-[#4C618C]/20 to-[#222C40]/20">
         <img src={hyperdriveLogo} className="h-9" alt="Hyperdrive" />
         <div className="flex gap-16 basis-2/3">
           <div>
@@ -140,7 +140,7 @@ export function Footer() {
       </div>
 
       {/* Sub-footer */}
-      <div className="bg-neutral-200 px-20 py-8 flex justify-between">
+      <div className="bg-aquamarine-500 px-20 py-8 flex justify-between text-neutral-900">
         <p className="font-mono text-body-sm">
           Copyright &copy; 2024 Hyperdrive
         </p>

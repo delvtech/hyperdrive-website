@@ -1,21 +1,20 @@
 import classNames from "classnames";
 import { useRef, useState } from "react";
-import arrowLeft from "src/assets/arrow-left.svg";
-import arrowRight from "src/assets/arrow-right.svg";
-import blockAnalyticaLogo from "src/assets/block-analytica-logo.svg";
-import dotMatrixCar from "src/assets/dot-matrix-hero-car.png";
-import heroPulseLine from "src/assets/hero-pulse-line.svg";
-import heroStraightLine from "src/assets/hero-straight-line.svg";
-import activityIcon from "src/assets/tabler-icon-activity-heartbeat.svg";
-import arrowRightIcon from "src/assets/tabler-icon-arrow-arrow-right.svg";
-import fileCheckIcon from "src/assets/tabler-icon-file-check.svg";
-import listIcon from "src/assets/tabler-icon-staggered-list.svg";
-import sawWaveIcon from "src/assets/tabler-icon-wave-saw-tool.svg";
-import squareWaveIcon from "src/assets/tabler-icon-wave-square.svg";
+import adjustmentsIcon from "src/assets/icons/adjustments-icon.svg";
+import curveIcon from "src/assets/icons/curve-icon.svg";
+import fixedRatesIcon from "src/assets/icons/fixed-rates-icon.svg";
+import leftArrowIcon from "src/assets/icons/left-arrow-icon.svg";
+import multipliedRatesIcon from "src/assets/icons/multiplied-rates-icon.svg";
+import rightArrowIcon from "src/assets/icons/right-arrow-icon.svg";
+import heroIllustration from "src/assets/illustrations/hero-illustration.svg";
+import lpReturnsIcon1 from "src/assets/illustrations/lp-returns-1-illustration.svg";
+import lpReturnsIcon2 from "src/assets/illustrations/lp-returns-2-illustration.svg";
+import lpReturnsIcon3 from "src/assets/illustrations/lp-returns-3-illustration.svg";
 import { Footer } from "src/components/Footer";
 import { GradientBorderButton } from "src/components/GradientButton";
 import { Header } from "src/components/Header";
 import { ScrollCarousel } from "src/components/ScrollCarousel";
+import { HeroPill } from "src/components/home/HeroPill";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
 
 export function Home() {
@@ -38,7 +37,7 @@ export function Home() {
   return (
     <>
       <Header
-        theme={isScrolledPastHero ? "dark" : "light"}
+        theme="dark"
         collapsibleMenu={isScrolledPastHero}
         showSectionMenu={isScrolledPastHero}
         sections={[
@@ -52,53 +51,57 @@ export function Home() {
 
       {/* Hero */}
       <div
-        className="h-screen flex items-center justify-center relative bg-gradient-to-r from-aquamarine-500 to-aquamarine-fade text-midnight"
+        className="h-screen flex gap-32 items-center justify-center relative px-[5vw]"
         ref={(node) => {
           if (node) {
             heroHeightRef.current = node.getBoundingClientRect().height;
           }
         }}
       >
-        <div className="mb-10 w-full flex items-center justify-center">
-          {/* Lines */}
-          <img
-            src={heroPulseLine}
-            className="absolute left-1/2 -translate-x-1/2 top-1/2 pointer-events-none"
-          />
-          <img
-            src={heroStraightLine}
-            className="absolute w-screen left-0 top-2/3 pointer-events-none"
-          />
-          <img
-            src={dotMatrixCar}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-          />
-          <h1 className="text-h3 font-chakra text-center max-w-2xl leading-normal font-medium relative">
-            Fixed and variable yields at your control
+        {/* Hero left */}
+        <div className="relative z-10">
+          <h1 className="text-h1 font-medium font-chakra relative gradient-text mb-16">
+            Yield,
+            <br />
+            Your Way.
           </h1>
+          <div className="flex gap-6">
+            <GradientBorderButton
+              href="https://hyperdrive-app.delv.tech"
+              className="button-primary px-10"
+            >
+              Launch App
+            </GradientBorderButton>
+            <GradientBorderButton
+              href="https://docs.hyperdrive.com"
+              className="px-10"
+            >
+              Learn more
+            </GradientBorderButton>
+          </div>
         </div>
-        <div className="absolute bottom-28 left-1/2 -translate-x-1/2 flex gap-14">
-          <GradientBorderButton
-            borderFrom="#6E6B6B"
-            borderTo="#3B3939"
-            href="https://hyperdrive-app.delv.tech"
-            className="button w-64"
-          >
-            Launch App
-          </GradientBorderButton>
-          <GradientBorderButton
-            borderFrom="#C8BDBD"
-            borderTo="#7BFFC6"
-            href="https://docs.hyperdrive.com"
-            className="button w-64 bg-neutral-100/50"
-          >
-            Learn more
-          </GradientBorderButton>
+
+        {/* Hero right */}
+        <div className="relative min-w-[775px] h-[328px]">
+          <img
+            className="w-[932px] h-[269px] absolute right-0 top-[43px] max-w-none"
+            src={heroIllustration}
+          />
+          <HeroPill className="absolute left-0 top-0">
+            Earn Fixed Rates
+          </HeroPill>
+          <HeroPill className="absolute left-[144px] bottom-0">
+            Multiply exposure to variable rates
+          </HeroPill>
+          <HeroPill className="absolute left-[360px] top-[49px]">
+            Set it and forget it LP
+          </HeroPill>
         </div>
       </div>
 
       {/* Overview */}
       <div id="overview" className="px-24 py-40 grid grid-cols-2">
+        {/* Overview left */}
         <div className="max-w-md mx-auto mt-32">
           <h2 className="font-chakra text-h5 bg-gradient-to-tr from-aquamarine to-aquamarine-fade bg-clip-text text-transparent leading-normal mb-6">
             What is Hyperdrive?
@@ -110,20 +113,38 @@ export function Home() {
           </p>
         </div>
 
+        {/* Overview right */}
         <div className="flex gap-3">
           <div className="space-y-3 flex-1">
-            <div className="space-y-4 bg-card-gradient p-6 h-96">
-              <img src={sawWaveIcon} />
-              <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">Fixed rate exposure</h3>
+            <div className="space-y-4 bg-card-gradient p-6 min-h-96">
+              <img src={fixedRatesIcon} />
+              <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">
+                Fixed rates
+              </h3>
               <p className="text-neutral-600">
                 Get simple, predictable fixed rates on ETH, stETH, DAI, or sDAI
                 with principal-protected returns.
               </p>
             </div>
-            <div className="space-y-4 bg-card-gradient p-6 h-96">
-              <img src={listIcon} />
+            <div className="space-y-4 bg-card-gradient p-6 min-h-96">
+              <img src={adjustmentsIcon} />
               <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">
-                Multiplied variable rate exposure
+                Fixed Rate Borrow
+              </h3>
+              <p className="text-neutral-600">
+                Turn a variable rate borrow position on Morpho or Spark into a
+                fixed rate borrow position on Hyperdrive.
+              </p>
+              <p className="inline-flex px-3 h-8 rounded bg-[#8A92A3]/20 font-mono text-neutral-100/70 uppercase items-center justify-center">
+                coming soon
+              </p>
+            </div>
+          </div>
+          <div className="space-y-3 flex-1 mt-16">
+            <div className="space-y-4 bg-card-gradient p-6 min-h-96">
+              <img src={multipliedRatesIcon} />
+              <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">
+                Multiplied variable rates
               </h3>
               <p className="text-neutral-600">
                 Get multiplied variable rate exposure and speculate on rate
@@ -131,59 +152,61 @@ export function Home() {
                 yield without being exposed to impermanent loss.
               </p>
             </div>
-          </div>
-          <div className="space-y-3 flex-1 mt-16">
-            <div className="space-y-4 bg-card-gradient p-6 h-96">
-              <img src={activityIcon} />
-              <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">Fixed rate borrow</h3>
-              <p className="text-neutral-600">
-                Turn a variable rate borrow position on Morpho or Spark into a
-                fixed rate borrow position on Hyperdrive.
-              </p>
-              <p>coming soon</p>
-            </div>
-            <div className="space-y-4 bg-card-gradient p-6 h-96">
-              <img src={squareWaveIcon} />
+            <div className="space-y-4 bg-card-gradient p-6 min-h-96">
+              <img src={curveIcon} />
               <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">
-                Fixed rate as collateral
+                Longs as Collateral
               </h3>
               <p className="text-neutral-600">
-                Turn a variable rate borrow position on Morpho or Spark into a
-                fixed rate borrow position on Hyperdrive.
+                Using Hyperdrive Longs (fixed rates) as collateral in borrowing
+                protocols like Spark and Morpho will benefit users seeking a
+                capital efficient way to obtain the same exposure they would get
+                from borrowing against the base asset (sDAI or stETH).
               </p>
-              <p>coming soon</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* LP Returns */}
-      <div className="px-24 py-16 bg-neutral-200">
+      <div className="px-24 py-16">
         <div className="max-w-2xl mx-auto text-center mb-16">
-          <h2 className="font-chakra text-h5 leading-normal mb-6">
+          <h2 className="font-chakra text-h5 gradient-text font-medium mb-6">
             Hypercharge your LP returns by earning in 3 ways:
           </h2>
         </div>
-        <div className="flex gap-10">
-          <div className="bg-neutral-100 flex-1 p-6 flex flex-col justify-between rounded-sm gap-10">
-            <img src={fileCheckIcon} className="w-16" />
-            <p className="text-h6">Fees from trading activity</p>
+
+        {/* LP tiles */}
+        <div className="flex gap-10 text-white text-center mb-16">
+          <div className="bg-card-gradient flex-1 p-8 flex flex-col justify-between rounded-sm gap-10">
+            <img src={lpReturnsIcon1} className="block max-w-" />
+            <p className="text-h6 font-chakra font-medium">
+              Fees from trading activity
+            </p>
           </div>
-          <div className="bg-neutral-100 flex-1 p-6 flex flex-col justify-between rounded-sm gap-10">
-            <img src={fileCheckIcon} className="w-16" />
-            <p className="text-h6">Variable yield on idle capital</p>
+          <div className="bg-card-gradient flex-1 p-8 flex flex-col justify-between rounded-sm gap-10">
+            <img src={lpReturnsIcon2} className="block max-w-" />
+            <p className="text-h6 font-chakra font-medium">
+              Variable yield on idle capital
+            </p>
           </div>
-          <div className="bg-neutral-100 flex-1 p-6 flex flex-col justify-between rounded-sm gap-10">
-            <img src={fileCheckIcon} className="w-16" />
-            <p className="text-h6">PnL from balancing market activity</p>
+          <div className="bg-card-gradient flex-1 p-8 flex flex-col justify-between rounded-sm gap-10">
+            <img src={lpReturnsIcon3} className="block max-w-" />
+            <p className="text-h6 font-chakra font-medium">
+              PnL from balancing market activity
+            </p>
           </div>
+        </div>
+
+        <div className="flex items-center justify-center">
+          <GradientBorderButton href="#lp-docs-url" className="button-primary">Learn more</GradientBorderButton>
         </div>
       </div>
 
       {/* Security */}
       <ScrollCarousel
         id="security"
-        className="px-24 py-16 min-h-screen"
+        className="px-24 py-16 min-h-screen bg-gradient-to-b from-midnight to-black"
         slideHeight={440}
         slideGap={56}
         heading={
@@ -194,8 +217,8 @@ export function Home() {
           </div>
         }
         slides={[
-          <div className="space-y-4 p-5 pb-6 bg-neutral-200 rounded-sm relative h-[440px]">
-            <img src={sawWaveIcon} />
+          <div className="space-y-4 p-5 pb-6 bg-card-gradient rounded-sm relative h-[440px]">
+            <p className="font-mono text-caption-lg">01</p>
             <h3 className="text-h7 leading-normal">Audits</h3>
             <p className="text-neutral-600">
               Four audits of the Hyperdrive protocol have been completed by
@@ -203,8 +226,8 @@ export function Home() {
             </p>
           </div>,
 
-          <div className="space-y-4 p-5 pb-6 bg-neutral-200 rounded-sm relative h-[440px]">
-            <img src={listIcon} />
+          <div className="space-y-4 p-5 pb-6 bg-card-gradient rounded-sm relative h-[440px]">
+            <img src={multipliedRatesIcon} />
             <h3 className="text-h7 leading-normal">Formal Verification</h3>
             <p className="text-neutral-600">
               Mathematical certainty of the code base was proven by Certora, an
@@ -212,8 +235,8 @@ export function Home() {
             </p>
           </div>,
 
-          <div className="space-y-4 p-5 pb-6 bg-neutral-200 rounded-sm relative h-[440px]">
-            <img src={activityIcon} />
+          <div className="space-y-4 p-5 pb-6 bg-card-gradient rounded-sm relative h-[440px]">
+            <img src={adjustmentsIcon} />
             <h3 className="text-h7 leading-normal">Fuzz Testing</h3>
             <p className="text-neutral-600">
               Hyperdrive is tested using a robust fuzzing system that combines
@@ -221,8 +244,8 @@ export function Home() {
             </p>
           </div>,
 
-          <div className="space-y-4 p-5 pb-6 bg-neutral-200 rounded-sm relative h-[440px]">
-            <img src={squareWaveIcon} />
+          <div className="space-y-4 p-5 pb-6 bg-card-gradient rounded-sm relative h-[440px]">
+            <img src={curveIcon} />
             <h3 className="text-h7 leading-normal">Active Threat Monitoring</h3>
             <p className="text-neutral-600">
               Hyperdrive's smart contracts are actively monitored to get ahead
@@ -231,9 +254,9 @@ export function Home() {
             </p>
           </div>,
 
-          <div className="flex flex-col justify-between p-5 pb-6 bg-neutral-200 rounded-sm relative h-[440px]">
+          <div className="flex flex-col justify-between p-5 pb-6 bg-card-gradient rounded-sm relative h-[440px]">
             <h3 className="text-h7 leading-normal">Hyperdrive Security</h3>
-            <img className="w-8" src={arrowRightIcon} />
+            <img className="w-8" src={rightArrowIcon} />
           </div>,
         ]}
       />
@@ -241,7 +264,7 @@ export function Home() {
       {/* Protocol */}
       <div
         id="protocol"
-        className="px-24 py-16 bg-neutral-200 grid grid-cols-2 gap-40 overflow-x-hidden"
+        className="px-24 py-16 grid grid-cols-2 gap-40 overflow-x-hidden"
       >
         <div className="flex flex-col justify-between">
           <h2 className="font-chakra text-h3">Core Protocol Fundamentals</h2>
@@ -258,7 +281,7 @@ export function Home() {
                 },
               )}
             >
-              <img src={arrowLeft} />
+              <img src={leftArrowIcon} />
             </button>
             <button
               onClick={handleNextCoreFundamentalsSlide}
@@ -270,7 +293,7 @@ export function Home() {
                 },
               )}
             >
-              <img src={arrowRight} />
+              <img src={rightArrowIcon} />
             </button>
           </div>
         </div>
@@ -391,7 +414,7 @@ export function Home() {
       </div>
 
       {/* Partners */}
-      <div id="partners" className="px-24 py-16 bg-neutral-200">
+      {/* <div id="partners" className="px-24 py-16">
         <div className="max-w-2xl mx-auto text-center mb-16">
           <h2 className="text-h7 font-chakra mb-14">
             Integrators &amp; Partners
@@ -403,7 +426,7 @@ export function Home() {
             <img src={blockAnalyticaLogo} />
           </div>
         </div>
-      </div>
+      </div> */}
 
       <Footer />
     </>
