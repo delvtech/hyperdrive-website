@@ -100,7 +100,7 @@ export function ScrollCaptorCarousel({
 
       if (
         deltaY < 0 &&
-        window.scrollY <= carouselYRef.current &&
+        window.scrollY <= carouselYRef.current + 10 &&
         scrollPositionRef.current > 0
       ) {
         isCarouselScroll = true;
@@ -118,7 +118,7 @@ export function ScrollCaptorCarousel({
         ) {
           window.scrollTo({
             top: carouselYRef.current,
-            behavior: "instant",
+            behavior: "smooth",
           });
         }
 
