@@ -6,14 +6,21 @@ import fixedRatesIcon from "src/assets/icons/fixed-rates-icon.svg";
 import leftArrowIcon from "src/assets/icons/left-arrow-icon.svg";
 import multipliedRatesIcon from "src/assets/icons/multiplied-rates-icon.svg";
 import rightArrowIcon from "src/assets/icons/right-arrow-icon.svg";
+import auditsIllustration from "src/assets/illustrations/audits-illustration.svg";
+import formalVerificationIllustration from "src/assets/illustrations/formal-verification-illustration.svg";
+import fuzzTestingIllustration from "src/assets/illustrations/fuzz-testing-illustration.svg";
 import heroIllustration from "src/assets/illustrations/hero-illustration.svg";
 import lpReturnsIcon1 from "src/assets/illustrations/lp-returns-1-illustration.svg";
 import lpReturnsIcon2 from "src/assets/illustrations/lp-returns-2-illustration.svg";
 import lpReturnsIcon3 from "src/assets/illustrations/lp-returns-3-illustration.svg";
+import threatMonitoringIllustration from "src/assets/illustrations/threat-monitoring-illustration.svg";
+import certoraLogo from "src/assets/logos/certora-logo.svg";
+import chainsafeLogo from "src/assets/logos/chainsafe-logo.svg";
+import spearbitLogo from "src/assets/logos/spearbit-logo.svg";
 import { Footer } from "src/components/Footer";
 import { GradientBorderButton } from "src/components/GradientButton";
 import { Header } from "src/components/Header";
-import { ScrollCarousel } from "src/components/ScrollCarousel";
+import { ScrollCaptorCarousel } from "src/components/ScrollCarousel";
 import { HeroPill } from "src/components/home/HeroPill";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
 
@@ -199,64 +206,103 @@ export function Home() {
         </div>
 
         <div className="flex items-center justify-center">
-          <GradientBorderButton href="#lp-docs-url" className="button-primary">Learn more</GradientBorderButton>
+          <GradientBorderButton href="#lp-docs-url" className="button-primary">
+            Learn more
+          </GradientBorderButton>
         </div>
       </div>
 
       {/* Security */}
-      <ScrollCarousel
+      <ScrollCaptorCarousel
         id="security"
-        className="px-24 py-16 min-h-screen bg-gradient-to-b from-midnight to-black"
+        className="px-24 py-16 min-h-screen bg-gradient-to-b from-midnight to-black items-center flex flex-col justify-evenly"
         slideHeight={440}
         slideGap={56}
         heading={
-          <div className="max-w-2xl mx-auto text-center mb-16">
-            <h2 className="font-chakra text-h5 leading-normal mb-6">
-              Security
-            </h2>
-          </div>
+          <h2 className="font-chakra text-h5 font-medium gradient-text text-center mb-6">
+            Security
+          </h2>
         }
         slides={[
-          <div className="space-y-4 p-5 pb-6 bg-card-gradient rounded-sm relative h-[440px]">
+          <div className="px-14 pr-24 py-9 bg-card-gradient rounded-sm relative h-[440px] max-w-5xl mx-auto flex flex-col">
             <p className="font-mono text-caption-lg">01</p>
-            <h3 className="text-h7 leading-normal">Audits</h3>
-            <p className="text-neutral-600">
-              Four audits of the Hyperdrive protocol have been completed by
-              industry leaders in blockchain security.
-            </p>
+            <div className="flex gap-24 items-center flex-1">
+              <div>
+                <h3 className="text-h4 font-chakra text-white mb-4">Audits</h3>
+                <p className="text-neutral-400 mb-14">
+                  Four audits of the Hyperdrive protocol have been completed by
+                  industry leaders in blockchain security.
+                </p>
+                <div className="flex items-center gap-6">
+                  <a href="https://spearbit.com/">
+                    <img src={spearbitLogo} alt="Spearbit" />
+                  </a>
+                  <a href="https://chainsafe.io/">
+                    <img src={chainsafeLogo} alt="Chainsafe" />
+                  </a>
+                  <a href="https://www.certora.com/">
+                    <img src={certoraLogo} alt="Certora" />
+                  </a>
+                </div>
+              </div>
+              <img src={auditsIllustration} />
+            </div>
           </div>,
 
-          <div className="space-y-4 p-5 pb-6 bg-card-gradient rounded-sm relative h-[440px]">
-            <img src={multipliedRatesIcon} />
-            <h3 className="text-h7 leading-normal">Formal Verification</h3>
-            <p className="text-neutral-600">
-              Mathematical certainty of the code base was proven by Certora, an
-              industry leader in formal verification.
-            </p>
+          <div className="px-14 pr-24 py-9 bg-card-gradient rounded-sm relative h-[440px] max-w-5xl mx-auto flex flex-col">
+            <p className="font-mono text-caption-lg">02</p>
+            <div className="flex gap-24 items-center flex-1">
+              <div>
+                <h3 className="text-h4 font-chakra text-white mb-4">
+                  Formal Verification
+                </h3>
+                <p className="text-neutral-400 mb-14">
+                  Certora, an industry leader in formal verification,
+                  implemented a mathematical model that verified many key
+                  invariants in Hyperdrive's AMM.
+                </p>
+                <div className="flex items-center gap-6">
+                  <a href="https://www.certora.com/">
+                    <img src={certoraLogo} alt="Certora" />
+                  </a>
+                </div>
+              </div>
+              <img src={formalVerificationIllustration} />
+            </div>
           </div>,
 
-          <div className="space-y-4 p-5 pb-6 bg-card-gradient rounded-sm relative h-[440px]">
-            <img src={adjustmentsIcon} />
-            <h3 className="text-h7 leading-normal">Fuzz Testing</h3>
-            <p className="text-neutral-600">
-              Hyperdrive is tested using a robust fuzzing system that combines
-              traditional solidity input sweeps with Python-based smart agents.
-            </p>
+          <div className="px-14 pr-24 py-9 bg-card-gradient rounded-sm relative h-[440px] max-w-5xl mx-auto flex flex-col">
+            <p className="font-mono text-caption-lg">03</p>
+            <div className="flex gap-24 items-center flex-1">
+              <div>
+                <h3 className="text-h4 font-chakra text-white mb-4">
+                  Fuzz Testing
+                </h3>
+                <p className="text-neutral-400 mb-14">
+                  Hyperdrive is tested using a robust fuzzing system that
+                  combines traditional Solidity input sweeps with Python-based
+                  smart agents.
+                </p>
+              </div>
+              <img src={fuzzTestingIllustration} />
+            </div>
           </div>,
 
-          <div className="space-y-4 p-5 pb-6 bg-card-gradient rounded-sm relative h-[440px]">
-            <img src={curveIcon} />
-            <h3 className="text-h7 leading-normal">Active Threat Monitoring</h3>
-            <p className="text-neutral-600">
-              Hyperdrive's smart contracts are actively monitored to get ahead
-              of potential threats and leverage collective security
-              intelligence.
-            </p>
-          </div>,
-
-          <div className="flex flex-col justify-between p-5 pb-6 bg-card-gradient rounded-sm relative h-[440px]">
-            <h3 className="text-h7 leading-normal">Hyperdrive Security</h3>
-            <img className="w-8" src={rightArrowIcon} />
+          <div className="px-14 pr-24 py-9 bg-card-gradient rounded-sm relative h-[440px] max-w-5xl mx-auto flex flex-col">
+            <p className="font-mono text-caption-lg">04</p>
+            <div className="flex gap-24 items-center flex-1">
+              <div>
+                <h3 className="text-h4 font-chakra text-white mb-4">
+                  Active Threat Monitoring
+                </h3>
+                <p className="text-neutral-400 mb-14">
+                  Hyperdrive's smart contracts are actively monitored to get
+                  ahead of potential threats and leverage collective security
+                  intelligence.
+                </p>
+              </div>
+              <img src={threatMonitoringIllustration} />
+            </div>
           </div>,
         ]}
       />

@@ -20,7 +20,7 @@ interface ScrollCarouselProps {
   scrollYOffset?: number;
 }
 
-export function ScrollCarousel({
+export function ScrollCaptorCarousel({
   heading,
   slides,
   slideHeight,
@@ -50,7 +50,8 @@ export function ScrollCarousel({
   // calculate the delta for scrolling.
   const lastTouchYRef = useRef<number | undefined>();
 
-  // Debounce tracker
+  // Will be true if the scroll event has fired, but the animation frame hasn't
+  // been executed yet.
   const isTickingRef = useRef(false);
 
   useEffect(() => {
@@ -107,34 +108,38 @@ export function ScrollCarousel({
     }
 
     if (isCarouselScroll) {
-      if (!isTickingRef.current) {
-        // Use requestAnimationFrame to throttle the scroll event
-        window.requestAnimationFrame(() => {
-          if (window.scrollY !== carouselYRef.current) {
-            window.scrollTo({
-              top: carouselYRef.current,
-              behavior: "smooth",
-            });
-          }
+      if (isTickingRef.current) return;
 
-          // We have to clamp the scroll position to the carousel's scroll
-          // height since the delta could end up being larger than the remaining
-          // scroll distance.
-          scrollPositionRef.current = clamp({
-            value: scrollPositionRef.current + deltaY,
-            min: 0,
-            max: carouselScrollHeightRef.current,
+      // Use requestAnimationFrame to throttle the scroll event
+      window.requestAnimationFrame(() => {
+        if (
+          window.scrollY > carouselYRef.current + 20 ||
+          window.scrollY < carouselYRef.current - 20
+        ) {
+          window.scrollTo({
+            top: carouselYRef.current,
+            behavior: "instant",
           });
-          setScrollPosition(scrollPositionRef.current);
+        }
 
-          // Reset the debounce tracker once the animation frame has been executed
-          isTickingRef.current = false;
+        // We have to clamp the scroll position to the carousel's scroll
+        // height since the delta could end up being larger than the remaining
+        // scroll distance.
+        scrollPositionRef.current = clamp({
+          value: scrollPositionRef.current + deltaY,
+          min: 0,
+          max: carouselScrollHeightRef.current,
         });
+        setScrollPosition(scrollPositionRef.current);
 
-        // Prevent additional scroll events from being processed until the next
-        // animation frame has been executed
-        isTickingRef.current = true;
-      }
+        // Reset the tick flag to indicate that the animation frame has been
+        // executed.
+        isTickingRef.current = false;
+      });
+
+      // Prevent additional scroll events from being processed until the next
+      // animation frame has been executed.
+      isTickingRef.current = true;
     } else {
       window.scrollBy(0, deltaY);
     }
