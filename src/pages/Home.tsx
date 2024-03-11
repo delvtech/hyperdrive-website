@@ -20,7 +20,7 @@ import { GradientBorderButton } from "src/components/GradientButton";
 import { Header } from "src/components/Header";
 import { ScrollCaptorCarousel } from "src/components/ScrollCaptorCarousel";
 import { HeroPill } from "src/components/home/HeroPill";
-import { ProtocolFundamentals } from "src/components/home/ProtocolFundamentals";
+import { PositionTypesCarousel } from "src/components/home/PositionTypesCarousel";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
 
 export function Home() {
@@ -62,13 +62,13 @@ export function Home() {
           </h1>
           <div className="flex gap-6">
             <GradientBorderButton
-              href="https://hyperdrive-app.delv.tech"
+              href="https://hyperdrive.delv.tech/app"
               className="button-primary px-10"
             >
               Launch App
             </GradientBorderButton>
             <GradientBorderButton
-              href="https://docs.hyperdrive.com"
+              href="https://hyperdrive.delv.tech/docs"
               className="px-10"
             >
               Learn more
@@ -135,8 +135,8 @@ export function Home() {
                 Fixed Rate Borrow
               </h3>
               <p className="text-neutral-400">
-                Turn a variable rate borrow position on Morpho or Spark into a
-                fixed rate borrow position on Hyperdrive.
+                Turn a variable rate borrow position into a fixed rate borrow
+                position on Hyperdrive.
               </p>
               <p className="inline-flex px-3 h-8 rounded bg-[#8A92A3]/20 font-mono text-body-sm text-neutral-100/70 uppercase items-center justify-center">
                 coming soon
@@ -152,7 +152,8 @@ export function Home() {
               <p className="text-neutral-400">
                 Get multiplied variable rate exposure and speculate on rate
                 movements by opening a Short, or LP to earn passive variable
-                yield without being exposed to impermanent loss.
+                yield on single asset deposits without being exposed to
+                impermanent loss.s.
               </p>
             </div>
             <div className="space-y-4 bg-card-gradient p-6 min-h-96">
@@ -161,10 +162,13 @@ export function Home() {
                 Longs as Collateral
               </h3>
               <p className="text-neutral-400">
-                Using Hyperdrive Longs (fixed rates) as collateral in borrowing
-                protocols like Spark and Morpho will benefit users seeking a
-                capital efficient way to obtain the same exposure they would get
-                from borrowing against the base asset (sDAI or stETH).
+                Using Hyperdrive Longs (fixed rates) as collateral in other
+                borrowing protocols offers users a capital efficient way to
+                obtain exposure like they would from borrowing against the base
+                asset (sDAI or stETH).
+              </p>
+              <p className="inline-flex px-3 h-8 rounded bg-[#8A92A3]/20 font-mono text-body-sm text-neutral-100/70 uppercase items-center justify-center">
+                coming soon
               </p>
             </div>
           </div>
@@ -227,7 +231,8 @@ export function Home() {
                 <h3 className="text-h4 font-chakra text-white mb-4">Audits</h3>
                 <p className="text-neutral-400 mb-14">
                   Four audits of the Hyperdrive protocol have been completed by
-                  industry leaders in blockchain security.
+                  industry leaders in blockchain security, with a fifth audit
+                  scheduled during testnet.
                 </p>
                 <div className="flex items-center gap-6">
                   <a href="https://spearbit.com/">
@@ -304,16 +309,27 @@ export function Home() {
       />
 
       {/* Protocol */}
-      <ProtocolFundamentals />
+      <div id="protocol" className="px-24 pt-28 flex gap-20 overflow-x-hidden">
+        <h2 className="font-chakra text-h5 gradient-text flex-1 basic-1/3">
+          Core Protocol Fundamentals
+        </h2>
+        <PositionTypesCarousel className="basis-2/3" />
+      </div>
 
       {/* Strategies */}
       <div id="strategies" className="px-28 pt-48 pb-20 relative">
         {/* <img src={strategiesLine} className="absolute right-0 top-36" /> */}
 
         <div className="flex justify-between gap-40">
-          <h2 className="font-chakra gradient-text text-h5">
-            Trading Strategies*
-          </h2>
+          <div>
+            <h2 className="font-chakra gradient-text text-h5 mb-14">
+              Trading Strategies*
+            </h2>
+            <p className="mb-6">Learn more about the trading strategies.</p>
+            <GradientBorderButton className="button-primary" href="#">
+              Learn more in GitBook
+            </GradientBorderButton>
+          </div>
           <div className="grid grid-cols-2 gap-9 basis-2/3 text-neutral-400">
             <div className="p-6 bg-card-gradient min-h-60">
               <h3 className="mb-4 text-h7 text-neutral-100">
@@ -340,7 +356,7 @@ export function Home() {
               </h3>
               <p>
                 Maintain optimal yield performance by opening shorts or longs
-                &mdash; whichever earns you a higher rate &mdash; to bring the
+                &ndash; whichever earns you a higher rate &ndash; to bring the
                 fixed and variable rates closer together.
               </p>
             </div>

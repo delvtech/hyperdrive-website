@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { GradientBorderButton } from "../GradientButton";
 
 export function CodeTabs() {
   const [activeTab, setActiveTab] = useState(0);
@@ -24,7 +25,7 @@ export function CodeTabs() {
           Protocol
           <span className="text-content font-normal">Solidity</span>
         </button>
-        {/* <button
+        <button
           className={classNames(
             "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-500 hover:bg-neutral-600 transition-all",
             {
@@ -37,7 +38,7 @@ export function CodeTabs() {
         >
           Hyperdrive Math
           <span className="text-content font-normal">Rust</span>
-        </button> */}
+        </button>
         <button
           className={classNames(
             "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-500 hover:bg-neutral-600 transition-all",
@@ -80,7 +81,7 @@ export function CodeTabs() {
             <h3 className="font-chakra text-body-lg text-neutral-100 font-medium mb-4">
               Utilizing Hyperdrive as a DeFi Primitive
             </h3>
-            <p>
+            <p className="mb-8">
               The Hyperdrive AMM is a new DeFi primitive that allows fixed-rate
               markets to be created on top of variable rate yield sources.
               Developers can take advantage of Hyperdrive's long and short
@@ -93,6 +94,12 @@ export function CodeTabs() {
               to help shield their borrow position from effects of interest rate
               increases.
             </p>
+            <GradientBorderButton
+              href="https://github.com/delvtech/hyperdrive"
+              className="button-sm"
+            >
+              Hyperdrive source code
+            </GradientBorderButton>
           </div>
           <SyntaxHighlighter
             showLineNumbers={true}
@@ -169,14 +176,29 @@ export function CodeTabs() {
         </div>
 
         {/* Hyperdrive Math */}
-        {/* <div
+        <div
           className={classNames({
             hidden: activeTab !== 1,
           })}
         >
-          <div>
-            <h3>Hyperdrive Math</h3>
-            <p>Rust</p>
+          <div className="px-14 py-8 max-w-4xl">
+            <h3 className="font-chakra text-body-lg text-neutral-100 font-medium mb-4">
+              Use the Rust SDK to abstract away detailed calculations
+            </h3>
+            <p className="mb-8">
+              Hyperdrive's Rust SDK provides several advanced calculations that
+              allow developers to abstract away the details of Hyperdrive's
+              implementation while still getting accurate results. In
+              particular, developers can use the Rust SDK to calculate the max
+              long or short that can be opened, calculate the trade size needed
+              to move the pool to a target rate, and much more.
+            </p>
+            <GradientBorderButton
+              href="https://github.com/delvtech/hyperdrive/tree/main/crates/hyperdrive-math"
+              className="button-sm"
+            >
+              Rust SDK source code
+            </GradientBorderButton>
           </div>
           <SyntaxHighlighter
             showLineNumbers={true}
@@ -192,9 +214,80 @@ export function CodeTabs() {
               borderRadius: "0",
             }}
           >
-            // Rust code here
+            {`use eyre::Result;
+use ethers::{
+    middleware::SignerMiddleware,
+    providers::{Http, JsonRpcClient},
+    signers::LocalWallet,
+    types::Address,
+};
+use fixed_point_macros::fixed;
+use hyperdrive_math::State;
+use hyperdrive_wrappers::i_hyperdrive::IHyperdrive;
+
+use std::str::FromStr;
+use std::sync::Arc;
+
+#[tokio::main]
+fn main() -> Result<()> {
+    // Instantiate a Hyperdrive contract wrapper.
+    let provider = Http::from_str("http://localhost:8545")?;
+    let client = {
+        let signer = "PRIVATE_KEY".parse::<LocalWallet>()?;
+        Arc::new(SignerMiddleware::new(provider.clone(), signer))
+    };
+	  let hyperdrive = IHyperdrive::new(
+	      "HYPERDRIVE_ADDRESS".parse::<Address>()?, 
+	      client
+	  );
+	  
+	  // Construct the state object
+	  let state = State {
+		    config: hyperdrive.get_pool_config().call().await?,
+		    info: hyperdrive.get_pool_info().call().await?,
+	  };
+	  
+	  // Get the current block's timestamp.
+	  let now = provider
+        .get_block(provider.get_block_number().await?)
+        .await?
+        .unwrap()
+        .timestamp;
+	  
+	  // Calculate the max long that can be opened.
+	  println!(
+	      "max long = {}", 
+	      state.get_max_long(
+	          fixed!(100_000e18), // budget
+	          hyperdrive.get_checkpoint_exposure(
+	              state.to_checkpoint(now)
+	          ).await?, // checkpoint exposure
+	          None, // use the default max iterations
+	      ),
+	  );
+	  
+	  // Calculate the max short that can be opened.
+	  let Checkpoint {
+        vault_share_price: open_vault_share_price,
+    } = hyperdrive.get_checkpoint(
+        state.to_checkpoint(now)
+    ).await?;
+
+	  println!(
+	      "max short = {}", 
+	      state.get_max_short(
+	          fixed!(100_000e18), // budget
+	          open_vault_share_price, // open vault share price
+	          hyperdrive.get_checkpoint_exposure(
+	              state.to_checkpoint(now)
+	          ).await?, // checkpoint exposure
+	          None, // don't give an estimated realized price
+	          None, // use the default max iterations
+	      ),
+	  );
+}`}
           </SyntaxHighlighter>
-        </div> */}
+        </div>
 
         {/* Bots */}
         <div
@@ -206,7 +299,7 @@ export function CodeTabs() {
             <h3 className="font-chakra text-body-lg text-neutral-100 font-medium mb-4">
               Build Trading Bots
             </h3>
-            <p>
+            <p className="mb-8">
               Agent0 is DELV's Python-based library for testing, analyzing, and
               interacting with Hyperdrive's smart contracts. It provides
               ready-for-use trading policies as well as a framework for building
@@ -220,6 +313,27 @@ export function CodeTabs() {
               as well as a visualization dashboard to enable analysis and
               understanding.
             </p>
+            <ul className="space-y-2 list-disc marker:text-neutral-600">
+              <li>
+                Get started by following our{" "}
+                <a
+                  className="text-neutral-100 underline hover:text-aquamarine"
+                  href="https://github.com/delvtech/agent0/blob/main/examples/tutorial.ipynb"
+                >
+                  bot-building tutorial
+                </a>
+              </li>
+              <li>
+                Fork{" "}
+                <a
+                  className="text-neutral-100 underline hover:text-aquamarine"
+                  href="https://github.com/delvtech/agent0"
+                >
+                  agent0
+                </a>{" "}
+                to start building your own bots
+              </li>
+            </ul>
           </div>
           <SyntaxHighlighter
             showLineNumbers={true}
@@ -270,12 +384,18 @@ close_long_event = hyperdrive_agent0.close_long(
             <h3 className="font-chakra text-body-lg text-neutral-100 font-medium mb-4">
               Use the SDK to integrate frontends
             </h3>
-            <p>
+            <p className="mb-8">
               The Hyperdrive TypeScript SDK provides a simple interface for
               interacting with the Hyperdrive protocol from front-ends or
               node.js applications. Under the hood, the SDK uses the Hyperdrive
               Math library compiled to WebAssembly.
             </p>
+            <GradientBorderButton
+              href="https://hyperdrive-js.delv.tech"
+              className="button-sm"
+            >
+              TypeScript SDK Docs
+            </GradientBorderButton>
           </div>
           <SyntaxHighlighter
             showLineNumbers={true}

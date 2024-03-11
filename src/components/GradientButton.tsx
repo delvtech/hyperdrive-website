@@ -126,7 +126,7 @@ export function GradientBorderButton({
     return (
       <a
         {...tagProps}
-        className={classNames("button group", tagProps.className)}
+        className={classNames("button group inline-flex", tagProps.className)}
         style={style}
       >
         {children}
@@ -138,7 +138,7 @@ export function GradientBorderButton({
     return (
       <Link
         {...tagProps}
-        className={classNames("button group", tagProps.className)}
+        className={classNames("button group inline-flex", tagProps.className)}
         style={style}
       >
         {children}
@@ -149,7 +149,7 @@ export function GradientBorderButton({
   return (
     <button
       {...tagProps}
-      className={classNames("button group", tagProps.className)}
+      className={classNames("button group inline-flex", tagProps.className)}
       style={style}
     >
       {children}

@@ -174,7 +174,7 @@ export function Header({
         >
           <a
             className="p-3 hover:font-bold transition-[font-weight] duration-300"
-            href="https://docs.hyperdrive.com"
+            href="https://hyperdrive.delv.tech/docs"
           >
             Docs
           </a>
@@ -191,12 +191,18 @@ export function Header({
           >
             Build
           </NavLink>
-          <Link
+          <a
             className="p-3 hover:font-bold transition-[font-weight] duration-300"
-            to="#"
+            href="#"
+          >
+            Analytics
+          </a>
+          <a
+            className="p-3 hover:font-bold transition-[font-weight] duration-300"
+            href="https://hyperdrive.delv.tech/app"
           >
             App
-          </Link>
+          </a>
         </div>
       </div>
     </div>

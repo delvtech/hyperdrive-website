@@ -25,12 +25,12 @@ export function Footer() {
               </li>
               <li>
                 <a className="hover:text-neutral-100 transition-all" href="#">
-                  User Guides / Tutorials
+                  User Guides
                 </a>
               </li>
               <li>
                 <a className="hover:text-neutral-100 transition-all" href="#">
-                  Hyperdrive Analytics (BA)
+                  Analytics
                 </a>
               </li>
               <li>
@@ -65,12 +65,18 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                {/* TODO: What text do we want to use here? */}
                 <a
                   className="hover:text-neutral-100 transition-all"
                   href="https://twitter.com/delv_tech/"
                 >
-                  X (Twitter)
+                  Twitter
+                </a></li>
+              <li>
+                <a
+                  className="hover:text-neutral-100 transition-all"
+                  href="https://warpcast.com/~/channel/delv"
+                >
+                  Farcaster
                 </a>
               </li>
               <li>
@@ -94,11 +100,11 @@ export function Footer() {
           <div>
             <h3 className="mb-9 text-neutral-100 font-semibold">About</h3>
             <ul className="space-y-4 font-mono text-neutral-400">
-              <li>
+              {/* <li>
                 <a className="hover:text-neutral-100 transition-all" href="#">
                   FAQs
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a className="hover:text-neutral-100 transition-all" href="#">
                   Brand Guide
@@ -145,7 +151,7 @@ export function Footer() {
       {/* Sub-footer */}
       <div className="bg-aquamarine-500 px-20 py-8 flex justify-between text-neutral-900">
         <p className="font-mono text-body-sm">
-          Copyright &copy; 2024 Hyperdrive
+          Copyright &copy; 2024 DELV
         </p>
         <div className="flex items-center">
           <p className="mr-6">Follow us:</p>
