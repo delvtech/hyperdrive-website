@@ -125,7 +125,7 @@ export function Header({
       {/* Section Menu */}
       <div>
         {showSectionMenu && sections.length > 0 && (
-          <div className="sticky flex gap-8 bg-neutral-100/5 border border-neutral-100/5 rounded-full h-10 px-6 backdrop-blur-lg">
+          <div className="sticky flex gap-8 bg-neutral-900/50 rounded-full h-10 px-6 backdrop-blur-lg">
             {sections.map((section) => (
               <button
                 onClick={() => {
