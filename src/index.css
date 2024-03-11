@@ -8,7 +8,7 @@
   }
 
   .button-primary {
-    @apply bg-neutral-600/50;
+    @apply bg-neutral-700/50 hover:bg-neutral-950 hover:shadow-[0_0_16px_rgba(21,255,171,0.2)];
   }
 
   .gradient-text {

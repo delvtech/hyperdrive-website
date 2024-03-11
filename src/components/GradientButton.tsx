@@ -4,13 +4,21 @@ import { Link, LinkProps } from "react-router-dom";
 
 interface BaseProps {
   /**
-   * @default neutral-500 (#565E6F)
+   * @default neutral-500 ("#565E6F")
    */
-  borderFrom?: "#565E6F";
+  borderFrom?: string;
   /**
-   * @defailt gray-800 (##1f2937)
+   * @default aquamarine ("#15FFAB"")
    */
-  borderTo?: "#1f2937";
+  hoverBorderFrom?: string;
+  /**
+   * @default gray-800 ("##1f2937")
+   */
+  borderTo?: string;
+  /**
+   * @default sky ("#14D3F9")
+   */
+  hoverBorderTo?: string;
   /** @default 1 */
   borderWidth?: number;
 }
@@ -24,32 +32,89 @@ export type GradientBorderButtonProps = BaseProps &
 
 export function GradientBorderButton({
   borderFrom = "#565E6F",
+  hoverBorderFrom = "#15FFAB",
   borderTo = "#1f2937",
+  hoverBorderTo = "#14D3F9",
   borderWidth = 1,
   ...tagProps
 }: PropsWithChildren<GradientBorderButtonProps>) {
   const style: React.CSSProperties = {
+    ...tagProps.style,
     border: `${borderWidth}px solid transparent`,
     position: "relative",
-    borderLeftColor: borderFrom,
-    borderRightColor: borderTo,
   };
 
   const children: React.ReactNode = (
     <>
+      {/* Left line */}
       <span
-        className="absolute w-full h-px box-content bg-gray-800"
+        className="absolute w-px h-full box-content opacity-100 group-hover:opacity-0 transition-all"
+        style={{
+          background: borderFrom,
+          left: -borderWidth,
+          padding: `${borderWidth}px 0`,
+        }}
+      />
+      {/* Left line on hover */}
+      <span
+        className="absolute w-px h-full box-content opacity-0 group-hover:opacity-100 transition-all"
+        style={{
+          background: hoverBorderFrom,
+          left: -borderWidth,
+          padding: `${borderWidth}px 0`,
+        }}
+      />
+      {/* Top line */}
+      <span
+        className="absolute w-full h-px box-content opacity-100 group-hover:opacity-0 transition-all"
         style={{
           background: `linear-gradient(to right, ${borderFrom}, ${borderTo})`,
           top: -borderWidth,
           padding: `0 ${borderWidth}px`,
         }}
       />
-      {tagProps.children}
+      {/* Top line on hover */}
       <span
-        className="absolute w-full h-px box-content"
+        className="absolute w-full h-px box-content opacity-0 group-hover:opacity-100 transition-all"
+        style={{
+          background: `linear-gradient(to right, ${hoverBorderFrom}, ${hoverBorderTo})`,
+          top: -borderWidth,
+          padding: `0 ${borderWidth}px`,
+        }}
+      />
+      {tagProps.children}
+      {/* Right line */}
+      <span
+        className="absolute w-px h-full box-content opacity-100 group-hover:opacity-0 transition-all"
+        style={{
+          background: borderTo,
+          right: -borderWidth,
+          padding: `${borderWidth}px 0`,
+        }}
+      />
+      {/* Right line on hover */}
+      <span
+        className="absolute w-px h-full box-content opacity-0 group-hover:opacity-100 transition-all"
+        style={{
+          background: hoverBorderTo,
+          right: -borderWidth,
+          padding: `${borderWidth}px 0`,
+        }}
+      />
+      {/* Bottom line */}
+      <span
+        className="absolute w-full h-px box-content opacity-100 group-hover:opacity-0 transition-all"
         style={{
           background: `linear-gradient(to right, ${borderFrom}, ${borderTo})`,
+          bottom: -borderWidth,
+          padding: `0 ${borderWidth}px`,
+        }}
+      />
+      {/* Bottom line on hover */}
+      <span
+        className="absolute w-full h-px box-content opacity-0 group-hover:opacity-100 transition-all"
+        style={{
+          background: `linear-gradient(to right, ${hoverBorderFrom}, ${hoverBorderTo})`,
           bottom: -borderWidth,
           padding: `0 ${borderWidth}px`,
         }}
@@ -61,7 +126,7 @@ export function GradientBorderButton({
     return (
       <a
         {...tagProps}
-        className={classNames("button", tagProps.className)}
+        className={classNames("button group", tagProps.className)}
         style={style}
       >
         {children}
@@ -73,7 +138,7 @@ export function GradientBorderButton({
     return (
       <Link
         {...tagProps}
-        className={classNames("button", tagProps.className)}
+        className={classNames("button group", tagProps.className)}
         style={style}
       >
         {children}
@@ -84,7 +149,7 @@ export function GradientBorderButton({
   return (
     <button
       {...tagProps}
-      className={classNames("button", tagProps.className)}
+      className={classNames("button group", tagProps.className)}
       style={style}
     >
       {children}

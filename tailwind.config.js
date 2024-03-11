@@ -40,12 +40,12 @@ export default {
           700: "#2F333C",
           800: "#1B1E26",
           900: "#0F1117",
+          950: "#05060B",
           icon: "#2E3747",
         },
         midnight: {
           100: "#4C618C",
-          400: "#222C40",
-          DEFAULT: "#0F1117",
+          DEFAULT: "#222C40",
         },
         content: {
           DEFAULT: "#A4ABBA",

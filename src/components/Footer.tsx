@@ -1,5 +1,8 @@
-import hyperdriveLogo from "src/assets/hyperdrive-logo-white.svg";
-import xLogo from "src/assets/x-logo.svg";
+import discordLogoIcon from "src/assets/logos/discord-logo-icon-dark.svg";
+import farcasterLogoIcon from "src/assets/logos/farcaster-logo-icon-dark.svg";
+import hyperdriveLogo from "src/assets/logos/hyperdrive-logo-white.svg";
+import linkedinLogoIcon from "src/assets/logos/linkedin-logo-icon-dark.svg";
+import xLogoIcon from "src/assets/logos/x-logo-icon-dark.svg";
 
 export function Footer() {
   return (
@@ -8,7 +11,7 @@ export function Footer() {
         <img src={hyperdriveLogo} className="h-9" alt="Hyperdrive" />
         <div className="flex gap-16 basis-2/3">
           <div>
-            <h3 className="mb-9">Protocol</h3>
+            <h3 className="mb-9 text-neutral-100 font-semibold">Protocol</h3>
             <ul className="space-y-4 font-mono text-neutral-400">
               <li>
                 <a className="hover:text-neutral-100 transition-all" href="#">
@@ -51,12 +54,12 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="mb-9">Community</h3>
+            <h3 className="mb-9 text-neutral-100 font-semibold">Community</h3>
             <ul className="space-y-4 font-mono text-neutral-400">
               <li>
                 <a
                   className="hover:text-neutral-100 transition-all"
-                  href="https://discord.gg/EEfKmfQdtx/"
+                  href="https://www.delv.tech/discord/"
                 >
                   Discord
                 </a>
@@ -89,7 +92,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="mb-9">About</h3>
+            <h3 className="mb-9 text-neutral-100 font-semibold">About</h3>
             <ul className="space-y-4 font-mono text-neutral-400">
               <li>
                 <a className="hover:text-neutral-100 transition-all" href="#">
@@ -112,7 +115,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="mb-9">Legal</h3>
+            <h3 className="mb-9 text-neutral-100 font-semibold">Legal</h3>
             <ul className="space-y-4 font-mono text-neutral-400">
               <li>
                 <a
@@ -148,7 +151,16 @@ export function Footer() {
           <p className="mr-6">Follow us:</p>
           <div className="flex gap-3">
             <a href="https://twitter.com/delv_tech/">
-              <img className="h-4" src={xLogo}></img>
+              <img className="h-6" src={xLogoIcon}></img>
+            </a>
+            <a href="https://www.delv.tech/discord/">
+              <img className="h-6" src={discordLogoIcon}></img>
+            </a>
+            <a href="https://www.linkedin.com/company/delv-tech/">
+              <img className="h-6" src={linkedinLogoIcon}></img>
+            </a>
+            <a href="#">
+              <img className="h-6" src={farcasterLogoIcon}></img>
             </a>
           </div>
         </div>

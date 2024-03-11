@@ -18,7 +18,7 @@ import spearbitLogo from "src/assets/logos/spearbit-logo.svg";
 import { Footer } from "src/components/Footer";
 import { GradientBorderButton } from "src/components/GradientButton";
 import { Header } from "src/components/Header";
-import { ScrollCaptorCarousel } from "src/components/ScrollCarousel";
+import { ScrollCaptorCarousel } from "src/components/ScrollCaptorCarousel";
 import { HeroPill } from "src/components/home/HeroPill";
 import { ProtocolFundamentals } from "src/components/home/ProtocolFundamentals";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
@@ -211,7 +211,7 @@ export function Home() {
       {/* Security */}
       <ScrollCaptorCarousel
         id="security"
-        className="px-24 py-16 min-h-screen bg-gradient-to-b from-midnight to-black items-center flex flex-col"
+        className="px-24 py-16 min-h-screen bg-gradient-to-b from-neutral-900 to-black items-center flex flex-col"
         slideHeight={440}
         slideGap={56}
         heading={

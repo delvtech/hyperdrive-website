@@ -1,10 +1,10 @@
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import hyperdriveLogoWhite from "src/assets/hyperdrive-logo-white.svg";
-import hyperdriveLogo from "src/assets/hyperdrive-logo.svg";
 import menuIcon from "src/assets/icons/menu-icon.svg";
 import xIcon from "src/assets/icons/x-icon.svg";
+import hyperdriveLogoWhite from "src/assets/logos/hyperdrive-logo-white.svg";
+import hyperdriveLogo from "src/assets/logos/hyperdrive-logo.svg";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
 
 interface HeaderProps {
@@ -107,7 +107,7 @@ export function Header({
         "grid grid-cols-3 items-center px-16 py-6 fixed top-0 left-0 right-0 z-10 transition-all duration-300 uppercase font-mono text-sm",
         {
           "text-neutral-100": activeTheme === "dark",
-          "text-midnight": activeTheme === "light",
+          "text-neutral-900": activeTheme === "light",
           "!py-2": scrollPosition > 0,
         },
         className,
@@ -123,35 +123,37 @@ export function Header({
       </Link>
 
       {/* Section Menu */}
-      <div className="sticky flex gap-8">
-        {showSectionMenu &&
-          sections.length > 0 &&
-          sections.map((section) => (
-            <button
-              onClick={() => {
-                const element = document.getElementById(section.id);
-                if (element) {
-                  element.scrollIntoView({ behavior: "smooth" });
-                }
-              }}
-              key={section.id}
-              className={classNames(
-                "opacity-30 transition-opacity hover:opacity-100 font-medium",
-                {
-                  "!opacity-100": isInSection(section.id),
-                },
-              )}
-            >
-              {section.title}
-            </button>
-          ))}
+      <div>
+        {showSectionMenu && sections.length > 0 && (
+          <div className="sticky flex gap-8 bg-neutral-100/5 border border-neutral-100/5 rounded-full h-10 px-6 backdrop-blur-lg">
+            {sections.map((section) => (
+              <button
+                onClick={() => {
+                  const element = document.getElementById(section.id);
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+                key={section.id}
+                className={classNames(
+                  "opacity-30 transition-opacity hover:opacity-100 font-medium flex-1",
+                  {
+                    "!opacity-100": isInSection(section.id),
+                  },
+                )}
+              >
+                {section.title}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Menu */}
       <div className="flex flex-row-reverse items-center gap-8 justify-self-end">
         <button
           className={classNames(
-            "h-12 w-12 shrink-0 border border-transparent hover:border-midnight-400 transition-all rounded-full justify-center items-center hidden",
+            "h-12 w-12 shrink-0 border border-transparent hover:border-midnight transition-all rounded-full justify-center items-center hidden",
             {
               "!flex": collapsibleMenu,
             },
