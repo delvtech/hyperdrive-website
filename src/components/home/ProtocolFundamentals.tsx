@@ -20,7 +20,7 @@ export function ProtocolFundamentals() {
   }
 
   return (
-    <div id="protocol" className="px-24 pt-28 flex gap-20">
+    <div id="protocol" className="px-24 pt-28 flex gap-20 overflow-x-hidden">
       <h2 className="font-chakra text-h5 gradient-text flex-1 basic-1/3">
         Core Protocol Fundamentals
       </h2>
@@ -28,7 +28,7 @@ export function ProtocolFundamentals() {
       {/* Protocol right */}
       <div className="basis-2/3">
         {/* Carousel */}
-        <div className="w-full white flex flex-nowrap mb-6 overflow-x-hidden">
+        <div className="w-full white flex flex-nowrap mb-6">
           {/* Longs */}
           <div
             className={classNames(
@@ -108,7 +108,7 @@ export function ProtocolFundamentals() {
               <img src={lpDiagram} />
               <div className="space-y-6 text-neutral-400">
                 <h3 className="font-semibold text-body-lg text-neutral-100">
-                  LP
+                  Liquidity Provider (LP)
                 </h3>
                 <p>
                   LPs deposit single-sided liquidity into Hyperdrive. LP funds

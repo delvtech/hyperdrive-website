@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import overviewLine from "src/assets/accents/overview-line.svg";
-import strategiesLine from "src/assets/accents/strategies-line.svg";
 import adjustmentsIcon from "src/assets/icons/adjustments-icon.svg";
 import curveIcon from "src/assets/icons/curve-icon.svg";
 import fixedRatesIcon from "src/assets/icons/fixed-rates-icon.svg";

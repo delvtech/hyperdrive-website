@@ -112,8 +112,6 @@ interface CodeTabContentProps {
 function CodeTabContent({
   title,
   description,
-  code,
-  language,
   active = false,
 }: CodeTabContentProps) {
   return (
