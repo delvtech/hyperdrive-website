@@ -1,11 +1,10 @@
-import classNames from "classnames";
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import overviewLine from "src/assets/accents/overview-line.svg";
+import strategiesLine from "src/assets/accents/strategies-line.svg";
 import adjustmentsIcon from "src/assets/icons/adjustments-icon.svg";
 import curveIcon from "src/assets/icons/curve-icon.svg";
 import fixedRatesIcon from "src/assets/icons/fixed-rates-icon.svg";
-import leftArrowIcon from "src/assets/icons/left-arrow-icon.svg";
 import multipliedRatesIcon from "src/assets/icons/multiplied-rates-icon.svg";
-import rightArrowIcon from "src/assets/icons/right-arrow-icon.svg";
 import auditsIllustration from "src/assets/illustrations/audits-illustration.svg";
 import formalVerificationIllustration from "src/assets/illustrations/formal-verification-illustration.svg";
 import fuzzTestingIllustration from "src/assets/illustrations/fuzz-testing-illustration.svg";
@@ -22,43 +21,33 @@ import { GradientBorderButton } from "src/components/GradientButton";
 import { Header } from "src/components/Header";
 import { ScrollCaptorCarousel } from "src/components/ScrollCarousel";
 import { HeroPill } from "src/components/home/HeroPill";
+import { ProtocolFundamentals } from "src/components/home/ProtocolFundamentals";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
 
 export function Home() {
   const scrollPosition = useScrollPosition();
   const heroHeightRef = useRef(Infinity);
 
-  const [activeCoreFundamentalsSlide, setActiveCoreFundamentalsSlide] =
-    useState(0);
-
-  function handlePrevCoreFundamentalsSlide() {
-    setActiveCoreFundamentalsSlide((prev) => prev - 1);
-  }
-
-  function handleNextCoreFundamentalsSlide() {
-    setActiveCoreFundamentalsSlide((prev) => prev + 1);
-  }
-
-  const isScrolledPastHero = scrollPosition > heroHeightRef.current - 30;
+  const showSectionMenu = scrollPosition > heroHeightRef.current - 100;
 
   return (
     <>
       <Header
         theme="dark"
-        collapsibleMenu={isScrolledPastHero}
-        showSectionMenu={isScrolledPastHero}
+        collapsibleMenu={showSectionMenu}
+        showSectionMenu={showSectionMenu}
         sections={[
           { id: "overview", title: "Overview" },
           { id: "security", title: "Security" },
           { id: "protocol", title: "Protocol" },
           { id: "strategies", title: "Strategies" },
-          { id: "partners", title: "Partners" },
+          // { id: "partners", title: "Partners" },
         ]}
       />
 
       {/* Hero */}
       <div
-        className="h-screen flex gap-32 items-center justify-center relative px-[5vw]"
+        className="h-[calc(100vh_-_80px)] flex gap-32 items-center justify-center relative px-[5vw]"
         ref={(node) => {
           if (node) {
             heroHeightRef.current = node.getBoundingClientRect().height;
@@ -89,9 +78,9 @@ export function Home() {
         </div>
 
         {/* Hero right */}
-        <div className="relative min-w-[775px] h-[328px]">
+        <div className="relative min-w-[775px] h-[325px]">
           <img
-            className="w-[932px] h-[269px] absolute right-0 top-[43px] max-w-none"
+            className="h-full absolute right-0 top-0 max-w-none"
             src={heroIllustration}
           />
           <HeroPill className="absolute left-0 top-0">
@@ -100,23 +89,31 @@ export function Home() {
           <HeroPill className="absolute left-[144px] bottom-0">
             Multiply exposure to variable rates
           </HeroPill>
-          <HeroPill className="absolute left-[360px] top-[49px]">
+          <HeroPill className="absolute left-[360px] top-[37%] -translate-y-1/2">
             Set it and forget it LP
           </HeroPill>
         </div>
       </div>
 
       {/* Overview */}
-      <div id="overview" className="px-24 py-40 grid grid-cols-2">
+      <div
+        id="overview"
+        className="px-24 pt-20 pb-32 grid grid-cols-2 relative"
+      >
+        <img
+          src={overviewLine}
+          className="absolute right-0 top-1/2 -translate-y-1/3"
+        />
+
         {/* Overview left */}
-        <div className="max-w-md mx-auto mt-32">
+        <div className="max-w-md mx-auto h-2/3 flex flex-col justify-center">
           <h2 className="font-chakra text-h5 bg-gradient-to-tr from-aquamarine to-aquamarine-fade bg-clip-text text-transparent leading-normal mb-6">
             What is Hyperdrive?
           </h2>
           <p>
             Hyperdrive is a novel AMM for traders to obtain fixed rates or
-            boosted variable yields underpinned by high quality yield sources
-            like stETH and sDAI.
+            boosted variable yields underpinned by reputable yield sources like
+            stETH and sDAI.
           </p>
         </div>
 
@@ -128,7 +125,7 @@ export function Home() {
               <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">
                 Fixed rates
               </h3>
-              <p className="text-neutral-600">
+              <p className="text-neutral-400">
                 Get simple, predictable fixed rates on ETH, stETH, DAI, or sDAI
                 with principal-protected returns.
               </p>
@@ -138,11 +135,11 @@ export function Home() {
               <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">
                 Fixed Rate Borrow
               </h3>
-              <p className="text-neutral-600">
+              <p className="text-neutral-400">
                 Turn a variable rate borrow position on Morpho or Spark into a
                 fixed rate borrow position on Hyperdrive.
               </p>
-              <p className="inline-flex px-3 h-8 rounded bg-[#8A92A3]/20 font-mono text-neutral-100/70 uppercase items-center justify-center">
+              <p className="inline-flex px-3 h-8 rounded bg-[#8A92A3]/20 font-mono text-body-sm text-neutral-100/70 uppercase items-center justify-center">
                 coming soon
               </p>
             </div>
@@ -153,7 +150,7 @@ export function Home() {
               <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">
                 Multiplied variable rates
               </h3>
-              <p className="text-neutral-600">
+              <p className="text-neutral-400">
                 Get multiplied variable rate exposure and speculate on rate
                 movements by opening a Short, or LP to earn passive variable
                 yield without being exposed to impermanent loss.
@@ -164,7 +161,7 @@ export function Home() {
               <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">
                 Longs as Collateral
               </h3>
-              <p className="text-neutral-600">
+              <p className="text-neutral-400">
                 Using Hyperdrive Longs (fixed rates) as collateral in borrowing
                 protocols like Spark and Morpho will benefit users seeking a
                 capital efficient way to obtain the same exposure they would get
@@ -215,11 +212,11 @@ export function Home() {
       {/* Security */}
       <ScrollCaptorCarousel
         id="security"
-        className="px-24 py-16 min-h-screen bg-gradient-to-b from-midnight to-black items-center flex flex-col justify-evenly"
+        className="px-24 py-16 min-h-screen bg-gradient-to-b from-midnight to-black items-center flex flex-col"
         slideHeight={440}
         slideGap={56}
         heading={
-          <h2 className="font-chakra text-h5 font-medium gradient-text text-center mb-6">
+          <h2 className="font-chakra text-h5 font-medium gradient-text text-center grow-[.3] flex items-center mb-8">
             Security
           </h2>
         }
@@ -308,155 +305,72 @@ export function Home() {
       />
 
       {/* Protocol */}
-      <div
-        id="protocol"
-        className="px-24 py-16 grid grid-cols-2 gap-40 overflow-x-hidden"
-      >
-        <div className="flex flex-col justify-between">
-          <h2 className="font-chakra text-h3">Core Protocol Fundamentals</h2>
-
-          {/* Core Fundamental Carousel Nav */}
-          <div className="flex gap-2">
-            <button
-              onClick={handlePrevCoreFundamentalsSlide}
-              disabled={activeCoreFundamentalsSlide === 0}
-              className={classNames(
-                "w-12 h-12 rounded-full border border-neutral-900 flex items-center justify-center",
-                {
-                  "opacity-50": activeCoreFundamentalsSlide === 0,
-                },
-              )}
-            >
-              <img src={leftArrowIcon} />
-            </button>
-            <button
-              onClick={handleNextCoreFundamentalsSlide}
-              disabled={activeCoreFundamentalsSlide === 2}
-              className={classNames(
-                "w-12 h-12 rounded-full border border-neutral-900 flex items-center justify-center",
-                {
-                  "opacity-50": activeCoreFundamentalsSlide === 2,
-                },
-              )}
-            >
-              <img src={rightArrowIcon} />
-            </button>
-          </div>
-        </div>
-        {/* Carousel overflow container */}
-        <div className="relative">
-          {/* Carousel */}
-          {/* TODO: Maybe there's a better way to avoid setting a fixed */}
-          <div className="w-[9999px] flex flex-nowrap [&>*]:mr-6 [&>*]:w-[480px] [&>*]:bg-neutral-100 [&>*]:p-6 [&>*]:rounded-sm [&>*]:transition-all [&>*]:duration-700 [&>*]:opacity-50 [&>*]:blur-sm">
-            {/* Slide */}
-            <div
-              className={classNames({
-                "!opacity-100 !blur-none": activeCoreFundamentalsSlide === 0,
-                "scale-50 !-mr-[480px]": activeCoreFundamentalsSlide > 0,
-              })}
-            >
-              <p className="mb-6">
-                Long traders earn a fixed rate. They deposit assets today and
-                get an agreed-upon future value, calculated by Hyperdrive's
-                novel pricing model.
-              </p>
-              <p>
-                Opening a Long position lowers the market's fixed rate. Longs
-                always profit if held to maturity.
-              </p>
-            </div>
-            {/* Slide */}
-            <div
-              className={classNames({
-                "!opacity-100 !blur-none": activeCoreFundamentalsSlide === 1,
-                "scale-50 !-mr-[480px]": activeCoreFundamentalsSlide > 1,
-              })}
-            >
-              <p className="mb-6">
-                Shorts earn multiplied variable rate. They pay a fixed rate,
-                which is the market's sentiment about the pool capital's future
-                growth, and earn variable yield on the full capital.
-              </p>
-              <p>
-                Opening shorts increases the market's fixed rate. Furthermore,
-                short positions take variable yield from LPs.
-              </p>
-
-              <p>
-                Shorts can have a large upside, but they can also incur losses
-                if the variable rate underperforms the fixed rate.
-              </p>
-            </div>
-            {/* Slide */}
-            <div
-              className={classNames({
-                "!opacity-100 !blur-none": activeCoreFundamentalsSlide === 2,
-                "scale-50 !-mr-[480px]": activeCoreFundamentalsSlide > 2,
-              })}
-            >
-              <p className="mb-6">
-                LPs deposit single-sided liquidity. LP funds are utilized to
-                take the other side of traders' Longs and Shorts.
-              </p>
-              <p>
-                Long positions generate more variable yield for LPs, and
-                conversely, Short positions take variable yield from LPs.
-              </p>
-              <p>
-                Unutilized capital earns the underlying yield source variable
-                rate. LPs also earn fees from all trading activity in the pool.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ProtocolFundamentals />
 
       {/* Strategies */}
-      <div id="strategies" className="px-28 py-20 flex justify-between">
-        <h2 className="font-chakra text-h5 leading-normal mb-6 w-64">
-          Trading Strategies
-        </h2>
-        <div className="grid grid-cols-2 gap-9 basis-2/3">
-          <div className="p-6 bg-neutral-200">
-            <h3 className="font-chakra mb-4 text-h7 leading-normal">
-              Hold to Maturity
-            </h3>
-            <p className="text-neutral-700">
-              Obtain a predictable fixed rate of return, or maximize your
-              exposure to the variable rate if you believe it will outperform
-              over the term.
-            </p>
-          </div>
-          <div className="p-6 bg-neutral-200">
-            <h3 className="font-chakra mb-4 text-h7 leading-normal">
-              Rates Speculation
-            </h3>
-            <p className="text-neutral-700">
-              Speculate on the anticipated directionality of the rates and seek
-              to close your position early at a profit.
-            </p>
-          </div>
-          <div className="p-6 bg-neutral-200">
-            <h3 className="font-chakra mb-4 text-h7 leading-normal">
-              Rates Arbitraging
-            </h3>
-            <p className="text-neutral-700">
-              Maintain optimal yield performance by opening shorts or longs
-              &mdash; whichever earns you a higher rate &mdash; to bring the
-              fixed and variable rates closer together.
-            </p>
-          </div>
-          <div className="p-6 bg-neutral-200">
-            <h3 className="font-chakra mb-4 text-h7 leading-normal">
-              Volatility Harvesting
-            </h3>
-            <p className="text-neutral-700">
-              Provide liquidity to a market and seek a profit from
-              volatility-driven trading fees, while still earning the yield
-              source rate on idle capital.
-            </p>
+      <div id="strategies" className="px-28 pt-48 pb-20 relative">
+        {/* <img src={strategiesLine} className="absolute right-0 top-36" /> */}
+
+        <div className="flex justify-between gap-40">
+          <h2 className="font-chakra gradient-text text-h5">
+            Trading Strategies*
+          </h2>
+          <div className="grid grid-cols-2 gap-9 basis-2/3 text-neutral-400">
+            <div className="p-6 bg-card-gradient min-h-60">
+              <h3 className="mb-4 text-h7 text-neutral-100">
+                Hold to Maturity
+              </h3>
+              <p>
+                Obtain a predictable fixed rate of return, or maximize your
+                exposure to the variable rate if you believe it will outperform
+                over the term.
+              </p>
+            </div>
+            <div className="p-6 bg-card-gradient min-h-60">
+              <h3 className="mb-4 text-h7 text-neutral-100">
+                Rates Speculation
+              </h3>
+              <p>
+                Speculate on the anticipated directionality of the rates and
+                seek to close your position early at a profit.
+              </p>
+            </div>
+            <div className="p-6 bg-card-gradient min-h-60">
+              <h3 className="mb-4 text-h7 text-neutral-100">
+                Rates Arbitraging
+              </h3>
+              <p>
+                Maintain optimal yield performance by opening shorts or longs
+                &mdash; whichever earns you a higher rate &mdash; to bring the
+                fixed and variable rates closer together.
+              </p>
+            </div>
+            <div className="p-6 bg-card-gradient min-h-60">
+              <h3 className="mb-4 text-h7 text-neutral-100">
+                Volatility Harvesting
+              </h3>
+              <p>
+                Provide liquidity to a market and seek a profit from
+                volatility-driven trading fees, while still earning the yield
+                source rate on idle capital.
+              </p>
+            </div>
           </div>
         </div>
+
+        <p className="text-caption text-neutral-400 mt-20">
+          * This above content is general in nature and for informational
+          purposes only. It is not legal, tax, investment, financial or other
+          advice, nor is it a comprehensive or complete statement of the matters
+          discussed. It is not a recommendation of an investment strategy and
+          should not be used as the basis of any investment decision. All
+          transactions and investments involve risk, and past performance does
+          not guarantee future results. Certain complex strategies carry
+          additional risk and are not appropriate for all users. As with any
+          DeFi or crypto position, you may incur losses. You alone are
+          responsible for evaluating the benefits and risks associated with any
+          decision to use Hyperdrive.
+        </p>
       </div>
 
       {/* Partners */}

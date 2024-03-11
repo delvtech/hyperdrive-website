@@ -16,7 +16,7 @@
   }
 
   .bg-card-gradient {
-    @apply bg-gradient-to-b from-[#4C618C]/20 to-[#222C40]/20 backdrop-blur;
+    @apply bg-gradient-to-b from-[#4C618C]/20 to-[#222C40]/20 backdrop-blur-md;
   }
 }
 
