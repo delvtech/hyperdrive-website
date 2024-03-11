@@ -3,9 +3,9 @@ import { useState } from "react";
 import longDiagram from "src/assets/diagrams/long-diagram.svg";
 import lpDiagram from "src/assets/diagrams/lp-diagram.svg";
 import shortDiagram from "src/assets/diagrams/short-diagram.svg";
-import { GradientBorderButton } from "src/components/GradientButton";
-import { NextButton } from "src/components/carousel/NextButton";
-import { PrevButton } from "src/components/carousel/PrevButton";
+import { GradientBorderButton } from "src/components/buttons/GradientButton";
+import { NextButton } from "src/components/buttons/NextButton";
+import { PrevButton } from "src/components/buttons/PrevButton";
 
 export function PositionTypesCarousel({ className }: { className?: string }) {
   const [activeSlide, setActiveSlide] = useState(0);

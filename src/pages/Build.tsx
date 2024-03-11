@@ -17,7 +17,7 @@ import rustLogoTile from "src/assets/logos/rust-logo-tile.svg";
 import solidityLogoTile from "src/assets/logos/solidity-logo-tile.png";
 import typescriptLogoTile from "src/assets/logos/typescript-logo-tile.png";
 import { Footer } from "src/components/Footer";
-import { GradientBorderButton } from "src/components/GradientButton";
+import { GradientBorderButton } from "src/components/buttons/GradientButton";
 import { Header } from "src/components/Header";
 import { CodeTabs } from "src/components/build/CodeTabs";
 import { ProjectIdeasCarousel } from "src/components/build/ProjectIdeasCarousel";

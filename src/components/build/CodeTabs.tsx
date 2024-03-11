@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { GradientBorderButton } from "../GradientButton";
+import { GradientBorderButton } from "src/components/buttons/GradientButton";
 
 export function CodeTabs() {
   const [activeTab, setActiveTab] = useState(0);

@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import overviewLine from "src/assets/accents/overview-line.svg";
 import adjustmentsIcon from "src/assets/icons/adjustments-icon.svg";
 import curveIcon from "src/assets/icons/curve-icon.svg";
@@ -16,43 +15,19 @@ import certoraLogo from "src/assets/logos/certora-logo.svg";
 import chainsafeLogo from "src/assets/logos/chainsafe-logo.svg";
 import spearbitLogo from "src/assets/logos/spearbit-logo.svg";
 import { Footer } from "src/components/Footer";
-import { GradientBorderButton } from "src/components/GradientButton";
 import { Header } from "src/components/Header";
 import { ScrollCaptorCarousel } from "src/components/ScrollCaptorCarousel";
+import { GradientBorderButton } from "src/components/buttons/GradientButton";
 import { HeroPill } from "src/components/home/HeroPill";
 import { PositionTypesCarousel } from "src/components/home/PositionTypesCarousel";
-import { useScrollPosition } from "src/hooks/useScrollPosition";
 
 export function Home() {
-  const scrollPosition = useScrollPosition();
-  const heroHeightRef = useRef(Infinity);
-
-  const showSectionMenu = scrollPosition > heroHeightRef.current - 100;
-
   return (
     <>
-      <Header
-        theme="dark"
-        collapsibleMenu={showSectionMenu}
-        showSectionMenu={showSectionMenu}
-        sections={[
-          { id: "overview", title: "Overview" },
-          { id: "security", title: "Security" },
-          { id: "protocol", title: "Protocol" },
-          { id: "strategies", title: "Strategies" },
-          // { id: "partners", title: "Partners" },
-        ]}
-      />
+      <Header theme="dark" />
 
       {/* Hero */}
-      <div
-        className="h-[calc(100vh_-_80px)] flex gap-32 items-center justify-center relative px-[5vw]"
-        ref={(node) => {
-          if (node) {
-            heroHeightRef.current = node.getBoundingClientRect().height;
-          }
-        }}
-      >
+      <div className="h-[calc(100vh_-_80px)] flex gap-32 items-center justify-center relative px-[5vw]">
         {/* Hero left */}
         <div className="relative z-10">
           <h1 className="text-h1 font-medium font-chakra relative gradient-text mb-16">

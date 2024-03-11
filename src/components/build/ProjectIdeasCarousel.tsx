@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { useState } from "react";
-import { NextButton } from "src/components/carousel/NextButton";
-import { PrevButton } from "src/components/carousel/PrevButton";
+import { NextButton } from "src/components/buttons/NextButton";
+import { PrevButton } from "src/components/buttons/PrevButton";
 
 export function ProjectIdeasCarousel({ className }: { className?: string }) {
   const [activeSlide, setActiveSlide] = useState(0);
