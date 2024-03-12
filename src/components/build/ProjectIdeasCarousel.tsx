@@ -17,14 +17,15 @@ export function ProjectIdeasCarousel({ className }: { className?: string }) {
   return (
     <div className={classNames("overflow-x-hidden", className)}>
       {/* Carousel */}
-      <div className="w-full flex flex-nowrap mb-6">
+      <div className="w-full flex gap-6 flex-nowrap mb-6 relative">
+
         {/* Fixed rate exposure */}
         <div
           className={classNames(
-            "p-6 transition-all duration-700 w-1/2 shrink-0",
+            "p-6 transition-all duration-700 w-2/3 shrink-0 bg-card-gradient",
           )}
           style={{
-            marginLeft: `${activeSlide * -50 + 25}%`,
+            marginLeft: `calc(${activeSlide * -66.66}% - ${activeSlide * 24}px)`,
           }}
         >
           <h3 className="text-neutral-100 text-h7">Fixed rate exposure</h3>
@@ -32,7 +33,7 @@ export function ProjectIdeasCarousel({ className }: { className?: string }) {
         </div>
 
         {/* Trading bots */}
-        <div className="p-6 transition-all duration-700 w-1/2 shrink-0">
+        <div className="p-6 transition-all duration-700 w-2/3 shrink-0 bg-card-gradient">
           <h3 className="text-neutral-100 text-h7">Trading bots</h3>
           <p>
             Implement bots to automate your own trading strategies on
@@ -41,7 +42,7 @@ export function ProjectIdeasCarousel({ className }: { className?: string }) {
         </div>
 
         {/* Novel DeFi products */}
-        <div className="p-6 transition-all duration-700 w-1/2 shrink-0">
+        <div className="p-6 transition-all duration-700 w-2/3 shrink-0 bg-card-gradient">
           <h3 className="text-neutral-100 text-h7">Novel DeFi products</h3>
           <p>
             Build innovative products to fill gaps in the current DeFi
@@ -50,6 +51,8 @@ export function ProjectIdeasCarousel({ className }: { className?: string }) {
             that expands the possibilities of on-chain finance.
           </p>
         </div>
+
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-neutral-900"></div>
       </div>
 
       {/* Carousel Nav */}

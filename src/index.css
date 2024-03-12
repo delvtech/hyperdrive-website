@@ -5,7 +5,7 @@
 @layer components {
   /* buttons */
   .button {
-    @apply px-6 h-12 font-mono text-body-sm border uppercase flex gap-3 justify-center items-center font-medium tracking-widest text-neutral-100;
+    @apply px-6 h-12 font-mono text-body-sm border uppercase flex gap-3 justify-center items-center font-medium tracking-widest text-neutral-100 whitespace-nowrap;
   }
   .button-primary {
     @apply bg-neutral-700/50 hover:bg-neutral-950 hover:shadow-[0_0_16px_rgba(21,255,171,0.2)];

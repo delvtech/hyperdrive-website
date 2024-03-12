@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import overviewLine from "src/assets/accents/overview-line.svg";
 import adjustmentsIcon from "src/assets/icons/adjustments-icon.svg";
 import curveIcon from "src/assets/icons/curve-icon.svg";
@@ -27,24 +28,50 @@ export function Home() {
       <Header theme="dark" />
 
       {/* Hero */}
-      <div className="h-[calc(100vh_-_80px)] flex gap-32 items-center justify-center relative px-[5vw]">
+      <div
+        className={classNames(
+          "h-screen flex gap-32 items-center justify-center relative px-[5vw]",
+          "max-xl:px-[3vw]",
+          "max-lg:flex-col max-lg:gap-8 max-lg:text-center",
+        )}
+      >
         {/* Hero left */}
-        <div className="relative z-10">
-          <h1 className="text-h1 font-medium font-chakra relative gradient-text mb-16">
-            Yield,
-            <br />
-            Your Way.
+        <div
+          className={classNames(
+            "relative z-10 w-[415px] shrink-0",
+            "max-xl:w-[340px]",
+            "max-lg:w-auto",
+          )}
+        >
+          <h1
+            className={classNames(
+              "text-h1 font-medium font-chakra relative gradient-text mb-16",
+              "max-xl:text-h2",
+              "max-sm:text-h4",
+            )}
+          >
+            Yield, Your Way.
           </h1>
-          <div className="flex gap-6">
+          <div
+            className={classNames(
+              "flex gap-6",
+              "max-lg:justify-center",
+              "max-sm:block max-sm:space-y-4",
+            )}
+          >
             <GradientBorderButton
               href="https://hyperdrive.delv.tech/app"
-              className="button-primary px-10"
+              className={classNames(
+                "button-primary px-10",
+                "max-lg:flex-1",
+                "max-sm:w-full",
+              )}
             >
               Launch App
             </GradientBorderButton>
             <GradientBorderButton
               href="https://hyperdrive.delv.tech/docs"
-              className="px-10"
+              className={classNames("px-10", "max-lg:flex-1", "max-sm:w-full")}
             >
               Learn more
             </GradientBorderButton>
@@ -52,28 +79,57 @@ export function Home() {
         </div>
 
         {/* Hero right */}
-        <div className="relative min-w-[775px] h-[325px]">
+        <div
+          className={classNames(
+            "relative basis-[775px] h-[23vw] max-h-[325px]",
+            "max-lg:absolute max-lg:top-1/2 max-lg:w-full max-lg:left-0",
+          )}
+        >
           <img
-            className="h-full absolute right-0 top-0 max-w-none"
+            className={classNames(
+              "h-full absolute right-0 top-0 max-w-none",
+              "max-lg:w-[200vw] max-lg:opacity-50 max-lg:h-auto max-lg:-translate-y-1/2",
+            )}
             src={heroIllustration}
           />
-          <HeroPill className="absolute left-0 top-0">
+          <HeroPill
+            className={classNames(
+              "absolute -translate-x-1/2 -translate-y-1/2 top-[10%] right-[390px] whitespace-nowrap",
+              "max-[1440px]:right-[28vw]",
+              "max-xl:right-[24vw]",
+              // "max-lg:static max-lg:transform-none",
+              "max-lg:hidden",
+            )}
+          >
             Earn Fixed Rates
           </HeroPill>
-          <HeroPill className="absolute left-[144px] bottom-0">
+          <HeroPill
+            className={classNames(
+              "absolute -translate-x-1/2 -translate-y-1/2 top-[91%] right-[-48px] whitespace-nowrap",
+              "max-[1440px]:right-[-6vw]",
+              "max-xl:right-[-10vw]",
+              // "max-lg:static max-lg:transform-none",
+              "max-lg:hidden",
+            )}
+          >
             Multiply exposure to variable rates
           </HeroPill>
-          <HeroPill className="absolute left-[360px] top-[37%] -translate-y-1/2">
+          <HeroPill
+            className={classNames(
+              "absolute -translate-x-1/2 -translate-y-1/2 top-[34%] right-[-72px] whitespace-nowrap",
+              "max-[1440px]:right-[-7vw]",
+              "max-xl:right-[-10vw]",
+              // "max-lg:static max-lg:transform-none",
+              "max-lg:hidden",
+            )}
+          >
             Set it and forget it LP
           </HeroPill>
         </div>
       </div>
 
       {/* Overview */}
-      <div
-        id="overview"
-        className="px-24 pt-20 pb-32 grid grid-cols-2 relative"
-      >
+      <div id="overview" className="px-24 pt-0 pb-32 grid grid-cols-2 relative">
         <img
           src={overviewLine}
           className="absolute right-0 top-1/2 -translate-y-1/3"

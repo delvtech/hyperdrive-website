@@ -8,11 +8,11 @@ interface BaseProps {
    */
   borderFrom?: string;
   /**
-   * @default aquamarine ("#15FFAB"")
+   * @default aquamarine ("#15FFAB")
    */
   hoverBorderFrom?: string;
   /**
-   * @default gray-800 ("##1f2937")
+   * @default gray-800 ("#1f2937")
    */
   borderTo?: string;
   /**
