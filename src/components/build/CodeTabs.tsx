@@ -131,61 +131,53 @@ export function CodeTabs() {
             }}
           >
             {`contract Integrator {
-    IHyperdrive hyperdrive = address(FIXME - add real mainnet address);
+    IHyperdrive hyperdrive = address("0x123abc");
 
     function usesLong(...) external returns (...) {
-		    // Do something...
+        // Do something...
 
         // Approve Hyperdrive with the amount of base to spend.
         uint256 baseAmount = 10e18;
-				hyperdrive.baseToken().approve(
-				    address(hyperdrive),
-            baseAmount
-        );
+        hyperdrive.baseToken().approve(address(hyperdrive), baseAmount);
 
-				// Open the long position.
-				uint256 minBondAmount = 100e18;
+        // Open the long position.
+        uint256 minBondAmount = 100e18;
         (uint256 maturityTime, uint256 longAmount) = hyperdrive.openLong(
-	          baseAmount, // the amount of base to use for longs
-						minBondAmount, // min amount slippage guard
-						// FIXME: We should have a getter for the share price
-						hyperdrive.getPoolInfo().vaultSharePrice, // max share price guard
-						IHyperdrive.Options({
-						    destination: destination, // the recipient
+            baseAmount, // the amount of base to use for longs
+            minBondAmount, // min amount slippage guard
+            hyperdrive.getPoolInfo().vaultSharePrice, // max share price guard
+            IHyperdrive.Options({
+                destination: destination, // the recipient
                 asBase: true, // use base to pay for the short
-								extraData: new bytes(0)
-						})
+                extraData: new bytes(0)
+            })
         );
 
-				// Do something...
-    }   
+        // Do something...
+    }
 
     function usesShort(...) external returns (...) {
-		    // Do something...
+        // Do something...
 
         // Approve Hyperdrive with the maximum amount to deposit.
         uint256 maxDeposit = 10e18;
-				hyperdrive.baseToken().approve(
-				    address(hyperdrive),
-            maxDeposit
-        );
+        hyperdrive.baseToken().approve(address(hyperdrive), maxDeposit);
 
-				// Open the short position.
-				uint256 shortAmount = 100e18;
+        // Open the short position.
+        uint256 shortAmount = 100e18;
         (uint256 maturityTime, uint256 basePaid) = hyperdrive.openShort(
-	          shortAmount, // the amount of bonds to short
-						maxDeposit, // max deposit slippage guard
-						// FIXME: We should have a getter for the share price
-						hyperdrive.getPoolInfo().vaultSharePrice, // max share price guard
-						IHyperdrive.Options({
-						    destination: destination, // the recipient
+            shortAmount, // the amount of bonds to short
+            maxDeposit, // max deposit slippage guard
+            hyperdrive.getPoolInfo().vaultSharePrice, // max share price guard
+            IHyperdrive.Options({
+                destination: destination, // the recipient
                 asBase: true, // use base to pay for the short
-								extraData: new bytes(0)
-						})
+                extraData: new bytes(0)
+            })
         );
 
-				// Do something...
-    }   
+        // Do something...
+    }
 }`}
           </SyntaxHighlighter>
         </div>
@@ -236,77 +228,73 @@ export function CodeTabs() {
               borderRadius: "0",
             }}
           >
-            {`use eyre::Result;
+            {`use std::{str::FromStr, sync::Arc};
+
 use ethers::{
     middleware::SignerMiddleware,
     providers::{Http, JsonRpcClient},
     signers::LocalWallet,
     types::Address,
 };
+use eyre::Result;
 use fixed_point_macros::fixed;
 use hyperdrive_math::State;
 use hyperdrive_wrappers::i_hyperdrive::IHyperdrive;
 
-use std::str::FromStr;
-use std::sync::Arc;
-
 #[tokio::main]
-fn main() -> Result<()> {
+async fn main() -> Result<()> {
     // Instantiate a Hyperdrive contract wrapper.
     let provider = Http::from_str("http://localhost:8545")?;
     let client = {
         let signer = "PRIVATE_KEY".parse::<LocalWallet>()?;
         Arc::new(SignerMiddleware::new(provider.clone(), signer))
     };
-	  let hyperdrive = IHyperdrive::new(
-	      "HYPERDRIVE_ADDRESS".parse::<Address>()?, 
-	      client
-	  );
-	  
-	  // Construct the state object
-	  let state = State {
-		    config: hyperdrive.get_pool_config().call().await?,
-		    info: hyperdrive.get_pool_info().call().await?,
-	  };
-	  
-	  // Get the current block's timestamp.
-	  let now = provider
+    let hyperdrive = IHyperdrive::new("HYPERDRIVE_ADDRESS".parse::<Address>()?, client);
+
+    // Construct the state object
+    let state = State {
+        config: hyperdrive.get_pool_config().call().await?,
+        info: hyperdrive.get_pool_info().call().await?,
+    };
+
+    // Get the current block's timestamp.
+    let now = provider
         .get_block(provider.get_block_number().await?)
         .await?
         .unwrap()
         .timestamp;
-	  
-	  // Calculate the max long that can be opened.
-	  println!(
-	      "max long = {}", 
-	      state.get_max_long(
-	          fixed!(100_000e18), // budget
-	          hyperdrive.get_checkpoint_exposure(
-	              state.to_checkpoint(now)
-	          ).await?, // checkpoint exposure
-	          None, // use the default max iterations
-	      ),
-	  );
-	  
-	  // Calculate the max short that can be opened.
-	  let Checkpoint {
-        vault_share_price: open_vault_share_price,
-    } = hyperdrive.get_checkpoint(
-        state.to_checkpoint(now)
-    ).await?;
 
-	  println!(
-	      "max short = {}", 
-	      state.get_max_short(
-	          fixed!(100_000e18), // budget
-	          open_vault_share_price, // open vault share price
-	          hyperdrive.get_checkpoint_exposure(
-	              state.to_checkpoint(now)
-	          ).await?, // checkpoint exposure
-	          None, // don't give an estimated realized price
-	          None, // use the default max iterations
-	      ),
-	  );
+    // Calculate the max long that can be opened.
+    println!(
+        "max long = {}",
+        state.get_max_long(
+            fixed!(100_000e18), // budget
+            hyperdrive
+                .get_checkpoint_exposure(state.to_checkpoint(now))
+                .await?, // checkpoint exposure
+            None, // use the default max iterations
+        ),
+    );
+
+    // Calculate the max short that can be opened.
+    let Checkpoint {
+        vault_share_price: open_vault_share_price,
+    } = hyperdrive.get_checkpoint(state.to_checkpoint(now)).await?;
+
+    println!(
+        "max short = {}",
+        state.get_max_short(
+            fixed!(100_000e18), // budget
+            open_vault_share_price, // open vault share price
+            hyperdrive
+                .get_checkpoint_exposure(state.to_checkpoint(now))
+                .await?, // checkpoint exposure
+            None, // don't give an estimated realized price
+            None, // use the default max iterations
+        ),
+    );
+
+    Ok(())
 }`}
           </SyntaxHighlighter>
         </div>
