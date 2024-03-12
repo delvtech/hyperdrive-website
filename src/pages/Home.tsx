@@ -651,7 +651,7 @@ export function Home() {
           </div>
         </div>
 
-        <p className="text-neutral-400 text-body-sm mt-20 max-md:mt-10">
+        <p className="text-body-sm mt-20 max-md:mt-10">
           * This above content is general in nature and for informational
           purposes only. It is not legal, tax, investment, financial or other
           advice, nor is it a comprehensive or complete statement of the matters
