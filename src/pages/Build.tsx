@@ -52,7 +52,7 @@ export function Build() {
 
       {/* Tools */}
       <div className="pt-10 pb-20 px-[4vw] max-sm:pb-10">
-        <div className="max-w-xl mx-auto text-center mb-20">
+        <div className="max-w-xl mx-auto text-center mb-20 max-lg:text-left">
           <h2 className="text-h5 gradient-text font-chakra font-medium mb-6">
             Reimagine DeFi Yield
           </h2>
@@ -125,7 +125,7 @@ export function Build() {
             className={classNames(
               "text-h5 gradient-text font-medium font-chakra mb-8",
               "max-xl:text-h6",
-              "max-lg:mb-0 max-lg:text-center",
+              "max-lg:mb-0",
             )}
           >
             Bring yield-based products to life with Hyperdrive’s extensive

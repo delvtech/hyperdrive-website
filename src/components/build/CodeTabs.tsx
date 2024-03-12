@@ -13,11 +13,12 @@ export function CodeTabs() {
       <div className="flex [&>*]:flex-1 gap-0.5">
         <button
           className={classNames(
-            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all max-sm:px-2",
+            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all",
             {
               "!bg-neutral-950": activeTab === 0,
             },
             "max-md:items-center max-md:text-body-sm",
+            "max-sm:px-2",
           )}
           onClick={() => {
             setActiveTab(0);
@@ -28,11 +29,12 @@ export function CodeTabs() {
         </button>
         <button
           className={classNames(
-            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all max-sm:px-4",
+            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all",
             {
               "!bg-neutral-950": activeTab === 1,
             },
             "max-md:items-center max-md:text-body-sm",
+            "max-sm:px-2",
           )}
           onClick={() => {
             setActiveTab(1);
@@ -43,11 +45,12 @@ export function CodeTabs() {
         </button>
         <button
           className={classNames(
-            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all max-sm:px-4",
+            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all",
             {
               "!bg-neutral-950": activeTab === 2,
             },
             "max-md:items-center max-md:text-body-sm",
+            "max-sm:px-2",
           )}
           onClick={() => {
             setActiveTab(2);
@@ -58,11 +61,12 @@ export function CodeTabs() {
         </button>
         <button
           className={classNames(
-            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all max-sm:px-4",
+            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all",
             {
               "!bg-neutral-950": activeTab === 3,
             },
             "max-md:items-center max-md:text-body-sm",
+            "max-sm:px-2",
           )}
           onClick={() => {
             setActiveTab(3);
@@ -81,7 +85,7 @@ export function CodeTabs() {
             hidden: activeTab !== 0,
           })}
         >
-          <div className="px-14 py-8 max-w-4xl">
+          <div className="px-14 py-8 max-w-4xl max-lg:px-[6vw]">
             <h3 className="font-chakra text-body-lg text-neutral-100 font-medium mb-4">
               Utilizing Hyperdrive as a DeFi Primitive
             </h3>
@@ -110,7 +114,6 @@ export function CodeTabs() {
             language="solidity"
             style={dracula}
             lineNumberStyle={{
-              width: "72px",
               borderRight: "1px solid rgba(0,0,0,.2)",
               marginRight: "24px",
             }}
@@ -186,7 +189,7 @@ export function CodeTabs() {
             hidden: activeTab !== 1,
           })}
         >
-          <div className="px-14 py-8 max-w-4xl">
+          <div className="px-14 py-8 max-w-4xl max-lg:px-[6vw]">
             <h3 className="font-chakra text-body-lg text-neutral-100 font-medium mb-4">
               Use the Rust SDK to abstract away detailed calculations
             </h3>
@@ -210,7 +213,6 @@ export function CodeTabs() {
             language="rust"
             style={dracula}
             lineNumberStyle={{
-              width: "72px",
               borderRight: "1px solid rgba(0,0,0,.2)",
               marginRight: "24px",
             }}
@@ -301,7 +303,7 @@ fn main() -> Result<()> {
             hidden: activeTab !== 2,
           })}
         >
-          <div className="px-14 py-8 max-w-4xl">
+          <div className="px-14 py-8 max-w-4xl max-lg:px-[6vw]">
             <h3 className="font-chakra text-body-lg text-neutral-100 font-medium mb-4">
               Build Trading Bots
             </h3>
@@ -352,7 +354,6 @@ fn main() -> Result<()> {
             language="python"
             style={dracula}
             lineNumberStyle={{
-              width: "72px",
               borderRight: "1px solid rgba(0,0,0,.2)",
               marginRight: "24px",
             }}
@@ -393,7 +394,7 @@ close_long_event = hyperdrive_agent0.close_long(
             hidden: activeTab !== 3,
           })}
         >
-          <div className="px-14 py-8 max-w-4xl">
+          <div className="px-14 py-8 max-w-4xl max-lg:px-[6vw]">
             <h3 className="font-chakra text-body-lg text-neutral-100 font-medium mb-4">
               Use the SDK to integrate frontends
             </h3>
@@ -415,7 +416,6 @@ close_long_event = hyperdrive_agent0.close_long(
             language="typescript"
             style={dracula}
             lineNumberStyle={{
-              width: "72px",
               borderRight: "1px solid rgba(0,0,0,.2)",
               marginRight: "24px",
             }}
