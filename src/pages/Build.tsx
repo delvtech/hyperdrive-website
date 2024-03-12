@@ -28,7 +28,7 @@ export function Build() {
             <h1 className="text-h3 gradient-text font-chakra font-medium mb-6 max-sm:text-h5">
               Build on Hyperdrive
             </h1>
-            <p className="max-w-xl">
+            <p className="max-w-xl mx-auto">
               Bring new yield-based products to life with Hyperdrive's extensive
               developer tooling.
             </p>
