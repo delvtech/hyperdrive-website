@@ -37,12 +37,12 @@ export function PositionTypesCarousel({ className }: { className?: string }) {
             "max-md:blur-none max-md:!opacity-100 max-md:!scale-100 max-md:!mr-0",
           )}
         >
-          <div className="flex gap-6 p-6 bg-card-gradient h-full items-start max-sm:flex-col-reverse items-center">
+          <div className="flex gap-6 p-6 bg-card-gradient h-full items-start max-sm:flex-col-reverse">
             <img
               className="max-[1440px]:w-[32vw] max-lg:w-[38vw] max-sm:w-auto"
               src={longDiagram}
             />
-            <div className="space-y-6 text-neutral-400">
+            <div className="space-y-6">
               <h3 className="font-semibold text-body-lg text-neutral-100">
                 Long Position
               </h3>
@@ -81,12 +81,12 @@ export function PositionTypesCarousel({ className }: { className?: string }) {
             "max-md:blur-none max-md:!opacity-100 max-md:!scale-100 max-md:!mr-0",
           )}
         >
-          <div className="flex gap-6 p-6 bg-card-gradient h-full items-start max-sm:flex-col-reverse items-center">
+          <div className="flex gap-6 p-6 bg-card-gradient h-full items-start max-sm:flex-col-reverse">
             <img
               className="max-[1440px]:w-[32vw] max-lg:w-[38vw] max-sm:w-auto"
               src={shortDiagram}
             />
-            <div className="space-y-6 text-neutral-400">
+            <div className="space-y-6">
               <h3 className="font-semibold text-body-lg text-neutral-100">
                 Short Position
               </h3>
@@ -127,12 +127,12 @@ export function PositionTypesCarousel({ className }: { className?: string }) {
             "max-md:blur-none max-md:!opacity-100 max-md:!scale-100 max-md:!mr-0",
           )}
         >
-          <div className="flex gap-6 p-6 bg-card-gradient h-full items-start max-sm:flex-col-reverse items-center">
+          <div className="flex gap-6 p-6 bg-card-gradient h-full items-start max-sm:flex-col-reverse">
             <img
               className="max-[1440px]:w-[32vw] max-lg:w-[38vw] max-sm:w-auto"
               src={lpDiagram}
             />
-            <div className="space-y-6 text-neutral-400">
+            <div className="space-y-6">
               <h3 className="font-semibold text-body-lg text-neutral-100">
                 Liquidity Provider (LP)
               </h3>
