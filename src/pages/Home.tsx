@@ -144,7 +144,7 @@ export function Home() {
       >
         <img
           src={overviewLine}
-          className="absolute right-0 top-1/2 -translate-y-1/3"
+          className="absolute right-0 top-1/2 -translate-y-1/3 pointer-events-none"
         />
 
         {/* Overview left */}
@@ -574,7 +574,7 @@ export function Home() {
         id="strategies"
         className="px-[6vw] pt-48 pb-20 relative max-md:pt-32"
       >
-        <img src={strategiesLine} className="absolute right-0 top-36" />
+        <img src={strategiesLine} className="absolute right-0 top-36 pointer-events-none" />
 
         <div className="flex justify-between gap-[4vw] max-md:flex-col">
           <div className="max-md:flex max-md:justify-between max-md:gap-4 max-md:items-center max-sm:block">
