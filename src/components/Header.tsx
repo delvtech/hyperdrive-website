@@ -112,24 +112,15 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
           >
             Build
           </NavLink>
-          <a
-            className="p-3 hover:font-bold duration-300 hover:text-aquamarine transition-all"
-            href="https://hyperdrive.delv.tech/docs"
-          >
+          <a className="p-3 hover:font-bold duration-300 transition-all">
             Docs
             <sup className="ml-2 text-neutral-400/80">coming soon</sup>
           </a>
-          <a
-            className="p-3 hover:font-bold duration-300 hover:text-aquamarine transition-all"
-            href="#"
-          >
+          <a className="p-3 hover:font-bold duration-300 transition-all">
             Analytics
             <sup className="ml-2 text-neutral-400/80">coming soon</sup>
           </a>
-          <a
-            className="p-3 hover:font-bold duration-300 hover:text-aquamarine transition-all"
-            href="https://hyperdrive.delv.tech/app"
-          >
+          <a className="p-3 hover:font-bold duration-300 transition-all">
             App
             <sup className="ml-2 text-neutral-400/80">coming soon</sup>
           </a>
