@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { useState } from "react";
 import { default as fileIcon } from "src/assets/icons/file-icon.svg";
 import { default as discordLogoIcon } from "src/assets/logos/discord-logo-icon-light.svg";
-import { default as githubLogoIcon } from "src/assets/logos/github-logo-icon-light.svg";
+// import { default as githubLogoIcon } from "src/assets/logos/github-logo-icon-light.svg";
 import { NextButton } from "src/components/buttons/NextButton";
 import { PrevButton } from "src/components/buttons/PrevButton";
 
@@ -32,13 +32,13 @@ export function ProjectIdeas() {
               <img src={discordLogoIcon} />
               Discord
             </a>
-            <a
+            {/* <a
               className="flex items-center gap-3 px-2 underline hover:text-aquamarine transition-all"
               href="https://github.com/delvtech/hyperdrive"
             >
               <img src={githubLogoIcon} />
               Github
-            </a>
+            </a> */}
             <a
               className="flex items-center gap-3 px-2 underline hover:text-aquamarine transition-all"
               href="#"
