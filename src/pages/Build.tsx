@@ -91,7 +91,7 @@ export function Build() {
           <div className="p-6 pb-12 bg-card-gradient translate-y-12 max-lg:transform-none">
             <img src={pythonLogoTile} className="mb-8" />
             <h3 className="text-h7 text-neutral-100 mb-4">
-              agent0 Bots Framework (Python)
+              Agent0 Bots Framework (Python)
             </h3>
             <p>
               Python-based library for testing, analyzing, and interacting with
