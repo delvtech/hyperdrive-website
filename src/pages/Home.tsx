@@ -582,8 +582,10 @@ export function Home() {
               >
                 Trading Strategies*
               </h2>
-              <p className="mb-6 max-sm:mb-8">
-                Learn more about the trading strategies.
+              <p className="mb-6 max-sm:mb-8 max-w-96 max-md:max-w-max">
+                Learn more about various trading strategies that can be
+                employed, and dive into various scenarios with examples in the
+                Docs.
               </p>
             </div>
             <GradientBorderButton
