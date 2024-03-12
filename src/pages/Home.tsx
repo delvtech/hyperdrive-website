@@ -627,7 +627,7 @@ export function Home() {
                 Rates Arbitraging
               </h3>
               <p>
-                Maintain optimal yield performance by opening shorts or longs
+                Maintain optimal yield performance by opening Shorts or Longs
                 &ndash; whichever earns you a higher rate &ndash; to bring the
                 fixed and variable rates closer together.
               </p>

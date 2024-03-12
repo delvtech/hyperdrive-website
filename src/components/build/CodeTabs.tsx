@@ -92,7 +92,7 @@ export function CodeTabs() {
             <p className="mb-8">
               The Hyperdrive AMM is a new DeFi primitive that allows fixed-rate
               markets to be created on top of variable rate yield sources.
-              Developers can take advantage of Hyperdrive's long and short
+              Developers can take advantage of Hyperdrive's Long and Short
               positions to provide users with fixed rate or variable rate
               exposure. These positions can be included as part of a user's
               portfolio to provide them with predictable yield, to give them

@@ -95,8 +95,7 @@ export function Build() {
             </h3>
             <p>
               Python-based library for testing, analyzing, and interacting with
-              Hyperdrive's smart contracts, as well as for creating smart
-              trading bots.
+              Hyperdrive's smart contracts, and to create smart trading bots.
             </p>
           </div>
 
@@ -132,11 +131,29 @@ export function Build() {
             developer tooling:
           </h2>
           <ul className="list-disc pl-4 text-neutral-100 space-y-4 marker:text-neutral-500 max-lg:hidden">
-            <li>Hyperdrive Core</li>
-            <li>Rust SDK</li>
-            <li>TypeScript SDK</li>
-            <li>Web UI (frontend)</li>
-            <li>agent0 (bots)</li>
+            <li>
+              <a className="hover:text-aquamarine transition-all" href="https://github.com/delvtech/hyperdrive">
+                Hyperdrive Core
+              </a>
+            </li>
+            <li>
+              <a className="hover:text-aquamarine transition-all" href="https://github.com/delvtech/hyperdrive/tree/main/crates/hyperdrive-math">
+                Rust SDK
+              </a>
+            </li>
+            <li>
+              <a className="hover:text-aquamarine transition-all" href="https://github.com/delvtech/hyperdrive-monorepo/tree/main/packages/hyperdrive-sdk">
+                TypeScript SDK
+              </a>
+            </li>
+            <li>
+              <a className="hover:text-aquamarine transition-all" href="https://github.com/delvtech/hyperdrive-monorepo/tree/main/apps/hyperdrive-trading">
+                Web UI (frontend)
+              </a>
+            </li>
+            <li>
+              <a className="hover:text-aquamarine transition-all" href="https://github.com/delvtech/agent0">agent0 (bots)</a>
+            </li>
           </ul>
         </div>
         <img className="max-w-[50%] max-lg:max-w-full" src={stackDiagram} />

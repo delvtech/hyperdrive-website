@@ -22,8 +22,8 @@ export function Footer() {
           )}
         >
           <div className="max-md:py-10 max-md:w-full max-md:border-b max-md:border-neutral-700">
-            <h3 className="mb-9 text-neutral-100 font-semibold">Protocol</h3>
-            <ul className="space-y-4 font-mono text-neutral-400">
+            <h3 className="mb-9 text-neutral-100 font-semibold font-chakra">Protocol</h3>
+            <ul className="space-y-4 text-neutral-400">
               <li>
                 <a className="hover:text-neutral-100 transition-all" href="#">
                   Whitepaper
@@ -65,8 +65,8 @@ export function Footer() {
             </ul>
           </div>
           <div className="max-md:py-10 max-md:w-full max-md:border-b max-md:border-neutral-700">
-            <h3 className="mb-9 text-neutral-100 font-semibold">Community</h3>
-            <ul className="space-y-4 font-mono text-neutral-400">
+            <h3 className="mb-9 text-neutral-100 font-semibold font-chakra">Community</h3>
+            <ul className="space-y-4 text-neutral-400">
               <li>
                 <a
                   className="hover:text-neutral-100 transition-all"
@@ -110,8 +110,8 @@ export function Footer() {
             </ul>
           </div>
           <div className="max-md:py-10 max-md:w-full max-md:border-b max-md:border-neutral-700">
-            <h3 className="mb-9 text-neutral-100 font-semibold">About</h3>
-            <ul className="space-y-4 font-mono text-neutral-400">
+            <h3 className="mb-9 text-neutral-100 font-semibold font-chakra">About</h3>
+            <ul className="space-y-4 text-neutral-400">
               {/* <li>
                 <a className="hover:text-neutral-100 transition-all" href="#">
                   FAQs
@@ -133,8 +133,8 @@ export function Footer() {
             </ul>
           </div>
           <div className="max-md:py-10 max-md:w-full max-md:border-b max-md:border-neutral-700">
-            <h3 className="mb-9 text-neutral-100 font-semibold">Legal</h3>
-            <ul className="space-y-4 font-mono text-neutral-400">
+            <h3 className="mb-9 text-neutral-100 font-semibold font-chakra">Legal</h3>
+            <ul className="space-y-4 text-neutral-400">
               <li>
                 <a
                   className="hover:text-neutral-100 transition-all"
