@@ -75,7 +75,7 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
       {/* Menu */}
       <div
         className={classNames(
-          "flex flex-row-reverse items-center gap-4 justify-self-end",
+          "flex flex-row-reverse items-center gap-2 justify-self-end",
           "max-md:fixed max-md:top-2 max-md:right-[2vw]",
           "max-md:items-start",
         )}
@@ -91,7 +91,7 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
         </button>
         <div
           className={classNames(
-            "flex gap-8 font-medium duration-300 overflow-hidden backdrop-blur rounded-full",
+            "flex gap-2 font-medium duration-300 overflow-hidden backdrop-blur rounded-full",
             {
               "max-lg:w-0": !isMenuOpen,
               "max-lg:w-full max-lg:px-4": isMenuOpen,
@@ -102,7 +102,7 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
           <NavLink
             className={({ isActive }) =>
               classNames(
-                "p-3 hover:font-bold duration-300 hover:text-aquamarine transition-all",
+                "p-4 hover:font-bold duration-300 hover:text-aquamarine transition-all mr-4 max-md:mr-0",
                 {
                   "text-aquamarine": isActive,
                 },
@@ -112,15 +112,15 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
           >
             Build
           </NavLink>
-          <a className="p-3 hover:font-bold duration-300 transition-all">
+          <a className="p-4 hover:font-bold duration-300 transition-all">
             Docs
             <sup className="ml-2 text-neutral-400/80">coming soon</sup>
           </a>
-          <a className="p-3 hover:font-bold duration-300 transition-all">
+          <a className="p-4 hover:font-bold duration-300 transition-all">
             Analytics
             <sup className="ml-2 text-neutral-400/80">coming soon</sup>
           </a>
-          <a className="p-3 hover:font-bold duration-300 transition-all">
+          <a className="p-4 hover:font-bold duration-300 transition-all">
             App
             <sup className="ml-2 text-neutral-400/80">coming soon</sup>
           </a>
