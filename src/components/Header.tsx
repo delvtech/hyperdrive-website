@@ -92,7 +92,7 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
               "max-md:w-0": !isMenuOpen,
               "max-md:w-full max-md:px-4": isMenuOpen,
             },
-            "max-sm:flex-col max-sm:rounded-none max-sm:py-1"
+            "max-sm:flex-col max-sm:rounded-none max-sm:py-4 max-md:bg-neutral-950/80"
           )}
         >
           <a
