@@ -59,7 +59,7 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
       {/* Logo */}
       <Link
         to="/"
-        className="px-6 h-12 backdrop-blur rounded-full flex items-center max-md:px-4"
+        className="px-6 h-12 backdrop-blur rounded-full flex items-center max-md:px-4 max-md:bg-neutral-950/80"
       >
         <img
           src={activeTheme === "light" ? hyperdriveLogo : hyperdriveLogoWhite}
@@ -73,7 +73,7 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
         className={classNames(
           "flex flex-row-reverse items-center gap-4 justify-self-end",
           "max-md:fixed max-md:top-2 max-md:right-[2vw]",
-          "max-sm:items-start"
+          "max-sm:items-start",
         )}
       >
         <button
@@ -92,7 +92,7 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
               "max-md:w-0": !isMenuOpen,
               "max-md:w-full max-md:px-4": isMenuOpen,
             },
-            "max-sm:flex-col max-sm:rounded-none max-sm:py-4 max-md:bg-neutral-950/80"
+            "max-sm:flex-col max-sm:rounded-none max-sm:py-4 max-md:bg-neutral-950/80",
           )}
         >
           <a
