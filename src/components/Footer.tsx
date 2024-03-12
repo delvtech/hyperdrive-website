@@ -161,10 +161,15 @@ export function Footer() {
       </div>
 
       {/* Sub-footer */}
-      <div className="bg-aquamarine-500 px-20 py-8 flex justify-between text-neutral-900">
+      <div
+        className={classNames(
+          "bg-aquamarine-500 px-20 py-8 flex justify-between text-neutral-900",
+          "max-sm:flex-col max-sm:gap-6 max-sm:items-center max-sm:text-center",
+        )}
+      >
         <p className="font-mono text-body-sm">Copyright &copy; 2024 DELV</p>
-        <div className="flex items-center">
-          <p className="mr-6">Follow us:</p>
+        <div className="flex items-center max-sm:flex-col max-sm:gap-2">
+          <p className="mr-6 max-sm:mr-0">Follow us:</p>
           <div className="flex gap-3">
             <a href="https://twitter.com/delv_tech/">
               <img className="h-6" src={xLogoIcon}></img>

@@ -13,7 +13,7 @@ export function CodeTabs() {
       <div className="flex [&>*]:flex-1 gap-0.5">
         <button
           className={classNames(
-            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all",
+            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all max-sm:px-2",
             {
               "!bg-neutral-950": activeTab === 0,
             },
@@ -28,7 +28,7 @@ export function CodeTabs() {
         </button>
         <button
           className={classNames(
-            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all",
+            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all max-sm:px-4",
             {
               "!bg-neutral-950": activeTab === 1,
             },
@@ -43,7 +43,7 @@ export function CodeTabs() {
         </button>
         <button
           className={classNames(
-            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all",
+            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all max-sm:px-4",
             {
               "!bg-neutral-950": activeTab === 2,
             },
@@ -58,7 +58,7 @@ export function CodeTabs() {
         </button>
         <button
           className={classNames(
-            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all",
+            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all max-sm:px-4",
             {
               "!bg-neutral-950": activeTab === 3,
             },

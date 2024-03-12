@@ -20,7 +20,7 @@ import typescriptLogoTile from "src/assets/logos/typescript-logo-tile.png";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { CodeTabs } from "src/components/build/CodeTabs";
-import { ProjectIdeasCarousel } from "src/components/build/ProjectIdeasCarousel";
+import { ProjectIdeas } from "src/components/build/ProjectIdeas";
 import { GradientBorderButton } from "src/components/buttons/GradientButton";
 
 export function Build() {
@@ -160,37 +160,7 @@ export function Build() {
       </div>
 
       {/* Build the future */}
-      <div className="flex items-center gap-10 px-[4vw] pt-20 pb-56 justify-center">
-        <div>
-          <h2 className="gradient-text font-chakra text-h5 font-medium mb-8">
-            Build the Future of on-chain Finance with us
-          </h2>
-          <div className="flex gap-6 text-neutral-100 font-mono text-body-sm uppercase font-medium">
-            <a
-              className="flex items-center gap-3 px-2 underline hover:text-aquamarine transition-all"
-              href="https://delv.tech/discord"
-            >
-              <img src={discordLogoIcon} />
-              Discord
-            </a>
-            <a
-              className="flex items-center gap-3 px-2 underline hover:text-aquamarine transition-all"
-              href="https://github.com/delvtech/hyperdrive"
-            >
-              <img src={githubLogoIcon} />
-              Github
-            </a>
-            <a
-              className="flex items-center gap-3 px-2 underline hover:text-aquamarine transition-all"
-              href="#"
-            >
-              <img src={fileIcon} />
-              Whitepaper
-            </a>
-          </div>
-        </div>
-        <ProjectIdeasCarousel className="basis-3/4" />
-      </div>
+      <ProjectIdeas />
 
       <Footer />
     </>
