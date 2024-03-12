@@ -71,8 +71,9 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
       {/* Menu */}
       <div
         className={classNames(
-          "flex flex-row-reverse items-center gap-8 justify-self-end",
-          "max-md:fixed max-md: max-md:right-[2vw]",
+          "flex flex-row-reverse items-center gap-4 justify-self-end",
+          "max-md:fixed max-md:top-2 max-md:right-[2vw]",
+          "max-sm:items-start"
         )}
       >
         <button
@@ -91,6 +92,7 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
               "max-md:w-0": !isMenuOpen,
               "max-md:w-full max-md:px-4": isMenuOpen,
             },
+            "max-sm:flex-col max-sm:rounded-none max-sm:py-1"
           )}
         >
           <a
