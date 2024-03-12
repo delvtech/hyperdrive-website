@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import heroLine from "src/assets/accents/build-hero-line.svg";
 import stackDiagram from "src/assets/diagrams/stack-diagram.svg";
 import {
@@ -17,10 +18,10 @@ import rustLogoTile from "src/assets/logos/rust-logo-tile.svg";
 import solidityLogoTile from "src/assets/logos/solidity-logo-tile.png";
 import typescriptLogoTile from "src/assets/logos/typescript-logo-tile.png";
 import { Footer } from "src/components/Footer";
-import { GradientBorderButton } from "src/components/buttons/GradientButton";
 import { Header } from "src/components/Header";
 import { CodeTabs } from "src/components/build/CodeTabs";
 import { ProjectIdeasCarousel } from "src/components/build/ProjectIdeasCarousel";
+import { GradientBorderButton } from "src/components/buttons/GradientButton";
 
 export function Build() {
   return (
@@ -28,12 +29,12 @@ export function Build() {
       <Header />
 
       {/* Hero */}
-      <div className="min-h-screen flex items-center justify-center relative">
+      <div className="px-[4vw] min-h-screen flex items-center justify-center relative">
         <img src={heroLine} className="absolute top-1/2 right-0" />
 
         <div className="max-w-4xl relative">
-          <div className="text-center px-40 pb-14 text-white">
-            <h1 className="text-h3 gradient-text font-chakra font-medium mb-6">
+          <div className="text-center px-40 pb-14 text-white max-lg:px-10 max-md:px-0">
+            <h1 className="text-h3 gradient-text font-chakra font-medium mb-6 max-sm:text-h5">
               Build on Hyperdrive
             </h1>
             <p className="max-w-xl">
@@ -41,7 +42,7 @@ export function Build() {
               developer tooling.
             </p>
           </div>
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1">
             <GradientBorderButton href="https://delv.tech/discord">
               <img src={DiscordLogoIcon} alt="" className="w-6 h-6" />
               Discord
@@ -59,7 +60,7 @@ export function Build() {
       </div>
 
       {/* Tools */}
-      <div className="pt-10 pb-20 px-[4vw]">
+      <div className="pt-10 pb-20 px-[4vw] max-sm:pb-10">
         <div className="max-w-xl mx-auto text-center mb-20">
           <h2 className="text-h5 gradient-text font-chakra font-medium mb-6">
             Reimagine DeFi Yield
@@ -69,15 +70,24 @@ export function Build() {
             build using the tools you know.
           </p>
         </div>
-        <div className="grid grid-flow-col items-stretch gap-4">
-          <div className="p-6 pb-12 bg-card-gradient translate-y-12">
+        <div
+          className={classNames(
+            "grid grid-cols-4 items-stretch gap-4",
+            "max-lg:grid-cols-2",
+            "max-sm:grid-cols-1",
+          )}
+        >
+          {/* Smart contracts tile */}
+          <div className="p-6 pb-12 bg-card-gradient translate-y-12 max-lg:transform-none">
             <img src={solidityLogoTile} className="mb-8" />
             <h3 className="text-h7 text-neutral-100 mb-4">
               Hyperdrive Smart Contracts
             </h3>
             <p>Solidity implementation of Hyperdrive.</p>
           </div>
-          <div className="p-6 pb-12 bg-card-gradient">
+
+          {/* Typescript SDK tile */}
+          <div className="p-6 pb-12 bg-card-gradient max-lg:translate-y-12 max-sm:transform-none">
             <img src={typescriptLogoTile} className="mb-8" />
             <h3 className="text-h7 text-neutral-100 mb-4">TypeScript SDK</h3>
             <p>
@@ -85,7 +95,9 @@ export function Build() {
               Protocol.
             </p>
           </div>
-          <div className="p-6 pb-12 bg-card-gradient translate-y-12">
+
+          {/* Agent0 tile */}
+          <div className="p-6 pb-12 bg-card-gradient translate-y-12 max-lg:transform-none">
             <img src={pythonLogoTile} className="mb-8" />
             <h3 className="text-h7 text-neutral-100 mb-4">
               agent0 Bots Framework (Python)
@@ -96,7 +108,9 @@ export function Build() {
               trading bots.
             </p>
           </div>
-          <div className="p-6 pb-12 bg-card-gradient">
+
+          {/* Rust SDK tile */}
+          <div className="p-6 pb-12 bg-card-gradient max-lg:translate-y-12 max-sm:transform-none">
             <img src={rustLogoTile} className="mb-8" />
             <h3 className="text-h7 text-neutral-100 mb-4">Rust SDK</h3>
             <p>
@@ -108,13 +122,25 @@ export function Build() {
       </div>
 
       {/* Diagram */}
-      <div className="flex gap-16 items-center justify-center px-[4vw] pt-40">
-        <div className="max-w-lg">
-          <h2 className="text-h5 gradient-text font-medium font-chakra mb-8">
+      <div
+        className={classNames(
+          "flex gap-16 items-center justify-center px-[4vw] pt-40",
+          "max-xl:gap-12",
+          "max-lg:flex-col max-lg:pt-20",
+        )}
+      >
+        <div className="max-w-lg max-xl:max-w-md">
+          <h2
+            className={classNames(
+              "text-h5 gradient-text font-medium font-chakra mb-8",
+              "max-xl:text-h6",
+              "max-lg:mb-0 max-lg:text-center",
+            )}
+          >
             Bring yield-based products to life with Hyperdrive’s extensive
             developer tooling:
           </h2>
-          <ul className="list-disc pl-4 text-neutral-100 space-y-4 marker:text-neutral-500">
+          <ul className="list-disc pl-4 text-neutral-100 space-y-4 marker:text-neutral-500 max-lg:hidden">
             <li>Hyperdrive Core</li>
             <li>Rust SDK</li>
             <li>TypeScript SDK</li>
@@ -122,11 +148,11 @@ export function Build() {
             <li>agent0 (bots)</li>
           </ul>
         </div>
-        <img src={stackDiagram} />
+        <img className="max-w-[50%] max-lg:max-w-full" src={stackDiagram} />
       </div>
 
       {/* Code Tabs */}
-      <div className="pt-36 pb-36">
+      <div className="px-[4vw] py-36 max-lg:py-28 max-sm:py-20">
         <h2 className="gradient-text text-h6 text-center mb-14">
           Start Building
         </h2>
@@ -154,7 +180,10 @@ export function Build() {
               <img src={githubLogoIcon} />
               Github
             </a>
-            <a className="flex items-center gap-3 px-2 underline hover:text-aquamarine transition-all" href="#">
+            <a
+              className="flex items-center gap-3 px-2 underline hover:text-aquamarine transition-all"
+              href="#"
+            >
               <img src={fileIcon} />
               Whitepaper
             </a>

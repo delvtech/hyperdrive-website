@@ -17,6 +17,7 @@ export function CodeTabs() {
             {
               "!bg-neutral-950": activeTab === 0,
             },
+            "max-md:items-center max-md:text-body-sm",
           )}
           onClick={() => {
             setActiveTab(0);
@@ -31,6 +32,7 @@ export function CodeTabs() {
             {
               "!bg-neutral-950": activeTab === 1,
             },
+            "max-md:items-center max-md:text-body-sm",
           )}
           onClick={() => {
             setActiveTab(1);
@@ -45,6 +47,7 @@ export function CodeTabs() {
             {
               "!bg-neutral-950": activeTab === 2,
             },
+            "max-md:items-center max-md:text-body-sm",
           )}
           onClick={() => {
             setActiveTab(2);
@@ -59,6 +62,7 @@ export function CodeTabs() {
             {
               "!bg-neutral-950": activeTab === 3,
             },
+            "max-md:items-center max-md:text-body-sm",
           )}
           onClick={() => {
             setActiveTab(3);
@@ -211,6 +215,7 @@ export function CodeTabs() {
               marginRight: "24px",
             }}
             customStyle={{
+              fontSize: "14px",
               padding: "32px 56px 32px 0",
               borderRadius: "0",
             }}
@@ -314,7 +319,7 @@ fn main() -> Result<()> {
               as well as a visualization dashboard to enable analysis and
               understanding.
             </p>
-            <ul className="space-y-2 list-disc marker:text-neutral-600">
+            <ul className="space-y-2 list-disc marker:text-neutral-600 pl-4 mb-8">
               <li>
                 Get started by following our{" "}
                 <a
@@ -335,6 +340,12 @@ fn main() -> Result<()> {
                 to start building your own bots
               </li>
             </ul>
+            <GradientBorderButton
+              href="//github.com/delvtech/agent0"
+              className="button-sm"
+            >
+              agent0 docs
+            </GradientBorderButton>
           </div>
           <SyntaxHighlighter
             showLineNumbers={true}
@@ -346,6 +357,7 @@ fn main() -> Result<()> {
               marginRight: "24px",
             }}
             customStyle={{
+              fontSize: "14px",
               padding: "32px 56px 32px 0",
               borderRadius: "0",
             }}
@@ -408,6 +420,7 @@ close_long_event = hyperdrive_agent0.close_long(
               marginRight: "24px",
             }}
             customStyle={{
+              fontSize: "14px",
               padding: "32px 56px 32px 0",
               borderRadius: "0",
             }}

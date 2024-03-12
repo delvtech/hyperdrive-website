@@ -23,7 +23,7 @@ interface HeaderProps {
 }
 
 export function Header({ className, theme = "dark" }: HeaderProps) {
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function toggleMenu() {
     setIsMenuOpen((prev) => !prev);
@@ -42,13 +42,11 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
   }
 
   const isScrolled = scrollPosition > 0;
-  // TODO:
-  const isCollapsible = false;
 
   return (
     <div
       className={classNames(
-        "flex items-center justify-between px-[2vw] py-6 fixed top-0 left-0 right-0 z-10 transition-all duration-300 uppercase font-mono text-sm",
+        "flex items-center justify-between px-[2vw] py-6 fixed top-0 left-0 right-0 z-10 transition-all duration-300 uppercase font-mono text-sm z-50",
         {
           "text-neutral-100": activeTheme === "dark",
           "text-neutral-900": activeTheme === "light",
@@ -61,7 +59,7 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
       {/* Logo */}
       <Link
         to="/"
-        className="px-8 h-12 backdrop-blur rounded-full flex items-center"
+        className="px-6 h-12 backdrop-blur rounded-full flex items-center max-md:px-4"
       >
         <img
           src={activeTheme === "light" ? hyperdriveLogo : hyperdriveLogoWhite}
@@ -71,13 +69,16 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
       </Link>
 
       {/* Menu */}
-      <div className="flex flex-row-reverse items-center gap-8 justify-self-end">
+      <div
+        className={classNames(
+          "flex flex-row-reverse items-center gap-8 justify-self-end",
+          "max-md:fixed max-md: max-md:right-[2vw]",
+        )}
+      >
         <button
           className={classNames(
             "h-12 w-12 shrink-0 border border-transparent hover:border-neutral-500 transition-all rounded-full justify-center items-center hidden backdrop-blur",
-            {
-              "!flex bg-neutral-950/80": isCollapsible,
-            },
+            "max-md:!flex max-md:bg-neutral-950/80",
           )}
           onClick={toggleMenu}
         >
@@ -87,8 +88,8 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
           className={classNames(
             "flex gap-8 font-medium duration-300 overflow-hidden backdrop-blur rounded-full",
             {
-              "w-0": isScrolled && !isMenuOpen,
-              "w-full px-4": !isScrolled || isMenuOpen,
+              "max-md:w-0": !isMenuOpen,
+              "max-md:w-full max-md:px-4": isMenuOpen,
             },
           )}
         >

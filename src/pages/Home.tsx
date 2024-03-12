@@ -571,19 +571,25 @@ export function Home() {
         <img src={strategiesLine} className="absolute right-0 top-36" />
 
         <div className="flex justify-between gap-[4vw] max-md:flex-col">
-          <div className="max-md:flex max-md:justify-between max-md:gap-4 max-md:items-center">
+          <div className="max-md:flex max-md:justify-between max-md:gap-4 max-md:items-center max-sm:block">
             <div>
               <h2
                 className={classNames(
                   "font-chakra gradient-text text-h5 mb-14 whitespace-nowrap",
                   "max-xl:text-h6 max-xl:mb-8",
+                  "max-sm:mb-4",
                 )}
               >
                 Trading Strategies*
               </h2>
-              <p className="mb-6">Learn more about the trading strategies.</p>
+              <p className="mb-6 max-sm:mb-8">
+                Learn more about the trading strategies.
+              </p>
             </div>
-            <GradientBorderButton className="button-primary" href="#">
+            <GradientBorderButton
+              className="button-primary max-sm:mb-4"
+              href="#"
+            >
               Learn more
             </GradientBorderButton>
           </div>
