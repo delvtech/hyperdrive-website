@@ -257,7 +257,7 @@ export function Home() {
       </div>
 
       {/* LP Returns */}
-      <div className="px-24 py-14">
+      <div className="px-[5vw] py-14">
         <div className="max-w-2xl mx-auto text-center mb-16">
           <h2 className="font-chakra text-h5 gradient-text font-medium mb-6">
             Hypercharge your LP returns by earning in 3 ways:
