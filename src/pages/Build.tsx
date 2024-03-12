@@ -1,18 +1,9 @@
 import classNames from "classnames";
 import heroLine from "src/assets/accents/build-hero-line.svg";
 import stackDiagram from "src/assets/diagrams/stack-diagram.svg";
-import {
-  default as FileIcon,
-  default as fileIcon,
-} from "src/assets/icons/file-icon.svg";
-import {
-  default as DiscordLogoIcon,
-  default as discordLogoIcon,
-} from "src/assets/logos/discord-logo-icon-light.svg";
-import {
-  default as GithubLogoIcon,
-  default as githubLogoIcon,
-} from "src/assets/logos/github-logo-icon-light.svg";
+import { default as FileIcon } from "src/assets/icons/file-icon.svg";
+import { default as DiscordLogoIcon } from "src/assets/logos/discord-logo-icon-light.svg";
+import { default as GithubLogoIcon } from "src/assets/logos/github-logo-icon-light.svg";
 import pythonLogoTile from "src/assets/logos/python-logo-tile.png";
 import rustLogoTile from "src/assets/logos/rust-logo-tile.svg";
 import solidityLogoTile from "src/assets/logos/solidity-logo-tile.png";
