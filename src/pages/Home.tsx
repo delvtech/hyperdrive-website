@@ -233,7 +233,7 @@ export function Home() {
                 Get multiplied variable rate exposure and speculate on rate
                 movements by opening a Short, or LP to earn passive variable
                 yield on single asset deposits without being exposed to
-                impermanent loss.s.
+                impermanent loss.
               </p>
             </div>
 
