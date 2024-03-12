@@ -1,8 +1,6 @@
 import classNames from "classnames";
 import { useState } from "react";
-import { default as fileIcon } from "src/assets/icons/file-icon.svg";
-import { default as discordLogoIcon } from "src/assets/logos/discord-logo-icon-light.svg";
-// import { default as githubLogoIcon } from "src/assets/logos/github-logo-icon-light.svg";
+import discordLogoIcon from "src/assets/logos/discord-logo-icon-light.svg";
 import { NextButton } from "src/components/buttons/NextButton";
 import { PrevButton } from "src/components/buttons/PrevButton";
 
@@ -38,14 +36,14 @@ export function ProjectIdeas() {
             >
               <img src={githubLogoIcon} />
               Github
-            </a> */}
+            </a>
             <a
               className="flex items-center gap-3 px-2 underline hover:text-aquamarine transition-all"
               href="#"
             >
               <img src={fileIcon} />
               Whitepaper
-            </a>
+            </a> */}
           </div>
         </div>
 
@@ -61,7 +59,9 @@ export function ProjectIdeas() {
                 marginLeft: `calc(${activeSlide * -66.66}% - ${activeSlide * 24}px)`,
               }}
             >
-              <h3 className="text-neutral-100 text-h7 mb-2">Fixed rate exposure</h3>
+              <h3 className="text-neutral-100 text-h7 mb-2">
+                Fixed rate exposure
+              </h3>
               <p>Create fixed rate markets for your favorite yield sources.</p>
             </div>
 
@@ -76,7 +76,9 @@ export function ProjectIdeas() {
 
             {/* Novel DeFi products */}
             <div className="p-6 pb-8 transition-all duration-700 w-2/3 shrink-0 bg-card-gradient">
-              <h3 className="text-neutral-100 text-h7 mb-2">Novel DeFi products</h3>
+              <h3 className="text-neutral-100 text-h7 mb-2">
+                Novel DeFi products
+              </h3>
               <p>
                 Build innovative products to fill gaps in the current DeFi
                 ecosystem: fixed rate borrow positions, multiplied fixed rate

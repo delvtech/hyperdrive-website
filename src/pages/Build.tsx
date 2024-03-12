@@ -38,13 +38,25 @@ export function Build() {
               <img src={DiscordLogoIcon} alt="" className="w-6 h-6" />
               Discord
             </GradientBorderButton>
-            <GradientBorderButton href="https://github.com/delvtech/hyperdrive">
+            <GradientBorderButton
+              hoverBorderFrom="#565E6F"
+              hoverBorderTo="#1f2937"
+            >
               <img src={GithubLogoIcon} alt="" className="w-6 h-6" />
               GitHub
+              <span className="text-neutral-400/80 text-caption">
+                coming soon
+              </span>
             </GradientBorderButton>
-            <GradientBorderButton href="#">
+            <GradientBorderButton
+              hoverBorderFrom="#565E6F"
+              hoverBorderTo="#1f2937"
+            >
               <img src={FileIcon} alt="" className="w-6 h-6" />
               Whitepaper
+              <span className="text-neutral-400/80 text-caption">
+                coming soon
+              </span>
             </GradientBorderButton>
           </div>
         </div>
