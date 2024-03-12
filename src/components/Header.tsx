@@ -63,7 +63,7 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
       {/* Logo */}
       <Link
         to="/"
-        className="px-6 h-12 backdrop-blur rounded-full flex items-center max-md:px-4 max-md:bg-neutral-950/80"
+        className="px-6 h-12 backdrop-blur rounded-full flex items-center max-md:px-4 max-md:bg-neutral-950/90"
       >
         <img
           src={activeTheme === "light" ? hyperdriveLogo : hyperdriveLogoWhite}
@@ -75,15 +75,17 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
       {/* Menu */}
       <div
         className={classNames(
-          "flex flex-row-reverse items-center gap-2 justify-self-end",
-          "max-md:fixed max-md:top-2 max-md:right-[2vw]",
-          "max-md:items-start",
+          "flex flex-row-reverse items-center gap-2 justify-self-end transition-all duration-300",
+          "max-md:fixed max-md:top-6 max-md:right-[2vw] max-md:items-start",
+          {
+            "max-md:!top-2": isScrolled,
+          },
         )}
       >
         <button
           className={classNames(
             "h-12 w-12 shrink-0 border border-transparent hover:border-neutral-500 transition-all rounded-full justify-center items-center hidden backdrop-blur",
-            "max-lg:!flex max-lg:bg-neutral-950/80",
+            "max-lg:!flex max-lg:bg-neutral-950/90",
           )}
           onClick={toggleMenu}
         >
