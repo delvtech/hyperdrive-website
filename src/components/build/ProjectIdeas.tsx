@@ -19,12 +19,12 @@ export function ProjectIdeas() {
 
   return (
     <div className="pt-20 pb-56 max-w-[1440px] mx-auto max-lg:pt-10 max-lg:pb-32 max-sm:pt-0 max-sm:pb-16">
-      <div className="flex items-center gap-20 px-[4vw] justify-center mb-6 max-lg:flex-col max-lg:gap-10">
-        <div className="basis-1/3">
-          <h2 className="gradient-text font-chakra text-h6 font-medium mb-8 max-lg:text-center max-lg:px-[6vw]">
+      <div className="flex items-center gap-20 px-[4vw] justify-center mb-6 max-lg:flex-col max-lg:gap-10 max-lg:px-0">
+        <div className="basis-1/3 max-lg:px-[6vw]">
+          <h2 className="gradient-text font-chakra text-h6 font-medium mb-8 max-lg:text-center">
             Build the Future of on-chain Finance with us
           </h2>
-          <div className="flex gap-6 text-neutral-100 font-mono text-body-sm uppercase font-medium max-lg:justify-center">
+          <div className="flex gap-6 text-neutral-100 font-mono text-body-sm uppercase font-medium max-lg:justify-center max-sm:gap-2">
             <a
               className="flex items-center gap-3 px-2 underline hover:text-aquamarine transition-all"
               href="https://delv.tech/discord"
@@ -50,7 +50,7 @@ export function ProjectIdeas() {
         </div>
 
         {/* Carousel */}
-        <div className="overflow-x-hidden basis-2/3">
+        <div className="overflow-x-hidden basis-2/3 max-lg:basis-auto max-w-[100%]">
           <div className="w-full flex gap-6 flex-nowrap relative max-lg:ml-[16.66%]">
             {/* Fixed rate exposure */}
             <div
