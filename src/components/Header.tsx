@@ -24,6 +24,10 @@ interface HeaderProps {
 
 export function Header({ className, theme = "dark" }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const { refs: docsRefs, floatingStyles: docsFloatingStyles } = useFloating({
+  //   initialPosition: "top",
+  //   offset: 0,
+  // });
 
   function toggleMenu() {
     setIsMenuOpen((prev) => !prev);
@@ -46,7 +50,7 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
   return (
     <div
       className={classNames(
-        "flex items-center justify-between px-[2vw] py-6 fixed top-0 left-0 right-0 z-10 transition-all duration-300 uppercase font-mono text-sm z-50",
+        "flex items-center justify-between px-[2vw] py-6 fixed top-0 left-0 right-0 transition-all duration-300 uppercase font-mono text-sm z-50",
         {
           "text-neutral-100": activeTheme === "dark",
           "text-neutral-900": activeTheme === "light",
@@ -73,13 +77,13 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
         className={classNames(
           "flex flex-row-reverse items-center gap-4 justify-self-end",
           "max-md:fixed max-md:top-2 max-md:right-[2vw]",
-          "max-sm:items-start",
+          "max-md:items-start",
         )}
       >
         <button
           className={classNames(
             "h-12 w-12 shrink-0 border border-transparent hover:border-neutral-500 transition-all rounded-full justify-center items-center hidden backdrop-blur",
-            "max-md:!flex max-md:bg-neutral-950/80",
+            "max-lg:!flex max-lg:bg-neutral-950/80",
           )}
           onClick={toggleMenu}
         >
@@ -89,22 +93,16 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
           className={classNames(
             "flex gap-8 font-medium duration-300 overflow-hidden backdrop-blur rounded-full",
             {
-              "max-md:w-0": !isMenuOpen,
-              "max-md:w-full max-md:px-4": isMenuOpen,
+              "max-lg:w-0": !isMenuOpen,
+              "max-lg:w-full max-lg:px-4": isMenuOpen,
             },
-            "max-sm:flex-col max-sm:rounded-none max-sm:py-4 max-md:bg-neutral-950/80",
+            "max-md:flex-col max-md:rounded-none max-md:py-4 max-md:bg-neutral-950/80",
           )}
         >
-          <a
-            className="p-3 hover:font-bold transition-[font-weight] duration-300 hover:text-aquamarine transition-all"
-            href="https://hyperdrive.delv.tech/docs"
-          >
-            Docs
-          </a>
           <NavLink
             className={({ isActive }) =>
               classNames(
-                "p-3 hover:font-bold transition-[font-weight] duration-300 hover:text-aquamarine transition-all",
+                "p-3 hover:font-bold duration-300 hover:text-aquamarine transition-all",
                 {
                   "text-aquamarine": isActive,
                 },
@@ -115,16 +113,25 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
             Build
           </NavLink>
           <a
-            className="p-3 hover:font-bold transition-[font-weight] duration-300 hover:text-aquamarine transition-all"
+            className="p-3 hover:font-bold duration-300 hover:text-aquamarine transition-all"
+            href="https://hyperdrive.delv.tech/docs"
+          >
+            Docs
+            <sup className="ml-2 text-neutral-400/80">coming soon</sup>
+          </a>
+          <a
+            className="p-3 hover:font-bold duration-300 hover:text-aquamarine transition-all"
             href="#"
           >
             Analytics
+            <sup className="ml-2 text-neutral-400/80">coming soon</sup>
           </a>
           <a
-            className="p-3 hover:font-bold transition-[font-weight] duration-300 hover:text-aquamarine transition-all"
+            className="p-3 hover:font-bold duration-300 hover:text-aquamarine transition-all"
             href="https://hyperdrive.delv.tech/app"
           >
             App
+            <sup className="ml-2 text-neutral-400/80">coming soon</sup>
           </a>
         </div>
       </div>

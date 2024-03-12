@@ -68,7 +68,7 @@ export function PositionTypesCarousel({ className }: { className?: string }) {
             from the diagram for simplicity.
           </p>
 
-          <GradientBorderButton href="#docs">Learn More</GradientBorderButton>
+          {/* <GradientBorderButton href="#docs">Learn More</GradientBorderButton> */}
         </div>
 
         {/* Shorts */}
@@ -114,7 +114,7 @@ export function PositionTypesCarousel({ className }: { className?: string }) {
             from the diagram for simplicity.
           </p>
 
-          <GradientBorderButton href="#docs">Learn More</GradientBorderButton>
+          {/* <GradientBorderButton href="#docs">Learn More</GradientBorderButton> */}
         </div>
 
         {/* LP */}
@@ -161,7 +161,7 @@ export function PositionTypesCarousel({ className }: { className?: string }) {
           simplicity; automated LP countertrades are not shown.
         </p>
 
-        <GradientBorderButton href="#docs">Learn More</GradientBorderButton>
+        {/* <GradientBorderButton href="#docs">Learn More</GradientBorderButton> */}
       </div>
 
       <div className="flex items-center gap-4 justify-between max-md:hidden">
@@ -171,7 +171,7 @@ export function PositionTypesCarousel({ className }: { className?: string }) {
           <NextButton onClick={handleNextSlide} disabled={activeSlide === 2} />
         </div>
         <p
-          className={classNames("text-caption", {
+          className={classNames("text-caption-lg", {
             hidden: activeSlide === 2,
           })}
         >
@@ -179,14 +179,14 @@ export function PositionTypesCarousel({ className }: { className?: string }) {
           the diagram for simplicity.
         </p>
         <p
-          className={classNames("text-caption", {
+          className={classNames("text-caption-lg", {
             hidden: activeSlide !== 2,
           })}
         >
           Some concepts have been abstracted away from the diagram for
           simplicity; automated LP countertrades are not shown.
         </p>
-        <GradientBorderButton href="#docs">Learn More</GradientBorderButton>
+        {/* <GradientBorderButton href="#docs">Learn More</GradientBorderButton> */}
       </div>
     </div>
   );

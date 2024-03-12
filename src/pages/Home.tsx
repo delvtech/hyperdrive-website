@@ -60,6 +60,12 @@ export function Home() {
             )}
           >
             <GradientBorderButton
+              hoverBorderFrom="#565E6F"
+              hoverBorderTo="#1f2937"
+            >
+              Coming soon
+            </GradientBorderButton>
+            {/* <GradientBorderButton
               href="https://hyperdrive.delv.tech/app"
               className={classNames(
                 "button-primary px-10",
@@ -74,7 +80,7 @@ export function Home() {
               className={classNames("px-10", "max-lg:flex-1", "max-sm:w-full")}
             >
               Learn more
-            </GradientBorderButton>
+            </GradientBorderButton> */}
           </div>
         </div>
 
@@ -321,11 +327,11 @@ export function Home() {
           </div>
         </div>
 
-        <div className="flex items-center justify-center">
+        {/* <div className="flex items-center justify-center">
           <GradientBorderButton href="#lp-docs-url" className="button-primary">
             Learn more
           </GradientBorderButton>
-        </div>
+        </div> */}
       </div>
 
       {/* Security */}
@@ -588,12 +594,12 @@ export function Home() {
                 Docs.
               </p>
             </div>
-            <GradientBorderButton
+            {/* <GradientBorderButton
               className="button-primary max-sm:mb-4"
               href="#"
             >
               Learn more
-            </GradientBorderButton>
+            </GradientBorderButton> */}
           </div>
           <div
             className={classNames(

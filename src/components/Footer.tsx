@@ -22,50 +22,54 @@ export function Footer() {
           )}
         >
           <div className="max-md:py-10 max-md:w-full max-md:border-b max-md:border-neutral-700">
-            <h3 className="mb-9 text-neutral-100 font-semibold font-chakra">Protocol</h3>
+            <h3 className="mb-9 text-neutral-100 font-semibold font-chakra">
+              Protocol <span className="text-neutral-400">(Coming soon)</span>
+            </h3>
             <ul className="space-y-4 text-neutral-400">
               <li>
-                <a className="hover:text-neutral-100 transition-all" href="#">
-                  Whitepaper
-                </a>
+                {/* <a className="hover:text-neutral-100 transition-all" href="#"> */}
+                Whitepaper
+                {/* </a> */}
               </li>
               <li>
-                <a className="hover:text-neutral-100 transition-all" href="#">
-                  Docs
-                </a>
+                {/* <a className="hover:text-neutral-100 transition-all" href="#"> */}
+                Docs
+                {/* </a> */}
               </li>
               <li>
-                <a className="hover:text-neutral-100 transition-all" href="#">
-                  User Guides
-                </a>
+                {/* <a className="hover:text-neutral-100 transition-all" href="#"> */}
+                User Guides
+                {/* </a> */}
               </li>
               <li>
-                <a className="hover:text-neutral-100 transition-all" href="#">
-                  Analytics
-                </a>
+                {/* <a className="hover:text-neutral-100 transition-all" href="#"> */}
+                Analytics
+                {/* </a> */}
               </li>
               <li>
-                <a className="hover:text-neutral-100 transition-all" href="#">
-                  Bots
-                </a>
+                {/* <a className="hover:text-neutral-100 transition-all" href="#"> */}
+                Bots
+                {/* </a> */}
               </li>
               <li>
-                <a className="hover:text-neutral-100 transition-all" href="#">
-                  Security Audits
-                </a>
+                {/* <a className="hover:text-neutral-100 transition-all" href="#"> */}
+                Security Audits
+                {/* </a> */}
               </li>
               <li>
-                <a
+                {/* <a
                   className="hover:text-neutral-100 transition-all"
                   href="https://github.com/delvtech/hyperdrive"
-                >
-                  GitHub
-                </a>
+                > */}
+                GitHub
+                {/* </a> */}
               </li>
             </ul>
           </div>
           <div className="max-md:py-10 max-md:w-full max-md:border-b max-md:border-neutral-700">
-            <h3 className="mb-9 text-neutral-100 font-semibold font-chakra">Community</h3>
+            <h3 className="mb-9 text-neutral-100 font-semibold font-chakra">
+              Community
+            </h3>
             <ul className="space-y-4 text-neutral-400">
               <li>
                 <a
@@ -110,7 +114,9 @@ export function Footer() {
             </ul>
           </div>
           <div className="max-md:py-10 max-md:w-full max-md:border-b max-md:border-neutral-700">
-            <h3 className="mb-9 text-neutral-100 font-semibold font-chakra">About</h3>
+            <h3 className="mb-9 text-neutral-100 font-semibold font-chakra">
+              About
+            </h3>
             <ul className="space-y-4 text-neutral-400">
               {/* <li>
                 <a className="hover:text-neutral-100 transition-all" href="#">
@@ -119,7 +125,7 @@ export function Footer() {
               </li> */}
               <li>
                 <a className="hover:text-neutral-100 transition-all" href="#">
-                  Brand Guide
+                  Brand Guide<sup className="ml-1">coming soon</sup>
                 </a>
               </li>
               <li>
@@ -133,7 +139,9 @@ export function Footer() {
             </ul>
           </div>
           <div className="max-md:py-10 max-md:w-full max-md:border-b max-md:border-neutral-700">
-            <h3 className="mb-9 text-neutral-100 font-semibold font-chakra">Legal</h3>
+            <h3 className="mb-9 text-neutral-100 font-semibold font-chakra">
+              Legal
+            </h3>
             <ul className="space-y-4 text-neutral-400">
               <li>
                 <a
