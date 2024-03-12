@@ -10,10 +10,10 @@ export function CodeTabs() {
   return (
     <div className="bg-neutral-900 max-w-5xl mx-auto">
       {/* Tab Buttons */}
-      <div className="flex [&>*]:flex-1">
+      <div className="flex [&>*]:flex-1 gap-0.5">
         <button
           className={classNames(
-            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-500 hover:bg-neutral-600 transition-all",
+            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all",
             {
               "!bg-neutral-950": activeTab === 0,
             },
@@ -27,7 +27,7 @@ export function CodeTabs() {
         </button>
         <button
           className={classNames(
-            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-500 hover:bg-neutral-600 transition-all",
+            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all",
             {
               "!bg-neutral-950": activeTab === 1,
             },
@@ -41,7 +41,7 @@ export function CodeTabs() {
         </button>
         <button
           className={classNames(
-            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-500 hover:bg-neutral-600 transition-all",
+            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all",
             {
               "!bg-neutral-950": activeTab === 2,
             },
@@ -55,7 +55,7 @@ export function CodeTabs() {
         </button>
         <button
           className={classNames(
-            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-500 hover:bg-neutral-600 transition-all",
+            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all",
             {
               "!bg-neutral-950": activeTab === 3,
             },
@@ -111,6 +111,7 @@ export function CodeTabs() {
               marginRight: "24px",
             }}
             customStyle={{
+              fontSize: "14px",
               padding: "32px 56px 32px 0",
               borderRadius: "0",
             }}

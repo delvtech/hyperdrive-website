@@ -48,7 +48,7 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
   return (
     <div
       className={classNames(
-        "flex items-center justify-between px-16 py-6 fixed top-0 left-0 right-0 z-10 transition-all duration-300 uppercase font-mono text-sm",
+        "flex items-center justify-between px-[2vw] py-6 fixed top-0 left-0 right-0 z-10 transition-all duration-300 uppercase font-mono text-sm",
         {
           "text-neutral-100": activeTheme === "dark",
           "text-neutral-900": activeTheme === "light",

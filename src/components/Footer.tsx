@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import discordLogoIcon from "src/assets/logos/discord-logo-icon-dark.svg";
 import farcasterLogoIcon from "src/assets/logos/farcaster-logo-icon-dark.svg";
 import hyperdriveLogo from "src/assets/logos/hyperdrive-logo-white.svg";
@@ -7,10 +8,20 @@ import xLogoIcon from "src/assets/logos/x-logo-icon-dark.svg";
 export function Footer() {
   return (
     <>
-      <div className="px-28 py-20 flex justify-between bg-gradient-to-b from-[#4C618C]/20 to-[#222C40]/20 relative backdrop-blur-lg">
+      <div
+        className={classNames(
+          "px-[6vw] py-20 flex justify-between bg-gradient-to-b from-[#4C618C]/20 to-[#222C40]/20 relative backdrop-blur-lg gap-14",
+          "max-lg:flex-col max-lg:items-center",
+        )}
+      >
         <img src={hyperdriveLogo} className="h-9" alt="Hyperdrive" />
-        <div className="flex gap-16 basis-2/3">
-          <div>
+        <div
+          className={classNames(
+            "flex gap-20 basis-2/3",
+            "max-md:flex-col max-md:gap-0 max-md:text-center",
+          )}
+        >
+          <div className="max-md:py-10 max-md:w-full max-md:border-b max-md:border-neutral-700">
             <h3 className="mb-9 text-neutral-100 font-semibold">Protocol</h3>
             <ul className="space-y-4 font-mono text-neutral-400">
               <li>
@@ -53,7 +64,7 @@ export function Footer() {
               </li>
             </ul>
           </div>
-          <div>
+          <div className="max-md:py-10 max-md:w-full max-md:border-b max-md:border-neutral-700">
             <h3 className="mb-9 text-neutral-100 font-semibold">Community</h3>
             <ul className="space-y-4 font-mono text-neutral-400">
               <li>
@@ -70,7 +81,8 @@ export function Footer() {
                   href="https://twitter.com/delv_tech/"
                 >
                   Twitter
-                </a></li>
+                </a>
+              </li>
               <li>
                 <a
                   className="hover:text-neutral-100 transition-all"
@@ -97,7 +109,7 @@ export function Footer() {
               </li>
             </ul>
           </div>
-          <div>
+          <div className="max-md:py-10 max-md:w-full max-md:border-b max-md:border-neutral-700">
             <h3 className="mb-9 text-neutral-100 font-semibold">About</h3>
             <ul className="space-y-4 font-mono text-neutral-400">
               {/* <li>
@@ -120,7 +132,7 @@ export function Footer() {
               </li>
             </ul>
           </div>
-          <div>
+          <div className="max-md:py-10 max-md:w-full max-md:border-b max-md:border-neutral-700">
             <h3 className="mb-9 text-neutral-100 font-semibold">Legal</h3>
             <ul className="space-y-4 font-mono text-neutral-400">
               <li>
@@ -150,9 +162,7 @@ export function Footer() {
 
       {/* Sub-footer */}
       <div className="bg-aquamarine-500 px-20 py-8 flex justify-between text-neutral-900">
-        <p className="font-mono text-body-sm">
-          Copyright &copy; 2024 DELV
-        </p>
+        <p className="font-mono text-body-sm">Copyright &copy; 2024 DELV</p>
         <div className="flex items-center">
           <p className="mr-6">Follow us:</p>
           <div className="flex gap-3">
@@ -165,7 +175,7 @@ export function Footer() {
             <a href="https://www.linkedin.com/company/delv-tech/">
               <img className="h-6" src={linkedinLogoIcon}></img>
             </a>
-            <a href="#">
+            <a href="https://warpcast.com/~/channel/delv">
               <img className="h-6" src={farcasterLogoIcon}></img>
             </a>
           </div>

@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import overviewLine from "src/assets/accents/overview-line.svg";
+import strategiesLine from "src/assets/accents/strategies-line.svg";
 import adjustmentsIcon from "src/assets/icons/adjustments-icon.svg";
 import curveIcon from "src/assets/icons/curve-icon.svg";
 import fixedRatesIcon from "src/assets/icons/fixed-rates-icon.svg";
@@ -17,7 +18,6 @@ import chainsafeLogo from "src/assets/logos/chainsafe-logo.svg";
 import spearbitLogo from "src/assets/logos/spearbit-logo.svg";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
-import { ScrollCaptorCarousel } from "src/components/ScrollCaptorCarousel";
 import { GradientBorderButton } from "src/components/buttons/GradientButton";
 import { HeroPill } from "src/components/home/HeroPill";
 import { PositionTypesCarousel } from "src/components/home/PositionTypesCarousel";
@@ -129,14 +129,26 @@ export function Home() {
       </div>
 
       {/* Overview */}
-      <div id="overview" className="px-24 pt-0 pb-32 grid grid-cols-2 relative">
+      <div
+        id="overview"
+        className={classNames(
+          "px-[5vw] pt-0 pb-20 flex relative gap-14 items-center",
+          "max-lg:flex-col max-lg:gap-0",
+        )}
+      >
         <img
           src={overviewLine}
           className="absolute right-0 top-1/2 -translate-y-1/3"
         />
 
         {/* Overview left */}
-        <div className="max-w-md mx-auto h-2/3 flex flex-col justify-center">
+        <div
+          className={classNames(
+            "max-w-md mx-auto flex flex-col justify-center flex-1 mb-40",
+            "max-lg:mb-20",
+            "max-sm:mb-14",
+          )}
+        >
           <h2 className="font-chakra text-h5 bg-gradient-to-tr from-aquamarine to-aquamarine-fade bg-clip-text text-transparent leading-normal mb-6">
             What is Hyperdrive?
           </h2>
@@ -148,24 +160,43 @@ export function Home() {
         </div>
 
         {/* Overview right */}
-        <div className="flex gap-3">
-          <div className="space-y-3 flex-1">
-            <div className="space-y-4 bg-card-gradient p-6 min-h-96">
+        <div
+          className={classNames(
+            "flex gap-3 basis-1/2",
+            "max-[1440px]:basis-[60%]",
+            "max-sm:flex-col max-sm:gap-4",
+          )}
+        >
+          <div className={classNames("space-y-3 flex-1", "max-sm:space-y-4")}>
+            {/* Fixed rates */}
+            <div
+              className={classNames(
+                "space-y-4 bg-card-gradient p-6 pb-10 min-h-80",
+                "max-sm:min-h-0 max-sm:pb-14",
+              )}
+            >
               <img src={fixedRatesIcon} />
               <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">
                 Fixed rates
               </h3>
-              <p className="text-neutral-400">
+              <p>
                 Get simple, predictable fixed rates on ETH, stETH, DAI, or sDAI
                 with principal-protected returns.
               </p>
             </div>
-            <div className="space-y-4 bg-card-gradient p-6 min-h-96">
+
+            {/* Fixed rate borrow */}
+            <div
+              className={classNames(
+                "space-y-4 bg-card-gradient p-6 pb-10 min-h-80",
+                "max-sm:min-h-0 max-sm:pb-14",
+              )}
+            >
               <img src={adjustmentsIcon} />
               <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">
                 Fixed Rate Borrow
               </h3>
-              <p className="text-neutral-400">
+              <p>
                 Turn a variable rate borrow position into a fixed rate borrow
                 position on Hyperdrive.
               </p>
@@ -174,25 +205,44 @@ export function Home() {
               </p>
             </div>
           </div>
-          <div className="space-y-3 flex-1 mt-16">
-            <div className="space-y-4 bg-card-gradient p-6 min-h-96">
+
+          <div
+            className={classNames(
+              "space-y-3 flex-1 mt-16",
+              "max-sm:mt-0 max-sm:space-y-4",
+            )}
+          >
+            {/* Multiplied variable rates */}
+            <div
+              className={classNames(
+                "space-y-4 bg-card-gradient p-6 pb-10 min-h-80",
+                "max-sm:min-h-0 max-sm:pb-14",
+              )}
+            >
               <img src={multipliedRatesIcon} />
               <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">
                 Multiplied variable rates
               </h3>
-              <p className="text-neutral-400">
+              <p>
                 Get multiplied variable rate exposure and speculate on rate
                 movements by opening a Short, or LP to earn passive variable
                 yield on single asset deposits without being exposed to
                 impermanent loss.s.
               </p>
             </div>
-            <div className="space-y-4 bg-card-gradient p-6 min-h-96">
+
+            {/* Longs as collateral */}
+            <div
+              className={classNames(
+                "space-y-4 bg-card-gradient p-6 pb-10 min-h-80",
+                "max-sm:min-h-0 max-sm:pb-14",
+              )}
+            >
               <img src={curveIcon} />
               <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">
                 Longs as Collateral
               </h3>
-              <p className="text-neutral-400">
+              <p>
                 Using Hyperdrive Longs (fixed rates) as collateral in other
                 borrowing protocols offers users a capital efficient way to
                 obtain exposure like they would from borrowing against the base
@@ -207,7 +257,7 @@ export function Home() {
       </div>
 
       {/* LP Returns */}
-      <div className="px-24 py-16">
+      <div className="px-24 py-14">
         <div className="max-w-2xl mx-auto text-center mb-16">
           <h2 className="font-chakra text-h5 gradient-text font-medium mb-6">
             Hypercharge your LP returns by earning in 3 ways:
@@ -215,22 +265,57 @@ export function Home() {
         </div>
 
         {/* LP tiles */}
-        <div className="flex gap-10 text-white text-center mb-16">
-          <div className="bg-card-gradient flex-1 p-8 flex flex-col justify-between rounded-sm gap-10">
+        <div
+          className={classNames(
+            "flex gap-10 text-white text-center mb-16 justify-center",
+            "max-lg:flex-col max-lg:gap-4 max-lg:items-center",
+          )}
+        >
+          <div
+            className={classNames(
+              "bg-card-gradient flex-1 p-8 pb-14 flex flex-col rounded-sm gap-8 max-w-[420px]",
+              "max-xl:pb-10",
+            )}
+          >
             <img src={lpReturnsIcon1} className="block max-w-" />
-            <p className="text-h6 font-chakra font-medium">
+            <p
+              className={classNames(
+                "text-h6 font-chakra font-medium",
+                "max-xl:text-h7",
+              )}
+            >
               Fees from trading activity
             </p>
           </div>
-          <div className="bg-card-gradient flex-1 p-8 flex flex-col justify-between rounded-sm gap-10">
+          <div
+            className={classNames(
+              "bg-card-gradient flex-1 p-8 pb-14 flex flex-col rounded-sm gap-8 max-w-[420px]",
+              "max-xl:pb-10",
+            )}
+          >
             <img src={lpReturnsIcon2} className="block max-w-" />
-            <p className="text-h6 font-chakra font-medium">
+            <p
+              className={classNames(
+                "text-h6 font-chakra font-medium",
+                "max-xl:text-h7",
+              )}
+            >
               Variable yield on idle capital
             </p>
           </div>
-          <div className="bg-card-gradient flex-1 p-8 flex flex-col justify-between rounded-sm gap-10">
+          <div
+            className={classNames(
+              "bg-card-gradient flex-1 p-8 pb-14 flex flex-col rounded-sm gap-8 max-w-[420px]",
+              "max-xl:pb-10",
+            )}
+          >
             <img src={lpReturnsIcon3} className="block max-w-" />
-            <p className="text-h6 font-chakra font-medium">
+            <p
+              className={classNames(
+                "text-h6 font-chakra font-medium",
+                "max-xl:text-h7",
+              )}
+            >
               PnL from balancing market activity
             </p>
           </div>
@@ -244,124 +329,272 @@ export function Home() {
       </div>
 
       {/* Security */}
-      <ScrollCaptorCarousel
-        id="security"
-        className="px-24 py-16 min-h-screen bg-gradient-to-b from-neutral-900 to-black items-center flex flex-col"
-        slideHeight={440}
-        slideGap={56}
-        heading={
-          <h2 className="font-chakra text-h5 font-medium gradient-text text-center grow-[.3] flex items-center mb-8">
-            Security
-          </h2>
-        }
-        slides={[
-          <div className="px-14 pr-24 py-9 bg-card-gradient rounded-sm relative h-[440px] max-w-5xl mx-auto flex flex-col">
-            <p className="font-mono text-caption-lg">01</p>
-            <div className="flex gap-24 items-center flex-1">
-              <div>
-                <h3 className="text-h4 font-chakra text-white mb-4">Audits</h3>
-                <p className="text-neutral-400 mb-14">
-                  Four audits of the Hyperdrive protocol have been completed by
-                  industry leaders in blockchain security, with a fifth audit
-                  scheduled during testnet.
-                </p>
-                <div className="flex items-center gap-6">
-                  <a href="https://spearbit.com/">
-                    <img src={spearbitLogo} alt="Spearbit" />
-                  </a>
-                  <a href="https://chainsafe.io/">
-                    <img src={chainsafeLogo} alt="Chainsafe" />
-                  </a>
-                  <a href="https://www.certora.com/">
-                    <img src={certoraLogo} alt="Certora" />
-                  </a>
-                </div>
-              </div>
-              <img src={auditsIllustration} />
-            </div>
-          </div>,
+      <div className="px-[5vw] py-14 flex flex-col items-center">
+        <h2 className="font-chakra text-h5 font-medium gradient-text text-center grow-[.3] mb-8">
+          Security
+        </h2>
 
-          <div className="px-14 pr-24 py-9 bg-card-gradient rounded-sm relative h-[440px] max-w-5xl mx-auto flex flex-col">
-            <p className="font-mono text-caption-lg">02</p>
-            <div className="flex gap-24 items-center flex-1">
-              <div>
-                <h3 className="text-h4 font-chakra text-white mb-4">
-                  Formal Verification
-                </h3>
-                <p className="text-neutral-400 mb-14">
-                  Certora, an industry leader in formal verification,
-                  implemented a mathematical model that verified many key
-                  invariants in Hyperdrive's AMM.
-                </p>
-                <div className="flex items-center gap-6">
-                  <a href="https://www.certora.com/">
-                    <img src={certoraLogo} alt="Certora" />
-                  </a>
-                </div>
+        {/* Audits */}
+        <div className="px-14 pr-20 py-9 bg-card-gradient rounded-sm relative max-w-5xl mx-auto flex flex-col mb-6 max-lg:hidden">
+          <p className="font-mono text-caption-lg mb-3">01</p>
+          <div className="flex gap-24 items-center flex-1">
+            <div>
+              <h3 className="text-h5 font-chakra text-white mb-4 max-lg:text-h6">
+                Audits
+              </h3>
+              <p className="mb-8">
+                Four audits of the Hyperdrive protocol have been completed by
+                industry leaders in blockchain security, with a fifth audit
+                scheduled during testnet.
+              </p>
+              <div className="flex items-center gap-6">
+                <a href="https://spearbit.com/">
+                  <img src={spearbitLogo} alt="Spearbit" />
+                </a>
+                <a href="https://chainsafe.io/">
+                  <img src={chainsafeLogo} alt="Chainsafe" />
+                </a>
+                <a href="https://www.certora.com/">
+                  <img src={certoraLogo} alt="Certora" />
+                </a>
               </div>
-              <img src={formalVerificationIllustration} />
             </div>
-          </div>,
+            <img className="-mt-6 max-lg:w-1/3" src={auditsIllustration} />
+          </div>
+        </div>
 
-          <div className="px-14 pr-24 py-9 bg-card-gradient rounded-sm relative h-[440px] max-w-5xl mx-auto flex flex-col">
-            <p className="font-mono text-caption-lg">03</p>
-            <div className="flex gap-24 items-center flex-1">
-              <div>
-                <h3 className="text-h4 font-chakra text-white mb-4">
-                  Fuzz Testing
-                </h3>
-                <p className="text-neutral-400 mb-14">
-                  Hyperdrive is tested using a robust fuzzing system that
-                  combines traditional Solidity input sweeps with Python-based
-                  smart agents.
-                </p>
+        {/* Formal verification (< large screen) */}
+        <div
+          className={classNames(
+            "px-14 pr-20 py-9 bg-card-gradient rounded-sm relative max-w-5xl mx-auto flex-col mb-6 hidden",
+            "max-lg:flex",
+            "max-md:hidden",
+          )}
+        >
+          <p className="font-mono text-caption-lg mb-3">02</p>
+          <div className="flex gap-24 items-center flex-1">
+            <div>
+              <h3 className="text-h6 font-chakra text-white mb-4">
+                Formal Verification
+              </h3>
+              <p className="mb-8">
+                Certora, an industry leader in formal verification, implemented
+                a mathematical model that verified many key invariants in
+                Hyperdrive's AMM.
+              </p>
+              <div className="flex items-center gap-6">
+                <a href="https://www.certora.com/">
+                  <img src={certoraLogo} alt="Certora" />
+                </a>
               </div>
-              <img src={fuzzTestingIllustration} />
             </div>
-          </div>,
+            <img className="-mt-6 w-1/3" src={formalVerificationIllustration} />
+          </div>
+        </div>
 
-          <div className="px-14 pr-24 py-9 bg-card-gradient rounded-sm relative h-[440px] max-w-5xl mx-auto flex flex-col">
-            <p className="font-mono text-caption-lg">04</p>
-            <div className="flex gap-24 items-center flex-1">
-              <div>
-                <h3 className="text-h4 font-chakra text-white mb-4">
-                  Active Threat Monitoring
-                </h3>
-                <p className="text-neutral-400 mb-14">
-                  Hyperdrive's smart contracts are actively monitored to get
-                  ahead of potential threats and leverage collective security
-                  intelligence.
-                </p>
-              </div>
-              <img src={threatMonitoringIllustration} />
+        {/* Fuzz testing (< large screen) */}
+        <div
+          className={classNames(
+            "px-14 pr-20 py-9 bg-card-gradient rounded-sm relative max-w-5xl mx-auto flex-col mb-6 hidden",
+            "max-lg:flex",
+            "max-md:hidden",
+          )}
+        >
+          <p className="font-mono text-caption-lg mb-3">03</p>
+          <div className="flex gap-24 items-center flex-1">
+            <div>
+              <h3 className="text-h6 font-chakra text-white mb-4">
+                Fuzz Testing
+              </h3>
+              <p className="mb-8">
+                Hyperdrive is tested using a robust fuzzing system that combines
+                traditional Solidity input sweeps with Python-based smart
+                agents.
+              </p>
             </div>
-          </div>,
-        ]}
-      />
+            <img className="-mt-6 w-1/3" src={fuzzTestingIllustration} />
+          </div>
+        </div>
+
+        {/* Threat monitoring (< large screen) */}
+        <div
+          className={classNames(
+            "px-14 pr-20 py-9 bg-card-gradient rounded-sm relative max-w-5xl mx-auto flex-col mb-6 hidden",
+            "max-lg:flex",
+            "max-md:hidden",
+          )}
+        >
+          <p className="font-mono text-caption-lg mb-3">04</p>
+          <div className="flex gap-24 items-center flex-1">
+            <div>
+              <h3 className="text-h6 font-chakra text-white mb-4">
+                Active Threat Monitoring
+              </h3>
+              <p className="mb-8">
+                Hyperdrive's smart contracts are actively monitored to get ahead
+                of potential threats and leverage collective security
+                intelligence.
+              </p>
+            </div>
+            <img className="-mt-6 w-1/3" src={threatMonitoringIllustration} />
+          </div>
+        </div>
+
+        <div
+          className={classNames(
+            "flex gap-6 max-w-5xl",
+            "max-lg:hidden",
+            "max-md:flex max-md:flex-col",
+          )}
+        >
+          {/* Audits < large screen */}
+          <div className="pt-6 pb-9 bg-card-gradient relative hidden max-lg:block">
+            <div className="flex justify-between pl-12 mb-4">
+              <p className="font-mono text-caption-lg mt-3">01</p>
+              <img className="box w-[232px]" src={auditsIllustration} />
+            </div>
+            <div className="px-12">
+              <h3 className="text-h7 font-chakra text-white mb-4">Audits</h3>
+              <p className="mb-8">
+                Four audits of the Hyperdrive protocol have been completed by
+                industry leaders in blockchain security, with a fifth audit
+                scheduled during testnet.
+              </p>
+              <div className="grid grid-cols-2 gap-6 items-center">
+                <a href="https://spearbit.com/">
+                  <img src={spearbitLogo} alt="Spearbit" />
+                </a>
+                <a href="https://chainsafe.io/">
+                  <img src={chainsafeLogo} alt="Chainsafe" />
+                </a>
+                <a
+                  className="col-span-2 flex justify-center"
+                  href="https://www.certora.com/"
+                >
+                  <img src={certoraLogo} alt="Certora" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Formal verification */}
+          <div className="pt-6 pb-9 bg-card-gradient relative">
+            <div className="flex justify-between pl-12 mb-4">
+              <p className="font-mono text-caption-lg mt-3">02</p>
+              <img
+                className="box w-[232px]"
+                src={formalVerificationIllustration}
+              />
+            </div>
+            <div className="px-12">
+              <h3 className="text-h7 font-chakra text-white mb-4">
+                Formal Verification
+              </h3>
+              <p className="mb-8">
+                Certora, an industry leader in formal verification, implemented
+                a mathematical model that verified many key invariants in
+                Hyperdrive's AMM.
+              </p>
+              <div className="flex items-center gap-6">
+                <a href="https://www.certora.com/">
+                  <img src={certoraLogo} alt="Certora" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Fuzz testing */}
+          <div className="pt-6 pb-9 bg-card-gradient relative">
+            <div className="flex justify-between pl-12 mb-4">
+              <p className="font-mono text-caption-lg mt-3">03</p>
+              <img className="box w-[232px]" src={fuzzTestingIllustration} />
+            </div>
+            <div className="px-12">
+              <h3 className="text-h7 font-chakra text-white mb-4">
+                Fuzz Testing
+              </h3>
+              <p className="mb-4">
+                Hyperdrive is tested using a robust fuzzing system that combines
+                traditional Solidity input sweeps with Python-based smart
+                agents.
+              </p>
+            </div>
+          </div>
+
+          {/* Threat monitoring */}
+          <div className="pt-6 pb-9 bg-card-gradient relative">
+            <div className="flex justify-between pl-12 mb-4">
+              <p className="font-mono text-caption-lg mt-3">04</p>
+              <img
+                className="box w-[232px]"
+                src={threatMonitoringIllustration}
+              />
+            </div>
+            <div className="px-12">
+              <h3 className="text-h7 font-chakra text-white mb-4">
+                Active Threat Monitoring
+              </h3>
+              <p className="mb-4">
+                Hyperdrive's smart contracts are actively monitored to get ahead
+                of potential threats and leverage collective security
+                intelligence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Protocol */}
-      <div id="protocol" className="px-24 pt-28 flex gap-20 overflow-x-hidden">
-        <h2 className="font-chakra text-h5 gradient-text flex-1 basic-1/3">
+      <div
+        id="protocol"
+        className={classNames(
+          "px-[4vw] pt-28 flex gap-10 overflow-x-hidden",
+          "max-lg:flex-col max-lg:gap-6 max-lg:pt-16",
+        )}
+      >
+        <h2
+          className={classNames(
+            "font-chakra text-h5 gradient-text flex-1",
+            "max-xl:text-h6",
+          )}
+        >
           Core Protocol Fundamentals
         </h2>
-        <PositionTypesCarousel className="basis-2/3" />
+        <PositionTypesCarousel className="basis-3/4 max-xl:basis-auto" />
       </div>
 
       {/* Strategies */}
-      <div id="strategies" className="px-28 pt-48 pb-20 relative">
-        {/* <img src={strategiesLine} className="absolute right-0 top-36" /> */}
+      <div
+        id="strategies"
+        className="px-[6vw] pt-48 pb-20 relative max-md:pt-32"
+      >
+        <img src={strategiesLine} className="absolute right-0 top-36" />
 
-        <div className="flex justify-between gap-40">
-          <div>
-            <h2 className="font-chakra gradient-text text-h5 mb-14">
-              Trading Strategies*
-            </h2>
-            <p className="mb-6">Learn more about the trading strategies.</p>
+        <div className="flex justify-between gap-[4vw] max-md:flex-col">
+          <div className="max-md:flex max-md:justify-between max-md:gap-4 max-md:items-center">
+            <div>
+              <h2
+                className={classNames(
+                  "font-chakra gradient-text text-h5 mb-14 whitespace-nowrap",
+                  "max-xl:text-h6 max-xl:mb-8",
+                )}
+              >
+                Trading Strategies*
+              </h2>
+              <p className="mb-6">Learn more about the trading strategies.</p>
+            </div>
             <GradientBorderButton className="button-primary" href="#">
-              Learn more in GitBook
+              Learn more
             </GradientBorderButton>
           </div>
-          <div className="grid grid-cols-2 gap-9 basis-2/3 text-neutral-400">
+          <div
+            className={classNames(
+              "grid grid-cols-2 gap-9 basis-2/3",
+              "max-xl:gap-6",
+              "max-lg:gap-4",
+              "max-sm:grid-cols-1",
+            )}
+          >
             <div className="p-6 bg-card-gradient min-h-60">
               <h3 className="mb-4 text-h7 text-neutral-100">
                 Hold to Maturity
@@ -404,7 +637,7 @@ export function Home() {
           </div>
         </div>
 
-        <p className="text-caption text-neutral-400 mt-20">
+        <p className="text-neutral-400 text-caption mt-20 max-md:mt-10">
           * This above content is general in nature and for informational
           purposes only. It is not legal, tax, investment, financial or other
           advice, nor is it a comprehensive or complete statement of the matters
