@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
+import { ScrollReset } from "src/components/router/ScrollReset";
 import { Build } from "src/pages/Build";
 import { Home } from "src/pages/Home";
-import { ScrollReset } from "./components/router/ScrollReset";
 
 function App() {
   return (
