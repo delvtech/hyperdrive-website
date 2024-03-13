@@ -263,7 +263,7 @@ export function Home() {
       </div>
 
       {/* LP Returns */}
-      <div className="px-[5vw] py-14">
+      <div id="lp-returns" className="px-[5vw] py-14">
         <div className="max-w-2xl mx-auto text-center mb-16 max-lg:max-w-[420px] max-lg:text-left">
           <h2 className="font-chakra text-h5 gradient-text font-medium mb-6">
             Hypercharge your LP returns by earning in 3 ways
@@ -335,7 +335,7 @@ export function Home() {
       </div>
 
       {/* Security */}
-      <div className="px-[5vw] py-14 flex flex-col items-center">
+      <div id="security" className="px-[5vw] py-14 flex flex-col items-center">
         <h2 className="font-chakra text-h5 font-medium gradient-text text-center grow-[.3] mb-8">
           Security
         </h2>
@@ -651,7 +651,7 @@ export function Home() {
           </div>
         </div>
 
-        <p className="text-body-sm mt-20 max-md:mt-10">
+        <p className="text-body-sm mt-20 max-md:mt-10 max-sm:text-caption-lg">
           * This above content is general in nature and for informational
           purposes only. It is not legal, tax, investment, financial or other
           advice, nor is it a comprehensive or complete statement of the matters
