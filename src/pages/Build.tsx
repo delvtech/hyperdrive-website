@@ -38,15 +38,9 @@ export function Build() {
               <img src={DiscordLogoIcon} alt="" className="w-6 h-6" />
               Discord
             </GradientBorderButton>
-            <GradientBorderButton
-              hoverBorderFrom="#565E6F"
-              hoverBorderTo="#1f2937"
-            >
+            <GradientBorderButton href="https://github.com/delvtech/hyperdrive">
               <img src={GithubLogoIcon} alt="" className="w-6 h-6" />
               GitHub
-              <span className="text-neutral-400/80 text-caption">
-                coming soon
-              </span>
             </GradientBorderButton>
             <GradientBorderButton
               hoverBorderFrom="#565E6F"
@@ -144,29 +138,44 @@ export function Build() {
           </h2>
           <ul className="list-disc pl-4 text-neutral-100 space-y-4 marker:text-neutral-500 max-lg:hidden">
             <li>
-              {/* <a className="hover:text-aquamarine transition-all" href="https://github.com/delvtech/hyperdrive"> */}
-              Hyperdrive Core
-              {/* </a> */}
+              <a
+                className="hover:text-aquamarine transition-all"
+                href="https://github.com/delvtech/hyperdrive"
+              >
+                Hyperdrive Core
+              </a>
             </li>
             <li>
-              {/* <a className="hover:text-aquamarine transition-all" href="https://github.com/delvtech/hyperdrive/tree/main/crates/hyperdrive-math"> */}
-              Rust SDK
-              {/* </a> */}
+              <a
+                className="hover:text-aquamarine transition-all"
+                href="https://github.com/delvtech/hyperdrive/tree/main/crates/hyperdrive-math"
+              >
+                Rust SDK
+              </a>
             </li>
             <li>
-              {/* <a className="hover:text-aquamarine transition-all" href="https://github.com/delvtech/hyperdrive-monorepo/tree/main/packages/hyperdrive-sdk"> */}
-              TypeScript SDK
-              {/* </a> */}
+              <a
+                className="hover:text-aquamarine transition-all"
+                href="https://hyperdrive-js.delv.tech/"
+              >
+                TypeScript SDK
+              </a>
             </li>
             <li>
-              {/* <a className="hover:text-aquamarine transition-all" href="https://github.com/delvtech/hyperdrive-monorepo/tree/main/apps/hyperdrive-trading"> */}
-              Web UI (frontend)
-              {/* </a> */}
+              <a
+                className="hover:text-aquamarine transition-all"
+                href="https://github.com/delvtech/hyperdrive-monorepo/tree/main/apps/hyperdrive-trading"
+              >
+                Web UI (frontend)
+              </a>
             </li>
             <li>
-              {/* <a className="hover:text-aquamarine transition-all" href="https://github.com/delvtech/agent0"> */}
-              agent0 (bots)
-              {/* </a> */}
+              <a
+                className="hover:text-aquamarine transition-all"
+                href="https://github.com/delvtech/agent0"
+              >
+                agent0 (bots)
+              </a>
             </li>
           </ul>
         </div>
