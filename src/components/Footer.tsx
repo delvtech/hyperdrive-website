@@ -57,12 +57,12 @@ export function Footer() {
                 {/* </a> */}
               </li>
               <li>
-                {/* <a
+                <a
                   className="hover:text-neutral-100 transition-all"
                   href="https://github.com/delvtech/hyperdrive"
-                > */}
-                GitHub
-                {/* </a> */}
+                >
+                  GitHub
+                </a>
               </li>
             </ul>
           </div>

@@ -102,18 +102,11 @@ export function CodeTabs() {
               to help shield their borrow position from effects of interest rate
               increases.
             </p>
-            {/* <GradientBorderButton
+            <GradientBorderButton
               href="https://github.com/delvtech/hyperdrive"
               className="button-sm"
             >
               Hyperdrive source code
-            </GradientBorderButton> */}
-            <GradientBorderButton
-              className="button-sm"
-              hoverBorderFrom="#565E6F"
-              hoverBorderTo="#1f2937"
-            >
-              Coming soon
             </GradientBorderButton>
           </div>
           <SyntaxHighlighter
@@ -200,18 +193,11 @@ export function CodeTabs() {
               long or short that can be opened, calculate the trade size needed
               to move the pool to a target rate, and much more.
             </p>
-            {/* <GradientBorderButton
+            <GradientBorderButton
               href="https://github.com/delvtech/hyperdrive/tree/main/crates/hyperdrive-math"
               className="button-sm"
             >
               Rust SDK source code
-            </GradientBorderButton> */}
-            <GradientBorderButton
-              className="button-sm"
-              hoverBorderFrom="#565E6F"
-              hoverBorderTo="#1f2937"
-            >
-              Coming soon
             </GradientBorderButton>
           </div>
           <SyntaxHighlighter
@@ -323,7 +309,7 @@ async fn main() -> Result<()> {
               as well as a visualization dashboard to enable analysis and
               understanding.
             </p>
-            {/* <ul className="space-y-2 list-disc marker:text-neutral-600 pl-4 mb-8">
+            <ul className="space-y-2 list-disc marker:text-neutral-600 pl-4 mb-8">
               <li>
                 Get started by following our{" "}
                 <a
@@ -343,19 +329,12 @@ async fn main() -> Result<()> {
                 </a>{" "}
                 to start building your own bots
               </li>
-            </ul> */}
-            {/* <GradientBorderButton
-              href="//github.com/delvtech/agent0"
+            </ul>
+            <GradientBorderButton
+              href="https://agent0.readthedocs.io/en/latest/"
               className="button-sm"
             >
               agent0 docs
-            </GradientBorderButton> */}
-            <GradientBorderButton
-              className="button-sm"
-              hoverBorderFrom="#565E6F"
-              hoverBorderTo="#1f2937"
-            >
-              Coming soon
             </GradientBorderButton>
           </div>
           <SyntaxHighlighter
@@ -413,18 +392,11 @@ close_long_event = hyperdrive_agent0.close_long(
               node.js applications. Under the hood, the SDK uses the Hyperdrive
               Math library compiled to WebAssembly.
             </p>
-            {/* <GradientBorderButton
+            <GradientBorderButton
               href="https://hyperdrive-js.delv.tech"
               className="button-sm"
             >
               TypeScript SDK Docs
-            </GradientBorderButton> */}
-            <GradientBorderButton
-              className="button-sm"
-              hoverBorderFrom="#565E6F"
-              hoverBorderTo="#1f2937"
-            >
-              Coming soon
             </GradientBorderButton>
           </div>
           <SyntaxHighlighter
