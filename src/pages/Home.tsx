@@ -60,10 +60,17 @@ export function Home() {
             )}
           >
             <GradientBorderButton
+<<<<<<< Updated upstream
               hoverBorderFrom="#565E6F"
               hoverBorderTo="#1f2937"
             >
               Coming soon
+=======
+              href="https://blog.delv.tech/introducing-the-hyperdrive-protocol-fixed-and-variable-rates-reimagined/"
+              className="button-primary px-10"
+            >
+              Learn more
+>>>>>>> Stashed changes
             </GradientBorderButton>
             {/* <GradientBorderButton
               href="https://hyperdrive.delv.tech/app"
