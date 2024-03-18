@@ -60,17 +60,10 @@ export function Home() {
             )}
           >
             <GradientBorderButton
-<<<<<<< Updated upstream
-              hoverBorderFrom="#565E6F"
-              hoverBorderTo="#1f2937"
-            >
-              Coming soon
-=======
               href="https://blog.delv.tech/introducing-the-hyperdrive-protocol-fixed-and-variable-rates-reimagined/"
               className="button-primary px-10"
             >
               Learn more
->>>>>>> Stashed changes
             </GradientBorderButton>
             {/* <GradientBorderButton
               href="https://hyperdrive.delv.tech/app"
@@ -355,11 +348,14 @@ export function Home() {
               <h3 className="text-h5 font-chakra text-white mb-4 max-lg:text-h6">
                 Audits
               </h3>
-              <p className="mb-8">
+              <p className="mb-6">
                 Four audits of the Hyperdrive protocol have been completed by
                 industry leaders in blockchain security, with a fifth audit
                 scheduled during testnet.
               </p>
+              <GradientBorderButton className="button-sm mb-8" href="https://blog.delv.tech/hyperdrive-security-update-pre-testnet-audit-reports-are-in/">
+                Learn more
+              </GradientBorderButton>
               <div className="flex items-center gap-6">
                 <a href="https://spearbit.com/">
                   <img src={spearbitLogo} alt="Spearbit" />
@@ -581,7 +577,10 @@ export function Home() {
         id="strategies"
         className="px-[6vw] pt-48 pb-20 relative max-md:pt-32"
       >
-        <img src={strategiesLine} className="absolute right-0 top-36 pointer-events-none" />
+        <img
+          src={strategiesLine}
+          className="absolute right-0 top-36 pointer-events-none"
+        />
 
         <div className="flex justify-between gap-[4vw] max-md:flex-col">
           <div className="max-md:flex max-md:justify-between max-md:gap-4 max-md:items-center max-sm:block">
