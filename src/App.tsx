@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { ScrollReset } from "src/components/router/ScrollReset";
 import { Build } from "src/pages/Build";
 import { Home } from "src/pages/Home";
+import { Redirect } from "src/components/router/Redirect";
 
 function App() {
   return (
@@ -20,8 +21,3 @@ function App() {
 }
 
 export default App;
-
-function Redirect({ to }: { to: string }) {
-  window.location.replace(to);
-  return <></>;
-}
