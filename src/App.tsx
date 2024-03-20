@@ -10,9 +10,18 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/build" element={<Build />} />
+        <Route
+          path="/docs"
+          element={<Redirect to="https://docs-delv.gitbook.io/hyperdrive" />}
+        />
       </Routes>
     </>
   );
 }
 
 export default App;
+
+function Redirect({ to }: { to: string }) {
+  window.location.replace(to);
+  return <></>;
+}
