@@ -114,10 +114,14 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
           >
             Build
           </NavLink>
-          <a className="p-4 hover:font-bold duration-300 transition-all">
+          <Link
+            className="p-4 hover:font-bold duration-300 transition-all"
+            to="/docs"
+            target="_blank"
+            referrerPolicy="no-referrer"
+          >
             Docs
-            <sup className="ml-2 text-neutral-400/80">coming soon</sup>
-          </a>
+          </Link>
           <a className="p-4 hover:font-bold duration-300 transition-all">
             Analytics
             <sup className="ml-2 text-neutral-400/80">coming soon</sup>

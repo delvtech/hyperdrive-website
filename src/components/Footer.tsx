@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 import discordLogoIcon from "src/assets/logos/discord-logo-icon-dark.svg";
 import farcasterLogoIcon from "src/assets/logos/farcaster-logo-icon-dark.svg";
 import hyperdriveLogo from "src/assets/logos/hyperdrive-logo-white.svg";
@@ -23,38 +24,47 @@ export function Footer() {
         >
           <div className="max-md:py-10 max-md:w-full max-md:border-b max-md:border-neutral-700">
             <h3 className="mb-9 text-neutral-100 font-semibold font-chakra">
-              Protocol <span className="text-neutral-400">(Coming soon)</span>
+              Protocol
             </h3>
             <ul className="space-y-4 text-neutral-400">
               <li>
                 {/* <a className="hover:text-neutral-100 transition-all" href="#"> */}
-                Whitepaper
+                Whitepaper<sup className="ml-1">coming soon</sup>
+                {/* </a> */}
+              </li>
+              <li>
+                <Link
+                  className="hover:text-neutral-100 transition-all"
+                  to="/docs"
+                >
+                  Docs
+                </Link>
+              </li>
+              <li>
+                {/* <a className="hover:text-neutral-100 transition-all" href="#"> */}
+                User Guides<sup className="ml-1">coming soon</sup>
                 {/* </a> */}
               </li>
               <li>
                 {/* <a className="hover:text-neutral-100 transition-all" href="#"> */}
-                Docs
+                Analytics<sup className="ml-1">coming soon</sup>
                 {/* </a> */}
               </li>
               <li>
-                {/* <a className="hover:text-neutral-100 transition-all" href="#"> */}
-                User Guides
-                {/* </a> */}
+                <a
+                  className="hover:text-neutral-100 transition-all"
+                  href="https://agent0.readthedocs.io/en/latest/"
+                >
+                  Bots
+                </a>
               </li>
               <li>
-                {/* <a className="hover:text-neutral-100 transition-all" href="#"> */}
-                Analytics
-                {/* </a> */}
-              </li>
-              <li>
-                {/* <a className="hover:text-neutral-100 transition-all" href="#"> */}
-                Bots
-                {/* </a> */}
-              </li>
-              <li>
-                {/* <a className="hover:text-neutral-100 transition-all" href="#"> */}
-                Security Audits
-                {/* </a> */}
+                <a
+                  className="hover:text-neutral-100 transition-all"
+                  href="https://blog.delv.tech/hyperdrive-security-update-pre-testnet-audit-reports-are-in/"
+                >
+                  Security Audits
+                </a>
               </li>
               <li>
                 <a
@@ -124,9 +134,9 @@ export function Footer() {
                 </a>
               </li> */}
               <li>
-                <a className="hover:text-neutral-100 transition-all">
-                  Brand Guide<sup className="ml-1">coming soon</sup>
-                </a>
+                {/* <a className="hover:text-neutral-100 transition-all"> */}
+                Brand Guide<sup className="ml-1">coming soon</sup>
+                {/* </a> */}
               </li>
               <li>
                 <a
