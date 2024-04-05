@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { Redirect } from "src/components/router/Redirect";
 import { ScrollReset } from "src/components/router/ScrollReset";
 import { Brand } from "src/pages/Brand";
 import { Build } from "src/pages/Build";
@@ -13,21 +14,20 @@ function App() {
         <Route path="/build" element={<Build />} />
         <Route
           path="/docs"
-          handle={() => {
-            window.location.replace("https://docs-delv.gitbook.io/hyperdrive");
-          }}
+          element={<Redirect to="https://docs-delv.gitbook.io/hyperdrive" />}
         />
         <Route path="/brand" element={<Brand />} />
-        {/* <Route path="/app" handle={loadTestnet} />
-        <Route path="/testnet" handle={loadTestnet} /> */}
+        <Route
+          path="/app"
+          element={<Redirect to="https://testnet.hyperdrive.trade" />}
+        />
+        <Route
+          path="/testnet"
+          element={<Redirect to="https://testnet.hyperdrive.trade" />}
+        />
       </Routes>
     </>
   );
 }
 
 export default App;
-
-// TODO:
-// function loadTestnet() {
-//   window.location.replace("https://");
-// }
