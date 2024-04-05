@@ -138,7 +138,7 @@ export function Footer() {
                   to="/brand"
                   className="hover:text-neutral-100 transition-all"
                 >
-                  Brand Guide
+                  Brand Assets
                 </Link>
               </li>
               <li>
