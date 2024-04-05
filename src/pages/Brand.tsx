@@ -11,13 +11,13 @@ export function Brand() {
     <>
       <Header theme="dark" />
 
-      <main className="my-40 max-w-4xl mx-auto">
+      <main className="my-40 max-w-4xl mx-auto px-[4vw]">
         <h1 className="text-h3 font-chakra gradient-text text-center">
           Brand Assets
         </h1>
 
         <h2 className="text-body-lg mt-16 mb-6">Logo Mark</h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
           <AssetTile
             downloadName="hyperdrive-mark-white.svg"
             className="bg-neutral-900"
@@ -57,7 +57,7 @@ export function Brand() {
         </div>
 
         <h2 className="text-body-lg mt-16 mb-6">Logo</h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
           <AssetTile
             downloadName="hyperdrive-logo-white.svg"
             className="bg-neutral-900"
@@ -178,7 +178,7 @@ export function Brand() {
         </div>
 
         <h2 className="text-body-lg mt-16 mb-6">Colors</h2>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-4 max-xs:grid-cols-1">
           <ColorTile color="#15FFAB" className="text-neutral-900" />
           <ColorTile color="#753F53" className="text-neutral-100" />
           <ColorTile color="#0F1117" />
