@@ -134,9 +134,12 @@ export function Footer() {
                 </a>
               </li> */}
               <li>
-                {/* <a className="hover:text-neutral-100 transition-all"> */}
-                Brand Guide<sup className="ml-1">coming soon</sup>
-                {/* </a> */}
+                <Link
+                  to="/brand"
+                  className="hover:text-neutral-100 transition-all"
+                >
+                  Brand Assets
+                </Link>
               </li>
               <li>
                 <a

@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import { ScrollReset } from "src/components/router/ScrollReset";
+import { Brand } from "src/pages/Brand";
 import { Build } from "src/pages/Build";
 import { Home } from "src/pages/Home";
-import { Redirect } from "src/components/router/Redirect";
 
 function App() {
   return (
@@ -13,11 +13,21 @@ function App() {
         <Route path="/build" element={<Build />} />
         <Route
           path="/docs"
-          element={<Redirect to="https://docs-delv.gitbook.io/hyperdrive" />}
+          handle={() => {
+            window.location.replace("https://docs-delv.gitbook.io/hyperdrive");
+          }}
         />
+        <Route path="/brand" element={<Brand />} />
+        {/* <Route path="/app" handle={loadTestnet} />
+        <Route path="/testnet" handle={loadTestnet} /> */}
       </Routes>
     </>
   );
 }
 
 export default App;
+
+// TODO:
+// function loadTestnet() {
+//   window.location.replace("https://");
+// }
