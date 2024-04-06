@@ -2,7 +2,7 @@ import { useState } from "react";
 
 /**
  * Returns a function to copy text to the clipboard as well as a boolean that
- * will be true for a short period of time after the text is copied. For showing
+ * will be true for a short period of time after the text is copied, for showing
  * temporary feedback to the user.
  */
 export function useCopy() {
