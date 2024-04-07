@@ -28,9 +28,12 @@ export function Footer() {
             </h3>
             <ul className="space-y-4 text-neutral-400">
               <li>
-                {/* <a className="hover:text-neutral-100 transition-all" href="#"> */}
-                Whitepaper<sup className="ml-1">coming soon</sup>
-                {/* </a> */}
+                <a
+                  className="hover:text-neutral-100 transition-all"
+                  href="https://github.com/delvtech/hyperdrive/blob/main/docs/Hyperdrive_Whitepaper.pdf"
+                >
+                  Whitepaper
+                </a>
               </li>
               <li>
                 <Link

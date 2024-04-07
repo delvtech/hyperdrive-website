@@ -42,15 +42,9 @@ export function Build() {
               <img src={GithubLogoIcon} alt="" className="w-6 h-6" />
               GitHub
             </GradientBorderButton>
-            <GradientBorderButton
-              hoverBorderFrom="#565E6F"
-              hoverBorderTo="#1f2937"
-            >
+            <GradientBorderButton href="https://github.com/delvtech/hyperdrive/blob/main/docs/Hyperdrive_Whitepaper.pdf">
               <img src={FileIcon} alt="" className="w-6 h-6" />
               Whitepaper
-              <span className="text-neutral-400/80 text-caption">
-                coming soon
-              </span>
             </GradientBorderButton>
           </div>
         </div>
