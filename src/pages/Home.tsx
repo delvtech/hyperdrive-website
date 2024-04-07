@@ -356,7 +356,10 @@ export function Home() {
                 industry leaders in blockchain security, with a fifth audit
                 scheduled during testnet.
               </p>
-              <GradientBorderButton className="button-sm mb-8" href="https://blog.delv.tech/hyperdrive-security-update-pre-testnet-audit-reports-are-in/">
+              <GradientBorderButton
+                className="button-sm mb-8"
+                href="https://blog.delv.tech/hyperdrive-security-update-pre-testnet-audit-reports-are-in/"
+              >
                 Learn more
               </GradientBorderButton>
               <div className="flex items-center gap-6">
