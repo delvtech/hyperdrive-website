@@ -327,11 +327,14 @@ export function Home() {
           </div>
         </div>
 
-        {/* <div className="flex items-center justify-center">
-          <GradientBorderButton href="#lp-docs-url" className="button-primary">
+        <div className="flex items-center justify-center">
+          <GradientBorderButton
+            href="https://docs-delv.gitbook.io/hyperdrive/hyperdrive-overview/position-types/liquidity-provider"
+            className="button-primary"
+          >
             Learn more
           </GradientBorderButton>
-        </div> */}
+        </div>
       </div>
 
       {/* Security */}
