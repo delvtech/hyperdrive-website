@@ -126,7 +126,10 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
             Analytics
             <sup className="ml-2 text-neutral-400/80">coming soon</sup>
           </a>
-          <a className="p-4 hover:font-bold duration-300 transition-all">
+          <a
+            className="p-4 hover:font-bold duration-300 transition-all"
+            // href="https://testnet.hyperdrive.trade"
+          >
             App
             <sup className="ml-2 text-neutral-400/80">coming soon</sup>
           </a>
