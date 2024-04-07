@@ -44,9 +44,12 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                {/* <a className="hover:text-neutral-100 transition-all" href="#"> */}
-                User Guides<sup className="ml-1">coming soon</sup>
-                {/* </a> */}
+                <a
+                  className="hover:text-neutral-100 transition-all"
+                  href="https://docs-delv.gitbook.io/hyperdrive/hyperdrive-overview/ui-walkthrough"
+                >
+                  User Guides
+                </a>
               </li>
               <li>
                 {/* <a className="hover:text-neutral-100 transition-all" href="#"> */}
