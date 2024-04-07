@@ -2,10 +2,16 @@ import { useState } from "react";
 
 /**
  * Returns a function to copy text to the clipboard as well as a boolean that
- * will be true for a short period of time after the text is copied, for showing
- * temporary feedback to the user.
+ * will be true for a short period of time after the text is copied
  */
-export function useCopy() {
+export function useCopy(): {
+  copy: (text: string) => void;
+  /**
+   * A boolean that will be true for a short period of time after the text is
+   * copied. Useful for showing temporary feedback to the user.
+   */
+  copied: boolean;
+} {
   const [copied, setCopied] = useState(false);
 
   function copy(text: string) {
@@ -16,5 +22,5 @@ export function useCopy() {
     }, 1200);
   }
 
-  return { copied, copy };
+  return { copy, copied };
 }
