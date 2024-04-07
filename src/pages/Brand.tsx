@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { PropsWithChildren, ReactElement } from "react";
+import { ReactElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
@@ -194,11 +194,11 @@ function AssetTile({
   downloadName,
   className,
   svg,
-}: PropsWithChildren<{
+}: {
   downloadName: string;
   className: string;
   svg: ReactElement;
-}>) {
+}) {
   const svgString = renderToStaticMarkup(svg);
   const downloadLink = createDownloadLink(svgString, "svg");
   const { copy, copied } = useCopy();
