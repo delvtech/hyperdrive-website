@@ -4,7 +4,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { useCopy } from "src/hooks/useCopy";
-import { createDownloadLink } from "src/utils/createDownloadLink";
+import { useDownloadLink } from "src/hooks/useDownloadLink";
 
 export function Brand() {
   return (
@@ -200,7 +200,7 @@ function AssetTile({
   svg: ReactElement;
 }) {
   const svgString = renderToStaticMarkup(svg);
-  const downloadLink = createDownloadLink(svgString, "svg");
+  const downloadLink = useDownloadLink(svgString, "svg");
   const { copy, copied } = useCopy();
 
   return (
