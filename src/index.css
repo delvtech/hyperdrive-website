@@ -11,9 +11,12 @@
     @apply bg-neutral-700/50 hover:bg-neutral-950 hover:shadow-[0_0_16px_rgba(21,255,171,0.2)];
   }
   .button-sm {
-    @apply text-caption-lg h-10
+    @apply text-caption-lg h-10;
   }
 
+  .a {
+    @apply text-aquamarine hover:underline;
+  }
 
   .gradient-text {
     @apply bg-gradient-to-r from-aquamarine-500 to-sky text-transparent bg-clip-text;
@@ -21,6 +24,13 @@
 
   .bg-card-gradient {
     @apply bg-gradient-to-b from-[#4C618C]/20 to-[#222C40]/20 backdrop-blur-md;
+  }
+
+  .body-copy {
+    @apply text-body-lg text-neutral-200;
+  }
+  .body-copy a {
+    @apply text-aquamarine hover:underline;
   }
 }
 
@@ -37,6 +47,10 @@
   -moz-osx-font-smoothing: grayscale;
 
   @apply text-content bg-neutral-900;
+}
+
+code {
+  @apply font-mono;
 }
 
 /* @media (prefers-color-scheme: light) {
