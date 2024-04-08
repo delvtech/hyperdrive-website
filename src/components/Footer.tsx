@@ -134,11 +134,14 @@ export function Footer() {
               About
             </h3>
             <ul className="space-y-4 text-neutral-400">
-              {/* <li>
-                <a className="hover:text-neutral-100 transition-all" href="#">
+              <li>
+                <a
+                  className="hover:text-neutral-100 transition-all"
+                  href="/faqs"
+                >
                   FAQs
                 </a>
-              </li> */}
+              </li>
               <li>
                 <Link
                   to="/brand"
