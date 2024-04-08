@@ -46,9 +46,9 @@ export function FAQs() {
           Frequently Asked Questions
         </h1>
 
-        <div className="flex items-start gap-10 mt-16">
+        <div className="flex items-start gap-10 mt-16 max-md:justify-center">
           {/* Fixed question nav */}
-          <div className="basis-1/3 p-6 bg-card-gradient flex flex-col gap-2 sticky top-24">
+          <div className="basis-1/3 p-6 bg-card-gradient flex flex-col gap-2 sticky top-24 max-md:hidden">
             {Object.entries(idsByQuestion).map(([question, id]) => (
               <a
                 key={id}
@@ -66,7 +66,7 @@ export function FAQs() {
           </div>
 
           {/* Scrolling content */}
-          <div className="basis-2/3 flex flex-col gap-10 body-copy">
+          <div className="basis-2/3 flex flex-col gap-12 body-copy max-md:basis-full">
             <Answer question="What is Hyperdrive?">
               <p>
                 <Link className="" to="/docs">
