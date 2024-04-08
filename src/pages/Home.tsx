@@ -60,13 +60,7 @@ export function Home() {
             )}
           >
             <GradientBorderButton
-              href="https://blog.delv.tech/introducing-the-hyperdrive-protocol-fixed-and-variable-rates-reimagined/"
-              className="button-primary px-10"
-            >
-              Learn more
-            </GradientBorderButton>
-            {/* <GradientBorderButton
-              href="https://hyperdrive.delv.tech/app"
+              to="/app"
               className={classNames(
                 "button-primary px-10",
                 "max-lg:flex-1",
@@ -80,7 +74,7 @@ export function Home() {
               className={classNames("px-10", "max-lg:flex-1", "max-sm:w-full")}
             >
               Learn more
-            </GradientBorderButton> */}
+            </GradientBorderButton>
           </div>
         </div>
 
