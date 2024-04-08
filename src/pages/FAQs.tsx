@@ -241,10 +241,8 @@ export function FAQs() {
               <p>
                 Security is a top priority to DELV. Hyperdrive has undergone
                 multiple audits and a formal verification process. Learn more in
-                the
-                <a href="https://hyperdrive.delv.tech/#security">
-                  Security
-                </a>{" "}
+                the{" "}
+                <a href="https://hyperdrive.delv.tech/#security">Security</a>{" "}
                 section of our website.
               </p>
               <p>
