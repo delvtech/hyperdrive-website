@@ -20,6 +20,12 @@ function App() {
           element={<Redirect to="https://docs-delv.gitbook.io/hyperdrive" />}
         />
         <Route
+          path="/whitepaper"
+          element={
+            <Redirect to="https://github.com/delvtech/hyperdrive/blob/main/docs/Hyperdrive_Whitepaper.pdf" />
+          }
+        />
+        <Route
           path="/app"
           element={<Redirect to="https://testnet.hyperdrive.trade" />}
         />
