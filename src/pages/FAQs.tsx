@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import slugify from "slugify";
 import { Footer } from "src/components/Footer";
@@ -36,6 +36,19 @@ for (const question of questions) {
 
 export function FAQs() {
   const [activeQuestionId] = useIntersecting(ids);
+  const navRef = useRef<HTMLDivElement>(null);
+
+  // Ensure the active question is always visible if the nav is taller than the
+  // viewport.
+  useEffect(() => {
+    if (activeQuestionId) {
+      const navItem = document.getElementById(`nav-${activeQuestionId}`);
+      navRef.current?.scrollTo({
+        top: (navItem?.offsetTop || 0) - 20,
+        behavior: "smooth",
+      });
+    }
+  }, [activeQuestionId]);
 
   return (
     <>
@@ -48,10 +61,14 @@ export function FAQs() {
 
         <div className="flex items-start gap-10 mt-16 max-md:justify-center">
           {/* Fixed question nav */}
-          <div className="basis-1/3 p-6 bg-card-gradient flex flex-col gap-2 sticky top-24 max-md:hidden">
+          <div
+            ref={navRef}
+            className="basis-1/3 p-6 bg-card-gradient flex flex-col gap-2 sticky top-24 max-md:hidden max-h-[calc(100vh_-_116px)] overflow-y-auto"
+          >
             {Object.entries(idsByQuestion).map(([question, id]) => (
               <a
                 key={id}
+                id={`nav-${id}`}
                 href={`#${id}`}
                 className={classNames(
                   "font-medium p-2 hover:text-neutral-100 transition-all",
