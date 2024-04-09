@@ -19,7 +19,7 @@ export function useIntersecting(
      * value of 1 means the entire element must be visible, while 0 means any
      * part of the element being visible will trigger the observer.
      */
-    threshold = 0.8,
+    threshold = 0.0,
   }: IntersectionObserverInit = {},
 ) {
   const [intersectingIds, setIntersectingIds] = useState<string[]>([]);

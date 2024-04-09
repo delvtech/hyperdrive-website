@@ -25,9 +25,9 @@ const questions = [
 
 type Question = (typeof questions)[number];
 
+// Create id slugs for each question
 const ids: string[] = [];
 const idsByQuestion = {} as Record<Question, string>;
-
 for (const question of questions) {
   const id = slugify(question, { lower: true });
   idsByQuestion[question] = id;
@@ -35,18 +35,40 @@ for (const question of questions) {
 }
 
 export function FAQs() {
-  const [activeQuestionId] = useIntersecting(ids);
+  const [activeQuestionId] = useIntersecting(ids, {
+    threshold: 0.5,
+  });
   const navRef = useRef<HTMLDivElement>(null);
 
-  // Ensure the active question is always visible if the nav is taller than the
-  // viewport.
+  // Ensure the nav link for the active question is always scrolled into view if
+  // the screen is too small to show all questions at once.
   useEffect(() => {
     if (activeQuestionId) {
       const navItem = document.getElementById(`nav-${activeQuestionId}`);
-      navRef.current?.scrollTo({
-        top: (navItem?.offsetTop || 0) - 20,
-        behavior: "smooth",
-      });
+
+      if (!navItem || !navRef.current) {
+        return;
+      }
+
+      const navTop = navRef.current.scrollTop;
+      const itemTop = navItem.offsetTop - 20;
+      if (itemTop < navTop) {
+        navRef.current.scrollTo({
+          top: itemTop,
+          behavior: "smooth",
+        });
+        return;
+      }
+
+      const navBottom = navTop + navRef.current.offsetHeight;
+      const itemBottom = navItem.offsetTop + navItem.offsetHeight + 20;
+      const delta = itemBottom - navBottom;
+      if (delta > 0) {
+        navRef.current.scrollTo({
+          top: navTop + delta,
+          behavior: "smooth",
+        });
+      }
     }
   }, [activeQuestionId]);
 
@@ -83,7 +105,7 @@ export function FAQs() {
           </div>
 
           {/* Scrolling content */}
-          <div className="basis-2/3 flex flex-col gap-12 body-copy max-md:basis-full">
+          <div className="basis-2/3 flex flex-col gap-16 body-copy max-md:basis-full">
             <Answer question="What is Hyperdrive?">
               <p>
                 <Link className="" to="/docs">
@@ -274,7 +296,7 @@ export function FAQs() {
                 </a>{" "}
                 when opening or closing their Long or Short positions:
               </p>
-              <ul>
+              <ul className="list-disc pl-8">
                 <li>
                   a Curve Fee that is dynamic and is applied to the non-matured
                   portion of positions at the time of trading.
