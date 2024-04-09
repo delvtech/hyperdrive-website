@@ -296,7 +296,7 @@ export function FAQs() {
                 </a>{" "}
                 when opening or closing their Long or Short positions:
               </p>
-              <ul>
+              <ul className="list-disc pl-8">
                 <li>
                   a Curve Fee that is dynamic and is applied to the non-matured
                   portion of positions at the time of trading.
