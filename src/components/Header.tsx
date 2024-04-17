@@ -122,9 +122,11 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
           >
             Docs
           </Link>
-          <a className="p-4 hover:font-bold duration-300 transition-all">
+          <a
+            className="p-4 hover:font-bold duration-300 transition-all"
+            href="https://hyperdrive.blockanalitica.com"
+          >
             Analytics
-            <sup className="ml-2 text-neutral-400/80">coming soon</sup>
           </a>
           <Link
             className="p-4 hover:font-bold duration-300 transition-all"
