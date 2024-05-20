@@ -7,6 +7,8 @@ import hyperdriveLogoWhite from "src/assets/logos/hyperdrive-logo-white.svg";
 import hyperdriveLogo from "src/assets/logos/hyperdrive-logo.svg";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
 
+const SHOW_ANNOUNCEMENT_BANNER = true;
+
 interface HeaderProps {
   className?: string;
   /**
@@ -48,94 +50,116 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
   const isScrolled = scrollPosition > 0;
 
   return (
-    <div
-      className={classNames(
-        "flex items-center justify-between px-[2vw] py-6 fixed top-0 left-0 right-0 transition-all duration-300 uppercase font-mono text-sm z-50",
-        {
-          "text-neutral-100": activeTheme === "dark",
-          "text-neutral-900": activeTheme === "light",
-          "!pt-2 bg-gradient-to-b from-neutral-950 to-neutral-950/0":
-            isScrolled,
-        },
-        className,
+    <>
+      {/* Announcement banner */}
+      {SHOW_ANNOUNCEMENT_BANNER && (
+        <div className="h-10 bg-midnight-100/20 border-b border-white/10 flex items-center justify-center text-sm">
+          <p>
+            We've updated our Privacy Policy. See the latest version{" "}
+            <a
+              href="https://delv-public.s3.us-east-2.amazonaws.com/delv-privacy-policy.pdf"
+              className="text-neutral-100 underline hover:text-aquamarine"
+              target="_blank"
+              rel="noreferrer"
+            >
+              here
+            </a>
+            .
+          </p>
+        </div>
       )}
-    >
-      {/* Logo */}
-      <Link
-        to="/"
-        className="px-6 h-12 backdrop-blur rounded-full flex items-center max-md:px-4 max-md:bg-neutral-950/90"
-      >
-        <img
-          src={activeTheme === "light" ? hyperdriveLogo : hyperdriveLogoWhite}
-          className="h-6 transition-all duration-300"
-          alt="Hyperdrive"
-        />
-      </Link>
 
-      {/* Menu */}
       <div
         className={classNames(
-          "flex flex-row-reverse items-center gap-2 justify-self-end transition-all duration-300",
-          "max-md:fixed max-md:top-6 max-md:right-[2vw] max-md:items-start",
+          "flex items-center justify-between px-[2vw] py-6 fixed top-0 left-0 right-0 transition-all duration-300 uppercase font-mono text-sm z-50",
           {
-            "max-md:!top-2": isScrolled,
+            "text-neutral-100": activeTheme === "dark",
+            "text-neutral-900": activeTheme === "light",
+            "!pt-2 bg-gradient-to-b from-neutral-950 to-neutral-950/0":
+              isScrolled,
+            "mt-8": SHOW_ANNOUNCEMENT_BANNER && !isScrolled,
           },
+          className,
         )}
       >
-        <button
-          className={classNames(
-            "h-12 w-12 shrink-0 border border-transparent hover:border-neutral-500 transition-all rounded-full justify-center items-center hidden backdrop-blur",
-            "max-lg:!flex max-lg:bg-neutral-950/90",
-          )}
-          onClick={toggleMenu}
+        {/* Logo */}
+        <Link
+          to="/"
+          className="px-6 h-12 backdrop-blur rounded-full flex items-center max-md:px-4 max-md:bg-neutral-950/90"
         >
-          <img src={isMenuOpen ? xIcon : menuIcon} alt="Menu" />
-        </button>
+          <img
+            src={activeTheme === "light" ? hyperdriveLogo : hyperdriveLogoWhite}
+            className="h-6 transition-all duration-300"
+            alt="Hyperdrive"
+          />
+        </Link>
+
+        {/* Menu */}
         <div
           className={classNames(
-            "flex gap-2 font-medium duration-300 overflow-hidden backdrop-blur rounded-full",
+            "flex flex-row-reverse items-center gap-2 justify-self-end transition-all duration-300",
+            "max-md:fixed max-md:top-6 max-md:right-[2vw] max-md:items-start",
             {
-              "max-lg:w-0": !isMenuOpen,
-              "max-lg:w-full max-lg:px-4": isMenuOpen,
+              "max-md:!top-2": isScrolled,
+              "max-md:mt-8": SHOW_ANNOUNCEMENT_BANNER && !isScrolled,
             },
-            "max-md:flex-col max-md:rounded-none max-md:py-4 max-md:bg-neutral-950/80",
           )}
         >
-          <NavLink
-            className={({ isActive }) =>
-              classNames(
-                "p-4 hover:font-bold duration-300 hover:text-aquamarine transition-all mr-4 max-md:mr-0",
-                {
-                  "text-aquamarine": isActive,
-                },
-              )
-            }
-            to="/build"
+          <button
+            className={classNames(
+              "h-12 w-12 shrink-0 border border-transparent hover:border-neutral-500 transition-all rounded-full justify-center items-center hidden backdrop-blur",
+              "max-lg:!flex max-lg:bg-neutral-950/90",
+            )}
+            onClick={toggleMenu}
           >
-            Build
-          </NavLink>
-          <Link
-            className="p-4 hover:font-bold duration-300 transition-all"
-            to="/docs"
-            target="_blank"
-            referrerPolicy="no-referrer"
+            <img src={isMenuOpen ? xIcon : menuIcon} alt="Menu" />
+          </button>
+          <div
+            className={classNames(
+              "flex gap-2 font-medium duration-300 overflow-hidden backdrop-blur rounded-full",
+              {
+                "max-lg:w-0": !isMenuOpen,
+                "max-lg:w-full max-lg:px-4": isMenuOpen,
+              },
+              "max-md:flex-col max-md:rounded-none max-md:py-4 max-md:bg-neutral-950/80",
+            )}
           >
-            Docs
-          </Link>
-          <a
-            className="p-4 hover:font-bold duration-300 transition-all"
-            href="https://hyperdrive.blockanalitica.com"
-          >
-            Analytics
-          </a>
-          <Link
-            className="p-4 hover:font-bold duration-300 transition-all"
-            to="/app"
-          >
-            App
-          </Link>
+            <NavLink
+              className={({ isActive }) =>
+                classNames(
+                  "p-4 hover:font-bold duration-300 hover:text-aquamarine transition-all mr-4 max-md:mr-0",
+                  {
+                    "text-aquamarine": isActive,
+                  },
+                )
+              }
+              to="/build"
+            >
+              Build
+            </NavLink>
+            <Link
+              className="p-4 hover:font-bold duration-300 transition-all"
+              to="/docs"
+              target="_blank"
+              referrerPolicy="no-referrer"
+            >
+              Docs
+            </Link>
+            <a
+              className="p-4 hover:font-bold duration-300 transition-all"
+              href="https://hyperdrive.blockanalitica.com"
+            >
+              Analytics
+            </a>
+            <Link
+              className="p-4 hover:font-bold duration-300 transition-all"
+              to="/app"
+            >
+              App
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
