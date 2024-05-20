@@ -171,7 +171,7 @@ export function Footer() {
               <li>
                 <a
                   className="hover:text-neutral-100 transition-all"
-                  href="https://elementfi.s3.us-east-2.amazonaws.com/element-finance-terms-of-service.pdf"
+                  href="https://delv-public.s3.us-east-2.amazonaws.com/delv-terms-of-service.pdf"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -181,7 +181,7 @@ export function Footer() {
               <li>
                 <a
                   className="hover:text-neutral-100 transition-all"
-                  href="https://elementfi.s3.us-east-2.amazonaws.com/element-finance-privacy-policy.pdf"
+                  href="https://delv-public.s3.us-east-2.amazonaws.com/delv-privacy-policy.pdf"
                   target="_blank"
                   rel="noreferrer"
                 >

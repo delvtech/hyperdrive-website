@@ -279,7 +279,7 @@ export function FAQs() {
                 To the extent permitted by applicable law, Hyperdrive is made
                 available on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS
                 OF ANY KIND, either express or implied. See our{" "}
-                <a href="https://elementfi.s3.us-east-2.amazonaws.com/element-finance-terms-of-service.pdf">
+                <a href="https://delv-public.s3.us-east-2.amazonaws.com/delv-terms-of-service.pdf">
                   Terms of Service
                 </a>
                 . Nothing within this document or elsewhere within Hyperdrive
