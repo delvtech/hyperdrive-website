@@ -7,7 +7,7 @@ import hyperdriveLogoWhite from "src/assets/logos/hyperdrive-logo-white.svg";
 import hyperdriveLogo from "src/assets/logos/hyperdrive-logo.svg";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
 
-const SHOW_ANNOUNCEMENT_BANNER = true;
+const SHOW_ANNOUNCEMENT_BANNER = false;
 
 interface HeaderProps {
   className?: string;
