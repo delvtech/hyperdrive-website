@@ -142,7 +142,7 @@ export function Build() {
             <li>
               <a
                 className="hover:text-aquamarine transition-all"
-                href="https://github.com/delvtech/hyperdrive/tree/main/crates/hyperdrive-math"
+                href="https://github.com/delvtech/hyperdrive-rs"
               >
                 Rust SDK
               </a>
@@ -150,7 +150,7 @@ export function Build() {
             <li>
               <a
                 className="hover:text-aquamarine transition-all"
-                href="https://hyperdrive-js.delv.tech/"
+                href="https://js.hyperdrive.box"
               >
                 TypeScript SDK
               </a>
