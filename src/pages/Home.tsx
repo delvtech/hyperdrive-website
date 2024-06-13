@@ -323,7 +323,7 @@ export function Home() {
 
         <div className="flex items-center justify-center">
           <GradientBorderButton
-            href="https://docs-delv.gitbook.io/hyperdrive/hyperdrive-overview/position-types/liquidity-provider"
+            href="https://docs.hyperdrive.box/hyperdrive-overview/position-types/liquidity-provider"
             className="button-primary"
           >
             Learn more

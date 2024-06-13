@@ -194,7 +194,7 @@ export function CodeTabs() {
               to move the pool to a target rate, and much more.
             </p>
             <GradientBorderButton
-              href="https://github.com/delvtech/hyperdrive/tree/main/crates/hyperdrive-math"
+              href="https://github.com/delvtech/hyperdrive-rs"
               className="button-sm"
             >
               Rust SDK source code
@@ -393,7 +393,7 @@ close_long_event = hyperdrive_agent0.close_long(
               Math library compiled to WebAssembly.
             </p>
             <GradientBorderButton
-              href="https://hyperdrive-js.delv.tech"
+              href="https://js.hyperdrive.box"
               className="button-sm"
             >
               TypeScript SDK Docs
