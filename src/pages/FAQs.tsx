@@ -142,7 +142,7 @@ export function FAQs() {
                 available markets where you can take a Long, Short, and/or LP
                 position to engage in passive or active yield strategies. Find
                 more details in our{" "}
-                <a href="https://docs-delv.gitbook.io/hyperdrive/hyperdrive-overview/ui-walkthrough">
+                <a href="https://docs.hyperdrive.box/hyperdrive-overview/ui-walkthrough">
                   UI Walkthrough
                 </a>
                 .
@@ -164,7 +164,7 @@ export function FAQs() {
 
             <Answer question="What are Longs & Shorts?">
               <p>
-                <a href="https://docs-delv.gitbook.io/hyperdrive/hyperdrive-overview/position-types/longs-fixed-rates">
+                <a href="https://docs.hyperdrive.box/hyperdrive-overview/position-types/longs-fixed-rates">
                   Long positions
                 </a>{" "}
                 in Hyperdrive allow users to earn a fixed rate on their
@@ -179,7 +179,7 @@ export function FAQs() {
                 1.05 stETH one year from now.
               </p>
               <p>
-                <a href="https://docs-delv.gitbook.io/hyperdrive/hyperdrive-overview/position-types/shorts-variable-rates">
+                <a href="https://docs.hyperdrive.box/hyperdrive-overview/position-types/shorts-variable-rates">
                   Short positions
                 </a>{" "}
                 in Hyperdrive enable users to earn a multiplied variable rate
@@ -221,7 +221,7 @@ export function FAQs() {
 
             <Answer question="What is the role of a Liquidity Provider?">
               <p>
-                <a href="https://docs-delv.gitbook.io/hyperdrive/hyperdrive-overview/position-types/liquidity-provider">
+                <a href="https://docs.hyperdrive.box/hyperdrive-overview/position-types/liquidity-provider">
                   Liquidity Providers
                 </a>{" "}
                 (LPs) deposit single-sided liquidity into the Hyperdrive AMM,
@@ -291,7 +291,7 @@ export function FAQs() {
             <Answer question="Are there any fees?">
               <p>
                 Users pay two types of{" "}
-                <a href="https://docs-delv.gitbook.io/hyperdrive/trading/fees">
+                <a href="https://docs.hyperdrive.box/trading/fees">
                   fees
                 </a>{" "}
                 when opening or closing their Long or Short positions:
@@ -332,7 +332,7 @@ export function FAQs() {
 
             <Answer question="What is a Fixed Rate Borrow Position?">
               <p>
-                <a href="https://docs-delv.gitbook.io/hyperdrive/trading/trading-strategies/fixed-rate-borrow">
+                <a href="https://docs.hyperdrive.box/trading/trading-strategies/fixed-rate-borrow">
                   Fixed Rate Borrow
                 </a>{" "}
                 is a feature unlocked by Hyperdrive markets that allows users to

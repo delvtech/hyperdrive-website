@@ -46,7 +46,7 @@ export function Footer() {
               <li>
                 <a
                   className="hover:text-neutral-100 transition-all"
-                  href="https://docs-delv.gitbook.io/hyperdrive/hyperdrive-overview/ui-walkthrough"
+                  href="https://docs.hyperdrive.box/hyperdrive-overview/ui-walkthrough"
                 >
                   User Guides
                 </a>
