@@ -27,7 +27,7 @@ function App() {
         />
         <Route
           path="/app"
-          element={<Redirect to="https://testnet.hyperdrive.trade" />}
+          element={<Redirect to="https://app.hyperdrive.trade" />}
         />
         <Route
           path="/testnet"
