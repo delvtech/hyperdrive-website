@@ -337,8 +337,8 @@ export function Home() {
           Security
         </h2>
 
-        {/* Audits */}
-        <div className="px-14 pr-20 py-9 bg-card-gradient rounded-sm relative max-w-5xl mx-auto flex flex-col mb-6 max-lg:hidden">
+        {/* Audits (large screens) */}
+        <div className="px-14 pr-20 py-9 bg-card-gradient rounded-sm relative max-w-5xl mx-auto flex flex-col mb-6 max-md:hidden">
           <p className="font-mono text-caption-lg mb-3">01</p>
           <div className="flex gap-24 items-center flex-1">
             <div>
@@ -346,9 +346,8 @@ export function Home() {
                 Audits
               </h3>
               <p className="mb-6">
-                Four audits of the Hyperdrive protocol have been completed by
-                industry leaders in blockchain security, with a fifth audit
-                scheduled during testnet.
+                Six audits of the Hyperdrive protocol have been completed by
+                industry leaders in blockchain security.
               </p>
               <GradientBorderButton
                 className="button-sm mb-8"
@@ -372,12 +371,12 @@ export function Home() {
           </div>
         </div>
 
-        {/* Formal verification (< large screen) */}
+        {/* Formal verification (lg breakpoint only) */}
         <div
           className={classNames(
             "px-14 pr-20 py-9 bg-card-gradient rounded-sm relative max-w-5xl mx-auto flex-col mb-6 hidden",
-            "max-lg:flex",
-            "max-md:hidden",
+            "max-lg:flex", // show at the lg breakpoint
+            "max-md:hidden", // hide again at the md breakpoint
           )}
         >
           <p className="font-mono text-caption-lg mb-3">02</p>
@@ -401,12 +400,12 @@ export function Home() {
           </div>
         </div>
 
-        {/* Fuzz testing (< large screen) */}
+        {/* Fuzz testing (lg breakpoint only) */}
         <div
           className={classNames(
             "px-14 pr-20 py-9 bg-card-gradient rounded-sm relative max-w-5xl mx-auto flex-col mb-6 hidden",
-            "max-lg:flex",
-            "max-md:hidden",
+            "max-lg:flex", // show at the lg breakpoint
+            "max-md:hidden", // hide again at the md breakpoint
           )}
         >
           <p className="font-mono text-caption-lg mb-3">03</p>
@@ -425,12 +424,12 @@ export function Home() {
           </div>
         </div>
 
-        {/* Threat monitoring (< large screen) */}
+        {/* Threat monitoring (lg breakpoint only) */}
         <div
           className={classNames(
             "px-14 pr-20 py-9 bg-card-gradient rounded-sm relative max-w-5xl mx-auto flex-col mb-6 hidden",
-            "max-lg:flex",
-            "max-md:hidden",
+            "max-lg:flex", // show at the lg breakpoint
+            "max-md:hidden", // hide again at the md breakpoint
           )}
         >
           <p className="font-mono text-caption-lg mb-3">04</p>
@@ -452,12 +451,12 @@ export function Home() {
         <div
           className={classNames(
             "flex gap-6 max-w-5xl",
-            "max-lg:hidden",
-            "max-md:flex max-md:flex-col",
+            "max-lg:hidden", // hide at the lg breakpoint
+            "max-md:flex max-md:flex-col", // show again at the md breakpoint
           )}
         >
-          {/* Audits < large screen */}
-          <div className="pt-6 pb-9 bg-card-gradient relative hidden max-lg:block">
+          {/* Audits (medium screens) */}
+          <div className="pt-6 pb-9 bg-card-gradient relative hidden max-md:block">
             <div className="flex justify-between pl-12 mb-4">
               <p className="font-mono text-caption-lg mt-3">01</p>
               <img className="box w-[232px]" src={auditsIllustration} />
@@ -465,9 +464,8 @@ export function Home() {
             <div className="px-12">
               <h3 className="text-h7 font-chakra text-white mb-4">Audits</h3>
               <p className="mb-8">
-                Four audits of the Hyperdrive protocol have been completed by
-                industry leaders in blockchain security, with a fifth audit
-                scheduled during testnet.
+                Six audits of the Hyperdrive protocol have been completed by
+                industry leaders in blockchain security.
               </p>
               <div className="grid grid-cols-2 gap-6 items-center">
                 <a href="https://spearbit.com/">
