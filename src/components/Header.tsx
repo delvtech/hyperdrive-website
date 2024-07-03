@@ -7,7 +7,7 @@ import hyperdriveLogoWhite from "src/assets/logos/hyperdrive-logo-white.svg";
 import hyperdriveLogo from "src/assets/logos/hyperdrive-logo.svg";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
 
-const SHOW_ANNOUNCEMENT_BANNER = false;
+const SHOW_ANNOUNCEMENT_BANNER = true;
 
 interface HeaderProps {
   className?: string;
@@ -53,16 +53,25 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
     <>
       {/* Announcement banner */}
       {SHOW_ANNOUNCEMENT_BANNER && (
-        <div className="h-10 bg-midnight-100/20 border-b border-white/10 flex items-center justify-center text-sm">
+        <div className="h-10 bg-midnight-100/20 border-b border-white/10 flex items-center justify-center">
           <p>
-            We've updated our Privacy Policy. See the latest version{" "}
+            We've updated our{" "}
             <a
               href="https://delv-public.s3.us-east-2.amazonaws.com/delv-privacy-policy.pdf"
-              className="text-neutral-100 underline hover:text-aquamarine"
+              className="text-[#71F8F8]"
               target="_blank"
               rel="noreferrer"
             >
-              here
+              Privacy Policy
+            </a>{" "}
+            and{" "}
+            <a
+              href="https://delv-public.s3.us-east-2.amazonaws.com/delv-terms-of-service.pdf"
+              className="text-[#71F8F8]"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Terms of Service
             </a>
             .
           </p>
