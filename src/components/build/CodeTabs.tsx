@@ -337,7 +337,7 @@ async fn main() -> Result<()> {
               agent0 docs
             </GradientBorderButton>
           </div>
-          <SyntaxHighlighter
+          {/* <SyntaxHighlighter
             showLineNumbers={true}
             language="python"
             style={dracula}
@@ -373,7 +373,7 @@ close_long_event = hyperdrive_agent0.close_long(
     maturity_time=open_long_event.maturity_time,
     bonds=open_long_event.bond_amount,
 )`}
-          </SyntaxHighlighter>
+          </SyntaxHighlighter> */}
         </div>
 
         {/* UI Integration */}
