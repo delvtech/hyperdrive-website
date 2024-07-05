@@ -194,10 +194,10 @@ export function CodeTabs() {
               to move the pool to a target rate, and much more.
             </p>
             <GradientBorderButton
-              href="https://github.com/delvtech/hyperdrive-rs"
+              href="https://docs.rs/crate/hyperdrive-math/latest"
               className="button-sm"
             >
-              Rust SDK source code
+              Rust SDK docs
             </GradientBorderButton>
           </div>
           <SyntaxHighlighter
