@@ -8,7 +8,6 @@ import multipliedRatesIcon from "src/assets/icons/multiplied-rates-icon.svg";
 import auditsIllustration from "src/assets/illustrations/audits-illustration.svg";
 import formalVerificationIllustration from "src/assets/illustrations/formal-verification-illustration.svg";
 import fuzzTestingIllustration from "src/assets/illustrations/fuzz-testing-illustration.svg";
-import heroIllustration from "src/assets/illustrations/hero-illustration.svg";
 import lpReturnsIcon1 from "src/assets/illustrations/lp-returns-1-illustration.svg";
 import lpReturnsIcon2 from "src/assets/illustrations/lp-returns-2-illustration.svg";
 import lpReturnsIcon3 from "src/assets/illustrations/lp-returns-3-illustration.svg";
@@ -30,7 +29,7 @@ export function Home() {
       {/* Hero */}
       <div
         className={classNames(
-          "h-screen flex gap-32 items-center justify-center relative px-[5vw]",
+          "h-screen flex gap-32 items-center justify-center relative px-[5vw] bg-[url('/public/hyperdrive-hero-banner.jpg')] bg-cover bg-center shadow-[inset_0_-80px_80px_#0F1117]",
           "max-xl:px-[3vw]",
           "max-lg:flex-col max-lg:gap-8 max-lg:text-center",
         )}
@@ -45,7 +44,7 @@ export function Home() {
         >
           <h1
             className={classNames(
-              "text-h1 font-medium font-chakra relative gradient-text mb-16",
+              "text-h1 font-medium font-chakra relative text-neutral-100 mb-16",
               "max-xl:text-h2",
               "max-sm:text-h4",
             )}
@@ -85,16 +84,16 @@ export function Home() {
             "max-lg:absolute max-lg:top-1/2 max-lg:w-full max-lg:left-0",
           )}
         >
-          <img
+          {/* <img
             className={classNames(
               "h-full absolute right-0 top-0 max-w-none",
               "max-lg:w-[200vw] max-lg:opacity-50 max-lg:h-auto max-lg:-translate-y-1/2",
             )}
             src={heroIllustration}
-          />
+          /> */}
           <HeroPill
             className={classNames(
-              "absolute -translate-x-1/2 -translate-y-1/2 top-[10%] right-[390px] whitespace-nowrap",
+              "absolute -translate-x-1/2 -translate-y-1/2 top-[10%] right-[290px] whitespace-nowrap",
               "max-[1440px]:right-[28vw]",
               "max-xl:right-[24vw]",
               // "max-lg:static max-lg:transform-none",
@@ -105,7 +104,7 @@ export function Home() {
           </HeroPill>
           <HeroPill
             className={classNames(
-              "absolute -translate-x-1/2 -translate-y-1/2 top-[91%] right-[-48px] whitespace-nowrap",
+              "absolute -translate-x-1/2 -translate-y-1/2 top-[91%] right-[-148px] whitespace-nowrap",
               "max-[1440px]:right-[-6vw]",
               "max-xl:right-[-10vw]",
               // "max-lg:static max-lg:transform-none",
@@ -116,7 +115,7 @@ export function Home() {
           </HeroPill>
           <HeroPill
             className={classNames(
-              "absolute -translate-x-1/2 -translate-y-1/2 top-[34%] right-[-72px] whitespace-nowrap",
+              "absolute -translate-x-1/2 -translate-y-1/2 top-[34%] right-[-172px] whitespace-nowrap",
               "max-[1440px]:right-[-7vw]",
               "max-xl:right-[-10vw]",
               // "max-lg:static max-lg:transform-none",
