@@ -78,6 +78,14 @@ export function Footer() {
               <li>
                 <a
                   className="hover:text-neutral-100 transition-all"
+                  href="https://cantina.xyz/bounties/7fa99194-3a19-476d-92dd-f66289baf95e"
+                >
+                  Bug Bounty
+                </a>
+              </li>
+              <li>
+                <a
+                  className="hover:text-neutral-100 transition-all"
                   href="https://github.com/delvtech/hyperdrive"
                 >
                   GitHub
