@@ -322,9 +322,9 @@ async fn main() -> Result<()> {
           }
           example={{
             language: "typescript",
-            code: `import { createPublicClient, createWalletClient, custom, http } from "viem";
+            code: `import { createPublicClient, http } from "viem";
 import { mainnet } from "viem/chains";
-import { createReadHyperdrive } from "@delvtech/hyperdrive-viem";
+import { ReadHyperdrive } from "@delvtech/hyperdrive-viem";
 
 // 1. Create a public client
 const publicClient = createPublicClient({
@@ -332,21 +332,14 @@ const publicClient = createPublicClient({
   transport: http(),
 });
 
-// 2. Create a wallet client
-const client = createWalletClient({
-  chain: mainnet,
-  transport: custom(window.ethereum!),
-});
-
-// 3. Create a ReadWriteHyperdrive instance
-const hyperdrive = createReadWriteHyperdrive({
+// 2. Create a ReadHyperdrive instance
+const hyperdrive = new ReadWriteHyperdrive({
   address: "0x...",
   publicClient,
-  walletClient,
 });
 
-// 4. Send a transaction
-const transactionHash = await hyperdrive.pause(true);`,
+// 3. Query the pool
+const rate = await hyperdrive.getFixedApr();`,
           }}
         />
       </div>
