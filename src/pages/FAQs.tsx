@@ -158,7 +158,7 @@ export function FAQs() {
                 </a>{" "}
                 and we plan to add support for an increasing variety of
                 reputable yield sources. Explore the app to view all supported
-                markets: Hyperdrive App.
+                markets: <Link to="/app">Hyperdrive App.</Link>
               </p>
             </Answer>
 
@@ -291,10 +291,8 @@ export function FAQs() {
             <Answer question="Are there any fees?">
               <p>
                 Users pay two types of{" "}
-                <a href="https://docs.hyperdrive.box/trading/fees">
-                  fees
-                </a>{" "}
-                when opening or closing their Long or Short positions:
+                <a href="https://docs.hyperdrive.box/trading/fees">fees</a> when
+                opening or closing their Long or Short positions:
               </p>
               <ul className="list-disc pl-8">
                 <li>
