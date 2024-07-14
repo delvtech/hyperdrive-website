@@ -7,7 +7,7 @@ import hyperdriveLogoWhite from "src/assets/logos/hyperdrive-logo-white.svg";
 import hyperdriveLogo from "src/assets/logos/hyperdrive-logo.svg";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
 
-const SHOW_ANNOUNCEMENT_BANNER = true;
+const ANNOUNCEMENT_BANNER_EXPIRY = new Date("07/18/2024");
 
 interface HeaderProps {
   className?: string;
@@ -48,13 +48,14 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
   }
 
   const isScrolled = scrollPosition > 0;
+  const showBanner = new Date() < ANNOUNCEMENT_BANNER_EXPIRY;
 
   return (
     <>
       {/* Announcement banner */}
-      {SHOW_ANNOUNCEMENT_BANNER && (
-        <div className="h-10 bg-midnight-100/20 border-b border-white/10 flex items-center justify-center">
-          <p>
+      {showBanner && (
+        <div className="h-10 bg-midnight-100/20 border-b border-white/10 flex items-center justify-center px-3 py-2 max-sm:text-sm">
+          <p className="leading-none">
             We've updated our{" "}
             <a
               href="https://delv-public.s3.us-east-2.amazonaws.com/delv-privacy-policy.pdf"
@@ -86,7 +87,7 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
             "text-neutral-900": activeTheme === "light",
             "!pt-2 bg-gradient-to-b from-neutral-950 to-neutral-950/0":
               isScrolled,
-            "mt-8": SHOW_ANNOUNCEMENT_BANNER && !isScrolled,
+            "mt-8": showBanner && !isScrolled,
           },
           className,
         )}
@@ -110,7 +111,7 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
             "max-md:fixed max-md:top-6 max-md:right-[2vw] max-md:items-start",
             {
               "max-md:!top-2": isScrolled,
-              "max-md:mt-8": SHOW_ANNOUNCEMENT_BANNER && !isScrolled,
+              "max-md:mt-8": showBanner && !isScrolled,
             },
           )}
         >
