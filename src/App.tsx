@@ -17,7 +17,7 @@ function App() {
         <Route path="/faqs" element={<FAQs />} />
         <Route
           path="/docs"
-          element={<Redirect to="https://docs-delv.gitbook.io/hyperdrive" />}
+          element={<Redirect to="https://docs.hyperdrive.box" />}
         />
         <Route
           path="/whitepaper"
