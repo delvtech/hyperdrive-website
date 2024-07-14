@@ -11,119 +11,72 @@ export function CodeTabs() {
     <div className="bg-neutral-900 max-w-5xl mx-auto">
       {/* Tab Buttons */}
       <div className="flex [&>*]:flex-1 gap-0.5">
-        <button
-          className={classNames(
-            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all",
-            {
-              "!bg-neutral-950": activeTab === 0,
-            },
-            "max-md:items-center max-md:text-body-sm",
-            "max-sm:px-2",
-          )}
+        <TabButton
+          name="Protocol"
+          language="Solidity"
+          active={activeTab === 0}
           onClick={() => {
             setActiveTab(0);
           }}
-        >
-          Protocol
-          <span className="text-content font-normal">Solidity</span>
-        </button>
-        <button
-          className={classNames(
-            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all",
-            {
-              "!bg-neutral-950": activeTab === 1,
-            },
-            "max-md:items-center max-md:text-body-sm",
-            "max-sm:px-2",
-          )}
+        />
+        <TabButton
+          name="Hyperdrive Math"
+          language="Rust"
+          active={activeTab === 1}
           onClick={() => {
             setActiveTab(1);
           }}
-        >
-          Hyperdrive Math
-          <span className="text-content font-normal">Rust</span>
-        </button>
-        <button
-          className={classNames(
-            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all",
-            {
-              "!bg-neutral-950": activeTab === 2,
-            },
-            "max-md:items-center max-md:text-body-sm",
-            "max-sm:px-2",
-          )}
+        />
+        <TabButton
+          name="Bots"
+          language="Python"
+          active={activeTab === 2}
           onClick={() => {
             setActiveTab(2);
           }}
-        >
-          Bots
-          <span className="text-content font-normal">Python</span>
-        </button>
-        <button
-          className={classNames(
-            "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all",
-            {
-              "!bg-neutral-950": activeTab === 3,
-            },
-            "max-md:items-center max-md:text-body-sm",
-            "max-sm:px-2",
-          )}
+        />
+        <TabButton
+          name="UI Integration"
+          language="TypeScript"
+          active={activeTab === 3}
           onClick={() => {
             setActiveTab(3);
           }}
-        >
-          UI Integration
-          <span className="text-content font-normal">TypeScript</span>
-        </button>
+        />
       </div>
 
       {/* Tab Contents */}
       <div className="bg-neutral-950">
         {/* Protocol */}
-        <div
-          className={classNames({
-            hidden: activeTab !== 0,
-          })}
-        >
-          <div className="px-14 py-8 max-w-4xl max-lg:px-[6vw]">
-            <h3 className="font-chakra text-body-lg text-neutral-100 font-medium mb-4">
-              Utilizing Hyperdrive as a DeFi Primitive
-            </h3>
-            <p className="mb-8">
-              The Hyperdrive AMM is a new DeFi primitive that allows fixed-rate
-              markets to be created on top of variable rate yield sources.
-              Developers can take advantage of Hyperdrive's Long and Short
-              positions to provide users with fixed rate or variable rate
-              exposure. These positions can be included as part of a user's
-              portfolio to provide them with predictable yield, to give them
-              exposure to directional changes in the variable-rate, or to hedge
-              existing borrow positions. For example, Hyperdrive Shorts can be
-              used to hedge the interest owed on variable rate borrow positions
-              to help shield their borrow position from effects of interest rate
-              increases.
-            </p>
-            <GradientBorderButton
-              href="https://github.com/delvtech/hyperdrive"
-              className="button-sm"
-            >
-              Hyperdrive source code
-            </GradientBorderButton>
-          </div>
-          <SyntaxHighlighter
-            showLineNumbers={true}
-            language="solidity"
-            style={dracula}
-            lineNumberStyle={{
-              borderRight: "1px solid rgba(0,0,0,.2)",
-              marginRight: "24px",
-            }}
-            customStyle={{
-              fontSize: "14px",
-              padding: "32px 56px 32px 0",
-              borderRadius: "0",
-            }}
-          >
-            {`contract Integrator {
+        <TabContent
+          active={activeTab === 0}
+          title="Utilizing Hyperdrive as a DeFi Primitive"
+          body={
+            <>
+              <p className="mb-8">
+                The Hyperdrive AMM is a new DeFi primitive that allows
+                fixed-rate markets to be created on top of variable rate yield
+                sources. Developers can take advantage of Hyperdrive's Long and
+                Short positions to provide users with fixed rate or variable
+                rate exposure. These positions can be included as part of a
+                user's portfolio to provide them with predictable yield, to give
+                them exposure to directional changes in the variable-rate, or to
+                hedge existing borrow positions. For example, Hyperdrive Shorts
+                can be used to hedge the interest owed on variable rate borrow
+                positions to help shield their borrow position from effects of
+                interest rate increases.
+              </p>
+              <GradientBorderButton
+                href="https://github.com/delvtech/hyperdrive"
+                className="button-sm"
+              >
+                Hyperdrive source code
+              </GradientBorderButton>
+            </>
+          }
+          example={{
+            language: "solidity",
+            code: `contract Integrator {
     IHyperdrive hyperdrive = address("0x123abc");
 
     function usesLong(...) external returns (...) {
@@ -171,50 +124,36 @@ export function CodeTabs() {
 
         // Do something...
     }
-}`}
-          </SyntaxHighlighter>
-        </div>
+}`,
+          }}
+        />
 
         {/* Hyperdrive Math */}
-        <div
-          className={classNames({
-            hidden: activeTab !== 1,
-          })}
-        >
-          <div className="px-14 py-8 max-w-4xl max-lg:px-[6vw]">
-            <h3 className="font-chakra text-body-lg text-neutral-100 font-medium mb-4">
-              Use the Rust SDK to abstract away detailed calculations
-            </h3>
-            <p className="mb-8">
-              Hyperdrive's Rust SDK provides several advanced calculations that
-              allow developers to abstract away the details of Hyperdrive's
-              implementation while still getting accurate results. In
-              particular, developers can use the Rust SDK to calculate the max
-              long or short that can be opened, calculate the trade size needed
-              to move the pool to a target rate, and much more.
-            </p>
-            <GradientBorderButton
-              href="https://docs.rs/crate/hyperdrive-math/latest"
-              className="button-sm"
-            >
-              Rust SDK docs
-            </GradientBorderButton>
-          </div>
-          <SyntaxHighlighter
-            showLineNumbers={true}
-            language="rust"
-            style={dracula}
-            lineNumberStyle={{
-              borderRight: "1px solid rgba(0,0,0,.2)",
-              marginRight: "24px",
-            }}
-            customStyle={{
-              fontSize: "14px",
-              padding: "32px 56px 32px 0",
-              borderRadius: "0",
-            }}
-          >
-            {`use std::{str::FromStr, sync::Arc};
+        <TabContent
+          active={activeTab === 1}
+          title="Use the Rust SDK to abstract away detailed calculations"
+          body={
+            <>
+              <p className="mb-8">
+                Hyperdrive's Rust SDK provides several advanced calculations
+                that allow developers to abstract away the details of
+                Hyperdrive's implementation while still getting accurate
+                results. In particular, developers can use the Rust SDK to
+                calculate the max long or short that can be opened, calculate
+                the trade size needed to move the pool to a target rate, and
+                much more.
+              </p>
+              <GradientBorderButton
+                href="https://docs.rs/crate/hyperdrive-math/latest"
+                className="button-sm"
+              >
+                Rust SDK docs
+              </GradientBorderButton>
+            </>
+          }
+          example={{
+            language: "rust",
+            code: `use std::{str::FromStr, sync::Arc};
 
 use ethers::{
     middleware::SignerMiddleware,
@@ -281,139 +220,109 @@ async fn main() -> Result<()> {
     );
 
     Ok(())
-}`}
-          </SyntaxHighlighter>
-        </div>
+}`,
+          }}
+        />
 
         {/* Bots */}
-        <div
-          className={classNames({
-            hidden: activeTab !== 2,
-          })}
-        >
-          <div className="px-14 py-8 max-w-4xl max-lg:px-[6vw]">
-            <h3 className="font-chakra text-body-lg text-neutral-100 font-medium mb-4">
-              Build Trading Bots
-            </h3>
-            <p className="mb-8">
-              Agent0 is DELV's Python-based library for testing, analyzing, and
-              interacting with Hyperdrive's smart contracts. It provides
-              ready-for-use trading policies as well as a framework for building
-              smart agents that act according to policies that can be strictly
-              user-designed, AI-powered, or a combination. These agents are
-              deployable to execute trades on-chain or can be coupled with a
-              simulated environment to test trading strategies, understand
-              Hyperdrive, and explore integrations or deployment configurations.
-              When running Hyperdrive on a local blockchain, we provide a
-              managed database delivered to you as Pandas dataframes via an API
-              as well as a visualization dashboard to enable analysis and
-              understanding.
-            </p>
-            <ul className="space-y-2 list-disc marker:text-neutral-600 pl-4 mb-8">
-              <li>
-                Get started by following our{" "}
-                <a
-                  className="text-neutral-100 underline hover:text-aquamarine"
-                  href="https://github.com/delvtech/agent0/blob/main/examples/tutorial.ipynb"
-                >
-                  bot-building tutorial
-                </a>
-              </li>
-              <li>
-                Fork{" "}
-                <a
-                  className="text-neutral-100 underline hover:text-aquamarine"
-                  href="https://github.com/delvtech/agent0"
-                >
-                  agent0
-                </a>{" "}
-                to start building your own bots
-              </li>
-            </ul>
-            <GradientBorderButton
-              href="https://agent0.readthedocs.io/en/latest/"
-              className="button-sm"
-            >
-              agent0 docs
-            </GradientBorderButton>
-          </div>
-          {/* <SyntaxHighlighter
-            showLineNumbers={true}
-            language="python"
-            style={dracula}
-            lineNumberStyle={{
-              borderRight: "1px solid rgba(0,0,0,.2)",
-              marginRight: "24px",
-            }}
-            customStyle={{
-              fontSize: "14px",
-              padding: "32px 56px 32px 0",
-              borderRadius: "0",
-            }}
-          >
-            {`import datetime
-from fixedpointmath import FixedPoint
-from agent0.hyperdrive.interactive import ILocalHyperdrive, ILocalChain
+        <TabContent
+          active={activeTab === 2}
+          title="Build Trading Bots"
+          body={
+            <>
+              <p className="mb-8">
+                Agent0 is DELV's Python-based library for testing, analyzing,
+                and interacting with Hyperdrive's smart contracts. It provides
+                ready-for-use trading policies as well as a framework for
+                building smart agents that act according to policies that can be
+                strictly user-designed, AI-powered, or a combination. These
+                agents are deployable to execute trades on-chain or can be
+                coupled with a simulated environment to test trading strategies,
+                understand Hyperdrive, and explore integrations or deployment
+                configurations. When running Hyperdrive on a local blockchain,
+                we provide a managed database delivered to you as Pandas
+                dataframes via an API as well as a visualization dashboard to
+                enable analysis and understanding.
+              </p>
+              <ul className="space-y-2 list-disc marker:text-neutral-600 pl-4 mb-8">
+                <li>
+                  Get started by following our{" "}
+                  <a
+                    className="text-neutral-100 underline hover:text-aquamarine"
+                    href="https://github.com/delvtech/agent0/blob/main/examples/tutorial.ipynb"
+                  >
+                    bot-building tutorial
+                  </a>
+                </li>
+                <li>
+                  Fork{" "}
+                  <a
+                    className="text-neutral-100 underline hover:text-aquamarine"
+                    href="https://github.com/delvtech/agent0"
+                  >
+                    agent0
+                  </a>{" "}
+                  to start building your own bots
+                </li>
+              </ul>
+              <GradientBorderButton
+                href="https://agent0.readthedocs.io/en/latest/"
+                className="button-sm"
+              >
+                agent0 docs
+              </GradientBorderButton>
+            </>
+          }
+          //           example={{
+          //             language: "python",
+          //             code: `import datetime
+          // from fixedpointmath import FixedPoint
+          // from agent0.hyperdrive.interactive import ILocalHyperdrive, ILocalChain
 
-# Initialize chain object
-chain = ILocalChain()
-interactive_hyperdrive = ILocalHyperdrive(chain)
-hyperdrive_agent0 = interactive_hyperdrive.init_agent(base=FixedPoint(100_000)) # trading budget = 100,000
+          // # Initialize chain object
+          // chain = ILocalChain()
+          // interactive_hyperdrive = ILocalHyperdrive(chain)
+          // hyperdrive_agent0 = interactive_hyperdrive.init_agent(base=FixedPoint(100_000)) # trading budget = 100,000
 
-# Open Hyperdrive positions and store the results
-open_long_event = hyperdrive_agent0.open_long(base=FixedPoint(100))
-open_short_event = hyperdrive_agent0.open_short(base=FixedPoint(100))
-add_liquidity_event = hyperdrive_agent0.add_liquidity(base=FixedPoint(100))
+          // # Open Hyperdrive positions and store the results
+          // open_long_event = hyperdrive_agent0.open_long(base=FixedPoint(100))
+          // open_short_event = hyperdrive_agent0.open_short(base=FixedPoint(100))
+          // add_liquidity_event = hyperdrive_agent0.add_liquidity(base=FixedPoint(100))
 
-# Advance time for a day (only possible on local test chain)
-chain.advance_time(datetime.timedelta(days=1))
+          // # Advance time for a day (only possible on local test chain)
+          // chain.advance_time(datetime.timedelta(days=1))
 
-# Close a position and store the results
-close_long_event = hyperdrive_agent0.close_long(
-    maturity_time=open_long_event.maturity_time,
-    bonds=open_long_event.bond_amount,
-)`}
-          </SyntaxHighlighter> */}
-        </div>
+          // # Close a position and store the results
+          // close_long_event = hyperdrive_agent0.close_long(
+          //     maturity_time=open_long_event.maturity_time,
+          //     bonds=open_long_event.bond_amount,
+          // )`,
+          //           }}
+        />
 
         {/* UI Integration */}
-        <div
-          className={classNames({
-            hidden: activeTab !== 3,
-          })}
-        >
-          <div className="px-14 py-8 max-w-4xl max-lg:px-[6vw]">
-            <h3 className="font-chakra text-body-lg text-neutral-100 font-medium mb-4">
-              Use the SDK to integrate frontends
-            </h3>
-            <p className="mb-8">
-              The Hyperdrive TypeScript SDK provides a simple interface for
-              interacting with the Hyperdrive protocol from front-ends or
-              node.js applications. Under the hood, the SDK uses the Hyperdrive
-              Math library compiled to WebAssembly.
-            </p>
-            <GradientBorderButton
-              href="https://js.hyperdrive.box"
-              className="button-sm"
-            >
-              TypeScript SDK Docs
-            </GradientBorderButton>
-          </div>
-          <SyntaxHighlighter
-            showLineNumbers={true}
-            language="typescript"
-            style={dracula}
-            lineNumberStyle={{
-              borderRight: "1px solid rgba(0,0,0,.2)",
-              marginRight: "24px",
-            }}
-            customStyle={{
-              fontSize: "14px",
-              padding: "32px 56px 32px 0",
-              borderRadius: "0",
-            }}
-          >
-            {`import { createPublicClient, createWalletClient, custom, http } from "viem";
+        <TabContent
+          active={activeTab === 3}
+          title="Use the SDK to integrate frontends"
+          body={
+            <>
+              <p className="mb-8">
+                The Hyperdrive TypeScript SDK provides a simple interface for
+                interacting with the Hyperdrive protocol from front-ends or
+                node.js applications. Under the hood, the SDK uses the
+                Hyperdrive Math library compiled to WebAssembly.
+              </p>
+              <GradientBorderButton
+                href="https://js.hyperdrive.box"
+                className="button-sm"
+              >
+                TypeScript SDK Docs
+              </GradientBorderButton>
+            </>
+          }
+          example={{
+            language: "typescript",
+            code: `import { createPublicClient, createWalletClient, custom, http } from "viem";
 import { mainnet } from "viem/chains";
 import { createReadHyperdrive } from "@delvtech/hyperdrive-viem";
 
@@ -437,10 +346,81 @@ const hyperdrive = createReadWriteHyperdrive({
 });
 
 // 4. Send a transaction
-const transactionHash = await hyperdrive.pause(true);`}
-          </SyntaxHighlighter>
-        </div>
+const transactionHash = await hyperdrive.pause(true);`,
+          }}
+        />
       </div>
+    </div>
+  );
+}
+
+interface TabButtonProps {
+  active: boolean;
+  onClick: () => void;
+  name: string;
+  language: string;
+}
+
+function TabButton({ active, onClick, name, language }: TabButtonProps) {
+  return (
+    <button
+      className={classNames(
+        "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all",
+        {
+          "!bg-neutral-950": active,
+        },
+        "max-md:items-center max-md:text-body-sm",
+        "max-sm:px-2",
+      )}
+      onClick={onClick}
+    >
+      {name}
+      <span className="text-content font-normal">{language}</span>
+    </button>
+  );
+}
+
+interface TabContentProps {
+  active: boolean;
+  title: string;
+  body: JSX.Element;
+  example?: {
+    language: string;
+    code: string;
+  };
+}
+
+function TabContent({ active, title, body, example }: TabContentProps) {
+  return (
+    <div
+      className={classNames({
+        hidden: !active,
+      })}
+    >
+      <div className="px-14 py-8 max-w-4xl max-lg:px-[6vw]">
+        <h3 className="font-chakra text-body-lg text-neutral-100 font-medium mb-4">
+          {title}
+        </h3>
+        {body}
+      </div>
+      {example && (
+        <SyntaxHighlighter
+          showLineNumbers={true}
+          language={example.language}
+          style={dracula}
+          lineNumberStyle={{
+            borderRight: "1px solid rgba(0,0,0,.2)",
+            marginRight: "24px",
+          }}
+          customStyle={{
+            fontSize: "14px",
+            padding: "32px 56px 32px 0",
+            borderRadius: "0",
+          }}
+        >
+          {example.code}
+        </SyntaxHighlighter>
+      )}
     </div>
   );
 }
