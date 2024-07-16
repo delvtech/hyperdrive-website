@@ -341,7 +341,7 @@ const publicClient = createPublicClient({
 });
 
 // 2. Create a ReadHyperdrive instance
-const hyperdrive = new ReadWriteHyperdrive({
+const hyperdrive = new ReadHyperdrive({
   address: "0x...",
   publicClient,
 });
