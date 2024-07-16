@@ -4,8 +4,16 @@ import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { GradientBorderButton } from "src/components/buttons/GradientButton";
 
+const tabIds = [
+  "protocol",
+  "hyperdrive-math",
+  "bots",
+  "ui-integration",
+] as const;
+type TabId = (typeof tabIds)[number];
+
 export function CodeTabs() {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState<TabId>("protocol");
 
   return (
     <div className="bg-neutral-900 max-w-5xl mx-auto">
@@ -14,33 +22,33 @@ export function CodeTabs() {
         <TabButton
           name="Protocol"
           language="Solidity"
-          active={activeTab === 0}
+          active={activeTab === "protocol"}
           onClick={() => {
-            setActiveTab(0);
+            setActiveTab("protocol");
           }}
         />
         <TabButton
           name="Hyperdrive Math"
           language="Rust"
-          active={activeTab === 1}
+          active={activeTab === "hyperdrive-math"}
           onClick={() => {
-            setActiveTab(1);
+            setActiveTab("hyperdrive-math");
           }}
         />
         <TabButton
           name="Bots"
           language="Python"
-          active={activeTab === 2}
+          active={activeTab === "bots"}
           onClick={() => {
-            setActiveTab(2);
+            setActiveTab("bots");
           }}
         />
         <TabButton
           name="UI Integration"
           language="TypeScript"
-          active={activeTab === 3}
+          active={activeTab === "ui-integration"}
           onClick={() => {
-            setActiveTab(3);
+            setActiveTab("ui-integration");
           }}
         />
       </div>
@@ -49,7 +57,7 @@ export function CodeTabs() {
       <div className="bg-neutral-950">
         {/* Protocol */}
         <TabContent
-          active={activeTab === 0}
+          active={activeTab === "protocol"}
           title="Utilizing Hyperdrive as a DeFi Primitive"
           body={
             <>
@@ -130,7 +138,7 @@ export function CodeTabs() {
 
         {/* Hyperdrive Math */}
         <TabContent
-          active={activeTab === 1}
+          active={activeTab === "hyperdrive-math"}
           title="Use the Rust SDK to abstract away detailed calculations"
           body={
             <>
@@ -226,7 +234,7 @@ async fn main() -> Result<()> {
 
         {/* Bots */}
         <TabContent
-          active={activeTab === 2}
+          active={activeTab === "bots"}
           title="Build Trading Bots"
           body={
             <>
@@ -302,7 +310,7 @@ async fn main() -> Result<()> {
 
         {/* UI Integration */}
         <TabContent
-          active={activeTab === 3}
+          active={activeTab === "ui-integration"}
           title="Use the SDK to integrate frontends"
           body={
             <>
