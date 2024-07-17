@@ -4,13 +4,7 @@ import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { GradientBorderButton } from "src/components/buttons/GradientButton";
 
-const tabIds = [
-  "protocol",
-  "hyperdrive-math",
-  "bots",
-  "ui-integration",
-] as const;
-type TabId = (typeof tabIds)[number];
+type TabId = "protocol" | "hyperdrive-math" | "bots" | "ui-integration";
 
 export function CodeTabs() {
   const [activeTab, setActiveTab] = useState<TabId>("protocol");
