@@ -70,7 +70,7 @@ export function Footer() {
               <li>
                 <a
                   className="hover:text-neutral-100 transition-all"
-                  href="https://blog.delv.tech/hyperdrive-security-update-pre-testnet-audit-reports-are-in/"
+                  href="https://blog.delv.tech/hyperdrive-security-roadmap-update-3-new-audit-report-and-bug-bounty-program-launch/"
                 >
                   Security Audits
                 </a>
