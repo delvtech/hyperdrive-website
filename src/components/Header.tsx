@@ -7,6 +7,7 @@ import hyperdriveLogoWhite from "src/assets/logos/hyperdrive-logo-white.svg";
 import hyperdriveLogo from "src/assets/logos/hyperdrive-logo.svg";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
 
+const SHOW_ANNOUNCEMENT_BANNER = false;
 const ANNOUNCEMENT_BANNER_EXPIRY = new Date("07/18/2024");
 
 interface HeaderProps {
@@ -48,7 +49,8 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
   }
 
   const isScrolled = scrollPosition > 0;
-  const showBanner = new Date() < ANNOUNCEMENT_BANNER_EXPIRY;
+  const showBanner =
+    SHOW_ANNOUNCEMENT_BANNER && new Date() < ANNOUNCEMENT_BANNER_EXPIRY;
 
   return (
     <>
