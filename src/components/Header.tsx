@@ -150,21 +150,19 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
               Build
             </NavLink>
             <Link
-              className="p-4 hover:font-bold duration-300 transition-all"
+              className="p-4 hover:font-bold duration-300 hover:text-aquamarine transition-all"
               to="/docs"
-              target="_blank"
-              referrerPolicy="no-referrer"
             >
               Docs
             </Link>
             <a
-              className="p-4 hover:font-bold duration-300 transition-all"
+              className="p-4 hover:font-bold duration-300 hover:text-aquamarine transition-all"
               href="https://hyperdrive.blockanalitica.com"
             >
               Analytics
             </a>
             <Link
-              className="p-4 hover:font-bold duration-300 transition-all"
+              className="p-4 hover:font-bold duration-300 hover:text-aquamarine transition-all"
               to="/app"
             >
               App
