@@ -146,12 +146,12 @@ export function Footer() {
             </h3>
             <ul className="space-y-4 text-neutral-400">
               <li>
-                <a
+                <Link
                   className="hover:text-neutral-100 transition-all"
-                  href="/faqs"
+                  to="/docs"
                 >
                   FAQs
-                </a>
+                </Link>
               </li>
               <li>
                 <Link
