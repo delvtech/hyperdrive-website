@@ -63,8 +63,8 @@ export function PositionTypesCarousel({ className }: { className?: string }) {
 
         <div className="hidden max-md:flex gap-6 text-caption-lg">
           <p>
-            Some concepts, including trading fees, have been abstracted away
-            from the diagram for simplicity.
+            Some concepts, including [trading fees], have been omitted for
+            simplicity.
           </p>
 
           {/* <GradientBorderButton href="#docs">Learn More</GradientBorderButton> */}
@@ -109,8 +109,8 @@ export function PositionTypesCarousel({ className }: { className?: string }) {
 
         <div className="hidden max-md:flex gap-6 text-caption-lg">
           <p>
-            Some concepts, including trading fees, have been abstracted away
-            from the diagram for simplicity.
+            Some concepts, including [trading fees], have been omitted for
+            simplicity.
           </p>
 
           {/* <GradientBorderButton href="#docs">Learn More</GradientBorderButton> */}
@@ -156,8 +156,8 @@ export function PositionTypesCarousel({ className }: { className?: string }) {
 
       <div className="hidden max-md:flex gap-6 text-caption-lg">
         <p>
-          Some concepts have been abstracted away from the diagram for
-          simplicity; automated LP countertrades are not shown.
+          Some concepts have been omitted for simplicity; automated LP
+          countertrades are not shown.
         </p>
 
         {/* <GradientBorderButton href="#docs">Learn More</GradientBorderButton> */}
@@ -174,16 +174,16 @@ export function PositionTypesCarousel({ className }: { className?: string }) {
             hidden: activeSlide === 2,
           })}
         >
-          Some concepts, including trading fees, have been abstracted away from
-          the diagram for simplicity.
+          Some concepts, including [trading fees], have been omitted for
+          simplicity.
         </p>
         <p
           className={classNames("text-caption-lg", {
             hidden: activeSlide !== 2,
           })}
         >
-          Some concepts have been abstracted away from the diagram for
-          simplicity; automated LP countertrades are not shown.
+          Some concepts have been omitted for simplicity; automated LP
+          countertrades are not shown.
         </p>
         {/* <GradientBorderButton href="#docs">Learn More</GradientBorderButton> */}
       </div>
