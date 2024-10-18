@@ -1,3 +1,4 @@
+import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import classNames from "classnames";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
@@ -7,8 +8,8 @@ import hyperdriveLogoWhite from "src/assets/logos/hyperdrive-logo-white.svg";
 import hyperdriveLogo from "src/assets/logos/hyperdrive-logo.svg";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
 
-const SHOW_ANNOUNCEMENT_BANNER = false;
-const ANNOUNCEMENT_BANNER_EXPIRY = new Date("07/18/2024");
+const SHOW_ANNOUNCEMENT_BANNER = true;
+const ANNOUNCEMENT_BANNER_EXPIRY = new Date("11/01/2024");
 
 interface HeaderProps {
   className?: string;
@@ -56,10 +57,11 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
     <>
       {/* Announcement banner */}
       {showBanner && (
-        <div className="h-10 bg-midnight-100/20 border-b border-white/10 flex items-center justify-center px-3 py-2 max-sm:text-sm">
+        <div className="h-10 bg-midnight-100/20 border-b border-white/10 flex items-center justify-center px-3 py-2 text-sm">
+          <InformationCircleIcon className="h-5 w-5 mr-1" />
           <p className="leading-none">
             We've updated our{" "}
-            <a
+            {/* <a
               href="https://delv-public.s3.us-east-2.amazonaws.com/delv-privacy-policy.pdf"
               className="text-[#71F8F8]"
               target="_blank"
@@ -67,10 +69,10 @@ export function Header({ className, theme = "dark" }: HeaderProps) {
             >
               Privacy Policy
             </a>{" "}
-            and{" "}
+            and{" "} */}
             <a
               href="https://delv-public.s3.us-east-2.amazonaws.com/delv-terms-of-service.pdf"
-              className="text-[#71F8F8]"
+              className="text-white hover:text-aquamarine transition-all duration-300"
               target="_blank"
               rel="noreferrer"
             >
