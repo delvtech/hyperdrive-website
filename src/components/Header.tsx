@@ -139,13 +139,13 @@ export function Header({ className }: HeaderProps) {
                   </Link>
                 </MenuItem>
                 <MenuItem>
-                  <Link
-                    to="/blog"
+                  <a
+                    href="https://blog.delv.tech"
                     className="h-8 pl-4 pr-6 data-[focus]:bg-gradient-to-r from-[#2EFCB6] to-[#69EAE9] data-[focus]:text-[#001B14] flex gap-3 items-center"
                   >
                     <BlogIcon className="size-4" />
                     Blog
-                  </Link>
+                  </a>
                 </MenuItem>
                 <MenuItem>
                   <Link
@@ -158,7 +158,7 @@ export function Header({ className }: HeaderProps) {
                 </MenuItem>
                 <MenuItem>
                   <Link
-                    to="#trading-strategies"
+                    to="/whitepaper"
                     className="h-8 pl-4 pr-6 data-[focus]:bg-gradient-to-r from-[#2EFCB6] to-[#69EAE9] data-[focus]:text-[#001B14] flex gap-3 items-center"
                   >
                     <NoteIcon className="size-4" />
@@ -167,7 +167,7 @@ export function Header({ className }: HeaderProps) {
                 </MenuItem>
                 <MenuItem>
                   <Link
-                    to="#trading-strategies"
+                    to="/docs/hyperdrive-overview/glossary"
                     className="h-8 pl-4 pr-6 data-[focus]:bg-gradient-to-r from-[#2EFCB6] to-[#69EAE9] data-[focus]:text-[#001B14] flex gap-3 items-center"
                   >
                     <BookIcon className="size-4" />
@@ -199,7 +199,7 @@ export function Header({ className }: HeaderProps) {
                 </MenuItem>
                 <MenuItem>
                   <Link
-                    to="/docs"
+                    to="https://github.com/delvtech/hyperdrive"
                     className="h-8 pl-4 pr-6 data-[focus]:bg-gradient-to-r from-[#2EFCB6] to-[#69EAE9] data-[focus]:text-[#001B14] flex gap-3 items-center"
                   >
                     <CoreIcon className="size-4" />
@@ -221,39 +221,39 @@ export function Header({ className }: HeaderProps) {
                 modal={false}
               >
                 <MenuItem>
-                  <Link
-                    to="/discord"
+                  <a
+                    href="https://www.delv.tech/discord"
                     className="h-8 pl-4 pr-6 data-[focus]:bg-gradient-to-r from-[#2EFCB6] to-[#69EAE9] data-[focus]:text-[#001B14] flex gap-3 items-center"
                   >
                     <DiscordIcon className="size-4" />
                     Discord
-                  </Link>
+                  </a>
                 </MenuItem>
                 <MenuItem>
-                  <Link
-                    to="/x"
+                  <a
+                    href="https://twitter.com/delv_tech/"
                     className="h-8 pl-4 pr-6 data-[focus]:bg-gradient-to-r from-[#2EFCB6] to-[#69EAE9] data-[focus]:text-[#001B14] flex gap-3 items-center"
                   >
                     <XIcon className="size-4" />X
-                  </Link>
+                  </a>
                 </MenuItem>
                 <MenuItem>
-                  <Link
-                    to="/farcaster"
+                  <a
+                    href="https://warpcast.com/~/channel/delv"
                     className="h-8 pl-4 pr-6 data-[focus]:bg-gradient-to-r from-[#2EFCB6] to-[#69EAE9] data-[focus]:text-[#001B14] flex gap-3 items-center"
                   >
                     <FarcasterIcon className="size-4" />
                     Farcaster
-                  </Link>
+                  </a>
                 </MenuItem>
                 <MenuItem>
-                  <Link
-                    to="/linkedin"
+                  <a
+                    href="https://www.linkedin.com/company/delv-tech/"
                     className="h-8 pl-4 pr-6 data-[focus]:bg-gradient-to-r from-[#2EFCB6] to-[#69EAE9] data-[focus]:text-[#001B14] flex gap-3 items-center"
                   >
                     <LinkedInIcon className="size-4" />
                     LinkedIn
-                  </Link>
+                  </a>
                 </MenuItem>
               </MenuItems>
             </Menu>
