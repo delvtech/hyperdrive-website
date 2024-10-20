@@ -24,7 +24,7 @@ import { PositionTypesCarousel } from "src/components/home/PositionTypesCarousel
 export function Home() {
   return (
     <>
-      <Header theme="dark" />
+      <Header />
 
       {/* Hero */}
       <div

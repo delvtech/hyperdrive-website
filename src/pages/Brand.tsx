@@ -9,7 +9,7 @@ import { useDownloadLink } from "src/hooks/useDownloadLink";
 export function Brand() {
   return (
     <>
-      <Header theme="dark" />
+      <Header />
 
       <main className="my-40 max-w-4xl mx-auto px-[4vw]">
         <h1 className="text-h3 font-chakra gradient-text text-center">
