@@ -2,8 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import { Redirect } from "src/components/router/Redirect";
 import { ScrollReset } from "src/components/router/ScrollReset";
 import { Brand } from "src/pages/Brand";
-import { Build } from "src/pages/Build";
-import { Home } from "src/pages/Home";
+import { Build } from "src/pages/build/Build";
+import { Home } from "src/pages/home/Home";
 
 function App() {
   return (

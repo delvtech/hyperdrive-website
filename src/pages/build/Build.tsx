@@ -10,9 +10,9 @@ import solidityLogoTile from "src/assets/logos/solidity-logo-tile.png";
 import typescriptLogoTile from "src/assets/logos/typescript-logo-tile.png";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
-import { CodeTabs } from "src/components/build/CodeTabs";
-import { ProjectIdeas } from "src/components/build/ProjectIdeas";
 import { GradientBorderButton } from "src/components/buttons/GradientButton";
+import { CodeTabs } from "src/pages/build/CodeTabs";
+import { ProjectIdeas } from "src/pages/build/ProjectIdeas";
 
 export function Build() {
   return (

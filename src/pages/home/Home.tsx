@@ -18,8 +18,8 @@ import spearbitLogo from "src/assets/logos/spearbit-logo.svg";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { GradientBorderButton } from "src/components/buttons/GradientButton";
-import { HeroPill } from "src/components/home/HeroPill";
-import { PositionTypesCarousel } from "src/components/home/PositionTypesCarousel";
+import { HeroPill } from "src/pages/home/HeroPill";
+import { PositionTypesCarousel } from "src/pages/home/PositionTypesCarousel";
 
 export function Home() {
   return (
