@@ -1,25 +1,10 @@
 import classNames from "classnames";
-import overviewLine from "src/assets/accents/overview-line.svg";
-import strategiesLine from "src/assets/accents/strategies-line.svg";
-import adjustmentsIcon from "src/assets/icons/adjustments-icon.svg";
-import curveIcon from "src/assets/icons/curve-icon.svg";
-import fixedRatesIcon from "src/assets/icons/fixed-rates-icon.svg";
-import multipliedRatesIcon from "src/assets/icons/multiplied-rates-icon.svg";
-import auditsIllustration from "src/assets/illustrations/audits-illustration.svg";
-import formalVerificationIllustration from "src/assets/illustrations/formal-verification-illustration.svg";
-import fuzzTestingIllustration from "src/assets/illustrations/fuzz-testing-illustration.svg";
-import lpReturnsIcon1 from "src/assets/illustrations/lp-returns-1-illustration.svg";
-import lpReturnsIcon2 from "src/assets/illustrations/lp-returns-2-illustration.svg";
-import lpReturnsIcon3 from "src/assets/illustrations/lp-returns-3-illustration.svg";
-import threatMonitoringIllustration from "src/assets/illustrations/threat-monitoring-illustration.svg";
-import certoraLogo from "src/assets/logos/certora-logo.svg";
-import chainsafeLogo from "src/assets/logos/chainsafe-logo.svg";
-import spearbitLogo from "src/assets/logos/spearbit-logo.svg";
+import { Link } from "react-router-dom";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { GradientBorderButton } from "src/components/buttons/GradientButton";
-import { HeroPill } from "src/pages/home/HeroPill";
-import { PositionTypesCarousel } from "src/pages/home/PositionTypesCarousel";
+import { HyperdriveIcon } from "src/components/icons/HyperdriveIcon";
+import { CtaTile } from "src/pages/home/CtaTile";
 
 export function Home() {
   return (
@@ -29,660 +14,322 @@ export function Home() {
       {/* Hero */}
       <div
         className={classNames(
-          "h-screen flex gap-32 items-center justify-center relative px-[5vw] bg-[url('/public/hyperdrive-hero-banner.jpg')] bg-cover bg-center shadow-[inset_0_-80px_80px_#0F1117]",
+          "h-screen relative bg-aquamarine-950 overflow-hidden pb-10",
           "max-xl:px-[3vw]",
           "max-lg:flex-col max-lg:gap-8 max-lg:text-center",
         )}
       >
-        {/* Hero left */}
-        <div
-          className={classNames(
-            "relative z-10 w-[415px] shrink-0",
-            "max-xl:w-[340px]",
-            "max-lg:w-auto",
-          )}
-        >
-          <h1
-            className={classNames(
-              "text-h1 font-medium font-chakra relative text-neutral-100 mb-16",
-              "max-xl:text-h2",
-              "max-sm:text-h4",
-            )}
-          >
-            Yield, Your Way.
-          </h1>
-          <div
-            className={classNames(
-              "flex gap-6",
-              "max-lg:justify-center",
-              "max-sm:block max-sm:space-y-4",
-            )}
-          >
-            <GradientBorderButton
-              to="/app"
-              className={classNames(
-                "button-primary px-10",
-                "max-lg:flex-1",
-                "max-sm:w-full",
-              )}
-            >
-              Launch App
-            </GradientBorderButton>
-            <GradientBorderButton
-              href="https://hyperdrive.delv.tech/docs"
-              className={classNames("px-10", "max-lg:flex-1", "max-sm:w-full")}
-            >
-              Learn more
-            </GradientBorderButton>
-          </div>
-        </div>
-
-        {/* Hero right */}
-        <div
-          className={classNames(
-            "relative basis-[775px] h-[23vw] max-h-[325px]",
-            "max-lg:absolute max-lg:top-1/2 max-lg:w-full max-lg:left-0",
-          )}
-        >
-          {/* <img
-            className={classNames(
-              "h-full absolute right-0 top-0 max-w-none",
-              "max-lg:w-[200vw] max-lg:opacity-50 max-lg:h-auto max-lg:-translate-y-1/2",
-            )}
-            src={heroIllustration}
-          /> */}
-          <HeroPill
-            className={classNames(
-              "absolute -translate-x-1/2 -translate-y-1/2 top-[10%] right-[290px] whitespace-nowrap",
-              "max-[1440px]:right-[28vw]",
-              "max-xl:right-[24vw]",
-              // "max-lg:static max-lg:transform-none",
-              "max-lg:hidden",
-            )}
-          >
-            Earn Fixed Rates
-          </HeroPill>
-          <HeroPill
-            className={classNames(
-              "absolute -translate-x-1/2 -translate-y-1/2 top-[91%] right-[-148px] whitespace-nowrap",
-              "max-[1440px]:right-[-6vw]",
-              "max-xl:right-[-10vw]",
-              // "max-lg:static max-lg:transform-none",
-              "max-lg:hidden",
-            )}
-          >
-            Multiply exposure to variable rates
-          </HeroPill>
-          <HeroPill
-            className={classNames(
-              "absolute -translate-x-1/2 -translate-y-1/2 top-[34%] right-[-172px] whitespace-nowrap",
-              "max-[1440px]:right-[-7vw]",
-              "max-xl:right-[-10vw]",
-              // "max-lg:static max-lg:transform-none",
-              "max-lg:hidden",
-            )}
-          >
-            Set it and forget it LP
-          </HeroPill>
-        </div>
-      </div>
-
-      {/* Overview */}
-      <div
-        id="overview"
-        className={classNames(
-          "px-[5vw] pt-0 pb-20 flex relative gap-14 items-center",
-          "max-lg:flex-col max-lg:gap-0",
-        )}
-      >
+        {/* Hero bg accents */}
         <img
-          src={overviewLine}
-          className="absolute right-0 top-1/2 -translate-y-1/3 pointer-events-none"
+          src="/accents/hero-glow-tl.svg"
+          className="absolute top-[-601px] left-[-589px] pointer-events-none"
         />
+        <img
+          src="/accents/hero-glow-tr.svg"
+          className="absolute right-[-523px] top-[-439px] pointer-events-none"
+        />
+        <img
+          src="/accents/hero-glow-br.svg"
+          className="absolute right-[-262px] bottom-[-299px] pointer-events-none"
+        />
+        <img
+          src="/accents/hero-glow-bl.svg"
+          className="absolute left-[-690px] bottom-[-490px] pointer-events-none"
+        />
+        <img
+          src="/accents/delv-arc-hyperdrive.svg"
+          className="absolute top-[-296px] right-[-204px] pointer-events-none"
+        />
+        <div className="absolute bg-[url('/noise-texture.png')] bg-[length:100px_100px] bg-repeat bg-left-top inset-0 pointer-events-none opacity-20 mix-blend-overlay" />
 
-        {/* Overview left */}
-        <div
-          className={classNames(
-            "max-w-md mx-auto flex flex-col justify-center flex-1 mb-40",
-            "max-lg:mb-20",
-            "max-sm:mb-14",
-          )}
-        >
-          <h2 className="font-chakra text-h5 bg-gradient-to-tr from-aquamarine to-aquamarine-fade bg-clip-text text-transparent leading-normal mb-6">
-            What is Hyperdrive?
-          </h2>
-          <p>
-            Hyperdrive is a novel AMM for traders to obtain fixed rates or
-            boosted variable yields underpinned by reputable yield sources like
-            stETH and sDAI.
-          </p>
-        </div>
-
-        {/* Overview right */}
-        <div
-          className={classNames(
-            "flex gap-3 basis-1/2",
-            "max-[1440px]:basis-[60%]",
-            "max-sm:flex-col max-sm:gap-4",
-          )}
-        >
-          <div className={classNames("space-y-3 flex-1", "max-sm:space-y-4")}>
-            {/* Fixed rates */}
-            <div
-              className={classNames(
-                "space-y-4 bg-card-gradient p-6 pb-10 min-h-80",
-                "max-sm:min-h-0 max-sm:pb-14",
-              )}
-            >
-              <img src={fixedRatesIcon} />
-              <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">
-                Fixed rates
-              </h3>
-              <p>
-                Get simple, predictable fixed rates on ETH, stETH, DAI, or sDAI
-                with principal-protected returns.
-              </p>
-            </div>
-
-            {/* Fixed rate borrow */}
-            <div
-              className={classNames(
-                "space-y-4 bg-card-gradient p-6 pb-10 min-h-80",
-                "max-sm:min-h-0 max-sm:pb-14",
-              )}
-            >
-              <img src={adjustmentsIcon} />
-              <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">
-                Fixed Rate Borrow
-              </h3>
-              <p>
-                Turn a variable rate borrow position into a fixed rate borrow
-                position on Hyperdrive.
-              </p>
-              <p className="inline-flex px-3 h-8 rounded bg-[#8A92A3]/20 font-mono text-body-sm text-neutral-100/70 uppercase items-center justify-center">
-                coming soon
-              </p>
-            </div>
-          </div>
-
+        {/* Hero content */}
+        <div className="inner-container flex justify-between items-end h-full pb-10">
+          {/* Hero left */}
           <div
             className={classNames(
-              "space-y-3 flex-1 mt-16",
-              "max-sm:mt-0 max-sm:space-y-4",
+              "relative z-10 w-[600px] shrink-0 leading-none flex flex-col h-full",
+              "max-xl:w-[340px]",
+              "max-lg:w-auto",
             )}
           >
-            {/* Multiplied variable rates */}
-            <div
-              className={classNames(
-                "space-y-4 bg-card-gradient p-6 pb-10 min-h-80",
-                "max-sm:min-h-0 max-sm:pb-14",
-              )}
-            >
-              <img src={multipliedRatesIcon} />
-              <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">
-                Multiplied variable rates
-              </h3>
-              <p>
-                Get multiplied variable rate exposure and speculate on rate
-                movements by opening a Short, or LP to earn passive variable
-                yield on single asset deposits without being exposed to
-                impermanent loss.
-              </p>
-            </div>
-
-            {/* Longs as collateral */}
-            <div
-              className={classNames(
-                "space-y-4 bg-card-gradient p-6 pb-10 min-h-80",
-                "max-sm:min-h-0 max-sm:pb-14",
-              )}
-            >
-              <img src={curveIcon} />
-              <h3 className="text-h7 leading-normal text-neutral-100 font-chakra">
-                Longs as Collateral
-              </h3>
-              <p>
-                Using Hyperdrive Longs (fixed rates) as collateral in other
-                borrowing protocols offers users a capital efficient way to
-                obtain exposure like they would from borrowing against the base
-                asset (sDAI or stETH).
-              </p>
-              <p className="inline-flex px-3 h-8 rounded bg-[#8A92A3]/20 font-mono text-body-sm text-neutral-100/70 uppercase items-center justify-center">
-                coming soon
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* LP Returns */}
-      <div id="lp-returns" className="px-[5vw] py-14">
-        <div className="max-w-2xl mx-auto text-center mb-16 max-lg:max-w-[420px] max-lg:text-left">
-          <h2 className="font-chakra text-h5 gradient-text font-medium mb-6">
-            Hypercharge your LP returns by earning in 3 ways
-          </h2>
-        </div>
-
-        {/* LP tiles */}
-        <div
-          className={classNames(
-            "flex gap-10 text-white text-center mb-16 justify-center",
-            "max-lg:flex-col max-lg:gap-4 max-lg:items-center",
-          )}
-        >
-          <div
-            className={classNames(
-              "bg-card-gradient flex-1 p-8 pb-14 flex flex-col rounded-sm gap-8 max-w-[420px]",
-              "max-xl:pb-10",
-            )}
-          >
-            <img src={lpReturnsIcon1} className="block max-w-" />
-            <p
-              className={classNames(
-                "text-h6 font-chakra font-medium",
-                "max-xl:text-h7",
-              )}
-            >
-              Fees from trading activity
-            </p>
-          </div>
-          <div
-            className={classNames(
-              "bg-card-gradient flex-1 p-8 pb-14 flex flex-col rounded-sm gap-8 max-w-[420px]",
-              "max-xl:pb-10",
-            )}
-          >
-            <img src={lpReturnsIcon2} className="block max-w-" />
-            <p
-              className={classNames(
-                "text-h6 font-chakra font-medium",
-                "max-xl:text-h7",
-              )}
-            >
-              Variable yield on idle capital
-            </p>
-          </div>
-          <div
-            className={classNames(
-              "bg-card-gradient flex-1 p-8 pb-14 flex flex-col rounded-sm gap-8 max-w-[420px]",
-              "max-xl:pb-10",
-            )}
-          >
-            <img src={lpReturnsIcon3} className="block max-w-" />
-            <p
-              className={classNames(
-                "text-h6 font-chakra font-medium",
-                "max-xl:text-h7",
-              )}
-            >
-              PnL from balancing market activity
-            </p>
-          </div>
-        </div>
-
-        <div className="flex items-center justify-center">
-          <GradientBorderButton
-            href="https://docs.hyperdrive.box/hyperdrive-overview/position-types/liquidity-provider"
-            className="button-primary"
-          >
-            Learn more
-          </GradientBorderButton>
-        </div>
-      </div>
-
-      {/* Security */}
-      <div id="security" className="px-[5vw] py-14 flex flex-col items-center">
-        <h2 className="font-chakra text-h5 font-medium gradient-text text-center grow-[.3] mb-8">
-          Security
-        </h2>
-
-        {/* Audits (large screens) */}
-        <div className="px-14 pr-20 py-9 bg-card-gradient rounded-sm relative max-w-5xl mx-auto flex flex-col mb-6 max-md:hidden">
-          <p className="font-mono text-caption-lg mb-3">01</p>
-          <div className="flex gap-24 items-center flex-1">
-            <div>
-              <h3 className="text-h5 font-chakra text-white mb-4 max-lg:text-h6">
-                Audits
-              </h3>
-              <p className="mb-6">
-                Six audits of the Hyperdrive protocol have been completed by
-                industry leaders in blockchain security.
-              </p>
-              <GradientBorderButton
-                className="button-sm mb-8"
-                href="https://blog.delv.tech/hyperdrive-security-update-pre-testnet-audit-reports-are-in/"
-              >
-                Learn more
-              </GradientBorderButton>
-              <div className="flex items-center gap-6">
-                <a href="https://spearbit.com/">
-                  <img src={spearbitLogo} alt="Spearbit" />
-                </a>
-                <a href="https://chainsafe.io/">
-                  <img src={chainsafeLogo} alt="Chainsafe" />
-                </a>
-                <a href="https://www.certora.com/">
-                  <img src={certoraLogo} alt="Certora" />
-                </a>
-              </div>
-            </div>
-            <img className="-mt-6 max-lg:w-1/3" src={auditsIllustration} />
-          </div>
-        </div>
-
-        {/* Formal verification (lg breakpoint only) */}
-        <div
-          className={classNames(
-            "px-14 pr-20 py-9 bg-card-gradient rounded-sm relative max-w-5xl mx-auto flex-col mb-6 hidden",
-            "max-lg:flex", // show at the lg breakpoint
-            "max-md:hidden", // hide again at the md breakpoint
-          )}
-        >
-          <p className="font-mono text-caption-lg mb-3">02</p>
-          <div className="flex gap-24 items-center flex-1">
-            <div>
-              <h3 className="text-h6 font-chakra text-white mb-4">
-                Formal Verification
-              </h3>
-              <p className="mb-8">
-                Certora, an industry leader in formal verification, implemented
-                a mathematical model that verified many key invariants in
-                Hyperdrive's AMM.
-              </p>
-              <div className="flex items-center gap-6">
-                <a href="https://www.certora.com/">
-                  <img src={certoraLogo} alt="Certora" />
-                </a>
-              </div>
-            </div>
-            <img className="-mt-6 w-1/3" src={formalVerificationIllustration} />
-          </div>
-        </div>
-
-        {/* Fuzz testing (lg breakpoint only) */}
-        <div
-          className={classNames(
-            "px-14 pr-20 py-9 bg-card-gradient rounded-sm relative max-w-5xl mx-auto flex-col mb-6 hidden",
-            "max-lg:flex", // show at the lg breakpoint
-            "max-md:hidden", // hide again at the md breakpoint
-          )}
-        >
-          <p className="font-mono text-caption-lg mb-3">03</p>
-          <div className="flex gap-24 items-center flex-1">
-            <div>
-              <h3 className="text-h6 font-chakra text-white mb-4">
-                Fuzz Testing
-              </h3>
-              <p className="mb-8">
-                Hyperdrive is tested using a robust fuzzing system that combines
-                traditional Solidity input sweeps with Python-based smart
-                agents.
-              </p>
-            </div>
-            <img className="-mt-6 w-1/3" src={fuzzTestingIllustration} />
-          </div>
-        </div>
-
-        {/* Threat monitoring (lg breakpoint only) */}
-        <div
-          className={classNames(
-            "px-14 pr-20 py-9 bg-card-gradient rounded-sm relative max-w-5xl mx-auto flex-col mb-6 hidden",
-            "max-lg:flex", // show at the lg breakpoint
-            "max-md:hidden", // hide again at the md breakpoint
-          )}
-        >
-          <p className="font-mono text-caption-lg mb-3">04</p>
-          <div className="flex gap-24 items-center flex-1">
-            <div>
-              <h3 className="text-h6 font-chakra text-white mb-4">
-                Active Threat Monitoring
-              </h3>
-              <p className="mb-8">
-                Hyperdrive's smart contracts are actively monitored to get ahead
-                of potential threats and leverage collective security
-                intelligence.
-              </p>
-            </div>
-            <img className="-mt-6 w-1/3" src={threatMonitoringIllustration} />
-          </div>
-        </div>
-
-        <div
-          className={classNames(
-            "flex gap-6 max-w-5xl",
-            "max-lg:hidden", // hide at the lg breakpoint
-            "max-md:flex max-md:flex-col", // show again at the md breakpoint
-          )}
-        >
-          {/* Audits (medium screens) */}
-          <div className="pt-6 pb-9 bg-card-gradient relative hidden max-md:block">
-            <div className="flex justify-between pl-12 mb-4">
-              <p className="font-mono text-caption-lg mt-3">01</p>
-              <img className="box w-[232px]" src={auditsIllustration} />
-            </div>
-            <div className="px-12">
-              <h3 className="text-h7 font-chakra text-white mb-4">Audits</h3>
-              <p className="mb-8">
-                Six audits of the Hyperdrive protocol have been completed by
-                industry leaders in blockchain security.
-              </p>
-              <div className="grid grid-cols-2 gap-6 items-center">
-                <a href="https://spearbit.com/">
-                  <img src={spearbitLogo} alt="Spearbit" />
-                </a>
-                <a href="https://chainsafe.io/">
-                  <img src={chainsafeLogo} alt="Chainsafe" />
-                </a>
-                <a
-                  className="col-span-2 flex justify-center"
-                  href="https://www.certora.com/"
+            {/* Title */}
+            <div className="grow flex items-center">
+              <div>
+                <h1
+                  className={classNames(
+                    "text-[100px] font-chakra relative text-neutral-100 mb-5",
+                    "max-xl:text-h2",
+                    "max-sm:text-h4",
+                  )}
                 >
-                  <img src={certoraLogo} alt="Certora" />
-                </a>
+                  Access DeFi, Your Way
+                </h1>
+                <p className="font-light text-content/60">
+                  Powered by{" "}
+                  <span className="font-chakra uppercase font-medium">
+                    THE HYPERDRIVE PROTOCOL
+                  </span>
+                </p>
               </div>
             </div>
-          </div>
 
-          {/* Formal verification */}
-          <div className="pt-6 pb-9 bg-card-gradient relative">
-            <div className="flex justify-between pl-12 mb-4">
-              <p className="font-mono text-caption-lg mt-3">02</p>
-              <img
-                className="box w-[232px]"
-                src={formalVerificationIllustration}
-              />
-            </div>
-            <div className="px-12">
-              <h3 className="text-h7 font-chakra text-white mb-4">
-                Formal Verification
-              </h3>
-              <p className="mb-8">
-                Certora, an industry leader in formal verification, implemented
-                a mathematical model that verified many key invariants in
-                Hyperdrive's AMM.
-              </p>
-              <div className="flex items-center gap-6">
-                <a href="https://www.certora.com/">
-                  <img src={certoraLogo} alt="Certora" />
-                </a>
+            {/* Chains */}
+            <p className="flex items-center gap-10 font-light text-content/60">
+              Available on{" "}
+              <div className="flex items-center gap-9">
+                <img
+                  src="/logos/ethereum-logo.svg"
+                  alt="Ethereum"
+                  className="h-6"
+                />
+                <img
+                  src="/logos/linea-logo.svg"
+                  alt="Linea"
+                  className="h-[17px]"
+                />
+                <img src="/logos/base-logo.svg" alt="Base" className="h-5" />
+                <img
+                  src="/logos/gnosis-chain-logo.svg"
+                  alt="Gnosis Chain"
+                  className="h-4"
+                />
               </div>
-            </div>
+            </p>
           </div>
 
-          {/* Fuzz testing */}
-          <div className="pt-6 pb-9 bg-card-gradient relative">
-            <div className="flex justify-between pl-12 mb-4">
-              <p className="font-mono text-caption-lg mt-3">03</p>
-              <img className="box w-[232px]" src={fuzzTestingIllustration} />
-            </div>
-            <div className="px-12">
-              <h3 className="text-h7 font-chakra text-white mb-4">
-                Fuzz Testing
-              </h3>
-              <p className="mb-4">
-                Hyperdrive is tested using a robust fuzzing system that combines
-                traditional Solidity input sweeps with Python-based smart
-                agents.
-              </p>
-            </div>
-          </div>
-
-          {/* Threat monitoring */}
-          <div className="pt-6 pb-9 bg-card-gradient relative">
-            <div className="flex justify-between pl-12 mb-4">
-              <p className="font-mono text-caption-lg mt-3">04</p>
-              <img
-                className="box w-[232px]"
-                src={threatMonitoringIllustration}
-              />
-            </div>
-            <div className="px-12">
-              <h3 className="text-h7 font-chakra text-white mb-4">
-                Active Threat Monitoring
-              </h3>
-              <p className="mb-4">
-                Hyperdrive's smart contracts are actively monitored to get ahead
-                of potential threats and leverage collective security
-                intelligence.
-              </p>
+          {/* Hero right */}
+          <div className="p-px clip-corners-rounded bg-gradient-to-br from-content-600/30 to-content-600/15 backdrop-blur">
+            <div className="clip-corners-rounded bg-aquamarine-950/60 px-14 pt-14 pb-12 flex flex-col gap-8">
+              <ul className="space-y-4 spaced-mono">
+                <li className="flex gap-2 items-center">
+                  <img
+                    src="/icons/circle-check-icon.svg"
+                    alt=""
+                    className="w-6 h-6"
+                  />{" "}
+                  AMM designed for market efficiency
+                </li>
+                <li className="flex gap-2 items-center">
+                  <img
+                    src="/icons/circle-check-icon.svg"
+                    alt=""
+                    className="w-6 h-6"
+                  />
+                  Reputable yield sources
+                </li>
+                <li className="flex gap-2 items-center">
+                  <img
+                    src="/icons/circle-check-icon.svg"
+                    alt=""
+                    className="w-6 h-6"
+                  />
+                  LP for volatility-driven returns
+                </li>
+              </ul>
+              <div className="flex items-center gap-3">
+                <Link to="/app" className="button button-primary">
+                  <HyperdriveIcon className="size-4" />
+                  Get started
+                </Link>
+                <GradientBorderButton to="/docs">
+                  Learn more
+                </GradientBorderButton>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Protocol */}
-      <div
-        id="protocol"
-        className={classNames(
-          "px-[4vw] pt-28 flex gap-10 overflow-x-hidden",
-          "max-lg:flex-col max-lg:gap-6 max-lg:pt-16",
-        )}
-      >
-        <h2
-          className={classNames(
-            "font-chakra text-h5 gradient-text flex-1",
-            "max-xl:text-h6",
-          )}
-        >
-          Core Protocol Fundamentals
-        </h2>
-        <PositionTypesCarousel className="basis-3/4 max-xl:basis-auto" />
-      </div>
+      {/* Hyperdrive One */}
+      <div className="bg-[url('/accents/hyperdrive-one-lines.svg')] bg-[center_-77px] bg-no-repeat overflow-hidden">
+        <div id="hyperdrive-one" className="inner-container pt-32 mb-20">
+          <p className="flex items-center gap-3 font-chakra tracking-wide uppercase mb-14">
+            <img src="/icons/apps-icon.svg" className="size-6" />
+            Our Apps
+          </p>
 
-      {/* Strategies */}
-      <div
-        id="strategies"
-        className="px-[6vw] pt-48 pb-20 relative max-md:pt-32"
-      >
-        <img
-          src={strategiesLine}
-          className="absolute right-0 top-36 pointer-events-none"
-        />
-
-        <div className="flex justify-between gap-[4vw] max-md:flex-col">
-          <div className="max-md:flex max-md:justify-between max-md:gap-4 max-md:items-center max-sm:block">
+          <div className="grid items-end gap-5 grid-cols-2 mb-20">
+            <h1 className="gradient-text to-teal-400 text-h1 font-chakra">
+              Yield Opportunities
+            </h1>
             <div>
-              <h2
-                className={classNames(
-                  "font-chakra gradient-text text-h5 mb-14 whitespace-nowrap",
-                  "max-xl:text-h6 max-xl:mb-8",
-                  "max-sm:mb-4",
-                )}
-              >
-                Trading Strategies*
-              </h2>
-              <p className="mb-6 max-sm:mb-8 max-w-96 max-md:max-w-max">
-                Learn more about various trading strategies that can be
-                employed, and dive into various scenarios with examples in the
-                Docs.
-              </p>
+              <HyperdriveIcon className="size-10 mb-5" />
+              <h2 className="font-chakra text-h5 mb-3">Hyperdrive One</h2>
+              <p className="font-light opacity-60">Powered by HYPERDRIVE</p>
             </div>
-            {/* <GradientBorderButton
-              className="button-primary max-sm:mb-4"
-              href="#"
-            >
-              Learn more
-            </GradientBorderButton> */}
           </div>
-          <div
-            className={classNames(
-              "grid grid-cols-2 gap-9 basis-2/3",
-              "max-xl:gap-6",
-              "max-lg:gap-4",
-              "max-sm:grid-cols-1",
-            )}
-          >
-            <div className="p-6 bg-card-gradient min-h-60">
-              <h3 className="mb-4 text-h7 text-neutral-100">
-                Hold to Maturity
-              </h3>
-              <p>
-                Obtain a predictable fixed rate of return, or maximize your
-                exposure to the variable rate if you believe it will outperform
-                over the term.
-              </p>
-            </div>
-            <div className="p-6 bg-card-gradient min-h-60">
-              <h3 className="mb-4 text-h7 text-neutral-100">
-                Rates Speculation
-              </h3>
-              <p>
-                Speculate on the anticipated directionality of the rates and
-                seek to close your position early at a profit.
-              </p>
-            </div>
-            <div className="p-6 bg-card-gradient min-h-60">
-              <h3 className="mb-4 text-h7 text-neutral-100">
-                Rates Arbitraging
-              </h3>
-              <p>
-                Maintain optimal yield performance by opening Shorts or Longs
-                &ndash; whichever earns you a higher rate &ndash; to bring the
-                fixed and variable rates closer together.
-              </p>
-            </div>
-            <div className="p-6 bg-card-gradient min-h-60">
-              <h3 className="mb-4 text-h7 text-neutral-100">
-                Volatility Harvesting
-              </h3>
-              <p>
-                Provide liquidity to a market and seek a profit from
-                volatility-driven trading fees, while still earning the yield
-                source rate on idle capital.
-              </p>
-            </div>
+
+          {/* Hyperdrive One CTA tiles */}
+          <div className="grid items-stretch gap-5 grid-cols-2">
+            {/* Hyperdrive One trade now tile */}
+            <CtaTile className="bg-aquamarine/40">
+              <Link to="/app" className="button button-primary">
+                Trade now
+              </Link>
+              <CtaTile.IconList>
+                <CtaTile.IconListItem src="/icons/money-shield-icon.svg">
+                  Principal-protected fixed-rate returns
+                </CtaTile.IconListItem>
+                <CtaTile.IconListItem src="/icons/line-chart-icon.svg">
+                  Boosted variable-rate returns
+                </CtaTile.IconListItem>
+                <CtaTile.IconListItem src="/icons/clock-icon.svg">
+                  Terms On Demand
+                </CtaTile.IconListItem>
+              </CtaTile.IconList>
+            </CtaTile>
+
+            {/* Hyperdrive One supply liquidity tile */}
+            <CtaTile className="bg-aquamarine/40">
+              <Link to="/app" className="button button-primary">
+                Supply liquidity
+              </Link>
+              <CtaTile.IconList>
+                <CtaTile.IconListItem src="/icons/continuous-icon.svg">
+                  No pool expiry, no rollovers, continuous yield
+                </CtaTile.IconListItem>
+                <CtaTile.IconListItem src="/icons/variable-circle-icon.svg">
+                  Variable yield generated from trading fees and on idle capital
+                </CtaTile.IconListItem>
+                <CtaTile.IconListItem src="/icons/balance-icon.svg">
+                  PnL from balancing market activity
+                </CtaTile.IconListItem>
+              </CtaTile.IconList>
+            </CtaTile>
           </div>
         </div>
 
-        <p className="text-body-sm mt-20 max-md:mt-10 max-sm:text-caption-lg">
-          * This above content is general in nature and for informational
-          purposes only. It is not legal, tax, investment, financial or other
-          advice, nor is it a comprehensive or complete statement of the matters
-          discussed. It is not a recommendation of an investment strategy and
-          should not be used as the basis of any investment decision. All
-          transactions and investments involve risk, and past performance does
-          not guarantee future results. Certain complex strategies carry
-          additional risk and are not appropriate for all users. As with any
-          DeFi or crypto position, you may incur losses. You alone are
-          responsible for evaluating the benefits and risks associated with any
-          decision to use Hyperdrive.
-        </p>
+        {/* Hyperdrive One Pools carousel */}
+        <ul className="grid items-center grid-flow-col py-6 border-y border-content/30 overflow-x-auto">
+          <li className="flex items-center w-60 h-28 justify-center border-r border-content/30">
+            <img
+              className="h-10"
+              alt="angle"
+              src="/logos/assets/angle-asset-logo.svg"
+            />
+          </li>
+          <li className="flex items-center w-60 h-28 justify-center border-r border-content/30">
+            <img
+              className="h-10"
+              alt="ether.fi"
+              src="/logos/assets/ether.fi-asset-logo.svg"
+            />
+          </li>
+          <li className="flex items-center w-60 h-28 justify-center border-r border-content/30">
+            <img
+              className="h-10"
+              alt="gnosis savings"
+              src="/logos/assets/gnosis-savings-asset-logo.svg"
+            />
+          </li>
+          <li className="flex items-center w-60 h-28 justify-center border-r border-content/30">
+            <img
+              className="h-10"
+              alt="lido"
+              src="/logos/assets/lido-asset-logo.svg"
+            />
+          </li>
+          <li className="flex items-center w-60 h-28 justify-center border-r border-content/30">
+            <img
+              className="h-10"
+              alt="morpho"
+              src="/logos/assets/morpho-asset-logo.svg"
+            />
+          </li>
+          <li className="flex items-center w-60 h-28 justify-center border-r border-content/30">
+            <img
+              className="h-10"
+              alt="rocketpool"
+              src="/logos/assets/rocketpool-asset-logo.svg"
+            />
+          </li>
+          <li className="flex items-center w-60 h-28 justify-center">
+            <img
+              className="h-10"
+              alt="sdai"
+              src="/logos/assets/sdai-asset-logo.svg"
+            />
+          </li>
+        </ul>
       </div>
 
-      {/* Partners */}
-      {/* <div id="partners" className="px-24 py-16">
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <h2 className="text-h7 font-chakra mb-14">
-            Integrators &amp; Partners
-          </h2>
-          <div className="flex gap-14 justify-center">
-            <img src={blockAnalyticaLogo} />
-            <img src={blockAnalyticaLogo} />
-            <img src={blockAnalyticaLogo} />
-            <img src={blockAnalyticaLogo} />
+      {/* Fixed Borrow */}
+      <div className="bg-[url('/accents/fixed-borrow-lines-top.svg')] bg-[calc(50%_+_100px)_-132px] bg-no-repeat relative overflow-hidden">
+        <img
+          src="/accents/fixed-borrow-lines-left.svg"
+          className="absolute bottom-[-544px] left-[-136px] pointer-events-none"
+        />
+        <div id="fixed-borrow" className="inner-container py-32">
+          <p className="flex items-center gap-3 font-chakra tracking-wide uppercase mb-14">
+            <img src="/icons/apps-icon.svg" className="size-6" />
+            Our Apps
+          </p>
+
+          <div className="grid items-end gap-5 grid-cols-2 mb-20">
+            <h1 className="gradient-text from-[#0FC2C2] to-[#44E8E8] text-h1 font-chakra">
+              Rate
+              <br />
+              Protection
+            </h1>
+            <div className="flex items-end gap-12">
+              <div>
+                <HyperdriveIcon className="size-10 mb-5" />
+                <h2 className="font-chakra text-h5 mb-3">Fixed Borrow</h2>
+                <p className="font-light opacity-60">Powered by HYPERDRIVE</p>
+              </div>
+              <p className="text-h6 text-content/50 mb-9 font-chakra">X</p>
+              <div>
+                <img
+                  src="/icons/morpho-icon.svg"
+                  className="size-[60px] mb-5"
+                />
+                <h2 className="font-chakra text-h5 mb-9">Morpho</h2>
+              </div>
+            </div>
+          </div>
+
+          {/* Fixed Borrow CTA tiles */}
+          <div className="grid items-stretch gap-5 grid-cols-2">
+            <CtaTile className="bg-teal-500 col-start-2">
+              <Link to="/app" className="button button-primary-alt">
+                Fix your borrow
+              </Link>
+              <CtaTile.IconList>
+                <CtaTile.IconListItem src="/icons/bar-chart-icon.svg">
+                  Fix existing borrow positions
+                </CtaTile.IconListItem>
+                <CtaTile.IconListItem src="/icons/heart-check-icon.svg">
+                  Peace of mind and predictability
+                </CtaTile.IconListItem>
+                <CtaTile.IconListItem src="/icons/tag-icon.svg">
+                  Exit protection at any time
+                </CtaTile.IconListItem>
+              </CtaTile.IconList>
+            </CtaTile>
           </div>
         </div>
-      </div> */}
+      </div>
+
+      {/* Build */}
+      <div id="build" className="inner-container pt-32 pb-52">
+        <p className="flex items-center gap-3 font-chakra tracking-wide uppercase mb-8">
+          <img src="/icons/tools-icon.svg" className="size-6" />
+          Our Tools
+        </p>
+
+        <div className="grid items-end gap-5 grid-cols-2 mb-20">
+          <h1 className="gradient-text text-h1 font-chakra">
+            Build on the Hyperdrive Protocol
+          </h1>
+
+          {/* Tools grid */}
+          {/* <div className="grid grid-cols-2 gap-x-5">
+                <div className="h-36 flex items-center justify-center border-top">
+                  <img src=
+                </div>
+          </div> */}
+        </div>
+      </div>
 
       <Footer />
     </>
