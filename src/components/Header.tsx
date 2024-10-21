@@ -4,9 +4,6 @@ import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import classNames from "classnames";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import menuIcon from "src/assets/icons/menu-icon.svg";
-import xIcon from "src/assets/icons/x-icon.svg";
-import delveHyperdriveBoxLogo from "src/assets/logos/delv-hyperdrive-box-white.svg";
 import { BlogIcon } from "src/components/icons/BlogIcon";
 import { BookIcon } from "src/components/icons/BookIcon";
 import { CodeDocIcon } from "src/components/icons/CodeDocIcon";
@@ -18,7 +15,7 @@ import { HyperdriveIcon } from "src/components/icons/HyperdriveIcon";
 import { LinkedInIcon } from "src/components/icons/LinkedInIcon";
 import { NoteIcon } from "src/components/icons/NoteIcon";
 import { StrategyIcon } from "src/components/icons/StrategyIcon";
-import { XIcon } from "src/components/icons/XIcon";
+import { XSocialIcon } from "src/components/icons/XSocialIcon";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
 
 const SHOW_ANNOUNCEMENT_BANNER = false;
@@ -86,7 +83,7 @@ export function Header({ className }: HeaderProps) {
           {/* Logo */}
           <Link to="/">
             <img
-              src={delveHyperdriveBoxLogo}
+              src="/logos/delv-hyperdrive-box-white.svg"
               className="h-11"
               alt="Hyperdrive.box by DELV"
             />
@@ -107,7 +104,10 @@ export function Header({ className }: HeaderProps) {
               )}
               onClick={toggleMenu}
             >
-              <img src={isMenuOpen ? xIcon : menuIcon} alt="Menu" />
+              <img
+                src={isMenuOpen ? "/icons/x-icon.svg" : "/icons/menu-icon.svg"}
+                alt="Menu"
+              />
             </button>
 
             {/* Menu list */}
@@ -237,7 +237,7 @@ export function Header({ className }: HeaderProps) {
                       href="https://twitter.com/delv_tech/"
                       className="h-9 pl-4 pr-6 data-[focus]:bg-gradient-to-r from-aquamarine to-teal-400 data-[focus]:text-aquamarine-950 flex gap-3 items-center"
                     >
-                      <XIcon className="size-4" />X
+                      <XSocialIcon className="size-4" />X
                     </a>
                   </MenuItem>
                   <MenuItem>

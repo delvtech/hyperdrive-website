@@ -1,6 +1,6 @@
 import { SVGProps } from "react";
 
-export function XIcon({ ...props }: SVGProps<SVGSVGElement>) {
+export function XSocialIcon({ ...props }: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="20"

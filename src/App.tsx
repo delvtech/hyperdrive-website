@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import { Redirect } from "src/components/router/Redirect";
 import { ScrollReset } from "src/components/router/ScrollReset";
 import { Brand } from "src/pages/Brand";
-import { Build } from "src/pages/build/Build";
 import { Home } from "src/pages/home/Home";
 
 function App() {
@@ -24,7 +23,6 @@ function App() {
           element={<Redirect to="https://fixed-borrow.hyperdrive.box" />}
         />
         <Route path="/brand" element={<Brand />} />
-        <Route path="/build" element={<Build />} />
         <Route
           path="/docs/*"
           element={<Redirect to="https://docs.hyperdrive.box" />}

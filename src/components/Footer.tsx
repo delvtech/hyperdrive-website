@@ -1,10 +1,5 @@
 import classNames from "classnames";
 import { Link } from "react-router-dom";
-import discordLogoIcon from "src/assets/logos/discord-logo-icon-dark.svg";
-import farcasterLogoIcon from "src/assets/logos/farcaster-logo-icon-dark.svg";
-import hyperdriveLogo from "src/assets/logos/hyperdrive-logo-white.svg";
-import linkedinLogoIcon from "src/assets/logos/linkedin-logo-icon-dark.svg";
-import xLogoIcon from "src/assets/logos/x-logo-icon-dark.svg";
 
 export function Footer() {
   return (
@@ -15,7 +10,11 @@ export function Footer() {
           "max-lg:flex-col max-lg:items-center",
         )}
       >
-        <img src={hyperdriveLogo} className="h-9" alt="Hyperdrive" />
+        <img
+          src="/logos/hyperdrive-logo-white.svg"
+          className="h-9"
+          alt="Hyperdrive"
+        />
         <div
           className={classNames(
             "flex gap-20 basis-2/3",
@@ -213,16 +212,22 @@ export function Footer() {
           <p className="mr-6 max-sm:mr-0">Follow us:</p>
           <div className="flex gap-3">
             <a href="https://twitter.com/delv_tech/">
-              <img className="h-6" src={xLogoIcon}></img>
+              <img className="h-6" src="/logos/x-logo-icon-dark.svg"></img>
             </a>
             <a href="https://www.delv.tech/discord/">
-              <img className="h-6" src={discordLogoIcon}></img>
+              <img className="h-6" src="logos/discord-logo-icon-dark.svg"></img>
             </a>
             <a href="https://www.linkedin.com/company/delv-tech/">
-              <img className="h-6" src={linkedinLogoIcon}></img>
+              <img
+                className="h-6"
+                src="/logos/linkedin-logo-icon-dark.svg"
+              ></img>
             </a>
             <a href="https://warpcast.com/~/channel/delv">
-              <img className="h-6" src={farcasterLogoIcon}></img>
+              <img
+                className="h-6"
+                src="/logos/farcaster-logo-icon-dark.svg"
+              ></img>
             </a>
           </div>
         </div>
