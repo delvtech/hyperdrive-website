@@ -1,6 +1,6 @@
 import { SVGProps } from "react";
 
-export function HyperdriveIcon({ ...props }: SVGProps<SVGSVGElement>) {
+export function HyperdriveLogoIcon({ ...props }: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="16"

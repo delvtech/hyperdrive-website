@@ -1,6 +1,6 @@
 import { SVGProps } from "react";
 
-export function FarcasterIcon({ ...props }: SVGProps<SVGSVGElement>) {
+export function FarcasterLogoIcon({ ...props }: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="20"

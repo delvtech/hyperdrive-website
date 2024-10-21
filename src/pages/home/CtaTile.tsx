@@ -30,7 +30,7 @@ export function CtaTile({
 CtaTile.IconList = function CtaTileIconList({
   children,
 }: PropsWithChildren<{}>) {
-  return <ul className="space-y-3 spaced-mono leading-[18px]">{children}</ul>;
+  return <ul className="space-y-3">{children}</ul>;
 };
 
 export interface CtaTileIconListItemProps {
@@ -42,7 +42,7 @@ CtaTile.IconListItem = function CtaTileIconListItem({
   children,
 }: PropsWithChildren<CtaTileIconListItemProps>) {
   return (
-    <li className="inline-flex items-start gap-3 px-8 min-h-14 py-4 bg-gradient-[295deg] from-content-600/[0.07] to-content-600/10 border rounded border-content/15">
+    <li className="card inline-flex items-start gap-3 spaced-mono leading-[18px] pl-5 pr-8 py-4">
       <img src={src} className="size-6 my-[-3px]" />
       {children}
     </li>

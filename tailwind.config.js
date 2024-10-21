@@ -86,14 +86,20 @@ export default {
         h6: ["1.875rem", { lineHeight: 1.2 }],
         h7: ["1.5rem", { lineHeight: 1.2 }],
       },
-      width: {
-        inner: "1440px",
-      },
     },
   },
   plugins: [
     plugin(({ matchUtilities, theme, addUtilities, addComponents }) => {
       addComponents({
+        ".inner-container": {
+          width: "100%",
+          maxWidth: theme("maxWidth.7xl"),
+          paddingLeft: "2vw",
+          paddingRight: "2vw",
+          marginLeft: "auto",
+          marginRight: "auto",
+        },
+
         ".gradient-text": {
           // backgroundImage: `linear-gradient(90deg, ${theme("colors.aquamarine.DEFAULT")}, ${theme("colors.teal.DEFAULT")})`,
           backgroundClip: "text",
@@ -110,18 +116,18 @@ export default {
           fontFamily: theme("fontFamily.mono"),
           fontSize: theme("fontSize.body-sm"),
           textTransform: "uppercase",
-          letterSpacing: "0.1em",
+          letterSpacing: theme("letterSpacing.widest"),
         },
 
         ".button": {
           fontFamily: theme("fontFamily.mono"),
           fontSize: theme("fontSize.body-sm"),
-          fontWeight: "500",
+          fontWeight: theme("fontWeight.medium"),
           textTransform: "uppercase",
           display: "inline-flex",
-          gap: "0.5rem",
-          padding: "0 1.5rem",
-          height: "3rem",
+          gap: theme("spacing.2"),
+          padding: `0 ${theme("spacing.6")}`,
+          height: theme("spacing.12"),
           border: "1px solid",
           justifyContent: "center",
           alignItems: "center",
@@ -143,28 +149,33 @@ export default {
           },
 
           "&.button-primary-alt": {
-            borderColor: theme("colors.teal.400"),
-            backgroundColor: theme("colors.teal.400"),
+            borderColor: theme("colors.teal.600"),
+            backgroundColor: theme("colors.teal.600"),
             color: theme("colors.content.inverse"),
 
             "&:hover": {
-              borderColor: theme("colors.teal.600"),
-              backgroundColor: theme("colors.teal.DEFAULT"),
+              borderColor: theme("colors.teal.700"),
+              backgroundColor: theme("colors.teal.400"),
             },
           },
+        },
+
+        ".card": {
+          borderRadius: theme("borderRadius.DEFAULT"),
+          border: "1px solid",
+          borderColor: "rgb(255 255 255 / 0.15)",
+          backgroundImage: "linear-gradient(100deg, var(--tw-gradient-stops))",
+          "--tw-gradient-from":
+            "rgb(219 219 235 / 0.1) var(--tw-gradient-from-position)",
+          "--tw-gradient-to":
+            "rgb(219 219 235 / 0.07) var(--tw-gradient-to-position)",
+          "--tw-gradient-stops":
+            "var(--tw-gradient-from), var(--tw-gradient-to)",
+          padding: `${theme("spacing.6")} ${theme("spacing.8")}`,
         },
       });
 
       addUtilities({
-        ".inner-container": {
-          width: "100%",
-          maxWidth: theme("maxWidth.7xl"),
-          paddingLeft: "2vw",
-          paddingRight: "2vw",
-          marginLeft: "auto",
-          marginRight: "auto",
-        },
-
         /*
         Adds clipped corners that scale with the element without distorting. This is
         achieved by using polygon and calc() to get values that are relative to the

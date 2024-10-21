@@ -1,6 +1,6 @@
 import { SVGProps } from "react";
 
-export function DiscordIcon({ ...props }: SVGProps<SVGSVGElement>) {
+export function DiscordLogoIcon({ ...props }: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="20"

@@ -8,14 +8,14 @@ import { BlogIcon } from "src/components/icons/BlogIcon";
 import { BookIcon } from "src/components/icons/BookIcon";
 import { CodeDocIcon } from "src/components/icons/CodeDocIcon";
 import { CoreIcon } from "src/components/icons/CoreIcon";
-import { DiscordIcon } from "src/components/icons/DiscordIcon";
+import { DiscordLogoIcon } from "src/components/icons/DiscordLogoIcon";
 import { DocIcon } from "src/components/icons/DocIcon";
-import { FarcasterIcon } from "src/components/icons/FarcasterIcon";
-import { HyperdriveIcon } from "src/components/icons/HyperdriveIcon";
-import { LinkedInIcon } from "src/components/icons/LinkedInIcon";
+import { FarcasterLogoIcon } from "src/components/icons/FarcasterLogoIcon";
+import { HyperdriveLogoIcon } from "src/components/icons/HyperdriveLogoIcon";
+import { LinkedInLogoIcon } from "src/components/icons/LinkedInLogoIcon";
 import { NoteIcon } from "src/components/icons/NoteIcon";
 import { StrategyIcon } from "src/components/icons/StrategyIcon";
-import { XSocialIcon } from "src/components/icons/XSocialIcon";
+import { XLogoIcon } from "src/components/icons/XLogoIcon";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
 
 const SHOW_ANNOUNCEMENT_BANNER = false;
@@ -228,7 +228,7 @@ export function Header({ className }: HeaderProps) {
                       href="https://www.delv.tech/discord"
                       className="h-9 pl-4 pr-6 data-[focus]:bg-gradient-to-r from-aquamarine to-teal-400 data-[focus]:text-aquamarine-950 flex gap-3 items-center"
                     >
-                      <DiscordIcon className="size-4" />
+                      <DiscordLogoIcon className="size-4" />
                       Discord
                     </a>
                   </MenuItem>
@@ -237,7 +237,7 @@ export function Header({ className }: HeaderProps) {
                       href="https://twitter.com/delv_tech/"
                       className="h-9 pl-4 pr-6 data-[focus]:bg-gradient-to-r from-aquamarine to-teal-400 data-[focus]:text-aquamarine-950 flex gap-3 items-center"
                     >
-                      <XSocialIcon className="size-4" />X
+                      <XLogoIcon className="size-4" />X
                     </a>
                   </MenuItem>
                   <MenuItem>
@@ -245,7 +245,7 @@ export function Header({ className }: HeaderProps) {
                       href="https://warpcast.com/~/channel/delv"
                       className="h-9 pl-4 pr-6 data-[focus]:bg-gradient-to-r from-aquamarine to-teal-400 data-[focus]:text-aquamarine-950 flex gap-3 items-center"
                     >
-                      <FarcasterIcon className="size-4" />
+                      <FarcasterLogoIcon className="size-4" />
                       Farcaster
                     </a>
                   </MenuItem>
@@ -254,7 +254,7 @@ export function Header({ className }: HeaderProps) {
                       href="https://www.linkedin.com/company/delv-tech/"
                       className="h-9 pl-4 pr-6 data-[focus]:bg-gradient-to-r from-aquamarine to-teal-400 data-[focus]:text-aquamarine-950 flex gap-3 items-center"
                     >
-                      <LinkedInIcon className="size-4" />
+                      <LinkedInLogoIcon className="size-4" />
                       LinkedIn
                     </a>
                   </MenuItem>
@@ -285,7 +285,7 @@ export function Header({ className }: HeaderProps) {
                       to="/one"
                       className="h-9 pl-4 pr-6 data-[focus]:bg-gradient-to-r from-aquamarine to-teal-400 data-[focus]:text-aquamarine-950 flex gap-3 items-center"
                     >
-                      <HyperdriveIcon className="size-4" />
+                      <HyperdriveLogoIcon className="size-4" />
                       Hyperdrive One
                     </Link>
                   </MenuItem>
@@ -294,7 +294,7 @@ export function Header({ className }: HeaderProps) {
                       to="/borrow"
                       className="h-9 pl-4 pr-6 data-[focus]:bg-gradient-to-r from-aquamarine to-teal-400 data-[focus]:text-aquamarine-950 flex gap-3 items-center"
                     >
-                      <HyperdriveIcon className="size-4" />
+                      <HyperdriveLogoIcon className="size-4" />
                       Fixed Borrow
                     </Link>
                   </MenuItem>

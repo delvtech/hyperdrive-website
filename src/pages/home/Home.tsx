@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { GradientBorderButton } from "src/components/buttons/GradientButton";
-import { HyperdriveIcon } from "src/components/icons/HyperdriveIcon";
+import { HyperdriveLogoIcon } from "src/components/icons/HyperdriveLogoIcon";
 import { CtaTile } from "src/pages/home/CtaTile";
 
 export function Home() {
@@ -128,7 +128,7 @@ export function Home() {
               </ul>
               <div className="flex items-center gap-3">
                 <Link to="/app" className="button button-primary">
-                  <HyperdriveIcon className="size-4" />
+                  <HyperdriveLogoIcon className="size-4" />
                   Get started
                 </Link>
                 <GradientBorderButton to="/docs">
@@ -153,7 +153,7 @@ export function Home() {
               Yield Opportunities
             </h1>
             <div>
-              <HyperdriveIcon className="size-10 mb-5" />
+              <HyperdriveLogoIcon className="size-10 mb-5" />
               <h2 className="font-chakra text-h5 mb-3">Hyperdrive One</h2>
               <p className="font-light opacity-60">Powered by HYPERDRIVE</p>
             </div>
@@ -273,7 +273,7 @@ export function Home() {
             </h1>
             <div className="flex items-end gap-12">
               <div>
-                <HyperdriveIcon className="size-10 mb-5" />
+                <HyperdriveLogoIcon className="size-10 mb-5" />
                 <h2 className="font-chakra text-h5 mb-3">Fixed Borrow</h2>
                 <p className="font-light opacity-60">Powered by HYPERDRIVE</p>
               </div>
@@ -311,24 +311,75 @@ export function Home() {
       </div>
 
       {/* Build */}
-      <div id="build" className="inner-container pt-32 pb-52">
+      <div id="build" className="inner-container pt-28">
         <p className="flex items-center gap-3 font-chakra tracking-wide uppercase mb-8">
           <img src="/icons/tools-icon.svg" className="size-6" />
           Our Tools
         </p>
 
-        <div className="grid items-end gap-5 grid-cols-2 mb-20">
+        <div className="grid items-start gap-x-32 gap-y-14 grid-cols-2">
           <h1 className="gradient-text text-h1 font-chakra">
             Build on the Hyperdrive Protocol
           </h1>
 
           {/* Tools grid */}
-          {/* <div className="grid grid-cols-2 gap-x-5">
-                <div className="h-36 flex items-center justify-center border-top">
-                  <img src=
-                </div>
-          </div> */}
+          <div className="grid grid-cols-2 gap-x-5 text-body-lg font-light">
+            <div className="grid grid-cols-[1fr_auto_1fr] border-y border-content/30">
+              <div className="h-36 flex gap-4 items-center col-start-2">
+                <img src="/icons/solidity-icon.svg" className="size-10" />
+                Smart Contracts
+              </div>
+              <hr className="border-content/30 col-span-3" />
+              <div className="h-36 flex gap-4 items-center col-start-2">
+                <img src="/icons/typescript-icon.svg" className="size-10" />
+                Frontend SDK
+              </div>
+            </div>
+            <div className="grid grid-cols-[1fr_auto_1fr] border-y border-content/30">
+              <div className="h-36 flex gap-4 items-center col-start-2">
+                <img src="/icons/rust-icon.svg" className="size-10" />
+                Math SDK
+              </div>
+              <hr className="border-content/30 col-span-3" />
+              <div className="h-36 flex gap-4 items-center col-start-2">
+                <img src="/icons/python-icon.svg" className="size-10" />
+                Bots
+              </div>
+            </div>
+          </div>
+
+          {/* Get started card */}
+          <div className="card flex gap-4 items-center pb-8 order-3">
+            <div className="space-y-3">
+              <h2 className="font-chakra text-h5">Get started</h2>
+              <p className="text-content/60 font-light">
+                Bring new yield-based products to life with Hyperdrive(CORE)'s
+                extensive open source developer tooling for the Hyperdrive
+                Protocol.
+              </p>
+            </div>
+            <a
+              href="https://github.com/delvtech"
+              className="button button-primary px-10"
+            >
+              Build now
+            </a>
+          </div>
+
+          <img src="/illustrations/hyperdrive-sheild-on-squares.svg" />
         </div>
+      </div>
+
+      <div className="inner-container">
+        <div className="h-px bg-gradient-to-r from-content/0 via-aquamarine/75 to-content/0" />
+      </div>
+
+      {/* Security measures */}
+      <div id="build" className="inner-container pt-28 pb-52">
+        <p className="flex items-center gap-3 font-chakra tracking-wide uppercase mb-8">
+          <img src="/icons/tools-icon.svg" className="size-6" />
+          Security measures
+        </p>
       </div>
 
       <Footer />
