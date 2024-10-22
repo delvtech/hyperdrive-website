@@ -65,7 +65,7 @@ export function Build() {
           )}
         >
           {/* Smart contracts tile */}
-          <div className="p-6 pb-12 bg-card-gradient translate-y-12 max-lg:transform-none">
+          <div className="card p-6 pb-12 translate-y-12 max-lg:transform-none">
             <img src="/logos/solidity-logo-tile.png" className="mb-8" />
             <h3 className="text-h7 text-neutral-100 mb-4">
               Hyperdrive Smart Contracts
@@ -74,7 +74,7 @@ export function Build() {
           </div>
 
           {/* Typescript SDK tile */}
-          <div className="p-6 pb-12 bg-card-gradient max-lg:translate-y-12 max-sm:transform-none">
+          <div className="p-6 pb-12 card max-lg:translate-y-12 max-sm:transform-none">
             <img src="/logos/typescript-logo-tile.png" className="mb-8" />
             <h3 className="text-h7 text-neutral-100 mb-4">TypeScript SDK</h3>
             <p>
@@ -84,7 +84,7 @@ export function Build() {
           </div>
 
           {/* Agent0 tile */}
-          <div className="p-6 pb-12 bg-card-gradient translate-y-12 max-lg:transform-none">
+          <div className="p-6 pb-12 card translate-y-12 max-lg:transform-none">
             <img src="/logos/python-logo-tile.png" className="mb-8" />
             <h3 className="text-h7 text-neutral-100 mb-4">
               Agent0 Bots Framework (Python)
@@ -96,7 +96,7 @@ export function Build() {
           </div>
 
           {/* Rust SDK tile */}
-          <div className="p-6 pb-12 bg-card-gradient max-lg:translate-y-12 max-sm:transform-none">
+          <div className="p-6 pb-12 card max-lg:translate-y-12 max-sm:transform-none">
             <img src="/logos/rust-logo-tile.svg" className="mb-8" />
             <h3 className="text-h7 text-neutral-100 mb-4">Rust SDK</h3>
             <p>

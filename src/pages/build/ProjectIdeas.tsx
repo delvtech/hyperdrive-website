@@ -55,7 +55,7 @@ export function ProjectIdeas() {
             {/* Fixed rate exposure */}
             <div
               className={classNames(
-                "p-6 pb-8 transition-all duration-700 w-2/3 shrink-0 bg-card-gradient",
+                "p-6 pb-8 transition-all duration-700 w-2/3 shrink-0 card",
               )}
               style={{
                 marginLeft: `calc(${activeSlide * -66.66}% - ${activeSlide * 24}px)`,
@@ -68,7 +68,7 @@ export function ProjectIdeas() {
             </div>
 
             {/* Trading bots */}
-            <div className="p-6 pb-8 transition-all duration-700 w-2/3 shrink-0 bg-card-gradient">
+            <div className="p-6 pb-8 transition-all duration-700 w-2/3 shrink-0 card">
               <h3 className="text-neutral-100 text-h7 mb-2">Trading bots</h3>
               <p>
                 Implement bots to automate your own trading strategies on
@@ -77,7 +77,7 @@ export function ProjectIdeas() {
             </div>
 
             {/* Novel DeFi products */}
-            <div className="p-6 pb-8 transition-all duration-700 w-2/3 shrink-0 bg-card-gradient">
+            <div className="p-6 pb-8 transition-all duration-700 w-2/3 shrink-0 card">
               <h3 className="text-neutral-100 text-h7 mb-2">
                 Novel DeFi products
               </h3>
@@ -89,7 +89,7 @@ export function ProjectIdeas() {
               </p>
             </div>
 
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-neutral-900"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black"></div>
           </div>
         </div>
       </div>
