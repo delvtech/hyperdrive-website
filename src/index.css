@@ -2,32 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  /* buttons */
-  .button-sm {
-    @apply text-caption-lg h-10;
-  }
-
-  .a {
-    @apply text-aquamarine hover:underline;
-  }
-
-  /* .gradient-text {
-    @apply bg-gradient-to-r from-aquamarine-500 to-sky text-transparent bg-clip-text;
-  } */
-
-  .bg-card-gradient {
-    @apply bg-gradient-to-b from-[#4C618C]/20 to-[#222C40]/20 backdrop-blur-md;
-  }
-
-  .body-copy {
-    @apply text-body-lg text-neutral-300;
-  }
-  .body-copy a {
-    @apply text-aquamarine hover:underline;
-  }
-}
-
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -46,16 +20,3 @@
 code {
   @apply font-mono;
 }
-
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */

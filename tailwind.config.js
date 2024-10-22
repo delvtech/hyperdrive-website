@@ -143,6 +143,12 @@ export default {
           backdropFilter: theme("backdropFilter.blur"),
           transition: "all 0.1s",
 
+          "&.button-sm": {
+            fontSize: theme("fontSize.caption-lg"),
+            lineHeight: theme("lineHeight.caption-lg"),
+            height: theme("spacing.10"),
+          },
+
           "&.button-primary": {
             borderColor: theme("colors.aquamarine.DEFAULT"),
             backgroundColor: theme("colors.aquamarine.DEFAULT"),
