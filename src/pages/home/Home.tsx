@@ -106,7 +106,7 @@ export function Home() {
           </div>
 
           {/* Hero right */}
-          <div className="p-px clip-corners-rounded bg-gradient-to-br from-content-600/30 to-content-600/15 backdrop-blur">
+          <div className="p-px clip-corners-rounded bg-gradient-to-br from-content-600/30 to-content-600/15 backdrop-blur-sm">
             <div className="clip-corners-rounded bg-aquamarine-950/60 px-14 pt-14 pb-12 flex flex-col gap-8">
               <ul className="space-y-4 spaced-mono">
                 <li className="flex gap-2 items-center">
@@ -484,7 +484,9 @@ export function Home() {
         {/* Investor logo carousel */}
         <div
           className="overflow-x-auto relative"
-          ref={registerTimedScrollReset({ x: 0.5 })}
+          ref={(el) => {
+            registerTimedScrollReset({ x: 0.5 })
+          }}
         >
           <div className="flex flex-col justify-center w-max gap-5">
             <ul className="flex justify-center gap-5 ml-[72px]">
