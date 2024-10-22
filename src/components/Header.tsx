@@ -152,7 +152,7 @@ export function Header({ className }: HeaderProps) {
                   </MenuItem>
                   <MenuItem>
                     <Link
-                      to="https://docs.hyperdrive.box/trading/trading-strategies"
+                      to="/docs/trading/trading-strategies"
                       className="h-9 pl-4 pr-6 data-[focus]:bg-gradient-to-r from-aquamarine to-teal-400 data-[focus]:text-aquamarine-950 flex gap-3 items-center"
                     >
                       <StrategyIcon className="size-4" />
@@ -193,7 +193,7 @@ export function Header({ className }: HeaderProps) {
                 >
                   <MenuItem>
                     <Link
-                      to="/docs"
+                      to="/docs/hyperdrive-for-developers"
                       className="h-9 pl-4 pr-6 data-[focus]:bg-gradient-to-r from-aquamarine to-teal-400 data-[focus]:text-aquamarine-950 flex gap-3 items-center"
                     >
                       <CodeDocIcon className="size-4" />
