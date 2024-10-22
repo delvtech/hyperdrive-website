@@ -214,9 +214,9 @@ function AssetTile({
         <div className="flex items-center justify-center w-full grow">
           {svg}
         </div>
-        <div className="grid grid-cols-[1.5fr_0_1.5fr] gap-2 w-full h-[3.75rem] border-t border-neutral-400/40 p-2">
+        <div className="grid grid-cols-[1.5fr_0_1.5fr] gap-2 w-full h-[3.25rem] border-t border-neutral-400/40">
           <button
-            className="flex items-center justify-center font-mono uppercase font-medium hover:bg-neutral-500/20 transition-all rounded"
+            className="flex items-center justify-center font-mono uppercase font-medium hover:bg-neutral-500/20 transition-all rounded mt-2"
             onClick={() => {
               copy(svgString);
             }}
@@ -225,7 +225,7 @@ function AssetTile({
           </button>
           <div className="w-px bg-neutral-400/40" />
           <a
-            className="flex items-center justify-center font-mono uppercase font-medium hover:bg-neutral-500/20 transition-all rounded"
+            className="flex items-center justify-center font-mono uppercase font-medium hover:bg-neutral-500/20 transition-all rounded mt-2"
             href={downloadLink}
             download={downloadName}
           >
