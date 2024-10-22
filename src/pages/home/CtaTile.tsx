@@ -18,8 +18,9 @@ export function CtaTile({
         )}
       >
         <div className="clip-corners bg-neutral-950 p-5 h-full">
-          <div className="clip-corners-inner bg-gradient-[123deg] from-content-600/10 to-content-600/[0.07] pt-8 pb-10 px-10 space-y-8 h-full">
+          <div className="clip-corners-inner bg-gradient-[123deg] from-content-600/10 to-content-600/[0.07] pt-8 pb-10 px-10 space-y-8 h-full [&>*]:relative relative">
             {children}
+            <div className="!absolute inset-0 bg-[url('/accents/tile-grid-bg.svg')] -z-10 -top-8" />
           </div>
         </div>
       </div>

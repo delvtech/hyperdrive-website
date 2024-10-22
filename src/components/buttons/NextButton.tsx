@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import rightArrowIcon from "src/assets/icons/right-arrow-icon.svg";
 
 interface NextButtonProps {
   className?: string;
@@ -20,7 +19,7 @@ export function NextButton({ className, disabled, onClick }: NextButtonProps) {
         className,
       )}
     >
-      <img src={rightArrowIcon} />
+      <img src="/icons/right-arrow-icon.svg" />
     </button>
   );
 }

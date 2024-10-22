@@ -1,16 +1,9 @@
 import classNames from "classnames";
-import heroLine from "src/assets/accents/build-hero-line.svg";
-import stackDiagram from "src/assets/diagrams/stack-diagram.svg";
-import { default as FileIcon } from "src/assets/icons/file-icon.svg";
-import { default as DiscordLogoIcon } from "src/assets/logos/discord-logo-icon-light.svg";
-import { default as GithubLogoIcon } from "src/assets/logos/github-logo-icon-light.svg";
-import pythonLogoTile from "src/assets/logos/python-logo-tile.png";
-import rustLogoTile from "src/assets/logos/rust-logo-tile.svg";
-import solidityLogoTile from "src/assets/logos/solidity-logo-tile.png";
-import typescriptLogoTile from "src/assets/logos/typescript-logo-tile.png";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { GradientBorderButton } from "src/components/buttons/GradientButton";
+import { DiscordLogoIcon } from "src/components/icons/DiscordLogoIcon";
+import { GithubLogoIcon } from "src/components/icons/GithubLogoIcon";
 import { CodeTabs } from "src/pages/build/CodeTabs";
 import { ProjectIdeas } from "src/pages/build/ProjectIdeas";
 
@@ -21,7 +14,10 @@ export function Build() {
 
       {/* Hero */}
       <div className="px-[4vw] min-h-screen flex items-center justify-center relative">
-        <img src={heroLine} className="absolute top-1/2 right-0" />
+        <img
+          src="/accents/build-hero-line.svg"
+          className="absolute top-1/2 right-0"
+        />
 
         <div className="max-w-4xl relative">
           <div className="text-center px-40 pb-14 text-white max-lg:px-10 max-md:px-0">
@@ -35,15 +31,15 @@ export function Build() {
           </div>
           <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1">
             <GradientBorderButton href="https://delv.tech/discord">
-              <img src={DiscordLogoIcon} alt="" className="w-6 h-6" />
+              <DiscordLogoIcon className="w-6 h-6" />
               Discord
             </GradientBorderButton>
             <GradientBorderButton href="https://github.com/delvtech/hyperdrive">
-              <img src={GithubLogoIcon} alt="" className="w-6 h-6" />
+              <GithubLogoIcon className="w-6 h-6" />
               GitHub
             </GradientBorderButton>
             <GradientBorderButton href="https://github.com/delvtech/hyperdrive/blob/main/docs/Hyperdrive_Whitepaper.pdf">
-              <img src={FileIcon} alt="" className="w-6 h-6" />
+              <img src="/icons/file-icon.svg" className="w-6 h-6" />
               Whitepaper
             </GradientBorderButton>
           </div>
@@ -70,7 +66,7 @@ export function Build() {
         >
           {/* Smart contracts tile */}
           <div className="p-6 pb-12 bg-card-gradient translate-y-12 max-lg:transform-none">
-            <img src={solidityLogoTile} className="mb-8" />
+            <img src="/logos/solidity-logo-tile.svg" className="mb-8" />
             <h3 className="text-h7 text-neutral-100 mb-4">
               Hyperdrive Smart Contracts
             </h3>
@@ -79,7 +75,7 @@ export function Build() {
 
           {/* Typescript SDK tile */}
           <div className="p-6 pb-12 bg-card-gradient max-lg:translate-y-12 max-sm:transform-none">
-            <img src={typescriptLogoTile} className="mb-8" />
+            <img src="/logos/typescript-logo-tile.svg" className="mb-8" />
             <h3 className="text-h7 text-neutral-100 mb-4">TypeScript SDK</h3>
             <p>
               TypeScript library for interacting with the Hyperdrive AMM
@@ -89,7 +85,7 @@ export function Build() {
 
           {/* Agent0 tile */}
           <div className="p-6 pb-12 bg-card-gradient translate-y-12 max-lg:transform-none">
-            <img src={pythonLogoTile} className="mb-8" />
+            <img src="/logos/python-logo-tile.svg" className="mb-8" />
             <h3 className="text-h7 text-neutral-100 mb-4">
               Agent0 Bots Framework (Python)
             </h3>
@@ -101,7 +97,7 @@ export function Build() {
 
           {/* Rust SDK tile */}
           <div className="p-6 pb-12 bg-card-gradient max-lg:translate-y-12 max-sm:transform-none">
-            <img src={rustLogoTile} className="mb-8" />
+            <img src="/logos/rust-logo-tile.svg" className="mb-8" />
             <h3 className="text-h7 text-neutral-100 mb-4">Rust SDK</h3>
             <p>
               Rust implementation of Hyperdrive math, which mirrors the Solidity
@@ -173,7 +169,10 @@ export function Build() {
             </li>
           </ul>
         </div>
-        <img className="max-w-[50%] max-lg:max-w-full" src={stackDiagram} />
+        <img
+          className="max-w-[50%] max-lg:max-w-full"
+          src="/stack-diagram.svg"
+        />
       </div>
 
       {/* Code Tabs */}

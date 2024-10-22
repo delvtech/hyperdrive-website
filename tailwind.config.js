@@ -40,7 +40,7 @@ export default {
           200: "#F5F7FA",
           300: "#D3D5DA",
           400: "#8A92A3",
-          DEFAULT: "#565E6F",
+          DEFAULT: "#69696B",
           500: "#565E6F",
           600: "#4A5263",
           700: "#242429",
@@ -82,10 +82,16 @@ export default {
         h2: ["4.5625rem", { lineHeight: 1.2 }],
         h3: ["3.6875rem", { lineHeight: 1.2 }],
         h4: ["2.9375rem", { lineHeight: 1.2 }],
+        "h4.5": ["2.6562rem", { lineHeight: 1.2 }],
         h5: ["2.375rem", { lineHeight: 1.2 }],
         h6: ["1.875rem", { lineHeight: 1.2 }],
         h7: ["1.5rem", { lineHeight: 1.2 }],
       },
+    },
+    textShadow: {
+      sm: "0 1px 2px var(--tw-shadow-color)",
+      DEFAULT: "0 2px 4px var(--tw-shadow-color)",
+      lg: "0 8px 16px var(--tw-shadow-color)",
     },
   },
   plugins: [
@@ -98,6 +104,7 @@ export default {
           paddingRight: "2vw",
           marginLeft: "auto",
           marginRight: "auto",
+          boxSizing: "content-box",
         },
 
         ".gradient-text": {
@@ -171,7 +178,8 @@ export default {
             "rgb(219 219 235 / 0.07) var(--tw-gradient-to-position)",
           "--tw-gradient-stops":
             "var(--tw-gradient-from), var(--tw-gradient-to)",
-          padding: `${theme("spacing.6")} ${theme("spacing.8")}`,
+          padding: theme("spacing.8"),
+          backdropFilter: "blur(8px)",
         },
       });
 
@@ -296,7 +304,15 @@ export default {
         },
       });
 
-      // Adds support for defining background gradient angles
+      matchUtilities(
+        {
+          "text-shadow": (value) => ({
+            textShadow: value,
+          }),
+        },
+        { values: theme("textShadow") },
+      );
+
       matchUtilities(
         {
           "bg-gradient": (angle) => ({

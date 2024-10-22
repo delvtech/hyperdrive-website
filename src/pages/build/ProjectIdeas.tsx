@@ -1,9 +1,10 @@
 import classNames from "classnames";
 import { useState } from "react";
-import discordLogoIcon from "src/assets/logos/discord-logo-icon-light.svg";
-import githubLogoIcon from "src/assets/logos/github-logo-icon-light.svg";
+import { Link } from "react-router-dom";
 import { NextButton } from "src/components/buttons/NextButton";
 import { PrevButton } from "src/components/buttons/PrevButton";
+import { DiscordLogoIcon } from "src/components/icons/DiscordLogoIcon";
+import { GithubLogoIcon } from "src/components/icons/GithubLogoIcon";
 
 export function ProjectIdeas() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -28,23 +29,23 @@ export function ProjectIdeas() {
               className="flex items-center gap-3 px-2 underline hover:text-aquamarine transition-all"
               href="https://delv.tech/discord"
             >
-              <img src={discordLogoIcon} />
+              <DiscordLogoIcon className="size-6" />
               Discord
             </a>
             <a
               className="flex items-center gap-3 px-2 underline hover:text-aquamarine transition-all"
               href="https://github.com/delvtech/hyperdrive"
             >
-              <img src={githubLogoIcon} />
+              <GithubLogoIcon className="size-6" />
               Github
             </a>
-            {/* <a
+            <Link
               className="flex items-center gap-3 px-2 underline hover:text-aquamarine transition-all"
-              href="#"
+              to="/whitepaper"
             >
-              <img src={fileIcon} />
+              <img src="/icons/file-icon.svg" />
               Whitepaper
-            </a> */}
+            </Link>
           </div>
         </div>
 

@@ -5,6 +5,14 @@ import { Header } from "src/components/Header";
 import { GradientBorderButton } from "src/components/buttons/GradientButton";
 import { HyperdriveLogoIcon } from "src/components/icons/HyperdriveLogoIcon";
 import { CtaTile } from "src/pages/home/CtaTile";
+import { SectionDivider } from "src/pages/home/SectionDivider";
+
+// TODOS:
+// [ ] Refactor to grid where it makes sense to make responsive easier
+// [ ] Responsive
+// [ ] Verify all links
+// [ ] Verify all image alts
+// [ ] Delete dead code and files
 
 export function Home() {
   return (
@@ -74,7 +82,7 @@ export function Home() {
             </div>
 
             {/* Chains */}
-            <p className="flex items-center gap-10 font-light text-content/60">
+            <div className="flex items-center gap-10 font-light text-content/60">
               Available on{" "}
               <div className="flex items-center gap-9">
                 <img
@@ -94,7 +102,7 @@ export function Home() {
                   className="h-4"
                 />
               </div>
-            </p>
+            </div>
           </div>
 
           {/* Hero right */}
@@ -127,10 +135,18 @@ export function Home() {
                 </li>
               </ul>
               <div className="flex items-center gap-3">
-                <Link to="/app" className="button button-primary">
+                <button
+                  type="button"
+                  onClick={() => {
+                    document
+                      .getElementById("hyperdrive-one")
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="button button-primary"
+                >
                   <HyperdriveLogoIcon className="size-4" />
                   Get started
-                </Link>
+                </button>
                 <GradientBorderButton to="/docs">
                   Learn more
                 </GradientBorderButton>
@@ -141,17 +157,20 @@ export function Home() {
       </div>
 
       {/* Hyperdrive One */}
-      <div className="bg-[url('/accents/hyperdrive-one-lines.svg')] bg-[center_-77px] bg-no-repeat overflow-hidden">
-        <div id="hyperdrive-one" className="inner-container pt-32 mb-20">
+      <div
+        id="hyperdrive-one"
+        className="bg-[url('/accents/hyperdrive-one-lines.svg')] bg-[center_-77px] bg-no-repeat overflow-hidden"
+      >
+        <div className="inner-container pt-32 mb-20">
           <p className="flex items-center gap-3 font-chakra tracking-wide uppercase mb-14">
             <img src="/icons/apps-icon.svg" className="size-6" />
             Our Apps
           </p>
 
           <div className="grid items-end gap-5 grid-cols-2 mb-20">
-            <h1 className="gradient-text to-teal-400 text-h1 font-chakra">
+            <h2 className="gradient-text to-teal-400 text-h1 font-chakra">
               Yield Opportunities
-            </h1>
+            </h2>
             <div>
               <HyperdriveLogoIcon className="size-10 mb-5" />
               <h2 className="font-chakra text-h5 mb-3">Hyperdrive One</h2>
@@ -254,23 +273,26 @@ export function Home() {
       </div>
 
       {/* Fixed Borrow */}
-      <div className="bg-[url('/accents/fixed-borrow-lines-top.svg')] bg-[calc(50%_+_100px)_-132px] bg-no-repeat relative overflow-hidden">
+      <div
+        id="fixed-borrow"
+        className="bg-[url('/accents/fixed-borrow-lines-top.svg')] bg-[calc(50%_+_100px)_-132px] bg-no-repeat relative overflow-hidden"
+      >
         <img
           src="/accents/fixed-borrow-lines-left.svg"
           className="absolute bottom-[-544px] left-[-136px] pointer-events-none"
         />
-        <div id="fixed-borrow" className="inner-container py-32">
+        <div className="inner-container py-32">
           <p className="flex items-center gap-3 font-chakra tracking-wide uppercase mb-14">
             <img src="/icons/apps-icon.svg" className="size-6" />
             Our Apps
           </p>
 
           <div className="grid items-end gap-5 grid-cols-2 mb-20">
-            <h1 className="gradient-text from-[#0FC2C2] to-[#44E8E8] text-h1 font-chakra">
+            <h2 className="gradient-text from-[#0FC2C2] to-[#44E8E8] text-h1 font-chakra">
               Rate
               <br />
               Protection
-            </h1>
+            </h2>
             <div className="flex items-end gap-12">
               <div>
                 <HyperdriveLogoIcon className="size-10 mb-5" />
@@ -291,7 +313,7 @@ export function Home() {
           {/* Fixed Borrow CTA tiles */}
           <div className="grid items-stretch gap-5 grid-cols-2">
             <CtaTile className="bg-teal-500 col-start-2">
-              <Link to="/app" className="button button-primary-alt">
+              <Link to="/borrow" className="button button-primary-alt">
                 Fix your borrow
               </Link>
               <CtaTile.IconList>
@@ -318,9 +340,9 @@ export function Home() {
         </p>
 
         <div className="grid items-start gap-x-32 gap-y-14 grid-cols-2">
-          <h1 className="gradient-text text-h1 font-chakra">
+          <h2 className="gradient-text text-h1 font-chakra">
             Build on the Hyperdrive Protocol
-          </h1>
+          </h2>
 
           {/* Tools grid */}
           <div className="grid grid-cols-2 gap-x-5 text-body-lg font-light">
@@ -349,9 +371,9 @@ export function Home() {
           </div>
 
           {/* Get started card */}
-          <div className="card flex gap-4 items-center pb-8 order-3">
+          <div className="card flex gap-5 p-6 items-center order-3">
             <div className="space-y-3">
-              <h2 className="font-chakra text-h5">Get started</h2>
+              <h3 className="font-chakra text-h5">Get started</h3>
               <p className="text-content/60 font-light">
                 Bring new yield-based products to life with Hyperdrive(CORE)'s
                 extensive open source developer tooling for the Hyperdrive
@@ -360,7 +382,7 @@ export function Home() {
             </div>
             <a
               href="https://github.com/delvtech"
-              className="button button-primary px-10"
+              className="button button-primary px-9"
             >
               Build now
             </a>
@@ -370,19 +392,207 @@ export function Home() {
         </div>
       </div>
 
-      <div className="inner-container">
-        <div className="h-px bg-gradient-to-r from-content/0 via-aquamarine/75 to-content/0" />
-      </div>
+      <SectionDivider />
 
       {/* Security measures */}
-      <div id="build" className="inner-container pt-28 pb-52">
-        <p className="flex items-center gap-3 font-chakra tracking-wide uppercase mb-8">
-          <img src="/icons/tools-icon.svg" className="size-6" />
-          Security measures
+      <div id="security" className="inner-container pt-28 pb-36">
+        <div className="flex items-start justify-between gap-10 mb-16">
+          <p className="flex items-center gap-3 font-chakra tracking-wide uppercase mb-8">
+            <img src="/icons/tools-icon.svg" className="size-6" />
+            Security measures
+          </p>
+          <h2 className="gradient-text font-chakra text-h1">Robust Security</h2>
+        </div>
+
+        {/* Security cards */}
+        <div className="grid grid-cols-3 gap-5">
+          {/* Audited card */}
+          <div className="card col-span-3 flex gap-10 justify-between">
+            <div className="flex flex-col justify-between gap-12 py-8">
+              <div className="space-y-3">
+                <h3 className="font-chakra text-h4.5">Audited</h3>
+                <p className="font-light text-content/60">
+                  Six audits of the Hyperdrive Protocol have been completed by
+                  blockchain security industry leaders
+                </p>
+              </div>
+              <div className="flex items-center gap-6">
+                <a href="https://spearbit.com/">
+                  <img src="/logos/spearbit-logo.svg" alt="Spearbit" />
+                </a>
+                <a href="https://chainsafe.io/">
+                  <img src="/logos/chainsafe-logo.svg" alt="Chainsafe" />
+                </a>
+                <a href="https://www.certora.com/">
+                  <img src="/logos/certora-logo.svg" alt="Certora" />
+                </a>
+              </div>
+            </div>
+            <img src="/illustrations/audited-illustration.svg" />
+          </div>
+
+          {/* Formal verification card */}
+          <div className="card flex flex-col gap-8 justify-between items-start">
+            <div className="space-y-3">
+              <h3 className="font-chakra text-h4.5">Formal Verification</h3>
+              <p className="font-light text-content/60">
+                Certora, an industry leader in formal verification, implemented
+                a mathematical model that verified many key invariants in
+                Hyperdrive's AMM
+              </p>
+            </div>
+            <img src="/illustrations/formal-verification-illustration.svg" />
+          </div>
+
+          {/* Fuzz testing card */}
+          <div className="card flex flex-col gap-8 justify-between items-start">
+            <div className="space-y-3">
+              <h3 className="font-chakra text-h4.5">Fuzz Testing</h3>
+              <p className="font-light text-content/60">
+                Hyperdrive is tested using a robust fuzzing system that combines
+                traditional solidity input sweeps with Python-based smart agents
+              </p>
+            </div>
+            <img src="/illustrations/fuzz-testing-illustration.svg" />
+          </div>
+
+          {/* Active threat monitoring card */}
+          <div className="card flex flex-col gap-8 justify-between items-start">
+            <div className="space-y-3">
+              <h3 className="font-chakra text-h4.5">
+                Active Threat Monitoring
+              </h3>
+              <p className="font-light text-content/60">
+                Hyperdrive's smart contracts are actively monitored to get ahead
+                of potential threats and leverage collective security
+                intelligence.
+              </p>
+            </div>
+            <img src="/illustrations/active-threat-monitoring-illustration.svg" />
+          </div>
+        </div>
+      </div>
+
+      <SectionDivider />
+
+      {/* Investors */}
+      <div
+        id="investers"
+        className="py-28 grid gap-20 justify-center relative overflow-hidden"
+      >
+        <h2 className="font-chakra text-h1 gradient-text text-center relative">
+          Backed by
+        </h2>
+
+        {/* Investor logo carousel */}
+        <div
+          className="overflow-x-auto relative"
+          ref={registerTimedScrollReset({ x: 0.5 })}
+        >
+          <div className="flex flex-col justify-center w-max gap-5">
+            <ul className="flex justify-center gap-5 ml-[72px]">
+              <li className="card w-72 h-48 flex items-center justify-center">
+                <img src="/logos/placeholder-logo.svg" alt="Placeholder" />
+              </li>
+              <li className="card w-72 h-48 flex items-center justify-center">
+                <img src="/logos/a_capital-logo.svg" alt="a_capital" />
+              </li>
+              <li className="card w-72 h-48 flex items-center justify-center">
+                <img src="/logos/sva-logo.svg" alt="SVA" />
+              </li>
+              <li className="card w-72 h-48 flex items-center justify-center">
+                <img
+                  src="/logos/ethereal-ventures-logo.svg"
+                  alt="Ethereal Ventures"
+                />
+              </li>
+              <li className="card w-72 h-48 flex items-center justify-center">
+                <img src="/logos/hack-vc-logo.svg" alt="Hack VC" />
+              </li>
+              <li className="card w-72 h-48 flex items-center justify-center">
+                <img
+                  src="/logos/robot-ventures-logo.svg"
+                  alt="Robot Ventures"
+                />
+              </li>
+            </ul>
+            <ul className="flex justify-center gap-5 mr-[72px]">
+              <li className="card w-72 h-48 flex items-center justify-center">
+                <img src="/logos/sc-logo.svg" alt="SC" />
+              </li>
+              <li className="card w-72 h-48 flex items-center justify-center">
+                <img
+                  src="/logos/stani-kulechov-logo.svg"
+                  alt="Stani Kulechov"
+                />
+              </li>
+              <li className="card w-72 h-48 flex items-center justify-center">
+                <img
+                  src="/logos/polychain-capital-logo.svg"
+                  alt="Polychain Capital"
+                />
+              </li>
+              <li className="card w-72 h-48 flex items-center justify-center">
+                <img src="/logos/a16z-logo.svg" alt="a16z" />
+              </li>
+              <li className="card w-72 h-48 flex items-center justify-center">
+                <img src="/logos/rune-logo.svg" alt="Rune" />
+              </li>
+              <li className="card w-72 h-48 flex items-center justify-center">
+                <img src="/logos/kain-warwick-logo.svg" alt="Kain Warwick" />
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <p className="spaced-mono text-body-lg text-center text-content/80 relative text-shadow-lg shadow-aquamarine-950">
+          And many more
         </p>
+
+        {/* Bottom glow */}
+        <div className="absolute w-[1036px] h-[200px] bg-gradient-90 from-aquamarine to-sky rounded-[100%] blur-[200px] bottom-[-172px] left-1/2 -translate-x-1/2 -z-10" />
       </div>
 
       <Footer />
     </>
   );
+}
+
+/**
+ * A ref callback that scrolls an element to a specific position and resets it
+ * when the mouse leaves the element.
+ */
+function registerTimedScrollReset({
+  x,
+  y,
+  delay = 0,
+}: {
+  x?: number;
+  y?: number;
+  delay?: number;
+}) {
+  let timer: NodeJS.Timeout | undefined = undefined;
+
+  if (x === undefined && y === undefined) {
+    throw new Error("At least one of x or y must be provided");
+  }
+
+  return (el: HTMLElement | null) => {
+    if (!el) return;
+
+    const left = x && (el.scrollWidth - window.innerWidth) * x;
+    const top = y && (el.scrollHeight - window.innerHeight) * y;
+
+    el.scrollTo({ left, top, behavior: "smooth" });
+
+    const resetTimer = () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        el.scrollTo({ left, top, behavior: "smooth" });
+      }, delay);
+    };
+
+    el.addEventListener("mouseleave", resetTimer);
+    el.addEventListener("mouseenter", () => clearTimeout(timer));
+  };
 }

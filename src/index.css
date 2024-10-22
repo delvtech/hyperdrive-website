@@ -40,7 +40,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  @apply text-content bg-neutral-950;
+  @apply text-content bg-black;
 }
 
 code {

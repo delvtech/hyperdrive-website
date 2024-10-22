@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import leftArrowIcon from "src/assets/icons/left-arrow-icon.svg";
 
 interface PrevButtonProps {
   className?: string;
@@ -20,7 +19,7 @@ export function PrevButton({ className, disabled, onClick }: PrevButtonProps) {
         className,
       )}
     >
-      <img src={leftArrowIcon} />
+      <img src="/icons/left-arrow-icon.svg" />
     </button>
   );
 }
