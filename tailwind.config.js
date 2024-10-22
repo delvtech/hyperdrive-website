@@ -98,7 +98,7 @@ export default {
     plugin(({ matchUtilities, theme, addUtilities, addComponents }) => {
       addComponents({
         ".inner-container": {
-          width: "100%",
+          display: "block",
           maxWidth: theme("maxWidth.7xl"),
           paddingLeft: "2vw",
           paddingRight: "2vw",
@@ -108,7 +108,6 @@ export default {
         },
 
         ".gradient-text": {
-          // backgroundImage: `linear-gradient(90deg, ${theme("colors.aquamarine.DEFAULT")}, ${theme("colors.teal.DEFAULT")})`,
           backgroundClip: "text",
           color: "transparent",
           backgroundImage:
