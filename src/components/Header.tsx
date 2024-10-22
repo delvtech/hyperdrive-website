@@ -202,7 +202,7 @@ export function Header({ className }: HeaderProps) {
                   </MenuItem>
                   <MenuItem>
                     <Link
-                      to="https://github.com/delvtech/hyperdrive"
+                      to="/build"
                       className="h-9 pl-4 pr-6 data-[focus]:bg-gradient-to-r from-aquamarine to-teal-400 data-[focus]:text-aquamarine-950 flex gap-3 items-center"
                     >
                       <CoreIcon className="size-4" />

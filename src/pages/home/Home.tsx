@@ -380,12 +380,9 @@ export function Home() {
                 Protocol.
               </p>
             </div>
-            <a
-              href="https://github.com/delvtech"
-              className="button button-primary px-9"
-            >
+            <Link to="/build" className="button button-primary px-9">
               Build now
-            </a>
+            </Link>
           </div>
 
           <img src="/illustrations/hyperdrive-sheild-on-squares.svg" />
