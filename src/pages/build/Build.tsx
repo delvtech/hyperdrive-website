@@ -3,7 +3,7 @@ import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { GradientBorderButton } from "src/components/buttons/GradientButton";
 import { DiscordLogoIcon } from "src/components/icons/DiscordLogoIcon";
-import { GithubLogoIcon } from "src/components/icons/GithubLogoIcon";
+import { GitHubLogoIcon } from "src/components/icons/GitHubLogoIcon";
 import { CodeTabs } from "src/pages/build/CodeTabs";
 import { ProjectIdeas } from "src/pages/build/ProjectIdeas";
 
@@ -35,7 +35,7 @@ export function Build() {
               Discord
             </GradientBorderButton>
             <GradientBorderButton href="https://github.com/delvtech/hyperdrive">
-              <GithubLogoIcon className="w-6 h-6" />
+              <GitHubLogoIcon className="w-6 h-6" />
               GitHub
             </GradientBorderButton>
             <GradientBorderButton href="https://github.com/delvtech/hyperdrive/blob/main/docs/Hyperdrive_Whitepaper.pdf">

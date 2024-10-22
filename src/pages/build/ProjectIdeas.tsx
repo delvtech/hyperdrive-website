@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { NextButton } from "src/components/buttons/NextButton";
 import { PrevButton } from "src/components/buttons/PrevButton";
 import { DiscordLogoIcon } from "src/components/icons/DiscordLogoIcon";
-import { GithubLogoIcon } from "src/components/icons/GithubLogoIcon";
+import { GitHubLogoIcon } from "src/components/icons/GitHubLogoIcon";
 
 export function ProjectIdeas() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -36,7 +36,7 @@ export function ProjectIdeas() {
               className="flex items-center gap-3 px-2 underline hover:text-aquamarine transition-all"
               href="https://github.com/delvtech/hyperdrive"
             >
-              <GithubLogoIcon className="size-6" />
+              <GitHubLogoIcon className="size-6" />
               Github
             </a>
             <Link
