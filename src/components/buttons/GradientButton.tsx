@@ -4,7 +4,7 @@ import { Link, LinkProps } from "react-router-dom";
 
 interface BaseProps {
   /**
-   * @default content/30 ("rgb(255 255 255 / 60%)")
+   * @default content/60 ("rgb(255 255 255 / 60%)")
    */
   borderFrom?: string;
   /**
@@ -12,7 +12,7 @@ interface BaseProps {
    */
   hoverBorderFrom?: string;
   /**
-   * @default content/60 ("rgb(255 255 255 / 30%)")
+   * @default content/30 ("rgb(255 255 255 / 30%)")
    */
   borderTo?: string;
   /**
