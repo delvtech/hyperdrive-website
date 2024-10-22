@@ -20,7 +20,7 @@ export function Brand() {
         <div className="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
           <AssetTile
             downloadName="hyperdrive-mark-white.svg"
-            className="bg-neutral-900"
+            className="card p-2"
             svg={
               <svg
                 width="200"
@@ -38,7 +38,7 @@ export function Brand() {
           />
           <AssetTile
             downloadName="hyperdrive-mark-black.svg"
-            className="bg-neutral-200 text-neutral-500"
+            className="bg-neutral-200 text-neutral-500 p-2 rounded"
             svg={
               <svg
                 width="200"
@@ -60,7 +60,7 @@ export function Brand() {
         <div className="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
           <AssetTile
             downloadName="hyperdrive-logo-white.svg"
-            className="bg-neutral-900"
+            className="card p-2"
             svg={
               <svg
                 width="1131"
@@ -119,7 +119,7 @@ export function Brand() {
 
           <AssetTile
             downloadName="hyperdrive-logo-black.svg"
-            className="bg-neutral-200 text-neutral-500"
+            className="bg-neutral-200 text-neutral-500 p-2 rounded"
             svg={
               <svg
                 width="1131"
@@ -179,9 +179,9 @@ export function Brand() {
 
         <h2 className="text-body-lg mt-16 mb-6">Colors</h2>
         <div className="grid grid-cols-3 gap-4 max-xs:grid-cols-1">
-          <ColorTile color="#15FFAB" className="text-neutral-900" />
-          <ColorTile color="#753F53" className="text-neutral-100" />
-          <ColorTile color="#0F1117" />
+          <ColorTile color="#2EFCB6" className="text-neutral-900" />
+          <ColorTile color="#14D3F9" className="text-neutral-900" />
+          <ColorTile color="#001B14" />
         </div>
       </main>
 
@@ -214,17 +214,18 @@ function AssetTile({
         <div className="flex items-center justify-center w-full grow">
           {svg}
         </div>
-        <div className="grid grid-cols-2 w-full h-11 border-t border-neutral-400/40">
+        <div className="grid grid-cols-[1.5fr_0_1.5fr] gap-2 w-full h-[3.75rem] border-t border-neutral-400/40 p-2">
           <button
-            className="flex items-center justify-center font-mono uppercase font-medium hover:bg-neutral-500/20 transition-all"
+            className="flex items-center justify-center font-mono uppercase font-medium hover:bg-neutral-500/20 transition-all rounded"
             onClick={() => {
               copy(svgString);
             }}
           >
             {copied ? "copied!" : "copy"}
           </button>
+          <div className="w-px bg-neutral-400/40" />
           <a
-            className="flex items-center justify-center border-l border-neutral-400/40 font-mono uppercase font-medium hover:bg-neutral-500/20 transition-all"
+            className="flex items-center justify-center font-mono uppercase font-medium hover:bg-neutral-500/20 transition-all rounded"
             href={downloadLink}
             download={downloadName}
           >

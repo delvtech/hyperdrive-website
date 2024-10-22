@@ -66,7 +66,7 @@ export function Build() {
         >
           {/* Smart contracts tile */}
           <div className="p-6 pb-12 bg-card-gradient translate-y-12 max-lg:transform-none">
-            <img src="/logos/solidity-logo-tile.svg" className="mb-8" />
+            <img src="/logos/solidity-logo-tile.png" className="mb-8" />
             <h3 className="text-h7 text-neutral-100 mb-4">
               Hyperdrive Smart Contracts
             </h3>
@@ -75,7 +75,7 @@ export function Build() {
 
           {/* Typescript SDK tile */}
           <div className="p-6 pb-12 bg-card-gradient max-lg:translate-y-12 max-sm:transform-none">
-            <img src="/logos/typescript-logo-tile.svg" className="mb-8" />
+            <img src="/logos/typescript-logo-tile.png" className="mb-8" />
             <h3 className="text-h7 text-neutral-100 mb-4">TypeScript SDK</h3>
             <p>
               TypeScript library for interacting with the Hyperdrive AMM
@@ -85,7 +85,7 @@ export function Build() {
 
           {/* Agent0 tile */}
           <div className="p-6 pb-12 bg-card-gradient translate-y-12 max-lg:transform-none">
-            <img src="/logos/python-logo-tile.svg" className="mb-8" />
+            <img src="/logos/python-logo-tile.png" className="mb-8" />
             <h3 className="text-h7 text-neutral-100 mb-4">
               Agent0 Bots Framework (Python)
             </h3>
