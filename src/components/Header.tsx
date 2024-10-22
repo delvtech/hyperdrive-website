@@ -79,7 +79,7 @@ export function Header({ className }: HeaderProps) {
           className,
         )}
       >
-        <div className="flex items-center justify-between px-10 py-3 font-mono text-sm bg-white/15 backdrop-blur-3xl rounded-xl">
+        <div className="flex items-center justify-between gap-10 px-10 py-3 font-mono text-sm bg-white/15 backdrop-blur-3xl rounded-xl">
           {/* Logo */}
           <Link to="/">
             <img
