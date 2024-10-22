@@ -2,8 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import { Redirect } from "src/components/router/Redirect";
 import { ScrollReset } from "src/components/router/ScrollReset";
 import { Brand } from "src/pages/Brand";
-import { Build } from "src/pages/Build";
-import { Home } from "src/pages/Home";
+import { Build } from "src/pages/build/Build";
+import { Home } from "src/pages/home/Home";
 
 function App() {
   return (
@@ -11,25 +11,33 @@ function App() {
       <ScrollReset />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/build" element={<Build />} />
-        <Route path="/brand" element={<Brand />} />
         <Route
-          path="/docs"
+          path="/analytics/*"
+          element={<Redirect to="https://hyperdrive.blockanalitica.com" />}
+        />
+        <Route
+          path="/app/*"
+          element={<Redirect to="https://app.hyperdrive.box" />}
+        />
+        <Route
+          path="/borrow/*"
+          element={<Redirect to="https://fixed-borrow.hyperdrive.box" />}
+        />
+        <Route path="/brand" element={<Brand />} />
+        <Route path="/build" element={<Build />} />
+        <Route
+          path="/docs/*"
           element={<Redirect to="https://docs.hyperdrive.box" />}
+        />
+        <Route
+          path="/one/*"
+          element={<Redirect to="https://app.hyperdrive.box" />}
         />
         <Route
           path="/whitepaper"
           element={
             <Redirect to="https://github.com/delvtech/hyperdrive/blob/main/docs/Hyperdrive_Whitepaper.pdf" />
           }
-        />
-        <Route
-          path="/app"
-          element={<Redirect to="https://app.hyperdrive.box" />}
-        />
-        <Route
-          path="/testnet"
-          element={<Redirect to="https://testnet.hyperdrive.box" />}
         />
       </Routes>
     </>
