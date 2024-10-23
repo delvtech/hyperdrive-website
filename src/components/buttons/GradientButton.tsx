@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { PropsWithChildren } from "react";
-import { Link, LinkProps } from "react-router-dom";
+import { Clickable, ClickableProps } from "src/components/Clickable";
 
 interface BaseProps {
   /**
@@ -23,12 +23,7 @@ interface BaseProps {
   borderWidth?: number;
 }
 
-export type GradientBorderButtonProps = BaseProps &
-  (
-    | React.ComponentPropsWithoutRef<"button">
-    | React.ComponentPropsWithoutRef<"a">
-    | LinkProps
-  );
+export type GradientBorderButtonProps = BaseProps & ClickableProps;
 
 export function GradientBorderButton({
   borderFrom = "rgb(255 255 255 / 60%)",
@@ -38,14 +33,16 @@ export function GradientBorderButton({
   borderWidth = 1,
   ...tagProps
 }: PropsWithChildren<GradientBorderButtonProps>) {
-  const style: React.CSSProperties = {
-    ...tagProps.style,
-    border: `${borderWidth}px solid transparent`,
-    position: "relative",
-  };
-
-  const children: React.ReactNode = (
-    <>
+  return (
+    <Clickable
+      {...tagProps}
+      className={classNames("button group inline-flex", tagProps.className)}
+      style={{
+        ...tagProps.style,
+        border: `${borderWidth}px solid transparent`,
+        position: "relative",
+      }}
+    >
       {/* Left line */}
       <span
         className="absolute w-px h-full box-content opacity-100 group-hover:opacity-0 transition-all duration-150"
@@ -119,52 +116,6 @@ export function GradientBorderButton({
           padding: `0 ${borderWidth}px`,
         }}
       />
-    </>
+    </Clickable>
   );
-
-  if (isAnchorProps(tagProps)) {
-    return (
-      <a
-        {...tagProps}
-        className={classNames("button group inline-flex", tagProps.className)}
-        style={style}
-      >
-        {children}
-      </a>
-    );
-  }
-
-  if (isLinkProps(tagProps)) {
-    return (
-      <Link
-        {...tagProps}
-        className={classNames("button group inline-flex", tagProps.className)}
-        style={style}
-      >
-        {children}
-      </Link>
-    );
-  }
-
-  return (
-    <button
-      {...tagProps}
-      className={classNames("button group inline-flex", tagProps.className)}
-      style={style}
-    >
-      {children}
-    </button>
-  );
-}
-
-function isAnchorProps(
-  props: Omit<GradientBorderButtonProps, keyof BaseProps>,
-): props is React.ComponentPropsWithoutRef<"a"> {
-  return "href" in props;
-}
-
-function isLinkProps(
-  props: Omit<GradientBorderButtonProps, keyof BaseProps>,
-): props is LinkProps {
-  return "to" in props;
 }
