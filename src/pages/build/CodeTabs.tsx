@@ -359,6 +359,7 @@ interface TabButtonProps {
 function TabButton({ active, onClick, name, language }: TabButtonProps) {
   return (
     <button
+      type="button"
       className={classNames(
         "flex flex-col gap-1 bg-neutral-600 px-6 py-4 font-semibold text-neutral-100 transition-all hover:bg-neutral-700",
         {

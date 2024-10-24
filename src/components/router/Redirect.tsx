@@ -1,20 +1,15 @@
-import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export function Redirect({ to }: { to: string }) {
-  const navigate = useNavigate();
   const params = useParams();
+  let path = to;
 
-  useEffect(() => {
-    let path = to;
-    if (params["*"]) {
-      if (!path.endsWith("/")) {
-        path += "/";
-      }
-      path += params["*"];
+  if (params["*"]) {
+    if (!path.endsWith("/")) {
+      path += "/";
     }
-    window.location.replace(path);
-  }, [to, navigate]);
+    path += params["*"];
+  }
 
-  return null;
+  window.location.replace(path);
 }

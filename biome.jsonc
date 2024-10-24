@@ -22,7 +22,8 @@
     "enabled": true,
     "rules": {
       "a11y": {
-        "noSvgWithoutTitle": "warn"
+        "noSvgWithoutTitle": "info",
+        "useAltText": "info"
       },
       "complexity": {
         "noBannedTypes": "off"

@@ -9,6 +9,7 @@ interface NextButtonProps {
 export function NextButton({ className, disabled, onClick }: NextButtonProps) {
   return (
     <button
+      type="button"
       onClick={onClick}
       disabled={disabled}
       className={classNames(

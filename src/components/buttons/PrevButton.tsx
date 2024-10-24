@@ -9,6 +9,7 @@ interface PrevButtonProps {
 export function PrevButton({ className, disabled, onClick }: PrevButtonProps) {
   return (
     <button
+      type="button"
       onClick={onClick}
       disabled={disabled}
       className={classNames(

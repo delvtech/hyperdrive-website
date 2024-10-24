@@ -484,9 +484,7 @@ export function Home() {
         {/* Investor logo carousel */}
         <div
           className="relative overflow-x-auto"
-          ref={(el) => {
-            registerTimedScrollReset({ x: 0.5 });
-          }}
+          ref={preferScrollPosition({ x: 0.5 })}
         >
           <div className="flex w-max flex-col justify-center gap-5">
             <ul className="ml-[72px] flex justify-center gap-5">
@@ -558,10 +556,10 @@ export function Home() {
 }
 
 /**
- * A ref callback that scrolls an element to a specific position and resets it
- * when the mouse leaves the element.
+ * Creates a ref callback that scrolls an element to a preferred position
+ * immediately and on `mouseleave`.
  */
-function registerTimedScrollReset({
+function preferScrollPosition({
   x,
   y,
   delay = 0,
@@ -570,11 +568,11 @@ function registerTimedScrollReset({
   y?: number;
   delay?: number;
 }) {
-  let timer: NodeJS.Timeout | undefined = undefined;
-
   if (x === undefined && y === undefined) {
     throw new Error("At least one of x or y must be provided");
   }
+
+  let timer: NodeJS.Timeout | undefined = undefined;
 
   return (el: HTMLElement | null) => {
     if (!el) return;
