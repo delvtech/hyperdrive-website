@@ -4,7 +4,7 @@ import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import classNames from "classnames";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Clickable, ClickableProps } from "src/components/Clickable";
+import { Clickable, type ClickableProps } from "src/components/Clickable";
 import { BlogIcon } from "src/components/icons/BlogIcon";
 import { BookIcon } from "src/components/icons/BookIcon";
 import { CodeDocIcon } from "src/components/icons/CodeDocIcon";
@@ -104,6 +104,7 @@ export function Header({ className }: HeaderProps) {
 
             {/* Mobile menu button */}
             <button
+              type="button"
               className={classNames(
                 "size-11 shrink-0 border border-transparent hover:border-content/15 transition-all rounded-lg justify-center justify-self-end items-center hidden row-start-1",
                 "max-lg:!flex",
