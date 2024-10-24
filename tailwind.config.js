@@ -100,7 +100,7 @@ export default {
             paddingRight: "2vw",
             marginLeft: "auto",
             marginRight: "auto",
-            boxSizing: "content-box",
+            boxSizing: "border-box",
           },
 
           ".gradient-text": {
@@ -306,6 +306,10 @@ export default {
             0.00px calc(100% - 48.90px)
           )`,
           },
+
+          ".clip-none": {
+            clipPath: "none",
+          },
         });
 
         matchUtilities(
@@ -348,7 +352,12 @@ export default {
         );
 
         addVariant("hocus", ["&:hover", "&:focus"]);
+        addVariant("hocus-visible", ["&:hover", "&:focus-visible"]);
         addVariant("group-hocus", [".group:hover &", ".group:focus-within &"]);
+        addVariant("group-hocus-visible", [
+          ".group:hover &",
+          ".group:has(:focus-visible) &",
+        ]);
       },
     ),
   ],
