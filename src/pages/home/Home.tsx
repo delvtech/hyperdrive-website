@@ -485,7 +485,7 @@ export function Home() {
         <div
           className="overflow-x-auto relative"
           ref={(el) => {
-            registerTimedScrollReset({ x: 0.5 })
+            registerTimedScrollReset({ x: 0.5 });
           }}
         >
           <div className="flex flex-col justify-center w-max gap-5">
