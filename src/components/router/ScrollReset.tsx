@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 export function ScrollReset() {
   const { pathname, hash } = useLocation();
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies:
   useEffect(() => {
     if (hash) {
       const id = hash.replace("#", "");

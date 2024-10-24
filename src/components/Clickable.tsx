@@ -1,4 +1,4 @@
-import type { ComponentProps, PropsWithChildren } from "react";
+import type { ComponentProps } from "react";
 import { Link, type LinkProps } from "react-router-dom";
 import type { OneOf } from "src/components/types";
 
@@ -13,11 +13,7 @@ export type ClickableProps = ComponentProps<"button"> | LinkishProps;
 /**
  * A component that renders an anchor, Link, or button based on the given props.
  */
-export function Clickable({
-  children,
-  className,
-  ...props
-}: PropsWithChildren<ClickableProps>) {
+export function Clickable({ className, children, ...props }: ClickableProps) {
   const Tag = isAnchorProps(props) ? "a" : isLinkProps(props) ? Link : "button";
 
   return (

@@ -1,8 +1,7 @@
-import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/16/solid";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import classNames from "classnames";
-import { useState } from "react";
+import { type ComponentPropsWithoutRef, type ReactNode, useState } from "react";
 import { Link } from "react-router-dom";
 import { Clickable, type ClickableProps } from "src/components/Clickable";
 import { BlogIcon } from "src/components/icons/BlogIcon";
@@ -28,7 +27,6 @@ interface HeaderProps {
 
 export function Header({ className }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const scrollPosition = useScrollPosition();
   const isScrolled = scrollPosition > 0;
 
@@ -40,8 +38,7 @@ export function Header({ className }: HeaderProps) {
       {/* Header fixed container */}
       <div
         className={classNames(
-          "fixed top-0 right-0 left-0 z-50 transition-all duration-300",
-          "max-lg:pt-4 max-lg:transition-none",
+          "fixed top-0 right-0 left-0 z-50",
           {
             "max-lg:bottom-5 max-lg:bg-[#00110C]": isMenuOpen,
           },
@@ -80,8 +77,11 @@ export function Header({ className }: HeaderProps) {
         <div className="inner-container">
           <header
             className={classNames(
-              "grid items-center gap-x-2 rounded-xl bg-white/15 px-10 py-3 font-mono text-sm backdrop-blur-3xl",
-              "max-lg:py-2 max-lg:pr-4 max-lg:pl-8",
+              "mt-8 grid items-center gap-x-2 rounded-xl bg-white/15 px-10 py-3 font-mono text-sm backdrop-blur-3xl transition-[margin] duration-300",
+              {
+                "mt-4": isScrolled,
+              },
+              "max-lg:mt-4 max-lg:py-2 max-lg:pr-4 max-lg:pl-8",
               {
                 "max-lg:bg-transparent max-lg:backdrop-blur-none": isMenuOpen,
               },
@@ -132,104 +132,65 @@ export function Header({ className }: HeaderProps) {
                 className={classNames(
                   "flex items-center gap-2",
                   {
-                    "max-lg:!p-0 max-lg:h-0 max-lg:opacity-0": !isMenuOpen,
+                    "max-lg:hidden": !isMenuOpen,
                   },
-                  "max-lg:w-full max-lg:flex-col max-lg:py-4",
+                  "max-lg:w-full max-lg:flex-col max-lg:items-stretch max-lg:py-4",
                 )}
               >
                 {/* Learn */}
-                <Popover>
-                  {() => (
-                    <>
-                      <PopoverButton className="group flex h-10 items-center gap-1 px-1 uppercase hover:text-aquamarine data-[open]:text-aquamarine">
-                        Learn{" "}
-                        <ChevronDownIcon className="group-data-[open]:-scale-y-100 size-4 transition-all duration-150" />
-                      </PopoverButton>
-                      <PopoverPanel
-                        className={classNames(
-                          "z-50 flex flex-col gap-1.5 rounded bg-[#00110C] py-3 font-mono text-[#17BB83] shadow-lg",
-                          "max-lg:!bg-transparent max-lg:h-0 max-lg:shadow-none max-lg:data-[open]:h-auto",
-                        )}
-                        anchor={"bottom start"}
-                        // anchor={pageWidth > 1080 ? "bottom start" : undefined}
-                        modal={false}
-                        // static={pageWidth < 1080}
-                      >
-                        <MenuLink to="/docs">
-                          <DocIcon className="size-4" />
-                          Docs
-                        </MenuLink>
-                        <MenuLink href="https://blog.delv.tech">
-                          <BlogIcon className="size-4" />
-                          Blog
-                        </MenuLink>
-                        <MenuLink to="/docs/trading/trading-strategies">
-                          <StrategyIcon className="size-4" />
-                          Trading Strategies
-                        </MenuLink>
-                        <MenuLink to="/whitepaper">
-                          <NoteIcon className="size-4" />
-                          Whitepaper
-                        </MenuLink>
-                        <MenuLink to="/docs/hyperdrive-overview/glossary">
-                          <BookIcon className="size-4" />
-                          Glossary
-                        </MenuLink>
-                      </PopoverPanel>
-                    </>
-                  )}
-                </Popover>
+                <Dropdown label="Learn">
+                  <DropdownLink to="/docs">
+                    <DocIcon className="size-4" />
+                    Docs
+                  </DropdownLink>
+                  <DropdownLink href="https://blog.delv.tech">
+                    <BlogIcon className="size-4" />
+                    Blog
+                  </DropdownLink>
+                  <DropdownLink to="/docs/trading/trading-strategies">
+                    <StrategyIcon className="size-4" />
+                    Trading Strategies
+                  </DropdownLink>
+                  <DropdownLink to="/whitepaper">
+                    <NoteIcon className="size-4" />
+                    Whitepaper
+                  </DropdownLink>
+                  <DropdownLink to="/docs/hyperdrive-overview/glossary">
+                    <BookIcon className="size-4" />
+                    Glossary
+                  </DropdownLink>
+                </Dropdown>
 
                 {/* Developers */}
-                <Popover>
-                  <PopoverButton className="group flex h-10 items-center gap-1 px-1 uppercase hover:text-aquamarine data-[open]:text-aquamarine">
-                    Developers{" "}
-                    <ChevronDownIcon className="group-data-[open]:-scale-y-100 size-4 transition-all duration-150" />
-                  </PopoverButton>
-                  <PopoverPanel
-                    className="z-50 flex flex-col gap-1.5 rounded bg-[#00110C] py-3 font-mono text-[#17BB83] shadow-lg"
-                    anchor="bottom start"
-                    modal={false}
-                  >
-                    <MenuLink to="/docs/hyperdrive-for-developers">
-                      <CodeDocIcon className="size-4" />
-                      Docs
-                    </MenuLink>
-                    <MenuLink to="/build">
-                      <CoreIcon className="size-4" />
-                      Hyperdrive [Core]
-                    </MenuLink>
-                  </PopoverPanel>
-                </Popover>
+                <Dropdown label="Developers">
+                  <DropdownLink to="/docs/hyperdrive-for-developers">
+                    <CodeDocIcon className="size-4" />
+                    Docs
+                  </DropdownLink>
+                  <DropdownLink to="/build">
+                    <CoreIcon className="size-4" />
+                    Hyperdrive [Core]
+                  </DropdownLink>
+                </Dropdown>
 
                 {/* Community */}
-                <Popover>
-                  <PopoverButton className="group flex h-10 items-center gap-1 px-1 uppercase hover:text-aquamarine data-[open]:text-aquamarine">
-                    Community{" "}
-                    <ChevronDownIcon className="group-data-[open]:-scale-y-100 size-4 transition-all duration-150" />
-                  </PopoverButton>
-                  <PopoverPanel
-                    className="z-50 flex flex-col gap-1.5 rounded bg-[#00110C] py-3 font-mono text-[#17BB83] shadow-lg"
-                    anchor="bottom start"
-                    modal={false}
-                  >
-                    <MenuLink href="https://www.delv.tech/discord">
-                      <DiscordLogoIcon className="size-4" />
-                      Discord
-                    </MenuLink>
-                    <MenuLink href="https://twitter.com/delv_tech/">
-                      <XLogoIcon className="size-4" />X
-                    </MenuLink>
-                    <MenuLink href="https://warpcast.com/~/channel/delv">
-                      <FarcasterLogoIcon className="size-4" />
-                      Farcaster
-                    </MenuLink>
-                    <MenuLink href="https://www.linkedin.com/company/delv-tech/">
-                      <LinkedInLogoIcon className="size-4" />
-                      LinkedIn
-                    </MenuLink>
-                  </PopoverPanel>
-                </Popover>
+                <Dropdown label="Community">
+                  <DropdownLink href="https://www.delv.tech/discord">
+                    <DiscordLogoIcon className="size-4" />
+                    Discord
+                  </DropdownLink>
+                  <DropdownLink href="https://twitter.com/delv_tech/">
+                    <XLogoIcon className="size-4" />X
+                  </DropdownLink>
+                  <DropdownLink href="https://warpcast.com/~/channel/delv">
+                    <FarcasterLogoIcon className="size-4" />
+                    Farcaster
+                  </DropdownLink>
+                  <DropdownLink href="https://www.linkedin.com/company/delv-tech/">
+                    <LinkedInLogoIcon className="size-4" />
+                    LinkedIn
+                  </DropdownLink>
+                </Dropdown>
 
                 {/* Analytics */}
                 <Link
@@ -240,26 +201,16 @@ export function Header({ className }: HeaderProps) {
                 </Link>
 
                 {/* Launch Apps */}
-                <Popover>
-                  <PopoverButton className="group flex h-10 items-center gap-1 whitespace-nowrap px-1 uppercase hover:text-aquamarine data-[open]:text-aquamarine">
-                    Launch Apps{" "}
-                    <ChevronDownIcon className="group-data-[open]:-scale-y-100 size-4 transition-all duration-150" />
-                  </PopoverButton>
-                  <PopoverPanel
-                    className="z-50 flex flex-col gap-1.5 rounded bg-[#00110C] py-3 font-mono text-[#17BB83] shadow-lg"
-                    anchor="bottom end"
-                    modal={false}
-                  >
-                    <MenuLink to="/one">
-                      <HyperdriveLogoIcon className="size-4" />
-                      Hyperdrive One
-                    </MenuLink>
-                    <MenuLink to="/borrow">
-                      <HyperdriveLogoIcon className="size-4" />
-                      Fixed Borrow
-                    </MenuLink>
-                  </PopoverPanel>
-                </Popover>
+                <Dropdown label="Launch Apps" align="end">
+                  <DropdownLink to="/one">
+                    <HyperdriveLogoIcon className="size-4" />
+                    Hyperdrive One
+                  </DropdownLink>
+                  <DropdownLink to="/borrow">
+                    <HyperdriveLogoIcon className="size-4" />
+                    Fixed Borrow
+                  </DropdownLink>
+                </Dropdown>
               </nav>
             </div>
           </header>
@@ -269,7 +220,53 @@ export function Header({ className }: HeaderProps) {
   );
 }
 
-function MenuLink({ children, className, ...rest }: ClickableProps) {
+interface DropdownProps extends ComponentPropsWithoutRef<"div"> {
+  label: ReactNode;
+  labelClassName?: string;
+  align?: "start" | "center" | "end";
+}
+
+function Dropdown({
+  label,
+  align = "start",
+  labelClassName,
+  className,
+  children,
+  ...rest
+}: DropdownProps) {
+  return (
+    <>
+      <div
+        className={classNames(
+          "group relative flex h-10 items-center gap-1 whitespace-nowrap px-1 hocus:text-aquamarine uppercase",
+          labelClassName,
+        )}
+        {...rest}
+      >
+        {label}{" "}
+        <ChevronDownIcon className="group-data-[open]:-scale-y-100 size-4 transition-all duration-150" />
+        <div
+          className={classNames(
+            "pointer-events-none absolute top-full z-50 flex scale-y-95 flex-col gap-1.5 rounded bg-[#00110C] py-3 font-mono text-[#17BB83] opacity-0 shadow-lg transition-all duration-100 ease-in",
+            "group-hocus:pointer-events-auto group-hocus:scale-100 group-hocus:opacity-100 group-hocus:duration-200 group-hocus:ease-out",
+            {
+              "right-0 origin-top-right": align === "end",
+              "-translate-x-1/2 left-1/2 origin-top": align === "center",
+              "left-0 origin-top-left": align === "start",
+            },
+            "max-lg:!bg-transparent max-lg:h-0 max-lg:shadow-none max-lg:data-[open]:h-auto",
+            className,
+          )}
+          {...rest}
+        >
+          {children}
+        </div>
+      </div>
+    </>
+  );
+}
+
+function DropdownLink({ className, children, ...rest }: ClickableProps) {
   return (
     <Clickable
       {...rest}

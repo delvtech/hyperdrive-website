@@ -88,114 +88,113 @@ export default {
         h7: ["1.5rem", { lineHeight: 1.2 }],
       },
     },
-    textShadow: {
-      sm: "0 1px 2px var(--tw-shadow-color)",
-      DEFAULT: "0 2px 4px var(--tw-shadow-color)",
-      lg: "0 8px 16px var(--tw-shadow-color)",
-    },
   },
   plugins: [
-    plugin(({ matchUtilities, theme, addUtilities, addComponents }) => {
-      addComponents({
-        ".inner-container": {
-          display: "block",
-          maxWidth: theme("maxWidth.7xl"),
-          paddingLeft: "2vw",
-          paddingRight: "2vw",
-          marginLeft: "auto",
-          marginRight: "auto",
-          boxSizing: "content-box",
-        },
-
-        ".gradient-text": {
-          backgroundClip: "text",
-          color: "transparent",
-          backgroundImage:
-            "linear-gradient(to right, var(--tw-gradient-stops))",
-          "--tw-gradient-from": `${theme("colors.aquamarine.DEFAULT")} var(--tw-gradient-from-position)`,
-          "--tw-gradient-to": `${theme("colors.sky")} var(--tw-gradient-to-position)`,
-          "--tw-gradient-stops":
-            "var(--tw-gradient-from), var(--tw-gradient-to)",
-        },
-
-        ".spaced-mono": {
-          fontFamily: theme("fontFamily.mono"),
-          fontSize: theme("fontSize.body-sm"),
-          textTransform: "uppercase",
-          letterSpacing: theme("letterSpacing.widest"),
-        },
-
-        ".button": {
-          fontFamily: theme("fontFamily.mono"),
-          fontSize: theme("fontSize.body-sm"),
-          fontWeight: theme("fontWeight.medium"),
-          textTransform: "uppercase",
-          display: "inline-flex",
-          gap: theme("spacing.2"),
-          padding: `0 ${theme("spacing.6")}`,
-          height: theme("spacing.12"),
-          border: "1px solid",
-          justifyContent: "center",
-          alignItems: "center",
-          letterSpacing: theme("letterSpacing.widest"),
-          whiteSpace: "nowrap",
-          color: theme("colors.neutral.100"),
-          backdropFilter: theme("backdropFilter.blur"),
-          transition: "all 0.1s",
-
-          "&.button-sm": {
-            fontSize: theme("fontSize.caption-lg"),
-            lineHeight: theme("lineHeight.caption-lg"),
-            height: theme("spacing.10"),
+    plugin(
+      ({ matchUtilities, theme, addUtilities, addComponents, addVariant }) => {
+        addComponents({
+          ".inner-container": {
+            display: "block",
+            maxWidth: theme("maxWidth.7xl"),
+            paddingLeft: "2vw",
+            paddingRight: "2vw",
+            marginLeft: "auto",
+            marginRight: "auto",
+            boxSizing: "content-box",
           },
 
-          "&.button-primary": {
-            borderColor: theme("colors.aquamarine.DEFAULT"),
-            backgroundColor: theme("colors.aquamarine.DEFAULT"),
-            color: theme("colors.content.inverse"),
+          ".gradient-text": {
+            backgroundClip: "text",
+            color: "transparent",
+            backgroundImage:
+              "linear-gradient(to right, var(--tw-gradient-stops))",
+            "--tw-gradient-from": `${theme("colors.aquamarine.DEFAULT")} var(--tw-gradient-from-position)`,
+            "--tw-gradient-to": `${theme("colors.sky")} var(--tw-gradient-to-position)`,
+            "--tw-gradient-stops":
+              "var(--tw-gradient-from), var(--tw-gradient-to)",
+          },
 
-            "&:hover": {
-              borderColor: theme("colors.aquamarine.600"),
-              backgroundColor: theme("colors.aquamarine.300"),
+          ".spaced-mono": {
+            fontFamily: theme("fontFamily.mono"),
+            fontSize: theme("fontSize.body-sm"),
+            textTransform: "uppercase",
+            letterSpacing: theme("letterSpacing.widest"),
+          },
+
+          ".button": {
+            fontFamily: theme("fontFamily.mono"),
+            fontSize: theme("fontSize.body-sm"),
+            fontWeight: theme("fontWeight.medium"),
+            textTransform: "uppercase",
+            display: "inline-flex",
+            gap: theme("spacing.2"),
+            padding: `0 ${theme("spacing.6")}`,
+            height: theme("spacing.12"),
+            border: "1px solid",
+            justifyContent: "center",
+            alignItems: "center",
+            letterSpacing: theme("letterSpacing.widest"),
+            whiteSpace: "nowrap",
+            color: theme("colors.neutral.100"),
+            backdropFilter: theme("backdropFilter.blur"),
+            transition: "all 0.1s",
+
+            "&.button-sm": {
+              fontSize: theme("fontSize.caption-lg"),
+              lineHeight: theme("lineHeight.caption-lg"),
+              height: theme("spacing.10"),
+            },
+
+            "&.button-primary": {
+              borderColor: theme("colors.aquamarine.DEFAULT"),
+              backgroundColor: theme("colors.aquamarine.DEFAULT"),
+              color: theme("colors.content.inverse"),
+
+              "&:hover": {
+                borderColor: theme("colors.aquamarine.600"),
+                backgroundColor: theme("colors.aquamarine.300"),
+              },
+            },
+
+            "&.button-primary-alt": {
+              borderColor: theme("colors.teal.600"),
+              backgroundColor: theme("colors.teal.600"),
+              color: theme("colors.content.inverse"),
+
+              "&:hover": {
+                borderColor: theme("colors.teal.700"),
+                backgroundColor: theme("colors.teal.400"),
+              },
             },
           },
 
-          "&.button-primary-alt": {
-            borderColor: theme("colors.teal.600"),
-            backgroundColor: theme("colors.teal.600"),
-            color: theme("colors.content.inverse"),
-
-            "&:hover": {
-              borderColor: theme("colors.teal.700"),
-              backgroundColor: theme("colors.teal.400"),
-            },
+          ".card": {
+            borderRadius: theme("borderRadius.DEFAULT"),
+            border: "1px solid",
+            borderColor: "rgb(255 255 255 / 0.15)",
+            backgroundImage:
+              "linear-gradient(100deg, var(--tw-gradient-stops))",
+            "--tw-gradient-from":
+              "rgb(219 219 235 / 0.1) var(--tw-gradient-from-position)",
+            "--tw-gradient-to":
+              "rgb(219 219 235 / 0.07) var(--tw-gradient-to-position)",
+            "--tw-gradient-stops":
+              "var(--tw-gradient-from), var(--tw-gradient-to)",
+            padding: theme("spacing.8"),
+            backdropFilter:
+              "var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)",
+            "--tw-backdrop-blur": `blur(${theme("backdropBlur.DEFAULT")})`,
           },
-        },
+        });
 
-        ".card": {
-          borderRadius: theme("borderRadius.DEFAULT"),
-          border: "1px solid",
-          borderColor: "rgb(255 255 255 / 0.15)",
-          backgroundImage: "linear-gradient(100deg, var(--tw-gradient-stops))",
-          "--tw-gradient-from":
-            "rgb(219 219 235 / 0.1) var(--tw-gradient-from-position)",
-          "--tw-gradient-to":
-            "rgb(219 219 235 / 0.07) var(--tw-gradient-to-position)",
-          "--tw-gradient-stops":
-            "var(--tw-gradient-from), var(--tw-gradient-to)",
-          padding: theme("spacing.8"),
-          backdropFilter: "blur(8px)",
-        },
-      });
-
-      addUtilities({
-        /*
+        addUtilities({
+          /*
         Adds clipped corners that scale with the element without distorting. This is
         achieved by using polygon and calc() to get values that are relative to the
         element's width and height.
         */
-        ".clip-corners": {
-          clipPath: `polygon(
+          ".clip-corners": {
+            clipPath: `polygon(
             0.00px 0.00px,
 
             calc(100% - 53.50px) 0.00px,
@@ -206,10 +205,10 @@ export default {
             66.00px 100%,
             0.00px calc(100% - 51.00px)
           )`,
-        },
+          },
 
-        ".clip-corners-inner": {
-          clipPath: `polygon(
+          ".clip-corners-inner": {
+            clipPath: `polygon(
             0.00px 0.00px,
 
             calc(100% - 40.45px) 0.00px,
@@ -220,10 +219,10 @@ export default {
             52.76px 100%,
             0.00px calc(100% - 43.21px)
           )`,
-        },
+          },
 
-        ".clip-corners-rounded": {
-          clipPath: `polygon(
+          ".clip-corners-rounded": {
+            clipPath: `polygon(
             0.00px 12.00px,
             0.04px 11.00px,
             0.17px 10.00px,
@@ -306,40 +305,51 @@ export default {
             0.03px calc(100% - 48.00px),
             0.00px calc(100% - 48.90px)
           )`,
-        },
-      });
-
-      matchUtilities(
-        {
-          "text-shadow": (value) => ({
-            textShadow: value,
-          }),
-        },
-        { values: theme("textShadow") },
-      );
-
-      matchUtilities(
-        {
-          "bg-gradient": (angle) => ({
-            "background-image": `linear-gradient(${angle}, var(--tw-gradient-stops))`,
-          }),
-        },
-        {
-          values: {
-            ...theme("bgGradientDeg"),
-            10: "10deg", // bg-gradient-10
-            15: "15deg",
-            20: "20deg",
-            25: "25deg",
-            30: "30deg",
-            45: "45deg",
-            60: "60deg",
-            90: "90deg",
-            120: "120deg",
-            135: "135deg",
           },
-        },
-      );
-    }),
+        });
+
+        matchUtilities(
+          {
+            "text-shadow": (value) => ({
+              textShadow: value,
+            }),
+          },
+          {
+            values: {
+              ...theme("textShadow"),
+              sm: "0 1px 2px var(--tw-shadow-color)",
+              DEFAULT: "0 2px 4px var(--tw-shadow-color)",
+              lg: "0 8px 16px var(--tw-shadow-color)",
+            },
+          },
+        );
+
+        matchUtilities(
+          {
+            "bg-gradient": (angle) => ({
+              "background-image": `linear-gradient(${angle}, var(--tw-gradient-stops))`,
+            }),
+          },
+          {
+            values: {
+              ...theme("bgGradientDeg"),
+              10: "10deg", // bg-gradient-10
+              15: "15deg",
+              20: "20deg",
+              25: "25deg",
+              30: "30deg",
+              45: "45deg",
+              60: "60deg",
+              90: "90deg",
+              120: "120deg",
+              135: "135deg",
+            },
+          },
+        );
+
+        addVariant("hocus", ["&:hover", "&:focus"]);
+        addVariant("group-hocus", [".group:hover &", ".group:focus-within &"]);
+      },
+    ),
   ],
 };
