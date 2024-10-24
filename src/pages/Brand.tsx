@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { ReactElement } from "react";
+import type { ReactElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
@@ -11,12 +11,12 @@ export function Brand() {
     <>
       <Header />
 
-      <main className="my-40 max-w-4xl mx-auto px-[4vw]">
-        <h1 className="text-h3 font-chakra gradient-text text-center">
+      <main className="mx-auto my-40 max-w-4xl px-[4vw]">
+        <h1 className="gradient-text text-center font-chakra text-h3">
           Brand Assets
         </h1>
 
-        <h2 className="text-body-lg mt-16 mb-6">Logo Mark</h2>
+        <h2 className="mt-16 mb-6 text-body-lg">Logo Mark</h2>
         <div className="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
           <AssetTile
             downloadName="hyperdrive-mark-white.svg"
@@ -38,7 +38,7 @@ export function Brand() {
           />
           <AssetTile
             downloadName="hyperdrive-mark-black.svg"
-            className="bg-neutral-200 text-neutral-500 p-2 rounded"
+            className="rounded bg-neutral-200 p-2 text-neutral-500"
             svg={
               <svg
                 width="200"
@@ -56,7 +56,7 @@ export function Brand() {
           />
         </div>
 
-        <h2 className="text-body-lg mt-16 mb-6">Logo</h2>
+        <h2 className="mt-16 mb-6 text-body-lg">Logo</h2>
         <div className="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
           <AssetTile
             downloadName="hyperdrive-logo-white.svg"
@@ -119,7 +119,7 @@ export function Brand() {
 
           <AssetTile
             downloadName="hyperdrive-logo-black.svg"
-            className="bg-neutral-200 text-neutral-500 p-2 rounded"
+            className="rounded bg-neutral-200 p-2 text-neutral-500"
             svg={
               <svg
                 width="1131"
@@ -177,7 +177,7 @@ export function Brand() {
           />
         </div>
 
-        <h2 className="text-body-lg mt-16 mb-6">Colors</h2>
+        <h2 className="mt-16 mb-6 text-body-lg">Colors</h2>
         <div className="grid grid-cols-3 gap-4 max-xs:grid-cols-1">
           <ColorTile color="#2EFCB6" className="text-neutral-900" />
           <ColorTile color="#14D3F9" className="text-neutral-900" />
@@ -207,16 +207,16 @@ function AssetTile({
     <div>
       <div
         className={classNames(
-          "aspect-video flex items-center justify-center border border-neutral-700 flex-col",
+          "flex aspect-video flex-col items-center justify-center border border-neutral-700",
           className,
         )}
       >
-        <div className="flex items-center justify-center w-full grow">
+        <div className="flex w-full grow items-center justify-center">
           {svg}
         </div>
-        <div className="grid grid-cols-[1.5fr_0_1.5fr] gap-2 w-full h-[3.25rem] border-t border-neutral-400/40">
+        <div className="grid h-[3.25rem] w-full grid-cols-[1.5fr_0_1.5fr] gap-2 border-neutral-400/40 border-t">
           <button
-            className="flex items-center justify-center font-mono uppercase font-medium hover:bg-neutral-500/20 transition-all rounded mt-2"
+            className="mt-2 flex items-center justify-center rounded font-medium font-mono uppercase transition-all hover:bg-neutral-500/20"
             onClick={() => {
               copy(svgString);
             }}
@@ -225,7 +225,7 @@ function AssetTile({
           </button>
           <div className="w-px bg-neutral-400/40" />
           <a
-            className="flex items-center justify-center font-mono uppercase font-medium hover:bg-neutral-500/20 transition-all rounded mt-2"
+            className="mt-2 flex items-center justify-center rounded font-medium font-mono uppercase transition-all hover:bg-neutral-500/20"
             href={downloadLink}
             download={downloadName}
           >
@@ -248,7 +248,7 @@ function ColorTile({
   return (
     <button
       className={classNames(
-        "font-mono uppercase font-medium bg-neutral-900 aspect-video flex items-center justify-center border border-neutral-700 rounded-lg",
+        "flex aspect-video items-center justify-center rounded-lg border border-neutral-700 bg-neutral-900 font-medium font-mono uppercase",
         className,
       )}
       style={{ backgroundColor: color }}

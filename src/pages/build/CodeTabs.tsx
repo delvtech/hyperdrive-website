@@ -10,9 +10,9 @@ export function CodeTabs() {
   const [activeTab, setActiveTab] = useState<TabId>("protocol");
 
   return (
-    <div className="bg-neutral-900 max-w-5xl mx-auto">
+    <div className="mx-auto max-w-5xl bg-neutral-900">
       {/* Tab Buttons */}
-      <div className="flex [&>*]:flex-1 gap-0.5">
+      <div className="flex gap-0.5 [&>*]:flex-1">
         <TabButton
           name="Protocol"
           language="Solidity"
@@ -246,7 +246,7 @@ async fn main() -> Result<()> {
                 dataframes via an API as well as a visualization dashboard to
                 enable analysis and understanding.
               </p>
-              <ul className="space-y-2 list-disc marker:text-neutral-600 pl-4 mb-8">
+              <ul className="mb-8 list-disc space-y-2 pl-4 marker:text-neutral-600">
                 <li>
                   Get started by following our{" "}
                   <a
@@ -360,7 +360,7 @@ function TabButton({ active, onClick, name, language }: TabButtonProps) {
   return (
     <button
       className={classNames(
-        "text-neutral-100 font-semibold flex flex-col gap-1 py-4 px-6 bg-neutral-600 hover:bg-neutral-700 transition-all",
+        "flex flex-col gap-1 bg-neutral-600 px-6 py-4 font-semibold text-neutral-100 transition-all hover:bg-neutral-700",
         {
           "!bg-neutral-950": active,
         },
@@ -370,7 +370,7 @@ function TabButton({ active, onClick, name, language }: TabButtonProps) {
       onClick={onClick}
     >
       {name}
-      <span className="text-content font-normal">{language}</span>
+      <span className="font-normal text-content">{language}</span>
     </button>
   );
 }
@@ -392,8 +392,8 @@ function TabContent({ active, title, body, example }: TabContentProps) {
         hidden: !active,
       })}
     >
-      <div className="px-14 py-8 max-w-4xl max-lg:px-[6vw]">
-        <h3 className="font-chakra text-body-lg text-neutral-100 font-medium mb-4">
+      <div className="max-w-4xl px-14 py-8 max-lg:px-[6vw]">
+        <h3 className="mb-4 font-chakra font-medium text-body-lg text-neutral-100">
           {title}
         </h3>
         {body}

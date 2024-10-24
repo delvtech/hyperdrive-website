@@ -12,17 +12,17 @@ export function Footer() {
     <>
       <SectionDivider />
 
-      <div id="footer" className="inner-container pt-20 space-y-24">
+      <div id="footer" className="inner-container space-y-24 pt-20">
         {/* Legal disclaimer */}
         <div className="flex items-center gap-32">
           <HyperdriveLogoIcon
             width={180}
             height={180}
             strokeWidth={16 / 180}
-            className="fill-none stroke-neutral-500 shrink-0"
+            className="shrink-0 fill-none stroke-neutral-500"
           />
-          <div className="p-px clip-corners-rounded bg-gradient-to-br from-content-600/30 to-content-600/15 backdrop-blur">
-            <div className="clip-corners-rounded bg-black/65 px-14 py-12 flex flex-col gap-8 light text-content/75">
+          <div className="clip-corners-rounded bg-gradient-to-br from-content-600/30 to-content-600/15 p-px backdrop-blur">
+            <div className="clip-corners-rounded light flex flex-col gap-8 bg-black/65 px-14 py-12 text-content/75">
               <p>
                 Hyperdrive.box provides information and resources about the
                 fundamentals of the decentralized non-custodial liquidity
@@ -39,10 +39,10 @@ export function Footer() {
         </div>
 
         {/* Footer links */}
-        <div className="flex justify-around gap-5 [&_a]:transition-all [&_a:hover]:text-aquamarine">
+        <div className="flex justify-around gap-5 [&_a:hover]:text-aquamarine [&_a]:transition-all">
           {/* Protocol */}
           <div>
-            <h3 className="text-body-sm text-content/35 font-mono mb-6">
+            <h3 className="mb-6 font-mono text-body-sm text-content/35">
               Protocol
             </h3>
             <ul className="space-y-4 font-chakra text-body-lg leading-5">
@@ -66,7 +66,7 @@ export function Footer() {
 
           {/* Developers */}
           <div>
-            <h3 className="text-body-sm text-content/35 font-mono mb-6">
+            <h3 className="mb-6 font-mono text-body-sm text-content/35">
               Developers
             </h3>
             <ul className="space-y-4 font-chakra text-body-lg leading-5">
@@ -86,7 +86,7 @@ export function Footer() {
 
           {/* Product */}
           <div>
-            <h3 className="text-body-sm text-content/35 font-mono mb-6">
+            <h3 className="mb-6 font-mono text-body-sm text-content/35">
               Product
             </h3>
             <ul className="space-y-4 font-chakra text-body-lg leading-5">
@@ -111,7 +111,7 @@ export function Footer() {
 
           {/* About */}
           <div>
-            <h3 className="text-body-sm text-content/35 font-mono mb-6">
+            <h3 className="mb-6 font-mono text-body-sm text-content/35">
               About
             </h3>
             <ul className="space-y-4 font-chakra text-body-lg leading-5">
@@ -133,7 +133,7 @@ export function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="text-body-sm text-content/35 font-mono mb-6">
+            <h3 className="mb-6 font-mono text-body-sm text-content/35">
               Legal
             </h3>
             <ul className="space-y-4 font-chakra text-body-lg leading-5">
@@ -160,12 +160,12 @@ export function Footer() {
         </div>
 
         {/* Sub-footer */}
-        <div className="py-8 border-t border-content/30 flex items-center justify-between">
+        <div className="flex items-center justify-between border-content/30 border-t py-8">
           <div className="flex items-center gap-10">
-            <span className="text-white/60 text-body-sm">
+            <span className="text-body-sm text-white/60">
               Copyright &copy; 2024 DELV, Inc.
             </span>
-            <div className="w-px h-5 bg-content/30" />
+            <div className="h-5 w-px bg-content/30" />
             <div className="flex items-center gap-7">
               <a href="https://www.delv.tech/discord/" title="Discord">
                 <DiscordLogoIcon className="size-5 text-content" />
@@ -187,7 +187,7 @@ export function Footer() {
 
           <button
             type="button"
-            className="rounded-full size-10 bg-gradient-to-b from-aquamarine to-sky flex items-center justify-center"
+            className="flex size-10 items-center justify-center rounded-full bg-gradient-to-b from-aquamarine to-sky"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             <svg

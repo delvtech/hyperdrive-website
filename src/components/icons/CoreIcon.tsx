@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import type { SVGProps } from "react";
 
 export function CoreIcon({ ...props }: SVGProps<SVGSVGElement>) {
   return (

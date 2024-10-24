@@ -40,18 +40,18 @@ export function Header({ className }: HeaderProps) {
       {/* Header fixed container */}
       <div
         className={classNames(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          "max-lg:transition-none max-lg:pt-4",
+          "fixed top-0 right-0 left-0 z-50 transition-all duration-300",
+          "max-lg:pt-4 max-lg:transition-none",
           {
-            "max-lg:bg-[#00110C] max-lg:bottom-5": isMenuOpen,
+            "max-lg:bottom-5 max-lg:bg-[#00110C]": isMenuOpen,
           },
           className,
         )}
       >
         {/* Announcement banner */}
         {showBanner && (
-          <div className="h-10 bg-aquamarine-950 border-b border-white/10 flex items-center justify-center px-3 py-2 text-sm">
-            <InformationCircleIcon className="h-5 w-5 mr-1" />
+          <div className="flex h-10 items-center justify-center border-white/10 border-b bg-aquamarine-950 px-3 py-2 text-sm">
+            <InformationCircleIcon className="mr-1 h-5 w-5" />
             <p className="leading-none">
               We've updated our{" "}
               {/* <a
@@ -65,7 +65,7 @@ export function Header({ className }: HeaderProps) {
             and{" "} */}
               <a
                 href="https://delv-public.s3.us-east-2.amazonaws.com/delv-terms-of-service.pdf"
-                className="text-white hover:text-aquamarine transition-all duration-300"
+                className="text-white transition-all duration-300 hover:text-aquamarine"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -80,8 +80,8 @@ export function Header({ className }: HeaderProps) {
         <div className="inner-container">
           <header
             className={classNames(
-              "grid items-center gap-x-2 px-10 py-3 font-mono text-sm bg-white/15 backdrop-blur-3xl rounded-xl",
-              "max-lg:pl-8 max-lg:pr-4 max-lg:py-2",
+              "grid items-center gap-x-2 rounded-xl bg-white/15 px-10 py-3 font-mono text-sm backdrop-blur-3xl",
+              "max-lg:py-2 max-lg:pr-4 max-lg:pl-8",
               {
                 "max-lg:bg-transparent max-lg:backdrop-blur-none": isMenuOpen,
               },
@@ -106,7 +106,7 @@ export function Header({ className }: HeaderProps) {
             <button
               type="button"
               className={classNames(
-                "size-11 shrink-0 border border-transparent hover:border-content/15 transition-all rounded-lg justify-center justify-self-end items-center hidden row-start-1",
+                "row-start-1 hidden size-11 shrink-0 items-center justify-center justify-self-end rounded-lg border border-transparent transition-all hover:border-content/15",
                 "max-lg:!flex",
               )}
               onClick={() => setIsMenuOpen((prev) => !prev)}
@@ -120,8 +120,8 @@ export function Header({ className }: HeaderProps) {
             {/* Menu */}
             <div
               className={classNames(
-                "flex items-center gap-4 justify-self-end row-start-1",
-                "max-lg:col-span-2 max-lg:justify-self-stretch max-lg:row-start-2 max-lg:border-t max-lg:border-content/15 max-lg:mt-4",
+                "row-start-1 flex items-center gap-4 justify-self-end",
+                "max-lg:col-span-2 max-lg:row-start-2 max-lg:mt-4 max-lg:justify-self-stretch max-lg:border-content/15 max-lg:border-t",
                 {
                   "max-lg:hidden": !isMenuOpen,
                 },
@@ -132,23 +132,23 @@ export function Header({ className }: HeaderProps) {
                 className={classNames(
                   "flex items-center gap-2",
                   {
-                    "max-lg:h-0 max-lg:opacity-0 max-lg:!p-0": !isMenuOpen,
+                    "max-lg:!p-0 max-lg:h-0 max-lg:opacity-0": !isMenuOpen,
                   },
-                  "max-lg:flex-col max-lg:py-4 max-lg:w-full",
+                  "max-lg:w-full max-lg:flex-col max-lg:py-4",
                 )}
               >
                 {/* Learn */}
                 <Popover>
                   {() => (
                     <>
-                      <PopoverButton className="uppercase flex items-center gap-1 h-10 px-1 data-[open]:text-aquamarine hover:text-aquamarine group">
+                      <PopoverButton className="group flex h-10 items-center gap-1 px-1 uppercase hover:text-aquamarine data-[open]:text-aquamarine">
                         Learn{" "}
-                        <ChevronDownIcon className="size-4 group-data-[open]:-scale-y-100 transition-all duration-150" />
+                        <ChevronDownIcon className="group-data-[open]:-scale-y-100 size-4 transition-all duration-150" />
                       </PopoverButton>
                       <PopoverPanel
                         className={classNames(
-                          "z-50 bg-[#00110C] rounded shadow-lg text-[#17BB83] flex flex-col gap-1.5 py-3 font-mono",
-                          "max-lg:h-0 max-lg:data-[open]:h-auto max-lg:!bg-transparent max-lg:shadow-none",
+                          "z-50 flex flex-col gap-1.5 rounded bg-[#00110C] py-3 font-mono text-[#17BB83] shadow-lg",
+                          "max-lg:!bg-transparent max-lg:h-0 max-lg:shadow-none max-lg:data-[open]:h-auto",
                         )}
                         anchor={"bottom start"}
                         // anchor={pageWidth > 1080 ? "bottom start" : undefined}
@@ -182,12 +182,12 @@ export function Header({ className }: HeaderProps) {
 
                 {/* Developers */}
                 <Popover>
-                  <PopoverButton className="uppercase flex items-center gap-1 h-10 px-1 data-[open]:text-aquamarine hover:text-aquamarine group">
+                  <PopoverButton className="group flex h-10 items-center gap-1 px-1 uppercase hover:text-aquamarine data-[open]:text-aquamarine">
                     Developers{" "}
-                    <ChevronDownIcon className="size-4 group-data-[open]:-scale-y-100 transition-all duration-150" />
+                    <ChevronDownIcon className="group-data-[open]:-scale-y-100 size-4 transition-all duration-150" />
                   </PopoverButton>
                   <PopoverPanel
-                    className="z-50 bg-[#00110C] rounded shadow-lg text-[#17BB83] flex flex-col gap-1.5 py-3 font-mono"
+                    className="z-50 flex flex-col gap-1.5 rounded bg-[#00110C] py-3 font-mono text-[#17BB83] shadow-lg"
                     anchor="bottom start"
                     modal={false}
                   >
@@ -204,12 +204,12 @@ export function Header({ className }: HeaderProps) {
 
                 {/* Community */}
                 <Popover>
-                  <PopoverButton className="uppercase flex items-center gap-1 h-10 px-1 data-[open]:text-aquamarine hover:text-aquamarine group">
+                  <PopoverButton className="group flex h-10 items-center gap-1 px-1 uppercase hover:text-aquamarine data-[open]:text-aquamarine">
                     Community{" "}
-                    <ChevronDownIcon className="size-4 group-data-[open]:-scale-y-100 transition-all duration-150" />
+                    <ChevronDownIcon className="group-data-[open]:-scale-y-100 size-4 transition-all duration-150" />
                   </PopoverButton>
                   <PopoverPanel
-                    className="z-50 bg-[#00110C] rounded shadow-lg text-[#17BB83] flex flex-col gap-1.5 py-3 font-mono"
+                    className="z-50 flex flex-col gap-1.5 rounded bg-[#00110C] py-3 font-mono text-[#17BB83] shadow-lg"
                     anchor="bottom start"
                     modal={false}
                   >
@@ -233,7 +233,7 @@ export function Header({ className }: HeaderProps) {
 
                 {/* Analytics */}
                 <Link
-                  className="uppercase flex items-center h-8 px-1 duration-150 hover:text-aquamarine transition-all"
+                  className="flex h-8 items-center px-1 uppercase transition-all duration-150 hover:text-aquamarine"
                   to="/analytics"
                 >
                   Analytics
@@ -241,12 +241,12 @@ export function Header({ className }: HeaderProps) {
 
                 {/* Launch Apps */}
                 <Popover>
-                  <PopoverButton className="uppercase flex items-center gap-1 h-10 px-1 data-[open]:text-aquamarine hover:text-aquamarine group whitespace-nowrap">
+                  <PopoverButton className="group flex h-10 items-center gap-1 whitespace-nowrap px-1 uppercase hover:text-aquamarine data-[open]:text-aquamarine">
                     Launch Apps{" "}
-                    <ChevronDownIcon className="size-4 group-data-[open]:-scale-y-100 transition-all duration-150" />
+                    <ChevronDownIcon className="group-data-[open]:-scale-y-100 size-4 transition-all duration-150" />
                   </PopoverButton>
                   <PopoverPanel
-                    className="z-50 bg-[#00110C] rounded shadow-lg text-[#17BB83] flex flex-col gap-1.5 py-3 font-mono"
+                    className="z-50 flex flex-col gap-1.5 rounded bg-[#00110C] py-3 font-mono text-[#17BB83] shadow-lg"
                     anchor="bottom end"
                     modal={false}
                   >
@@ -274,7 +274,7 @@ function MenuLink({ children, className, ...rest }: ClickableProps) {
     <Clickable
       {...rest}
       className={classNames(
-        "h-9 pl-4 pr-6 hover:bg-gradient-to-r from-aquamarine to-teal-400 hover:text-aquamarine-950 flex gap-3 items-center",
+        "flex h-9 items-center gap-3 from-aquamarine to-teal-400 pr-6 pl-4 hover:bg-gradient-to-r hover:text-aquamarine-950",
         className,
       )}
     >

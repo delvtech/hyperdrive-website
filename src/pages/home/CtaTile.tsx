@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 
 export interface CtaTileProps {
   className?: string;
@@ -13,14 +13,14 @@ export function CtaTile({
     <>
       <div
         className={classNames(
-          "clip-corners bg-aquamarine/40 p-px flex-1",
+          "clip-corners flex-1 bg-aquamarine/40 p-px",
           className,
         )}
       >
-        <div className="clip-corners bg-neutral-950 p-5 h-full">
-          <div className="clip-corners-inner bg-gradient-[123deg] from-content-600/10 to-content-600/[0.07] pt-8 pb-10 px-10 space-y-8 h-full [&>*]:relative relative">
+        <div className="clip-corners h-full bg-neutral-950 p-5">
+          <div className="clip-corners-inner relative h-full space-y-8 bg-gradient-[123deg] from-content-600/10 to-content-600/[0.07] px-10 pt-8 pb-10 [&>*]:relative">
             {children}
-            <div className="!absolute inset-0 bg-[url('/accents/tile-grid-bg.svg')] -z-10 -top-8" />
+            <div className="!absolute -z-10 -top-8 inset-0 bg-[url('/accents/tile-grid-bg.svg')]" />
           </div>
         </div>
       </div>
@@ -43,8 +43,8 @@ CtaTile.IconListItem = function CtaTileIconListItem({
   children,
 }: PropsWithChildren<CtaTileIconListItemProps>) {
   return (
-    <li className="card inline-flex items-start gap-3 spaced-mono leading-[18px] pl-5 pr-8 py-4">
-      <img src={src} className="size-6 my-[-3px]" />
+    <li className="card spaced-mono inline-flex items-start gap-3 py-4 pr-8 pl-5 leading-[18px]">
+      <img src={src} className="my-[-3px] size-6" />
       {children}
     </li>
   );

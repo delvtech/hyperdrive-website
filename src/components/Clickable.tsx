@@ -1,6 +1,6 @@
 import type { ComponentProps, PropsWithChildren } from "react";
 import { Link, type LinkProps } from "react-router-dom";
-import { OneOf } from "src/components/types";
+import type { OneOf } from "src/components/types";
 
 export type LinkishProps = (ComponentProps<"a"> | LinkProps) &
   OneOf<{

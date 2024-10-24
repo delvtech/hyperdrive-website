@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import type { SVGProps } from "react";
 
 export function NoteIcon({ ...props }: SVGProps<SVGSVGElement>) {
   return (

@@ -12,9 +12,9 @@ export function NextButton({ className, disabled, onClick }: NextButtonProps) {
       onClick={onClick}
       disabled={disabled}
       className={classNames(
-        "w-12 h-12 rounded-full backdrop-blur-md border border-neutral-600 hover:border-neutral-100 flex items-center justify-center transition-all",
+        "flex h-12 w-12 items-center justify-center rounded-full border border-neutral-600 backdrop-blur-md transition-all hover:border-neutral-100",
         {
-          "opacity-50 !border-neutral-600": disabled,
+          "!border-neutral-600 opacity-50": disabled,
         },
         className,
       )}

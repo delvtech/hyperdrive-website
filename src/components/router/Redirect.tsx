@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 export function Redirect({ to }: { to: string }) {
   const navigate = useNavigate();
-  let params = useParams();
+  const params = useParams();
 
   useEffect(() => {
     let path = to;
