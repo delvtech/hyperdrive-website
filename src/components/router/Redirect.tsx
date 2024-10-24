@@ -12,4 +12,6 @@ export function Redirect({ to }: { to: string }) {
   }
 
   window.location.replace(path);
+
+  return null;
 }
