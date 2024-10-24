@@ -1,9 +1,8 @@
-import { ChevronDownIcon } from "@heroicons/react/16/solid";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import classNames from "classnames";
-import { type ComponentPropsWithoutRef, type ReactNode, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Clickable, type ClickableProps } from "src/components/Clickable";
+import { Dropdown } from "src/components/Dropdown";
 import { BlogIcon } from "src/components/icons/BlogIcon";
 import { BookIcon } from "src/components/icons/BookIcon";
 import { CodeDocIcon } from "src/components/icons/CodeDocIcon";
@@ -30,6 +29,15 @@ export function Header({ className }: HeaderProps) {
   const scrollPosition = useScrollPosition();
   const isScrolled = scrollPosition > 0;
 
+  // Prevent the page from scrolling behind the menu when it's open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isMenuOpen]);
+
   const showBanner =
     SHOW_ANNOUNCEMENT_BANNER && new Date() < ANNOUNCEMENT_BANNER_EXPIRY;
 
@@ -39,8 +47,9 @@ export function Header({ className }: HeaderProps) {
       <div
         className={classNames(
           "fixed top-0 right-0 left-0 z-50",
+          "max-lg:overflow-auto",
           {
-            "max-lg:bottom-5 max-lg:bg-[#00110C]": isMenuOpen,
+            "max-lg:bottom-2 max-lg:bg-[#00110C]": isMenuOpen,
           },
           className,
         )}
@@ -74,14 +83,14 @@ export function Header({ className }: HeaderProps) {
         )}
 
         {/* Header */}
-        <div className="inner-container">
+        <div className="inner-container box-content max-h-screen">
           <header
             className={classNames(
               "mt-8 grid items-center gap-x-2 rounded-xl bg-white/15 px-10 py-3 font-mono text-sm backdrop-blur-3xl transition-[margin] duration-300",
               {
-                "mt-4": isScrolled,
+                "!mt-4": isScrolled,
               },
-              "max-lg:mt-4 max-lg:py-2 max-lg:pr-4 max-lg:pl-8",
+              "max-lg:mt-4 max-lg:py-2 max-lg:pr-4 max-lg:pl-8 max-lg:text-body",
               {
                 "max-lg:bg-transparent max-lg:backdrop-blur-none": isMenuOpen,
               },
@@ -134,148 +143,117 @@ export function Header({ className }: HeaderProps) {
                   {
                     "max-lg:hidden": !isMenuOpen,
                   },
-                  "max-lg:w-full max-lg:flex-col max-lg:items-stretch max-lg:py-4",
+                  "max-lg max-lg:w-full max-lg:flex-col max-lg:items-stretch max-lg:gap-0",
                 )}
               >
                 {/* Learn */}
-                <Dropdown label="Learn">
-                  <DropdownLink to="/docs">
-                    <DocIcon className="size-4" />
-                    Docs
-                  </DropdownLink>
-                  <DropdownLink href="https://blog.delv.tech">
-                    <BlogIcon className="size-4" />
-                    Blog
-                  </DropdownLink>
-                  <DropdownLink to="/docs/trading/trading-strategies">
-                    <StrategyIcon className="size-4" />
-                    Trading Strategies
-                  </DropdownLink>
-                  <DropdownLink to="/whitepaper">
-                    <NoteIcon className="size-4" />
-                    Whitepaper
-                  </DropdownLink>
-                  <DropdownLink to="/docs/hyperdrive-overview/glossary">
-                    <BookIcon className="size-4" />
-                    Glossary
-                  </DropdownLink>
+                <Dropdown>
+                  {/* {({ isHovered, isOpen }) => {
+                    const metaLabel = isOpen
+                      ? "Opened"
+                      : isHovered
+                        ? "Hovered"
+                        : "Closed";
+                    return ( */}
+                  <>
+                    <Dropdown.Button>Learn</Dropdown.Button>
+                    <Dropdown.Menu hover portal>
+                      <Dropdown.Item to="/docs">
+                        <DocIcon className="size-4" />
+                        Docs
+                      </Dropdown.Item>
+                      <Dropdown.Item href="https://blog.delv.tech">
+                        <BlogIcon className="size-4" />
+                        Blog
+                      </Dropdown.Item>
+                      <Dropdown.Item to="/docs/trading/trading-strategies">
+                        <StrategyIcon className="size-4" />
+                        Trading Strategies
+                      </Dropdown.Item>
+                      <Dropdown.Item to="/whitepaper">
+                        <NoteIcon className="size-4" />
+                        Whitepaper
+                      </Dropdown.Item>
+                      <Dropdown.Item to="/docs/hyperdrive-overview/glossary">
+                        <BookIcon className="size-4" />
+                        Glossary
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </>
+                  {/* );
+                  }} */}
                 </Dropdown>
 
                 {/* Developers */}
-                <Dropdown label="Developers">
-                  <DropdownLink to="/docs/hyperdrive-for-developers">
-                    <CodeDocIcon className="size-4" />
-                    Docs
-                  </DropdownLink>
-                  <DropdownLink to="/build">
-                    <CoreIcon className="size-4" />
-                    Hyperdrive [Core]
-                  </DropdownLink>
+                <Dropdown>
+                  <Dropdown.Button>Developers</Dropdown.Button>
+                  <Dropdown.Menu portal>
+                    <Dropdown.Item to="/docs/hyperdrive-for-developers">
+                      <CodeDocIcon className="size-4" />
+                      Docs
+                    </Dropdown.Item>
+                    <Dropdown.Item to="/build">
+                      <CoreIcon className="size-4" />
+                      Hyperdrive [Core]
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
                 </Dropdown>
 
                 {/* Community */}
-                <Dropdown label="Community">
-                  <DropdownLink href="https://www.delv.tech/discord">
-                    <DiscordLogoIcon className="size-4" />
-                    Discord
-                  </DropdownLink>
-                  <DropdownLink href="https://twitter.com/delv_tech/">
-                    <XLogoIcon className="size-4" />X
-                  </DropdownLink>
-                  <DropdownLink href="https://warpcast.com/~/channel/delv">
-                    <FarcasterLogoIcon className="size-4" />
-                    Farcaster
-                  </DropdownLink>
-                  <DropdownLink href="https://www.linkedin.com/company/delv-tech/">
-                    <LinkedInLogoIcon className="size-4" />
-                    LinkedIn
-                  </DropdownLink>
+                <Dropdown>
+                  <Dropdown.Button>Community</Dropdown.Button>
+                  <Dropdown.Menu hover>
+                    <Dropdown.Item href="https://www.delv.tech/discord">
+                      <DiscordLogoIcon className="size-4" />
+                      Discord
+                    </Dropdown.Item>
+                    <Dropdown.Item href="https://twitter.com/delv_tech/">
+                      <XLogoIcon className="size-4" />X
+                    </Dropdown.Item>
+                    <Dropdown.Item href="https://warpcast.com/~/channel/delv">
+                      <FarcasterLogoIcon className="size-4" />
+                      Farcaster
+                    </Dropdown.Item>
+                    <Dropdown.Item href="https://www.linkedin.com/company/delv-tech/">
+                      <LinkedInLogoIcon className="size-4" />
+                      LinkedIn
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
                 </Dropdown>
 
                 {/* Analytics */}
                 <Link
-                  className="flex h-8 items-center px-1 uppercase transition-all duration-150 hover:text-aquamarine"
+                  className={classNames(
+                    "flex h-10 items-center gap-1 whitespace-nowrap px-1 uppercase group-hocus:text-aquamarine",
+                    "max-lg:h-16 max-lg:w-full max-lg:justify-between max-lg:border-content/15 max-lg:border-b max-lg:px-4",
+                  )}
                   to="/analytics"
                 >
                   Analytics
                 </Link>
 
                 {/* Launch Apps */}
-                <Dropdown label="Launch Apps" align="end">
-                  <DropdownLink to="/one">
-                    <HyperdriveLogoIcon className="size-4" />
-                    Hyperdrive One
-                  </DropdownLink>
-                  <DropdownLink to="/borrow">
-                    <HyperdriveLogoIcon className="size-4" />
-                    Fixed Borrow
-                  </DropdownLink>
+                <Dropdown align="end">
+                  <Dropdown.Button>Launch Apps</Dropdown.Button>
+                  <Dropdown.Menu hover>
+                    <Dropdown.Item to="/one">
+                      <HyperdriveLogoIcon className="size-4" />
+                      Hyperdrive One
+                    </Dropdown.Item>
+                    <Dropdown.Item to="/borrow">
+                      <HyperdriveLogoIcon className="size-4" />
+                      Fixed Borrow
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
                 </Dropdown>
+                {/* <p className="row-start-4 mt-auto self-end justify-self-end text-body-sm">
+                  Copyright &copy; DELV 2024
+                </p> */}
               </nav>
             </div>
           </header>
         </div>
       </div>
     </>
-  );
-}
-
-interface DropdownProps extends ComponentPropsWithoutRef<"div"> {
-  label: ReactNode;
-  labelClassName?: string;
-  align?: "start" | "center" | "end";
-}
-
-function Dropdown({
-  label,
-  align = "start",
-  labelClassName,
-  className,
-  children,
-  ...rest
-}: DropdownProps) {
-  return (
-    <>
-      <div
-        className={classNames(
-          "group relative flex h-10 items-center gap-1 whitespace-nowrap px-1 hocus:text-aquamarine uppercase",
-          labelClassName,
-        )}
-        {...rest}
-      >
-        {label}{" "}
-        <ChevronDownIcon className="group-data-[open]:-scale-y-100 size-4 transition-all duration-150" />
-        <div
-          className={classNames(
-            "pointer-events-none absolute top-full z-50 flex scale-y-95 flex-col gap-1.5 rounded bg-[#00110C] py-3 font-mono text-[#17BB83] opacity-0 shadow-lg transition-all duration-100 ease-in",
-            "group-hocus:pointer-events-auto group-hocus:scale-100 group-hocus:opacity-100 group-hocus:duration-200 group-hocus:ease-out",
-            {
-              "right-0 origin-top-right": align === "end",
-              "-translate-x-1/2 left-1/2 origin-top": align === "center",
-              "left-0 origin-top-left": align === "start",
-            },
-            "max-lg:!bg-transparent max-lg:h-0 max-lg:shadow-none max-lg:data-[open]:h-auto",
-            className,
-          )}
-          {...rest}
-        >
-          {children}
-        </div>
-      </div>
-    </>
-  );
-}
-
-function DropdownLink({ className, children, ...rest }: ClickableProps) {
-  return (
-    <Clickable
-      {...rest}
-      className={classNames(
-        "flex h-9 items-center gap-3 from-aquamarine to-teal-400 pr-6 pl-4 hover:bg-gradient-to-r hover:text-aquamarine-950",
-        className,
-      )}
-    >
-      {children}
-    </Clickable>
   );
 }
