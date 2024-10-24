@@ -216,6 +216,7 @@ function AssetTile({
         </div>
         <div className="grid h-[3.25rem] w-full grid-cols-[1.5fr_0_1.5fr] gap-2 border-neutral-400/40 border-t">
           <button
+            type="button"
             className="mt-2 flex items-center justify-center rounded font-medium font-mono uppercase transition-all hover:bg-neutral-500/20"
             onClick={() => {
               copy(svgString);
@@ -247,6 +248,7 @@ function ColorTile({
   const { copy, copied } = useCopy();
   return (
     <button
+      type="button"
       className={classNames(
         "flex aspect-video items-center justify-center rounded-lg border border-neutral-700 bg-neutral-900 font-medium font-mono uppercase",
         className,

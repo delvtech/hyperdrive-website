@@ -89,7 +89,7 @@ export function ProjectIdeas() {
               </p>
             </div>
 
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black" />
           </div>
         </div>
       </div>
