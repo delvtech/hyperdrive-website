@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       screens: {
-        xs: "375px",
+        xs: "480px",
       },
       colors: {
         eggplant: {
