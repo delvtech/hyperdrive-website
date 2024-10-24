@@ -1,10 +1,11 @@
+import classNames from "classnames";
 import { Link } from "react-router-dom";
+import { VerticalDivider } from "src/components/VerticalDivider";
 import { DiscordLogoIcon } from "src/components/icons/DiscordLogoIcon";
 import { FarcasterLogoIcon } from "src/components/icons/FarcasterLogoIcon";
 import { HyperdriveLogoIcon } from "src/components/icons/HyperdriveLogoIcon";
 import { LinkedInLogoIcon } from "src/components/icons/LinkedInLogoIcon";
 import { XLogoIcon } from "src/components/icons/XLogoIcon";
-import { VerticalDivider } from "src/components/VerticalDivider";
 import { SectionDivider } from "src/pages/home/SectionDivider";
 
 export function Footer() {
@@ -14,7 +15,7 @@ export function Footer() {
 
       <div id="footer" className="inner-container space-y-24 pt-20">
         {/* Legal disclaimer */}
-        <div className="flex items-center gap-32">
+        <div className={classNames("flex items-center gap-32", "max-lg:flex-col")}>
           <HyperdriveLogoIcon
             width={180}
             height={180}
@@ -39,7 +40,12 @@ export function Footer() {
         </div>
 
         {/* Footer links */}
-        <div className="flex justify-around gap-5 [&_a:hover]:text-aquamarine [&_a]:transition-all">
+        <div
+          className={classNames(
+            "flex justify-around gap-5 [&_a:hover]:text-aquamarine [&_a]:transition-all",
+            "max-lg:grid max-lg:grid-cols-3",
+          )}
+        >
           {/* Protocol */}
           <div>
             <h3 className="mb-6 font-mono text-body-sm text-content/35">

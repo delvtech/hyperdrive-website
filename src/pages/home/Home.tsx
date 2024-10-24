@@ -22,9 +22,7 @@ export function Home() {
       {/* Hero */}
       <div
         className={classNames(
-          "relative h-screen overflow-hidden bg-aquamarine-950 pb-10",
-          "max-xl:px-[3vw]",
-          "max-lg:flex-col max-lg:gap-8 max-lg:text-center",
+          "relative min-h-screen overflow-hidden bg-aquamarine-950",
         )}
       >
         {/* Hero bg accents */}
@@ -51,65 +49,89 @@ export function Home() {
         <div className="pointer-events-none absolute inset-0 bg-[length:100px_100px] bg-[url('/noise-texture.png')] bg-left-top bg-repeat opacity-20 mix-blend-overlay" />
 
         {/* Hero content */}
-        <div className="inner-container flex h-full items-end justify-between pb-10">
-          {/* Hero left */}
+        <div
+          className={classNames(
+            "inner-container grid min-h-screen items-end justify-between gap-8 pb-10",
+            "max-lg:px-[4vw] max-lg:pt-32",
+          )}
+        >
+          {/* Title */}
           <div
             className={classNames(
-              "relative z-10 flex h-full w-[600px] shrink-0 flex-col leading-none",
-              "max-xl:w-[340px]",
-              "max-lg:w-auto",
+              "relative z-10 col-start-1 row-start-1 h-auto grow items-center leading-none",
+              "max-lg:text-center",
             )}
           >
-            {/* Title */}
-            <div className="flex grow items-center">
-              <div>
-                <h1
-                  className={classNames(
-                    "relative mb-5 font-chakra text-[100px] text-neutral-100",
-                    "max-xl:text-h2",
-                    "max-sm:text-h4",
-                  )}
-                >
-                  Access DeFi, Your Way
-                </h1>
-                <p className="font-light text-content/60">
-                  Powered by{" "}
-                  <span className="font-chakra font-medium uppercase">
-                    THE HYPERDRIVE PROTOCOL
-                  </span>
-                </p>
-              </div>
-            </div>
+            <h1
+              className={classNames(
+                "!leading-none relative mb-5 font-chakra text-[100px] text-neutral-100",
+                "max-sm:text-h3",
+              )}
+            >
+              Access DeFi,
+              <br /> Your Way
+            </h1>
+            <p className="font-light text-content/60">
+              Powered by{" "}
+              <span className="font-chakra font-medium text-content uppercase">
+                THE HYPERDRIVE PROTOCOL
+              </span>
+            </p>
+          </div>
 
-            {/* Chains */}
-            <div className="flex items-center gap-10 font-light text-content/60">
-              Available on{" "}
-              <div className="flex items-center gap-9">
-                <img
-                  src="/logos/ethereum-logo.svg"
-                  alt="Ethereum"
-                  className="h-6"
-                />
-                <img
-                  src="/logos/linea-logo.svg"
-                  alt="Linea"
-                  className="h-[17px]"
-                />
-                <img src="/logos/base-logo.svg" alt="Base" className="h-5" />
-                <img
-                  src="/logos/gnosis-chain-logo.svg"
-                  alt="Gnosis Chain"
-                  className="h-4"
-                />
-              </div>
+          {/* Chains */}
+          <div
+            className={classNames(
+              "col-start-1 flex items-center gap-10 font-light text-content/60",
+              "max-lg:flex-col",
+            )}
+          >
+            Available on{" "}
+            <div
+              className={classNames(
+                "flex items-center gap-9",
+                "max-lg:grid max-lg:grid-cols-2 max-lg:items-stretch",
+              )}
+            >
+              <img
+                src="/logos/ethereum-logo.svg"
+                alt="Ethereum"
+                className="h-6"
+              />
+              <img
+                src="/logos/linea-logo.svg"
+                alt="Linea"
+                className="h-[17px]"
+              />
+              <img src="/logos/base-logo.svg" alt="Base" className="h-5" />
+              <img
+                src="/logos/gnosis-chain-logo.svg"
+                alt="Gnosis Chain"
+                className="h-4"
+              />
             </div>
           </div>
 
-          {/* Hero right */}
-          <div className="clip-corners-rounded bg-gradient-to-br from-content-600/30 to-content-600/15 p-px backdrop-blur-sm">
-            <div className="clip-corners-rounded flex flex-col gap-8 bg-aquamarine-950/60 px-14 pt-14 pb-12">
-              <ul className="spaced-mono space-y-4">
-                <li className="flex items-center gap-2">
+          {/* Hero CTA */}
+          <div
+            className={classNames(
+              "clip-corners-rounded col-start-2 row-span-2 row-start-1 bg-gradient-to-br from-content-600/30 to-content-600/15 p-px backdrop-blur-sm",
+              "max-lg:clip-none max-lg:col-start-1 max-lg:row-span-1 max-lg:row-start-2 max-lg:self-start max-lg:border-content/30 max-lg:border-t max-lg:bg-none",
+            )}
+          >
+            <div
+              className={classNames(
+                "clip-corners-rounded flex flex-col gap-8 bg-aquamarine-950/60 px-14 pt-14 pb-12",
+                "max-lg:clip-none max-lg:px-0 max-lg:py-8",
+              )}
+            >
+              <ul
+                className={classNames(
+                  "spaced-mono space-y-4",
+                  "max-sm:space-y-3",
+                )}
+              >
+                <li className="flex gap-2 leading-6">
                   <img
                     src="/icons/circle-check-icon.svg"
                     alt=""
@@ -117,7 +139,7 @@ export function Home() {
                   />{" "}
                   AMM designed for market efficiency
                 </li>
-                <li className="flex items-center gap-2">
+                <li className="flex gap-2 leading-6">
                   <img
                     src="/icons/circle-check-icon.svg"
                     alt=""
@@ -125,7 +147,7 @@ export function Home() {
                   />
                   Reputable yield sources
                 </li>
-                <li className="flex items-center gap-2">
+                <li className="flex gap-2 leading-6">
                   <img
                     src="/icons/circle-check-icon.svg"
                     alt=""
@@ -134,7 +156,12 @@ export function Home() {
                   LP for volatility-driven returns
                 </li>
               </ul>
-              <div className="flex items-center gap-3">
+              <div
+                className={classNames(
+                  "flex items-center gap-3",
+                  "max-lg:flex-col max-lg:items-stretch",
+                )}
+              >
                 <button
                   type="button"
                   onClick={() => {
@@ -339,7 +366,12 @@ export function Home() {
           Our Tools
         </p>
 
-        <div className="grid grid-cols-2 items-start gap-x-32 gap-y-14">
+        <div
+          className={classNames(
+            "grid grid-cols-2 items-start gap-x-32 gap-y-14",
+            "max-lg:grid-cols-1",
+          )}
+        >
           <h2 className="gradient-text font-chakra text-h1">
             Build on the Hyperdrive Protocol
           </h2>
@@ -393,7 +425,12 @@ export function Home() {
 
       {/* Security measures */}
       <div id="security" className="inner-container pt-28 pb-36">
-        <div className="mb-16 flex items-start justify-between gap-10">
+        <div
+          className={classNames(
+            "mb-16 flex items-start justify-between gap-10",
+            "max-lg:flex-col",
+          )}
+        >
           <p className="mb-8 flex items-center gap-3 font-chakra uppercase tracking-wide">
             <img src="/icons/tools-icon.svg" className="size-6" />
             Security measures
@@ -402,9 +439,14 @@ export function Home() {
         </div>
 
         {/* Security cards */}
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-3 gap-5 max-lg:grid-cols-1">
           {/* Audited card */}
-          <div className="card col-span-3 flex justify-between gap-10">
+          <div
+            className={classNames(
+              "card col-span-3 flex gap-10",
+              "max-lg:col-span-1 max-lg:flex-col max-lg:gap-8",
+            )}
+          >
             <div className="flex flex-col justify-between gap-12 py-8">
               <div className="space-y-3">
                 <h3 className="font-chakra text-h4.5">Audited</h3>
