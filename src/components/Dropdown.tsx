@@ -165,6 +165,8 @@ export function Dropdown({
   );
 }
 
+// Button //
+
 export interface DropDownButtonProps
   extends ComponentPropsWithoutRef<"button"> {}
 
@@ -206,6 +208,8 @@ Dropdown.Button = function DropdownButton({
     </button>
   );
 };
+
+// Menu //
 
 export interface DropdownMenuProps extends ComponentPropsWithoutRef<"div"> {
   /**
@@ -309,7 +313,9 @@ Dropdown.Menu = function DropdownMenu({
   return Menu;
 };
 
-Dropdown.Link = function DropdownLink({
+// Item //
+
+Dropdown.Item = function DropdownItem({
   className,
   children,
   ...rest
@@ -340,7 +346,9 @@ Dropdown.Link = function DropdownLink({
   );
 };
 
-interface DropdownContextType {
+// Context //
+
+export interface DropdownContextType {
   /**
    * Whether the dropdown is open.
    *
@@ -390,6 +398,8 @@ const DropdownContext = createContext<DropdownContextType>({
   open: () => {},
   close: () => {},
 });
+
+// Helpers //
 
 function isDropdownItem(
   element: Element | EventTarget,
