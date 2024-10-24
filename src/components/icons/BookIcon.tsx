@@ -1,6 +1,6 @@
-import type { SVGProps } from "react";
+import type { IconProps } from "src/components/icons/types";
 
-export function BookIcon({ ...props }: SVGProps<SVGSVGElement>) {
+export function BookIcon({ title, ...props }: IconProps) {
   return (
     <svg
       width="16"
@@ -10,6 +10,7 @@ export function BookIcon({ ...props }: SVGProps<SVGSVGElement>) {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
+      <title>{title}</title>
       <path d="M4.83301 4.66699C4.83301 4.39085 5.05687 4.16699 5.33301 4.16699H10.6663C10.9425 4.16699 11.1663 4.39085 11.1663 4.66699C11.1663 4.94313 10.9425 5.16699 10.6663 5.16699H5.33301C5.05687 5.16699 4.83301 4.94313 4.83301 4.66699Z" />
       <path d="M5.33301 6.5C5.05687 6.5 4.83301 6.72386 4.83301 7C4.83301 7.27614 5.05687 7.5 5.33301 7.5H8.66634C8.94248 7.5 9.16634 7.27614 9.16634 7C9.16634 6.72386 8.94248 6.5 8.66634 6.5H5.33301Z" />
       <path

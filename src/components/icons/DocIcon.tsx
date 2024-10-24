@@ -1,6 +1,6 @@
-import type { SVGProps } from "react";
+import type { IconProps } from "src/components/icons/types";
 
-export function DocIcon({ ...props }: SVGProps<SVGSVGElement>) {
+export function DocIcon({ title, ...props }: IconProps) {
   return (
     <svg
       width="16"
@@ -10,6 +10,7 @@ export function DocIcon({ ...props }: SVGProps<SVGSVGElement>) {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
+      <title>{title}</title>
       <path d="M4.16699 8.66699C4.16699 8.39085 4.39085 8.16699 4.66699 8.16699H8.66699C8.94313 8.16699 9.16699 8.39085 9.16699 8.66699C9.16699 8.94313 8.94313 9.16699 8.66699 9.16699H4.66699C4.39085 9.16699 4.16699 8.94313 4.16699 8.66699Z" />
       <path d="M4.66699 10.833C4.39085 10.833 4.16699 11.0569 4.16699 11.333C4.16699 11.6091 4.39085 11.833 4.66699 11.833H7.33366C7.6098 11.833 7.83366 11.6091 7.83366 11.333C7.83366 11.0569 7.6098 10.833 7.33366 10.833H4.66699Z" />
       <path

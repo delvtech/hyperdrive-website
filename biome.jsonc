@@ -21,6 +21,9 @@
   "linter": {
     "enabled": true,
     "rules": {
+      "a11y": {
+        "noSvgWithoutTitle": "warn"
+      },
       "complexity": {
         "noBannedTypes": "off"
       },

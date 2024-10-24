@@ -1,6 +1,6 @@
-import type { SVGProps } from "react";
+import type { IconProps } from "src/components/icons/types";
 
-export function FarcasterLogoIcon({ ...props }: SVGProps<SVGSVGElement>) {
+export function FarcasterLogoIcon({ title, ...props }: IconProps) {
   return (
     <svg
       width="20"
@@ -10,6 +10,7 @@ export function FarcasterLogoIcon({ ...props }: SVGProps<SVGSVGElement>) {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
+      <title>Farcaster</title>
       <path
         fillRule="evenodd"
         clipRule="evenodd"
