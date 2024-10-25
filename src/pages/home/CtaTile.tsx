@@ -13,7 +13,8 @@ export function CtaTile({
     <>
       <div
         className={classNames(
-          "clip-corners flex-1 bg-[linear-gradient(to_right,_rgba(255,255,255,0)_0,_rgba(255,255,255,.50)_23%,_rgba(255,255,255,.15)_28%,_rgba(255,255,255,.20)_63%,_rgba(255,255,255,.50)_72%,_rgba(255,255,255,0)_100%)] bg-aquamarine/40 p-px",
+          // "clip-corners flex-1 bg-[linear-gradient(to_right,_rgba(255,255,255,0)_0,_rgba(255,255,255,.50)_23%,_rgba(255,255,255,.15)_28%,_rgba(255,255,255,.20)_63%,_rgba(255,255,255,.50)_72%,_rgba(255,255,255,0)_100%)] bg-aquamarine/40 p-px",
+          "clip-corners flex-1 bg-aquamarine/40 p-px",
           className,
         )}
       >
