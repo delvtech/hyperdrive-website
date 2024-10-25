@@ -7,11 +7,6 @@ import { HyperdriveLogoIcon } from "src/components/icons/HyperdriveLogoIcon";
 import { CtaTile } from "src/pages/home/CtaTile";
 import { SectionDivider } from "src/pages/home/SectionDivider";
 
-// TODOS:
-// [ ] Verify all links
-// [ ] Verify all image alts
-// [ ] Delete dead code and files
-
 export function Home() {
   return (
     <>
@@ -420,7 +415,7 @@ export function Home() {
               </p>
               <div className="max-lg:grid max-lg:justify-items-center">
                 <img
-                  src="/icons/morpho-icon.svg"
+                  src="/icons/morpho-logo-icon.svg"
                   className="mb-5 size-[60px]"
                 />
                 <h2
