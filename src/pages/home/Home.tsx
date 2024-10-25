@@ -278,60 +278,55 @@ export function Home() {
           </div>
         </div>
 
-        {/* Hyperdrive One Pools carousel */}
+        {/* Yield sources */}
         <ul
           ref={preferScrollPosition({ x: 0.5 })}
           className="grid grid-flow-col items-center overflow-x-auto border-content/30 border-y py-6"
         >
-          <li className="flex h-28 w-60 items-center justify-center border-content/30 border-r">
-            <img
-              className="h-10"
-              alt="angle"
-              src="/logos/assets/angle-asset-logo.svg"
-            />
-          </li>
-          <li className="flex h-28 w-60 items-center justify-center border-content/30 border-r">
-            <img
-              className="h-10"
-              alt="ether.fi"
-              src="/logos/assets/ether.fi-asset-logo.svg"
-            />
-          </li>
-          <li className="flex h-28 w-60 items-center justify-center border-content/30 border-r">
-            <img
-              className="h-10"
-              alt="gnosis savings"
-              src="/logos/assets/gnosis-savings-asset-logo.svg"
-            />
-          </li>
-          <li className="flex h-28 w-60 items-center justify-center border-content/30 border-r">
-            <img
-              className="h-10"
-              alt="lido"
-              src="/logos/assets/lido-asset-logo.svg"
-            />
-          </li>
-          <li className="flex h-28 w-60 items-center justify-center border-content/30 border-r">
-            <img
-              className="h-10"
-              alt="morpho"
-              src="/logos/assets/morpho-asset-logo.svg"
-            />
-          </li>
-          <li className="flex h-28 w-60 items-center justify-center border-content/30 border-r">
-            <img
-              className="h-10"
-              alt="rocketpool"
-              src="/logos/assets/rocketpool-asset-logo.svg"
-            />
-          </li>
-          <li className="flex h-28 w-60 items-center justify-center">
-            <img
-              className="h-10"
-              alt="sdai"
-              src="/logos/assets/sdai-asset-logo.svg"
-            />
-          </li>
+          <YieldSource>
+            <img className="h-10" src="/logos/rocketpool-logo-circle.png" />
+            Rocketpool
+          </YieldSource>
+          <YieldSource>
+            <img className="h-10" src="/logos/kelp-logo-circle.png" />
+            Kelp
+          </YieldSource>
+          <YieldSource>
+            <img className="h-10" src="/logos/gnosis-logo-circle.png" />
+            Gnosis
+          </YieldSource>
+          <YieldSource>
+            <img className="h-10" src="/logos/moonwell-logo-circle.png" />
+            Moonwell
+          </YieldSource>
+          <YieldSource>
+            <img className="h-10" src="/logos/sky-logo-circle.png" />
+            Sky
+          </YieldSource>
+          <YieldSource>
+            <img className="h-10" src="/logos/base-logo-circle.png" />
+            Base
+          </YieldSource>
+          <YieldSource>
+            <img className="h-10" src="/logos/angle-logo-circle.png" />
+            Angle
+          </YieldSource>
+          <YieldSource>
+            <img className="h-10" src="/logos/morpho-logo-circle.png" />
+            Morpho
+          </YieldSource>
+          <YieldSource>
+            <img className="h-10" src="/logos/ether.fi-logo-circle.png" />
+            Ether.fi
+          </YieldSource>
+          <YieldSource>
+            <img className="h-10" src="/logos/sdai-logo-circle.png" />
+            sDAI
+          </YieldSource>
+          <YieldSource>
+            <img className="h-10" src="/logos/renzo-logo-circle.png" />
+            Renzo
+          </YieldSource>
         </ul>
       </div>
 
@@ -777,6 +772,14 @@ export function Home() {
 
       <Footer />
     </>
+  );
+}
+
+function YieldSource({ children }: { children: React.ReactNode }) {
+  return (
+    <li className="flex h-28 w-60 items-center justify-center gap-3 border-content/30 border-r font-light text-[21px] last:border-none">
+      {children}
+    </li>
   );
 }
 
