@@ -15,6 +15,7 @@ import { NoteIcon } from "src/components/icons/NoteIcon";
 import { StrategyIcon } from "src/components/icons/StrategyIcon";
 import { WarpcastLogoIcon } from "src/components/icons/WarpcastLogoIcon";
 import { XLogoIcon } from "src/components/icons/XLogoIcon";
+import { useBreakpoint } from "src/hooks/useBreakpoint";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
 
 const SHOW_ANNOUNCEMENT_BANNER = false;
@@ -28,6 +29,7 @@ export function Header({ className }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const scrollPosition = useScrollPosition();
   const isScrolled = scrollPosition > 0;
+  const breakpoint = useBreakpoint();
 
   // Prevent the page from scrolling behind the menu when it's open
   useEffect(() => {
@@ -149,7 +151,7 @@ export function Header({ className }: HeaderProps) {
                 {/* Learn */}
                 <Dropdown>
                   <Dropdown.Button>Learn</Dropdown.Button>
-                  <Dropdown.Menu hover>
+                  <Dropdown.Menu hover={breakpoint.gte("lg")}>
                     <Dropdown.Item to="/docs">
                       <DocIcon className="size-4" />
                       Docs
@@ -176,7 +178,7 @@ export function Header({ className }: HeaderProps) {
                 {/* Developers */}
                 <Dropdown>
                   <Dropdown.Button>Developers</Dropdown.Button>
-                  <Dropdown.Menu hover>
+                  <Dropdown.Menu hover={breakpoint.gte("lg")}>
                     <Dropdown.Item to="/docs/hyperdrive-for-developers">
                       <CodeDocIcon className="size-4" />
                       Docs
@@ -191,7 +193,7 @@ export function Header({ className }: HeaderProps) {
                 {/* Community */}
                 <Dropdown>
                   <Dropdown.Button>Community</Dropdown.Button>
-                  <Dropdown.Menu hover>
+                  <Dropdown.Menu hover={breakpoint.gte("lg")}>
                     <Dropdown.Item href="https://www.delv.tech/discord">
                       <DiscordLogoIcon className="size-4" />
                       Discord
@@ -224,7 +226,10 @@ export function Header({ className }: HeaderProps) {
                 {/* Launch Apps */}
                 <Dropdown>
                   <Dropdown.Button>Launch Apps</Dropdown.Button>
-                  <Dropdown.Menu hover anchor="bottom end">
+                  <Dropdown.Menu
+                    hover={breakpoint.gte("lg")}
+                    anchor="bottom end"
+                  >
                     <Dropdown.Item to="/one">
                       <HyperdriveLogoIcon className="size-4" />
                       Hyperdrive One

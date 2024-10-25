@@ -1,6 +1,6 @@
+import type { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 
-/** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -73,19 +73,19 @@ export default {
         mono: ["DM Mono", "monospace"],
       },
       fontSize: {
-        caption: ["0.688rem", { lineHeight: 1.5 }],
-        "caption-lg": ["0.812rem", { lineHeight: 1.5 }],
-        "body-sm": ["0.875rem", { lineHeight: 1.5 }],
-        body: ["1rem", { lineHeight: 1.5 }],
-        "body-lg": ["1.125rem", { lineHeight: 1.5 }],
-        h1: ["5.125rem", { lineHeight: 1.2 }],
-        h2: ["4.5625rem", { lineHeight: 1.2 }],
-        h3: ["3.6875rem", { lineHeight: 1.2 }],
-        h4: ["2.9375rem", { lineHeight: 1.2 }],
-        "h4.5": ["2.6562rem", { lineHeight: 1.2 }],
-        h5: ["2.375rem", { lineHeight: 1.2 }],
-        h6: ["1.875rem", { lineHeight: 1.2 }],
-        h7: ["1.5rem", { lineHeight: 1.2 }],
+        caption: ["0.688rem", { lineHeight: "1.5" }],
+        "caption-lg": ["0.812rem", { lineHeight: "1.5" }],
+        "body-sm": ["0.875rem", { lineHeight: "1.5" }],
+        body: ["1rem", { lineHeight: "1.5" }],
+        "body-lg": ["1.125rem", { lineHeight: "1.5" }],
+        h1: ["5.125rem", { lineHeight: "1.2" }],
+        h2: ["4.5625rem", { lineHeight: "1.2" }],
+        h3: ["3.6875rem", { lineHeight: "1.2" }],
+        h4: ["2.9375rem", { lineHeight: "1.2" }],
+        "h4.5": ["2.6562rem", { lineHeight: "1.2" }],
+        h5: ["2.375rem", { lineHeight: "1.2" }],
+        h6: ["1.875rem", { lineHeight: "1.2" }],
+        h7: ["1.5rem", { lineHeight: "1.2" }],
       },
     },
   },
@@ -317,7 +317,7 @@ export default {
 
         matchUtilities(
           {
-            "text-shadow": (value) => ({
+            "text-shadow": (value: string) => ({
               textShadow: value,
             }),
           },
@@ -364,4 +364,4 @@ export default {
       },
     ),
   ],
-};
+} satisfies Config;
