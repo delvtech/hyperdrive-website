@@ -63,7 +63,8 @@ CtaTile.IconListItem = function CtaTileIconListItem({
   return (
     <li
       className={classNames(
-        "card spaced-mono inline-flex items-start gap-3 py-4 pr-8 pl-5 leading-[18px]",
+        // "card spaced-mono inline-flex items-start gap-3 py-4 pr-8 pl-5 leading-[18px]",
+        "card spaced-mono inline-flex items-start gap-3 bg-content/5 bg-none py-4 pr-8 pl-5 leading-[18px]",
         "max-lg:gap-2 max-lg:pr-6 max-lg:pl-3",
       )}
     >
