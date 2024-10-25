@@ -13,7 +13,6 @@ export function CtaTile({
     <>
       <div
         className={classNames(
-          // "clip-corners flex-1 bg-[linear-gradient(to_right,_rgba(255,255,255,0)_0,_rgba(255,255,255,.50)_23%,_rgba(255,255,255,.15)_28%,_rgba(255,255,255,.20)_63%,_rgba(255,255,255,.50)_72%,_rgba(255,255,255,0)_100%)] bg-aquamarine/40 p-px",
           "clip-corners flex-1 bg-aquamarine/40 p-px",
           className,
         )}
@@ -26,12 +25,11 @@ export function CtaTile({
         >
           <div
             className={classNames(
-              "clip-corners-inner relative flex h-full flex-col items-start gap-8 bg-gradient-[123deg] from-content-600/10 to-content-600/[0.07] px-10 pt-8 pb-10 [&>*]:relative",
+              "clip-corners-inner relative flex h-full flex-col items-start gap-8 bg-[url('/accents/tile-grid-bg.svg'),_linear-gradient(123deg,_var(--tw-gradient-stops))] from-content-600/10 to-content-600/[0.07] px-10 pt-8 pb-10 [&>*]:relative",
               "max-lg:items-center max-lg:px-4 max-lg:pb-14",
             )}
           >
             {children}
-            <div className="!absolute -z-10 -top-8 inset-0 bg-[url('/accents/tile-grid-bg.svg')]" />
           </div>
         </div>
       </div>
