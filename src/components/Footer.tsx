@@ -1,12 +1,12 @@
 import classNames from "classnames";
 import { Link } from "react-router-dom";
+import { SectionDivider } from "src/components/SectionDivider";
 import { VerticalDivider } from "src/components/VerticalDivider";
 import { DiscordLogoIcon } from "src/components/icons/DiscordLogoIcon";
 import { HyperdriveLogoIcon } from "src/components/icons/HyperdriveLogoIcon";
 import { LinkedInLogoIcon } from "src/components/icons/LinkedInLogoIcon";
 import { WarpcastLogoIcon } from "src/components/icons/WarpcastLogoIcon";
 import { XLogoIcon } from "src/components/icons/XLogoIcon";
-import { SectionDivider } from "src/pages/home/SectionDivider";
 
 export function Footer() {
   return (

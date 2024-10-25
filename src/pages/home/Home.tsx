@@ -2,10 +2,10 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
+import { SectionDivider } from "src/components/SectionDivider";
 import { GradientBorderButton } from "src/components/buttons/GradientButton";
 import { HyperdriveLogoIcon } from "src/components/icons/HyperdriveLogoIcon";
 import { CtaTile } from "src/pages/home/CtaTile";
-import { SectionDivider } from "src/pages/home/SectionDivider";
 
 export function Home() {
   return (
