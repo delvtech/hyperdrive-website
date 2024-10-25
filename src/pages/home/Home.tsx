@@ -2,7 +2,6 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
-import { GradientBorderButton } from "src/components/buttons/GradientButton";
 import { HyperdriveLogoIcon } from "src/components/icons/HyperdriveLogoIcon";
 import { CtaTile } from "src/pages/home/CtaTile";
 import { SectionDivider } from "src/pages/home/SectionDivider";
@@ -174,9 +173,25 @@ export function Home() {
                   <HyperdriveLogoIcon className="size-4" />
                   Get started
                 </button>
-                <GradientBorderButton to="/docs">
+                {/* <Dropdown>
+                  <Dropdown.Button>Learn</Dropdown.Button>
+                  <Dropdown.Menu portal>
+                    <Dropdown.Item to="/docs">Docs</Dropdown.Item>
+                    <Dropdown.Item href="https://blog.delv.tech">
+                      Blog
+                    </Dropdown.Item>
+                    <Dropdown.Item to="/docs/trading/trading-strategies">
+                      Trading Strategies
+                    </Dropdown.Item>
+                    <Dropdown.Item to="/whitepaper">Whitepaper</Dropdown.Item>
+                    <Dropdown.Item to="/docs/hyperdrive-overview/glossary">
+                      Glossary
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown> */}
+                {/* <GradientBorderButton to="/docs">
                   Learn more
-                </GradientBorderButton>
+                </GradientBorderButton> */}
               </div>
             </div>
           </div>
@@ -189,7 +204,12 @@ export function Home() {
         className="overflow-hidden bg-[center_-77px] bg-[url('/accents/hyperdrive-one-lines.svg')] bg-no-repeat"
       >
         <div className="inner-container mb-20 pt-32">
-          <p className="mb-14 flex items-center gap-3 font-chakra uppercase tracking-wide">
+          <p
+            className={classNames(
+              "mb-14 flex items-center gap-3 font-chakra uppercase tracking-wide",
+              "max-lg:justify-center",
+            )}
+          >
             <img src="/icons/apps-icon.svg" className="size-6" />
             Our Apps
           </p>

@@ -41,32 +41,51 @@ export interface DropdownProps
 export function Dropdown({ className, children, ...rest }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const menuRef = useRef<HTMLDivElement | null>(null);
+  const [button, setButton] = useState<HTMLButtonElement | null>(null);
+  const [menu, setMenu] = useState<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useCallback((el: HTMLButtonElement | null) => {
+    setButton(el);
+  }, []);
+  const menuRef = useCallback((el: HTMLDivElement | null) => {
+    setMenu(el);
+  }, []);
 
   useEffect(() => {
-    // Find the button and menu elements by their data attributes.
-    buttonRef.current =
-      containerRef.current?.querySelector("[data-dropdown-button]") || null;
-    menuRef.current =
-      containerRef.current?.querySelector("[data-dropdown-menu]") || null;
+    console.log("Dropdown mounted");
+    // Find the button and menu elements by their data attributes if not set.
+    if (!button) {
+      const foundButton = containerRef.current?.querySelector(
+        "[data-dropdown-button]",
+      );
+      if (foundButton) {
+        setButton(foundButton as HTMLButtonElement);
+      }
+    }
+    if (!menu) {
+      const foundMenu = containerRef.current?.querySelector(
+        "[data-dropdown-menu]",
+      );
+      if (foundMenu) {
+        setMenu(foundMenu as HTMLDivElement);
+      }
+    }
 
     // Open the dropdown when clicking the button.
     function handleButtonClick(e: MouseEvent) {
       e.preventDefault();
       e.stopPropagation();
       setIsOpen((prev) => {
-        if (!prev) {
-          setIsOpen(true);
-          if (menuRef.current) {
-            findFirstDropdownItem(menuRef.current)?.focus();
-          }
+        if (!prev && menu) {
+          console.log("Looking for first dropdown item in", menu);
+          findFirstDropdownItem(menu)?.focus();
+        } else if (!prev) {
+          console.log("No menu ref");
         }
         return !prev;
       });
     }
-    buttonRef.current?.addEventListener("click", handleButtonClick);
+    button?.addEventListener("click", handleButtonClick);
 
     // Close the dropdown when clicking outside of it. The handler is added to
     // the "mouseup" event to ensure it's triggered even if stopPropagation is
@@ -81,25 +100,27 @@ export function Dropdown({ className, children, ...rest }: DropdownProps) {
     window.addEventListener("mouseup", handleMouseUp);
 
     return () => {
-      buttonRef.current?.removeEventListener("click", handleButtonClick);
+      button?.removeEventListener("click", handleButtonClick);
       window.removeEventListener("mouseup", handleMouseUp);
     };
-  }, []);
+  }, [button, menu]);
 
   const context = useMemo(() => {
     return {
       isOpen,
       isHovered,
       open: () => setIsOpen(true),
-      close: (focusTarget: HTMLElement | null = buttonRef.current) => {
+      close: (focusTarget: HTMLElement | null = button) => {
         setIsOpen(false);
         focusTarget?.focus();
       },
       containerRef,
+      button,
+      menu,
       buttonRef,
       menuRef,
     };
-  }, [isOpen, isHovered]);
+  }, [isOpen, isHovered, button, menu, buttonRef, menuRef]);
 
   return (
     <>
@@ -109,38 +130,44 @@ export function Dropdown({ className, children, ...rest }: DropdownProps) {
           data-hover={isHovered || undefined}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          onKeyDown={(e) => {
-            switch (e.key) {
-              case "ArrowDown":
-                e.preventDefault();
-                if (e.target === buttonRef.current) {
-                  setIsOpen(true);
-                  if (menuRef.current) {
-                    findFirstDropdownItem(menuRef.current)?.focus();
+          onKeyDown={(() => {
+            console.log("Setting keydown handler");
+            return (e) => {
+              switch (e.key) {
+                case "ArrowDown":
+                  e.preventDefault();
+                  if (e.target === button) {
+                    setIsOpen(true);
+                    if (menu) {
+                      console.log("Looking for first dropdown item");
+                      findFirstDropdownItem(menu)?.focus();
+                    } else {
+                      console.log("No menu ref");
+                    }
+                    break;
+                  }
+                  if (isDropdownItem(e.target)) {
+                    findNextDropdownItem(e.target)?.focus();
                   }
                   break;
-                }
-                if (isDropdownItem(e.target)) {
-                  findNextDropdownItem(e.target)?.focus();
-                }
-                break;
-              case "ArrowUp":
-                if (isDropdownItem(e.target)) {
-                  e.preventDefault();
-                  findPreviousDropdownItem(e.target)?.focus();
-                }
-                break;
-              case "Tab":
-                if (isDropdownItem(e.target)) {
-                  e.preventDefault();
-                }
-                break;
-              case "Escape":
-                setIsOpen(false);
-                buttonRef.current?.focus();
-                break;
-            }
-          }}
+                case "ArrowUp":
+                  if (isDropdownItem(e.target)) {
+                    e.preventDefault();
+                    findPreviousDropdownItem(e.target)?.focus();
+                  }
+                  break;
+                case "Tab":
+                  if (isDropdownItem(e.target)) {
+                    e.preventDefault();
+                  }
+                  break;
+                case "Escape":
+                  setIsOpen(false);
+                  button?.focus();
+                  break;
+              }
+            };
+          })()}
           className={classNames(
             "group relative z-50",
             {
@@ -238,47 +265,52 @@ Dropdown.Menu = function DropdownMenu({
   children,
   ...rest
 }: DropdownMenuProps) {
-  const { isOpen, isHovered, buttonRef, open, close } =
+  const { isOpen, isHovered, button, open, close, menuRef } =
     useContext(DropdownContext);
 
   // The viewport coordinates of the menu relative to it's top-left corner.
   const [coordnates, setCoordinates] = useState<Coordinates>();
 
   // The side and alignment of the menu relative to the button.
-  const [side, align] = anchor.split(" ") as [DropdownSide, DropdownAlignment];
+  const [side, align = "start"] = anchor.split(" ") as [
+    DropdownSide,
+    DropdownAlignment,
+  ];
   const isVertical = ["top", "bottom"].includes(side);
   const isHorizontal = ["left", "right"].includes(side);
 
   // Position the menu relative to the button.
   const positionMenu = useCallback(() => {
     // Ignore if not a portal or the button ref is not set.
-    if (!portal || !buttonRef.current) {
+    if (!portal || !button) {
       return;
     }
 
     const position: Coordinates = {};
-    const rect = buttonRef.current.getBoundingClientRect();
+    const rect = button.getBoundingClientRect();
 
     switch (side) {
       case "top":
         position.top = rect.top;
-        // position.left = rect.left;
         break;
       case "right":
-        position.top = rect.top;
         position.left = rect.right;
         break;
       case "bottom":
         position.top = rect.bottom;
-        // position.left = rect.left;
         break;
       case "left":
-        position.top = rect.top;
         position.right = window.innerWidth - rect.left;
         break;
     }
 
     switch (anchor) {
+      case "top":
+      case "top start":
+      case "bottom":
+      case "bottom start":
+        position.left = rect.left;
+        break;
       case "top center":
       case "bottom center":
         position.left = rect.left + rect.width / 2;
@@ -287,7 +319,9 @@ Dropdown.Menu = function DropdownMenu({
       case "bottom end":
         position.right = window.innerWidth - rect.right;
         break;
+      case "right":
       case "right start":
+      case "left":
       case "left start":
         position.top = rect.top;
         break;
@@ -297,15 +331,12 @@ Dropdown.Menu = function DropdownMenu({
         break;
       case "right end":
       case "left end":
-        position.bottom = window.innerHeight - rect.bottom;
+        position.top = rect.bottom;
         break;
     }
 
-    console.log("position", position);
-    console.log("rect", rect);
-    console.log("window.innerHeight", window.innerHeight);
     setCoordinates(position);
-  }, [anchor, side, portal, buttonRef.current]);
+  }, [anchor, side, portal, button]);
 
   // Reposition the menu on open.
   useEffect(() => {
@@ -314,10 +345,7 @@ Dropdown.Menu = function DropdownMenu({
 
   // Reposition the menu on scroll.
   useScrollEffect(() => {
-    if (portal && isOpen) {
-      console.log("scroll");
-      positionMenu();
-    }
+    if (isOpen) positionMenu();
   }, [portal]);
 
   useEffect(() => {
@@ -335,6 +363,7 @@ Dropdown.Menu = function DropdownMenu({
 
   const Menu = (
     <div
+      ref={menuRef}
       data-dropdown-menu
       data-open={isOpen || undefined}
       data-closed={!isOpen || undefined}
@@ -345,7 +374,7 @@ Dropdown.Menu = function DropdownMenu({
       aria-hidden={!isOpen}
       style={coordnates}
       className={classNames(
-        "pointer-events-none absolute top-full z-50 flex w-max flex-col gap-1.5 overflow-hidden rounded bg-[#00110C] py-3 font-mono text-[#17BB83] opacity-0 shadow-lg transition-[opacity,transform] duration-100 ease-in",
+        "pointer-events-none absolute z-50 flex w-max flex-col gap-1.5 overflow-hidden rounded bg-[#00110C] py-3 font-mono text-[#17BB83] opacity-0 shadow-lg transition-[opacity,transform] duration-100 ease-in",
         {
           "scale-y-95": isVertical,
           "scale-95": isHorizontal,
@@ -373,16 +402,25 @@ Dropdown.Menu = function DropdownMenu({
           "origin-left": anchor === "right center",
 
           // Non-portal alignment
-          "left-0": !portal && align === "start",
-          "-translate-x-1/2 left-1/2": !portal && align === "center" && side,
-          "right-0": !portal && align === "end",
+          "top-full": !portal && side === "bottom",
+          "right-full": !portal && side === "left",
+          "bottom-full": !portal && side === "top",
+          "left-full": !portal && side === "right",
+          "top-0": !portal && isHorizontal && align === "start",
+          "-translate-y-1/2 top-1/2":
+            !portal && isHorizontal && align === "center",
+          "bottom-0": !portal && isHorizontal && align === "end",
+          "left-0": !portal && isVertical && align === "start",
+          "-translate-x-1/2 left-1/2":
+            !portal && isVertical && align === "center",
+          "right-0": !portal && isVertical && align === "end",
 
           // Portal alignment
           "!fixed": portal,
-          "-translate-x-1/2": portal && align === "center" && isVertical,
-          // "-translate-x-full": portal && align === "end" && isVertical,
-          "-translate-y-1/2": portal && align === "center" && isHorizontal,
-          "-translate-y-full": portal && align === "end" && isHorizontal,
+          "-translate-x-1/2": portal && isVertical && align === "center",
+          "-translate-y-1/2": portal && isHorizontal && align === "center",
+          "-translate-y-full":
+            portal && ((isHorizontal && align === "end") || side === "top"),
         },
         {
           "max-lg:static max-lg:w-full max-lg:bg-transparent max-lg:pt-0 max-lg:data-[closed]:h-0 max-lg:data-[closed]:p-0":
@@ -448,13 +486,21 @@ export interface DropdownContextType {
    */
   containerRef: React.RefObject<HTMLDivElement | null>;
   /**
-   * The ref of the dropdown button that toggles the menu.
+   * The button that toggles the dropdown.
    */
-  buttonRef: React.RefObject<HTMLButtonElement | null>;
+  button: HTMLButtonElement | null;
   /**
-   * The ref of the dropdown menu that is toggled.
+   * The dropdown menu.
    */
-  menuRef: React.RefObject<HTMLDivElement | null>;
+  menu: HTMLDivElement | null;
+  /**
+   * The ref callback to set the button element.
+   */
+  buttonRef: React.RefCallback<HTMLButtonElement | null>;
+  /**
+   * The ref callback to set the menu element.
+   */
+  menuRef: React.RefCallback<HTMLDivElement | null>;
   /**
    * Opens the dropdown menu.
    * @param focusFirstItem - Whether to focus the first item in the menu.
@@ -473,8 +519,10 @@ const DropdownContext = createContext<DropdownContextType>({
   isOpen: false,
   isHovered: false,
   containerRef: { current: null },
-  buttonRef: { current: null },
-  menuRef: { current: null },
+  button: null,
+  menu: null,
+  buttonRef: () => {},
+  menuRef: () => {},
   open: () => {},
   close: () => {},
 });
@@ -508,9 +556,11 @@ function findNextDropdownItem(element: Element): HTMLElement | null {
 }
 
 function findFirstDropdownItem(element: Element): HTMLElement | null {
+  console.log("Finding first dropdown item");
   let first = element.firstElementChild;
   while (first && !isDropdownItem(first)) {
     first = first.nextElementSibling;
   }
+  console.log("Found first dropdown item", first);
   return first;
 }

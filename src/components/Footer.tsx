@@ -15,7 +15,9 @@ export function Footer() {
 
       <div id="footer" className="inner-container space-y-24 pt-20">
         {/* Legal disclaimer */}
-        <div className={classNames("flex items-center gap-32", "max-lg:flex-col")}>
+        <div
+          className={classNames("flex items-center gap-32", "max-lg:flex-col")}
+        >
           <HyperdriveLogoIcon
             width={180}
             height={180}

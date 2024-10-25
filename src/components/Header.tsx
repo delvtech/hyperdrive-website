@@ -5,16 +5,9 @@ import { Link } from "react-router-dom";
 import { Dropdown } from "src/components/Dropdown";
 import { BlogIcon } from "src/components/icons/BlogIcon";
 import { BookIcon } from "src/components/icons/BookIcon";
-import { CodeDocIcon } from "src/components/icons/CodeDocIcon";
-import { CoreIcon } from "src/components/icons/CoreIcon";
-import { DiscordLogoIcon } from "src/components/icons/DiscordLogoIcon";
 import { DocIcon } from "src/components/icons/DocIcon";
-import { FarcasterLogoIcon } from "src/components/icons/FarcasterLogoIcon";
-import { HyperdriveLogoIcon } from "src/components/icons/HyperdriveLogoIcon";
-import { LinkedInLogoIcon } from "src/components/icons/LinkedInLogoIcon";
 import { NoteIcon } from "src/components/icons/NoteIcon";
 import { StrategyIcon } from "src/components/icons/StrategyIcon";
-import { XLogoIcon } from "src/components/icons/XLogoIcon";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
 
 const SHOW_ANNOUNCEMENT_BANNER = false;
@@ -148,46 +141,35 @@ export function Header({ className }: HeaderProps) {
               >
                 {/* Learn */}
                 <Dropdown>
-                  {/* {({ isHovered, isOpen }) => {
-                    const metaLabel = isOpen
-                      ? "Opened"
-                      : isHovered
-                        ? "Hovered"
-                        : "Closed";
-                    return ( */}
-                  <>
-                    <Dropdown.Button>Learn</Dropdown.Button>
-                    <Dropdown.Menu hover portal>
-                      <Dropdown.Item to="/docs">
-                        <DocIcon className="size-4" />
-                        Docs
-                      </Dropdown.Item>
-                      <Dropdown.Item href="https://blog.delv.tech">
-                        <BlogIcon className="size-4" />
-                        Blog
-                      </Dropdown.Item>
-                      <Dropdown.Item to="/docs/trading/trading-strategies">
-                        <StrategyIcon className="size-4" />
-                        Trading Strategies
-                      </Dropdown.Item>
-                      <Dropdown.Item to="/whitepaper">
-                        <NoteIcon className="size-4" />
-                        Whitepaper
-                      </Dropdown.Item>
-                      <Dropdown.Item to="/docs/hyperdrive-overview/glossary">
-                        <BookIcon className="size-4" />
-                        Glossary
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </>
-                  {/* );
-                  }} */}
+                  <Dropdown.Button>Learn</Dropdown.Button>
+                  <Dropdown.Menu portal hover>
+                    <Dropdown.Item to="/docs">
+                      <DocIcon className="size-4" />
+                      Docs
+                    </Dropdown.Item>
+                    <Dropdown.Item href="https://blog.delv.tech">
+                      <BlogIcon className="size-4" />
+                      Blog
+                    </Dropdown.Item>
+                    <Dropdown.Item to="/docs/trading/trading-strategies">
+                      <StrategyIcon className="size-4" />
+                      Trading Strategies
+                    </Dropdown.Item>
+                    <Dropdown.Item to="/whitepaper">
+                      <NoteIcon className="size-4" />
+                      Whitepaper
+                    </Dropdown.Item>
+                    <Dropdown.Item to="/docs/hyperdrive-overview/glossary">
+                      <BookIcon className="size-4" />
+                      Glossary
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
                 </Dropdown>
 
                 {/* Developers */}
-                <Dropdown>
+                {/* <Dropdown>
                   <Dropdown.Button>Developers</Dropdown.Button>
-                  <Dropdown.Menu portal>
+                  <Dropdown.Menu hover>
                     <Dropdown.Item to="/docs/hyperdrive-for-developers">
                       <CodeDocIcon className="size-4" />
                       Docs
@@ -197,10 +179,10 @@ export function Header({ className }: HeaderProps) {
                       Hyperdrive [Core]
                     </Dropdown.Item>
                   </Dropdown.Menu>
-                </Dropdown>
+                </Dropdown> */}
 
                 {/* Community */}
-                <Dropdown>
+                {/* <Dropdown>
                   <Dropdown.Button>Community</Dropdown.Button>
                   <Dropdown.Menu hover>
                     <Dropdown.Item href="https://www.delv.tech/discord">
@@ -219,7 +201,7 @@ export function Header({ className }: HeaderProps) {
                       LinkedIn
                     </Dropdown.Item>
                   </Dropdown.Menu>
-                </Dropdown>
+                </Dropdown> */}
 
                 {/* Analytics */}
                 <Link
@@ -233,7 +215,7 @@ export function Header({ className }: HeaderProps) {
                 </Link>
 
                 {/* Launch Apps */}
-                <Dropdown align="end">
+                {/* <Dropdown align="end">
                   <Dropdown.Button>Launch Apps</Dropdown.Button>
                   <Dropdown.Menu hover>
                     <Dropdown.Item to="/one">
@@ -245,7 +227,7 @@ export function Header({ className }: HeaderProps) {
                       Fixed Borrow
                     </Dropdown.Item>
                   </Dropdown.Menu>
-                </Dropdown>
+                </Dropdown> */}
                 {/* <p className="row-start-4 mt-auto self-end justify-self-end text-body-sm">
                   Copyright &copy; DELV 2024
                 </p> */}
