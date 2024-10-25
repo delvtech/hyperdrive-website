@@ -343,19 +343,6 @@ export function Home() {
           className="pointer-events-none absolute bottom-[-544px] left-[-136px]"
         />
 
-        {/* <div
-          className={classNames(
-            "inner-container mb-20 pt-32",
-            "max-lg:mb-9 max-lg:pt-28",
-          )}
-        >
-          <p
-            className={classNames(
-              "mb-14 flex items-center gap-3 font-chakra uppercase tracking-wide",
-              "max-lg:mb-8 max-lg:justify-center",
-            )}
-          > */}
-
         <div className={classNames("inner-container py-32", "max-lg:pb-24")}>
           <p
             className={classNames(
