@@ -589,7 +589,7 @@ export function Home() {
                 <h3 className="font-chakra text-h4.5">Audited</h3>
                 <p className="font-light text-content/60">
                   Six audits of the Hyperdrive Protocol have been completed by
-                  blockchain security industry leaders
+                  blockchain security industry leaders.
                 </p>
               </div>
               <div className="flex items-center gap-6">
@@ -619,7 +619,7 @@ export function Home() {
               <p className="font-light text-content/60">
                 Certora, an industry leader in formal verification, implemented
                 a mathematical model that verified many key invariants in
-                Hyperdrive's AMM
+                Hyperdrive's AMM.
               </p>
             </div>
             <img src="/illustrations/formal-verification-illustration.svg" />
@@ -636,7 +636,8 @@ export function Home() {
               <h3 className="font-chakra text-h4.5">Fuzz Testing</h3>
               <p className="font-light text-content/60">
                 Hyperdrive is tested using a robust fuzzing system that combines
-                traditional solidity input sweeps with Python-based smart agents
+                traditional solidity input sweeps with Python-based smart
+                agents.
               </p>
             </div>
             <img src="/illustrations/fuzz-testing-illustration.svg" />
