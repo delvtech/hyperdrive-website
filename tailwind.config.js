@@ -179,14 +179,7 @@ export default {
             borderRadius: theme("borderRadius.DEFAULT"),
             border: "1px solid",
             borderColor: "rgb(255 255 255 / 0.15)",
-            backgroundImage:
-              "linear-gradient(100deg, var(--tw-gradient-stops))",
-            "--tw-gradient-from":
-              "rgb(219 219 235 / 0.1) var(--tw-gradient-from-position)",
-            "--tw-gradient-to":
-              "rgb(219 219 235 / 0.07) var(--tw-gradient-to-position)",
-            "--tw-gradient-stops":
-              "var(--tw-gradient-from), var(--tw-gradient-to)",
+            background: "rgb(219 219 235 / 0.08)",
             padding: theme("spacing.8"),
             backdropFilter: "var(--tw-backdrop-blur)",
             "--tw-backdrop-blur": `blur(${theme("backdropBlur.DEFAULT")})`,
