@@ -2,9 +2,9 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { VerticalDivider } from "src/components/VerticalDivider";
 import { DiscordLogoIcon } from "src/components/icons/DiscordLogoIcon";
-import { FarcasterLogoIcon } from "src/components/icons/FarcasterLogoIcon";
 import { HyperdriveLogoIcon } from "src/components/icons/HyperdriveLogoIcon";
 import { LinkedInLogoIcon } from "src/components/icons/LinkedInLogoIcon";
+import { WarpcastLogoIcon } from "src/components/icons/WarpcastLogoIcon";
 import { XLogoIcon } from "src/components/icons/XLogoIcon";
 import { SectionDivider } from "src/pages/home/SectionDivider";
 
@@ -246,11 +246,11 @@ function SocialLinks({ className }: { className?: string }) {
       <a href="https://twitter.com/delv_tech/" title="X">
         <XLogoIcon className="size-5 text-content" />
       </a>
-      <a href="https://warpcast.com/~/channel/delv" title="LinkedIn">
+      <a href="https://www.linkedin.com/company/delv-tech/" title="LinkedIn">
         <LinkedInLogoIcon className="size-5 text-content" />
       </a>
-      <a href="https://www.linkedin.com/company/delv-tech/" title="LinkedIn">
-        <FarcasterLogoIcon className="size-5 text-content" />
+      <a href="https://warpcast.com/~/channel/delv" title="Warpcast">
+        <WarpcastLogoIcon className="size-5 text-content" />
       </a>
     </div>
   );

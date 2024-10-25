@@ -8,8 +8,6 @@ import { CtaTile } from "src/pages/home/CtaTile";
 import { SectionDivider } from "src/pages/home/SectionDivider";
 
 // TODOS:
-// [ ] Refactor to grid where it makes sense to make responsive easier
-// [ ] Responsive
 // [ ] Verify all links
 // [ ] Verify all image alts
 // [ ] Delete dead code and files

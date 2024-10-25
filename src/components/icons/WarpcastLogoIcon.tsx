@@ -1,6 +1,6 @@
 import type { IconProps } from "src/components/icons/types";
 
-export function FarcasterLogoIcon({ title, ...props }: IconProps) {
+export function WarpcastLogoIcon({ title, ...props }: IconProps) {
   return (
     <svg
       width="20"
@@ -10,7 +10,7 @@ export function FarcasterLogoIcon({ title, ...props }: IconProps) {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <title>Farcaster</title>
+      <title>Warpcast</title>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

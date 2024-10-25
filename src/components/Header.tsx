@@ -9,11 +9,11 @@ import { CodeDocIcon } from "src/components/icons/CodeDocIcon";
 import { CoreIcon } from "src/components/icons/CoreIcon";
 import { DiscordLogoIcon } from "src/components/icons/DiscordLogoIcon";
 import { DocIcon } from "src/components/icons/DocIcon";
-import { FarcasterLogoIcon } from "src/components/icons/FarcasterLogoIcon";
 import { HyperdriveLogoIcon } from "src/components/icons/HyperdriveLogoIcon";
 import { LinkedInLogoIcon } from "src/components/icons/LinkedInLogoIcon";
 import { NoteIcon } from "src/components/icons/NoteIcon";
 import { StrategyIcon } from "src/components/icons/StrategyIcon";
+import { WarpcastLogoIcon } from "src/components/icons/WarpcastLogoIcon";
 import { XLogoIcon } from "src/components/icons/XLogoIcon";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
 
@@ -200,7 +200,7 @@ export function Header({ className }: HeaderProps) {
                       <XLogoIcon className="size-4" />X
                     </Dropdown.Item>
                     <Dropdown.Item href="https://warpcast.com/~/channel/delv">
-                      <FarcasterLogoIcon className="size-4" />
+                      <WarpcastLogoIcon className="size-4" />
                       Farcaster
                     </Dropdown.Item>
                     <Dropdown.Item href="https://www.linkedin.com/company/delv-tech/">
