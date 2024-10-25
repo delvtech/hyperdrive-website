@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
+import { GradientBorderButton } from "src/components/buttons/GradientButton";
 import { HyperdriveLogoIcon } from "src/components/icons/HyperdriveLogoIcon";
 import { CtaTile } from "src/pages/home/CtaTile";
 import { SectionDivider } from "src/pages/home/SectionDivider";
@@ -27,23 +28,25 @@ export function Home() {
         {/* Hero bg accents */}
         <img
           src="/accents/hero-glow-tl.svg"
-          className="pointer-events-none absolute top-[-601px] left-[-589px]"
+          className={classNames(
+            "-translate-x-[39.32%] pointer-events-none absolute top-[-601px] left-0 h-[1335px] max-w-[180%]",
+          )}
         />
         <img
           src="/accents/hero-glow-tr.svg"
-          className="pointer-events-none absolute top-[-439px] right-[-523px]"
+          className="pointer-events-none absolute top-[-439px] right-0 max-w-[180%] translate-x-[43.51%]"
         />
         <img
           src="/accents/hero-glow-br.svg"
-          className="pointer-events-none absolute right-[-262px] bottom-[-299px]"
+          className="pointer-events-none absolute right-0 bottom-0 max-w-[180%] translate-x-[24.17%] translate-y-[37.23%] "
         />
         <img
           src="/accents/hero-glow-bl.svg"
-          className="pointer-events-none absolute bottom-[-490px] left-[-690px]"
+          className="-translate-x-[46.78%] pointer-events-none absolute bottom-0 left-0 max-w-[180%] translate-y-[53.37%]"
         />
         <img
           src="/accents/delv-arc-hyperdrive.svg"
-          className="pointer-events-none absolute top-[-296px] right-[-204px]"
+          className="pointer-events-none absolute top-[-296px] right-[-204px] h-[687px]"
         />
         <div className="pointer-events-none absolute inset-0 bg-[length:100px_100px] bg-[url('/noise-texture.png')] bg-left-top bg-repeat opacity-20 mix-blend-overlay" />
 
@@ -51,7 +54,7 @@ export function Home() {
         <div
           className={classNames(
             "inner-container grid min-h-screen items-end justify-between gap-8 pb-10",
-            "max-lg:px-[4vw] max-lg:pt-32",
+            "max-lg:justify-stretch max-lg:pt-40",
           )}
         >
           {/* Title */}
@@ -64,6 +67,7 @@ export function Home() {
             <h1
               className={classNames(
                 "!leading-none relative mb-5 font-chakra text-[100px] text-neutral-100",
+                "max-xl:text-h1",
                 "max-sm:text-h3",
               )}
             >
@@ -88,25 +92,33 @@ export function Home() {
             Available on{" "}
             <div
               className={classNames(
-                "flex items-center gap-9",
-                "max-lg:grid max-lg:grid-cols-2 max-lg:items-stretch",
+                "flex flex-wrap items-center gap-9",
+                "max-xl:grid max-xl:grid-cols-2",
+                "max-lg:justify-items-center",
               )}
             >
               <img
                 src="/logos/ethereum-logo.svg"
                 alt="Ethereum"
-                className="h-6"
+                className={classNames("h-7", "max-lg:!h-9 max-lg: row-start-2")}
               />
               <img
                 src="/logos/linea-logo.svg"
                 alt="Linea"
-                className="h-[17px]"
+                className="max-lg:!h-[26px] h-[18px]"
               />
-              <img src="/logos/base-logo.svg" alt="Base" className="h-5" />
+              <img
+                src="/logos/base-logo.svg"
+                alt="Base"
+                className={classNames(
+                  "h-[17px]",
+                  "max-lg:!h-[26px] max-lg:col-start-1 max-lg:row-start-1",
+                )}
+              />
               <img
                 src="/logos/gnosis-chain-logo.svg"
                 alt="Gnosis Chain"
-                className="h-4"
+                className="max-lg:!h-5 h-[14px]"
               />
             </div>
           </div>
@@ -121,7 +133,7 @@ export function Home() {
             <div
               className={classNames(
                 "clip-corners-rounded flex flex-col gap-8 bg-aquamarine-950/60 px-14 pt-14 pb-12",
-                "max-lg:clip-none max-lg:px-0 max-lg:py-8",
+                "max-lg:clip-none max-lg:bg-transparent max-lg:px-0 max-lg:py-8",
               )}
             >
               <ul
@@ -173,25 +185,9 @@ export function Home() {
                   <HyperdriveLogoIcon className="size-4" />
                   Get started
                 </button>
-                {/* <Dropdown>
-                  <Dropdown.Button>Learn</Dropdown.Button>
-                  <Dropdown.Menu portal>
-                    <Dropdown.Item to="/docs">Docs</Dropdown.Item>
-                    <Dropdown.Item href="https://blog.delv.tech">
-                      Blog
-                    </Dropdown.Item>
-                    <Dropdown.Item to="/docs/trading/trading-strategies">
-                      Trading Strategies
-                    </Dropdown.Item>
-                    <Dropdown.Item to="/whitepaper">Whitepaper</Dropdown.Item>
-                    <Dropdown.Item to="/docs/hyperdrive-overview/glossary">
-                      Glossary
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown> */}
-                {/* <GradientBorderButton to="/docs">
+                <GradientBorderButton to="/docs">
                   Learn more
-                </GradientBorderButton> */}
+                </GradientBorderButton>
               </div>
             </div>
           </div>
@@ -201,24 +197,42 @@ export function Home() {
       {/* Hyperdrive One */}
       <div
         id="hyperdrive-one"
-        className="overflow-hidden bg-[center_-77px] bg-[url('/accents/hyperdrive-one-lines.svg')] bg-no-repeat"
+        className={classNames(
+          "overflow-hidden bg-[center_-77px] bg-[url('/accents/hyperdrive-one-lines.svg')] bg-no-repeat",
+          "max-lg:bg-[center_-100px]",
+        )}
       >
-        <div className="inner-container mb-20 pt-32">
+        <div
+          className={classNames(
+            "inner-container mb-20 pt-32",
+            "max-lg:mb-9 max-lg:pt-28",
+          )}
+        >
           <p
             className={classNames(
               "mb-14 flex items-center gap-3 font-chakra uppercase tracking-wide",
-              "max-lg:justify-center",
+              "max-lg:mb-8 max-lg:justify-center",
             )}
           >
             <img src="/icons/apps-icon.svg" className="size-6" />
             Our Apps
           </p>
 
-          <div className="mb-20 grid grid-cols-2 items-end gap-5">
-            <h2 className="gradient-text to-teal-400 font-chakra text-h1">
+          <div
+            className={classNames(
+              "mb-20 grid grid-cols-2 items-end gap-5",
+              "max-lg:mb-9 max-lg:grid-cols-1 max-lg:justify-items-center max-lg:gap-16",
+            )}
+          >
+            <h2
+              className={classNames(
+                "gradient-text to-teal-400 font-chakra text-h1",
+                "max-lg:text-center max-lg:text-h4",
+              )}
+            >
               Yield Opportunities
             </h2>
-            <div>
+            <div className="max-lg:grid max-lg:justify-items-center">
               <HyperdriveLogoIcon className="mb-5 size-10" />
               <h2 className="mb-3 font-chakra text-h5">Hyperdrive One</h2>
               <p className="font-light opacity-60">Powered by HYPERDRIVE</p>
@@ -226,9 +240,15 @@ export function Home() {
           </div>
 
           {/* Hyperdrive One CTA tiles */}
-          <div className="grid grid-cols-2 items-stretch gap-5">
+          <div
+            className={classNames(
+              "grid grid-cols-2 items-stretch gap-5",
+              "max-lg:grid-cols-1",
+            )}
+          >
             {/* Hyperdrive One trade now tile */}
-            <CtaTile className="bg-aquamarine/40">
+            {/* <CtaTile className={classNames("bg-aquamarine/40")}> */}
+            <CtaTile className={classNames("bg-aquamarine/40")}>
               <Link to="/app" className="button button-primary">
                 Trade now
               </Link>
@@ -266,7 +286,10 @@ export function Home() {
         </div>
 
         {/* Hyperdrive One Pools carousel */}
-        <ul className="grid grid-flow-col items-center overflow-x-auto border-content/30 border-y py-6">
+        <ul
+          ref={preferScrollPosition({ x: 0.5 })}
+          className="grid grid-flow-col items-center overflow-x-auto border-content/30 border-y py-6"
+        >
           <li className="flex h-28 w-60 items-center justify-center border-content/30 border-r">
             <img
               className="h-10"
@@ -322,44 +345,111 @@ export function Home() {
       {/* Fixed Borrow */}
       <div
         id="fixed-borrow"
-        className="relative overflow-hidden bg-[calc(50%_+_100px)_-132px] bg-[url('/accents/fixed-borrow-lines-top.svg')] bg-no-repeat"
+        className={classNames(
+          "relative overflow-hidden bg-[calc(50%_+_100px)_-132px] bg-[url('/accents/fixed-borrow-lines-top.svg')] bg-no-repeat transition-all",
+          "max-lg:bg-[calc(50%_-_200px)_-158px]",
+        )}
       >
         <img
           src="/accents/fixed-borrow-lines-left.svg"
           className="pointer-events-none absolute bottom-[-544px] left-[-136px]"
         />
-        <div className="inner-container py-32">
-          <p className="mb-14 flex items-center gap-3 font-chakra uppercase tracking-wide">
+
+        {/* <div
+          className={classNames(
+            "inner-container mb-20 pt-32",
+            "max-lg:mb-9 max-lg:pt-28",
+          )}
+        >
+          <p
+            className={classNames(
+              "mb-14 flex items-center gap-3 font-chakra uppercase tracking-wide",
+              "max-lg:mb-8 max-lg:justify-center",
+            )}
+          > */}
+
+        <div className={classNames("inner-container py-32", "max-lg:pb-24")}>
+          <p
+            className={classNames(
+              "mb-14 flex items-center gap-3 font-chakra uppercase tracking-wide",
+              "max-lg:mb-8 max-lg:justify-center",
+            )}
+          >
             <img src="/icons/apps-icon.svg" className="size-6" />
             Our Apps
           </p>
 
-          <div className="mb-20 grid grid-cols-2 items-end gap-5">
-            <h2 className="gradient-text from-[#0FC2C2] to-[#44E8E8] font-chakra text-h1">
+          <div
+            className={classNames(
+              "mb-20 grid grid-cols-2 items-end gap-5",
+              "max-lg:mb-0 max-lg:grid-cols-1 max-lg:justify-items-center max-lg:gap-16",
+            )}
+          >
+            <h2
+              className={classNames(
+                "gradient-text from-[#0FC2C2] to-[#44E8E8] font-chakra text-h1",
+                "max-lg:text-center max-lg:text-h4",
+              )}
+            >
               Rate
-              <br />
-              Protection
+              <br className="max-lg:hidden" /> Protection
             </h2>
-            <div className="flex items-end gap-12">
-              <div>
+            <div
+              className={classNames(
+                "flex items-end gap-12",
+                "max-lg:flex-col max-lg:items-center max-lg:gap-8",
+              )}
+            >
+              <div className="max-lg:grid max-lg:justify-items-center">
                 <HyperdriveLogoIcon className="mb-5 size-10" />
-                <h2 className="mb-3 font-chakra text-h5">Fixed Borrow</h2>
+                <h2
+                  className={classNames(
+                    "mb-3 font-chakra text-h5",
+                    "max-lg:text-[32px]",
+                  )}
+                >
+                  Fixed Borrow
+                </h2>
                 <p className="font-light opacity-60">Powered by HYPERDRIVE</p>
               </div>
-              <p className="mb-9 font-chakra text-content/50 text-h6">X</p>
-              <div>
+              <p
+                className={classNames(
+                  "mb-9 font-chakra text-content/50 text-h6",
+                  "max-lg:mb-0",
+                )}
+              >
+                X
+              </p>
+              <div className="max-lg:grid max-lg:justify-items-center">
                 <img
                   src="/icons/morpho-icon.svg"
                   className="mb-5 size-[60px]"
                 />
-                <h2 className="mb-9 font-chakra text-h5">Morpho</h2>
+                <h2
+                  className={classNames(
+                    "mb-9 font-chakra text-h5",
+                    "max-lg:text-[32px]",
+                  )}
+                >
+                  Morpho
+                </h2>
               </div>
             </div>
           </div>
 
           {/* Fixed Borrow CTA tiles */}
-          <div className="grid grid-cols-2 items-stretch gap-5">
-            <CtaTile className="col-start-2 bg-teal-500">
+          <div
+            className={classNames(
+              "grid grid-cols-2 items-stretch gap-5",
+              "max-lg:grid-cols-1",
+            )}
+          >
+            <CtaTile
+              className={classNames(
+                "col-start-2 bg-teal-500",
+                "max-lg:col-start-1",
+              )}
+            >
               <Link to="/borrow" className="button button-primary-alt">
                 Fix your borrow
               </Link>
@@ -379,9 +469,19 @@ export function Home() {
         </div>
       </div>
 
+      <SectionDivider className="lg:hidden" />
+
       {/* Build */}
-      <div id="build" className="inner-container pt-28">
-        <p className="mb-8 flex items-center gap-3 font-chakra uppercase tracking-wide">
+      <div
+        id="build"
+        className={classNames("inner-container pt-28", "max-lg:pt-24")}
+      >
+        <p
+          className={classNames(
+            "mb-8 flex items-center gap-3 font-chakra uppercase tracking-wide",
+            "max-lg:justify-center",
+          )}
+        >
           <img src="/icons/tools-icon.svg" className="size-6" />
           Our Tools
         </p>
@@ -389,15 +489,25 @@ export function Home() {
         <div
           className={classNames(
             "grid grid-cols-2 items-start gap-x-32 gap-y-14",
-            "max-lg:grid-cols-1",
+            "max-lg:grid-cols-1 max-lg:justify-items-center max-lg:gap-0",
           )}
         >
-          <h2 className="gradient-text font-chakra text-h1">
+          <h2
+            className={classNames(
+              "gradient-text font-chakra text-h1",
+              "max-lg:mb-14 max-lg:max-w-md max-lg:text-center max-lg:text-h4",
+            )}
+          >
             Build on the Hyperdrive Protocol
           </h2>
 
           {/* Tools grid */}
-          <div className="grid grid-cols-2 gap-x-5 font-light text-body-lg">
+          <div
+            className={classNames(
+              "grid grid-cols-2 gap-x-5 font-light text-body-lg",
+              "max-lg:w-full max-lg:grid-cols-1",
+            )}
+          >
             <div className="grid grid-cols-[1fr_auto_1fr] border-content/30 border-y">
               <div className="col-start-2 flex h-36 items-center gap-4">
                 <img src="/icons/solidity-icon.svg" className="size-10" />
@@ -423,7 +533,12 @@ export function Home() {
           </div>
 
           {/* Get started card */}
-          <div className="card order-3 flex items-center gap-5 p-6">
+          <div
+            className={classNames(
+              "lg:card order-3 flex items-center gap-5 p-6",
+              "max-lg:flex-col max-lg:items-stretch max-lg:gap-9 max-lg:px-[2vw] max-lg:pt-9 max-lg:pb-20",
+            )}
+          >
             <div className="space-y-3">
               <h3 className="font-chakra text-h5">Get started</h3>
               <p className="font-light text-content/60">
@@ -437,37 +552,65 @@ export function Home() {
             </Link>
           </div>
 
-          <img src="/illustrations/hyperdrive-sheild-on-squares.svg" />
+          <img
+            className="max-lg:hidden"
+            src="/illustrations/hyperdrive-sheild-on-squares.svg"
+          />
         </div>
       </div>
 
       <SectionDivider />
 
       {/* Security measures */}
-      <div id="security" className="inner-container pt-28 pb-36">
+      <div
+        id="security"
+        className={classNames("inner-container pt-28 pb-36", "max-lg:py-24")}
+      >
         <div
           className={classNames(
             "mb-16 flex items-start justify-between gap-10",
-            "max-lg:flex-col",
+            "max-lg:flex-col max-lg:items-stretch",
           )}
         >
-          <p className="mb-8 flex items-center gap-3 font-chakra uppercase tracking-wide">
+          <p
+            className={classNames(
+              "mb-8 flex items-center gap-3 font-chakra uppercase tracking-wide",
+              "max-lg:mb-0 max-lg:justify-center",
+            )}
+          >
             <img src="/icons/tools-icon.svg" className="size-6" />
             Security measures
           </p>
-          <h2 className="gradient-text font-chakra text-h1">Robust Security</h2>
+          <h2
+            className={classNames(
+              "gradient-text font-chakra text-h1",
+              "max-lg: text-center max-lg:text-h4",
+            )}
+          >
+            Robust Security
+          </h2>
         </div>
 
         {/* Security cards */}
-        <div className="grid grid-cols-3 gap-5 max-lg:grid-cols-1">
+        <div
+          className={classNames(
+            "grid grid-cols-3 gap-5",
+            "max-lg:grid-cols-1 max-lg:justify-items-center",
+          )}
+        >
           {/* Audited card */}
           <div
             className={classNames(
               "card col-span-3 flex gap-10",
-              "max-lg:col-span-1 max-lg:flex-col max-lg:gap-8",
+              "max-lg:col-span-1 max-lg:max-w-xl max-lg:flex-col max-lg:gap-8",
             )}
           >
-            <div className="flex flex-col justify-between gap-12 py-8">
+            <div
+              className={classNames(
+                "flex flex-col justify-between gap-12 py-8",
+                "max-lg:gap-6 max-lg:p-0",
+              )}
+            >
               <div className="space-y-3">
                 <h3 className="font-chakra text-h4.5">Audited</h3>
                 <p className="font-light text-content/60">
@@ -491,7 +634,12 @@ export function Home() {
           </div>
 
           {/* Formal verification card */}
-          <div className="card flex flex-col items-start justify-between gap-8">
+          <div
+            className={classNames(
+              "card flex flex-col items-start justify-between gap-8",
+              "max-lg:max-w-xl max-lg:items-stretch",
+            )}
+          >
             <div className="space-y-3">
               <h3 className="font-chakra text-h4.5">Formal Verification</h3>
               <p className="font-light text-content/60">
@@ -504,7 +652,12 @@ export function Home() {
           </div>
 
           {/* Fuzz testing card */}
-          <div className="card flex flex-col items-start justify-between gap-8">
+          <div
+            className={classNames(
+              "card flex flex-col items-start justify-between gap-8",
+              "max-lg:max-w-xl max-lg:items-stretch",
+            )}
+          >
             <div className="space-y-3">
               <h3 className="font-chakra text-h4.5">Fuzz Testing</h3>
               <p className="font-light text-content/60">
@@ -516,7 +669,12 @@ export function Home() {
           </div>
 
           {/* Active threat monitoring card */}
-          <div className="card flex flex-col items-start justify-between gap-8">
+          <div
+            className={classNames(
+              "card flex flex-col items-start justify-between gap-8",
+              "max-lg:max-w-xl max-lg:items-stretch",
+            )}
+          >
             <div className="space-y-3">
               <h3 className="font-chakra text-h4.5">
                 Active Threat Monitoring
@@ -537,9 +695,17 @@ export function Home() {
       {/* Investors */}
       <div
         id="investers"
-        className="relative grid justify-center gap-20 overflow-hidden py-28"
+        className={classNames(
+          "relative grid justify-center gap-20 overflow-hidden py-28",
+          "max-lg:pt-20 max-lg:pb-16",
+        )}
       >
-        <h2 className="gradient-text relative text-center font-chakra text-h1">
+        <h2
+          className={classNames(
+            "gradient-text relative text-center font-chakra text-h1",
+            "max-lg:text-h4",
+          )}
+        >
           Backed by
         </h2>
 
@@ -548,58 +714,62 @@ export function Home() {
           className="relative overflow-x-auto"
           ref={preferScrollPosition({ x: 0.5 })}
         >
-          <div className="flex w-max flex-col justify-center gap-5">
-            <ul className="ml-[72px] flex justify-center gap-5">
-              <li className="card flex h-48 w-72 items-center justify-center">
-                <img src="/logos/placeholder-logo.svg" alt="Placeholder" />
-              </li>
-              <li className="card flex h-48 w-72 items-center justify-center">
+          <div
+            className={classNames(
+              "flex w-max flex-col justify-center gap-5",
+              "max-lg:gap-4",
+            )}
+          >
+            <ul
+              className={classNames(
+                "flex justify-center gap-5",
+                "max-lg:gap-4",
+              )}
+            >
+              <InvestorCard>
                 <img src="/logos/a_capital-logo.svg" alt="a_capital" />
-              </li>
-              <li className="card flex h-48 w-72 items-center justify-center">
+              </InvestorCard>
+              <InvestorCard>
                 <img src="/logos/sva-logo.svg" alt="SVA" />
-              </li>
-              <li className="card flex h-48 w-72 items-center justify-center">
+              </InvestorCard>
+              <InvestorCard>
                 <img
                   src="/logos/ethereal-ventures-logo.svg"
                   alt="Ethereal Ventures"
                 />
-              </li>
-              <li className="card flex h-48 w-72 items-center justify-center">
+              </InvestorCard>
+              <InvestorCard>
                 <img src="/logos/hack-vc-logo.svg" alt="Hack VC" />
-              </li>
-              <li className="card flex h-48 w-72 items-center justify-center">
+              </InvestorCard>
+              <InvestorCard>
                 <img
                   src="/logos/robot-ventures-logo.svg"
                   alt="Robot Ventures"
+                  className="h-8"
                 />
-              </li>
+              </InvestorCard>
             </ul>
-            <ul className="mr-[72px] flex justify-center gap-5">
-              <li className="card flex h-48 w-72 items-center justify-center">
+            <ul
+              className={classNames(
+                "flex justify-center gap-5",
+                "max-lg:gap-4",
+              )}
+            >
+              <InvestorCard>
+                <img src="/logos/placeholder-logo.svg" alt="Placeholder" />
+              </InvestorCard>
+              <InvestorCard>
                 <img src="/logos/sc-logo.svg" alt="SC" />
-              </li>
-              <li className="card flex h-48 w-72 items-center justify-center">
-                <img
-                  src="/logos/stani-kulechov-logo.svg"
-                  alt="Stani Kulechov"
-                />
-              </li>
-              <li className="card flex h-48 w-72 items-center justify-center">
+              </InvestorCard>
+              <InvestorCard>
                 <img
                   src="/logos/polychain-capital-logo.svg"
                   alt="Polychain Capital"
                 />
-              </li>
-              <li className="card flex h-48 w-72 items-center justify-center">
+              </InvestorCard>
+              <InvestorCard>
                 <img src="/logos/a16z-logo.svg" alt="a16z" />
-              </li>
-              <li className="card flex h-48 w-72 items-center justify-center">
-                <img src="/logos/rune-logo.svg" alt="Rune" />
-              </li>
-              <li className="card flex h-48 w-72 items-center justify-center">
-                <img src="/logos/kain-warwick-logo.svg" alt="Kain Warwick" />
-              </li>
+              </InvestorCard>
             </ul>
           </div>
         </div>
@@ -614,6 +784,19 @@ export function Home() {
 
       <Footer />
     </>
+  );
+}
+
+function InvestorCard({ children }: { children: React.ReactNode }) {
+  return (
+    <li
+      className={classNames(
+        "card flex h-48 w-72 items-center justify-center",
+        "max-lg:h-32 max-lg:w-48 max-lg:[&>img]:scale-75",
+      )}
+    >
+      {children}
+    </li>
   );
 }
 

@@ -13,10 +13,19 @@ export function Footer() {
     <>
       <SectionDivider />
 
-      <div id="footer" className="inner-container space-y-24 pt-20">
+      <div
+        id="footer"
+        className={classNames(
+          "inner-container space-y-24 pt-20",
+          "max-lg:space-y-14 max-lg:pt-14",
+        )}
+      >
         {/* Legal disclaimer */}
         <div
-          className={classNames("flex items-center gap-32", "max-lg:flex-col")}
+          className={classNames(
+            "flex items-center gap-32",
+            "max-lg:mb-20 max-lg:flex-col max-lg:gap-14",
+          )}
         >
           <HyperdriveLogoIcon
             width={180}
@@ -24,20 +33,28 @@ export function Footer() {
             strokeWidth={16 / 180}
             className="shrink-0 fill-none stroke-neutral-500"
           />
-          <div className="clip-corners-rounded bg-gradient-to-br from-content-600/30 to-content-600/15 p-px backdrop-blur">
-            <div className="clip-corners-rounded light flex flex-col gap-8 bg-black/65 px-14 py-12 text-content/75">
-              <p>
-                Hyperdrive.box provides information and resources about the
-                fundamentals of the decentralized non-custodial liquidity
-                protocol called the Hyperdrive Protocol, comprised of
-                open-source self-executing smart contracts that are deployed on
-                various permissionless public blockchains, such as Ethereum (the
-                "Hyperdrive Protocol" or the "Protocol"). DELV has not
-                controlled or operated, and does not currently control or
-                operate, any version or instances of the Hyperdrive Protocol on
-                any blockchain network.
-              </p>
-            </div>
+          <div
+            className={classNames(
+              "clip-corners-rounded bg-gradient-to-br from-content-600/30 to-content-600/15 p-px backdrop-blur",
+              "max-lg:clip-none max-lg:bg-none max-lg:p-0",
+            )}
+          >
+            <p
+              className={classNames(
+                "clip-corners-rounded light flex flex-col bg-black/65 px-14 py-12 text-content/75",
+                "max-lg:clip-none max-lg:bg-none max-lg:px-[2vw] max-lg:py-0",
+              )}
+            >
+              Hyperdrive.box provides information and resources about the
+              fundamentals of the decentralized non-custodial liquidity protocol
+              called the Hyperdrive Protocol, comprised of open-source
+              self-executing smart contracts that are deployed on various
+              permissionless public blockchains, such as Ethereum (the
+              "Hyperdrive Protocol" or the "Protocol"). DELV has not controlled
+              or operated, and does not currently control or operate, any
+              version or instances of the Hyperdrive Protocol on any blockchain
+              network.
+            </p>
           </div>
         </div>
 
@@ -45,15 +62,18 @@ export function Footer() {
         <div
           className={classNames(
             "flex justify-around gap-5 [&_a:hover]:text-aquamarine [&_a]:transition-all",
-            "max-lg:grid max-lg:grid-cols-3",
+            "mx-auto max-lg:grid max-lg:max-w-xl max-lg:grid-cols-[auto_auto_auto] max-lg:gap-x-2 max-lg:gap-y-12 max-lg:px-[2vw]",
           )}
         >
           {/* Protocol */}
           <div>
-            <h3 className="mb-6 font-mono text-body-sm text-content/35">
-              Protocol
-            </h3>
-            <ul className="space-y-4 font-chakra text-body-lg leading-5">
+            <h3 className="mb-6 font-mono text-content/45">Protocol</h3>
+            <ul
+              className={classNames(
+                "space-y-4 font-chakra text-body-lg leading-5",
+                "max-lg:space-y-5",
+              )}
+            >
               <li>
                 <a href="https://github.com/delvtech/hyperdrive/blob/main/docs/Hyperdrive_Whitepaper.pdf">
                   Whitepaper
@@ -74,10 +94,13 @@ export function Footer() {
 
           {/* Developers */}
           <div>
-            <h3 className="mb-6 font-mono text-body-sm text-content/35">
-              Developers
-            </h3>
-            <ul className="space-y-4 font-chakra text-body-lg leading-5">
+            <h3 className="mb-6 font-mono text-content/45">Developers</h3>
+            <ul
+              className={classNames(
+                "space-y-4 font-chakra text-body-lg leading-5",
+                "max-lg:space-y-5",
+              )}
+            >
               <li>
                 <Link to="/docs">Docs</Link>
               </li>
@@ -90,14 +113,17 @@ export function Footer() {
             </ul>
           </div>
 
-          <VerticalDivider className="opacity-50" />
+          <VerticalDivider className="opacity-50 max-lg:hidden" />
 
           {/* Product */}
           <div>
-            <h3 className="mb-6 font-mono text-body-sm text-content/35">
-              Product
-            </h3>
-            <ul className="space-y-4 font-chakra text-body-lg leading-5">
+            <h3 className="mb-6 font-mono text-content/45">Product</h3>
+            <ul
+              className={classNames(
+                "space-y-4 font-chakra text-body-lg leading-5",
+                "max-lg:space-y-5",
+              )}
+            >
               <li>
                 <Link to="/one">Hyperdrive One</Link>
               </li>
@@ -119,10 +145,13 @@ export function Footer() {
 
           {/* About */}
           <div>
-            <h3 className="mb-6 font-mono text-body-sm text-content/35">
-              About
-            </h3>
-            <ul className="space-y-4 font-chakra text-body-lg leading-5">
+            <h3 className="mb-6 font-mono text-content/45">About</h3>
+            <ul
+              className={classNames(
+                "space-y-4 font-chakra text-body-lg leading-5",
+                "max-lg:space-y-5",
+              )}
+            >
               <li>
                 <a href="https://delv.tech">DELV</a>
               </li>
@@ -137,14 +166,17 @@ export function Footer() {
             </ul>
           </div>
 
-          <VerticalDivider className="opacity-50" />
+          <VerticalDivider className="opacity-50 max-lg:hidden" />
 
           {/* Legal */}
           <div>
-            <h3 className="mb-6 font-mono text-body-sm text-content/35">
-              Legal
-            </h3>
-            <ul className="space-y-4 font-chakra text-body-lg leading-5">
+            <h3 className="mb-6 font-mono text-content/45">Legal</h3>
+            <ul
+              className={classNames(
+                "space-y-4 font-chakra text-body-lg leading-5",
+                "max-lg:space-y-5",
+              )}
+            >
               <li>
                 <a
                   href="https://delv-public.s3.us-east-2.amazonaws.com/delv-terms-of-service.pdf"
@@ -167,32 +199,20 @@ export function Footer() {
           </div>
         </div>
 
+        <SocialLinks className="justify-center lg:hidden" />
+
         {/* Sub-footer */}
         <div className="flex items-center justify-between border-content/30 border-t py-8">
           <div className="flex items-center gap-10">
             <span className="text-body-sm text-white/60">
               Copyright &copy; 2024 DELV, Inc.
             </span>
-            <div className="h-5 w-px bg-content/30" />
-            <div className="flex items-center gap-7">
-              <a href="https://www.delv.tech/discord/" title="Discord">
-                <DiscordLogoIcon className="size-5 text-content" />
-              </a>
-              <a href="https://twitter.com/delv_tech/" title="X">
-                <XLogoIcon className="size-5 text-content" />
-              </a>
-              <a href="https://warpcast.com/~/channel/delv" title="LinkedIn">
-                <LinkedInLogoIcon className="size-5 text-content" />
-              </a>
-              <a
-                href="https://www.linkedin.com/company/delv-tech/"
-                title="LinkedIn"
-              >
-                <FarcasterLogoIcon className="size-5 text-content" />
-              </a>
-            </div>
+            <div className="h-5 w-px bg-content/30 max-lg:hidden" />
+
+            <SocialLinks className="max-lg:hidden" />
           </div>
 
+          {/* Back to top button */}
           <button
             type="button"
             className="flex size-10 items-center justify-center rounded-full bg-gradient-to-b from-aquamarine to-sky"
@@ -214,5 +234,24 @@ export function Footer() {
         </div>
       </div>
     </>
+  );
+}
+
+function SocialLinks({ className }: { className?: string }) {
+  return (
+    <div className={classNames("flex items-center gap-7", className)}>
+      <a href="https://www.delv.tech/discord/" title="Discord">
+        <DiscordLogoIcon className="size-5 text-content" />
+      </a>
+      <a href="https://twitter.com/delv_tech/" title="X">
+        <XLogoIcon className="size-5 text-content" />
+      </a>
+      <a href="https://warpcast.com/~/channel/delv" title="LinkedIn">
+        <LinkedInLogoIcon className="size-5 text-content" />
+      </a>
+      <a href="https://www.linkedin.com/company/delv-tech/" title="LinkedIn">
+        <FarcasterLogoIcon className="size-5 text-content" />
+      </a>
+    </div>
   );
 }

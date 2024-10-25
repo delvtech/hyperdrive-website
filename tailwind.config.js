@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       screens: {
-        xs: "480px",
+        xs: "375px",
       },
       colors: {
         eggplant: {
@@ -101,6 +101,12 @@ export default {
             marginLeft: "auto",
             marginRight: "auto",
             boxSizing: "border-box",
+
+            [`@media (max-width: ${theme("screens.lg")})`]: {
+              maxWidth: theme("maxWidth.3xl"),
+              paddingLeft: "5vw",
+              paddingRight: "5vw",
+            },
           },
 
           ".gradient-text": {
@@ -128,7 +134,7 @@ export default {
             textTransform: "uppercase",
             display: "inline-flex",
             gap: theme("spacing.2"),
-            padding: `0 ${theme("spacing.6")}`,
+            padding: `0 ${theme("spacing.8")}`,
             height: theme("spacing.12"),
             border: "1px solid",
             justifyContent: "center",
@@ -136,7 +142,8 @@ export default {
             letterSpacing: theme("letterSpacing.widest"),
             whiteSpace: "nowrap",
             color: theme("colors.neutral.100"),
-            backdropFilter: theme("backdropFilter.blur"),
+            backdropFilter: "blur(var(--tw-backdrop-blur))",
+            "--tw-backdrop-blur": theme("backdropBlur.DEFAULT"),
             transition: "all 0.1s",
 
             "&.button-sm": {
@@ -184,6 +191,10 @@ export default {
             backdropFilter:
               "var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)",
             "--tw-backdrop-blur": `blur(${theme("backdropBlur.DEFAULT")})`,
+
+            [`@media (max-width: ${theme("screens.lg")})`]: {
+              padding: theme("spacing.5"),
+            },
           },
         });
 

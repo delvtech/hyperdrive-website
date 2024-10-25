@@ -18,7 +18,12 @@ export function CtaTile({
         )}
       >
         <div className="clip-corners h-full bg-neutral-950 p-5">
-          <div className="clip-corners-inner relative h-full space-y-8 bg-gradient-[123deg] from-content-600/10 to-content-600/[0.07] px-10 pt-8 pb-10 [&>*]:relative">
+          <div
+            className={classNames(
+              "clip-corners-inner relative flex h-full flex-col items-start gap-8 bg-gradient-[123deg] from-content-600/10 to-content-600/[0.07] px-10 pt-8 pb-10 [&>*]:relative",
+              "max-lg:items-center max-lg:px-7 max-lg:pb-14",
+            )}
+          >
             {children}
             <div className="!absolute -z-10 -top-8 inset-0 bg-[url('/accents/tile-grid-bg.svg')]" />
           </div>
@@ -31,7 +36,16 @@ export function CtaTile({
 CtaTile.IconList = function CtaTileIconList({
   children,
 }: PropsWithChildren<{}>) {
-  return <ul className="space-y-3">{children}</ul>;
+  return (
+    <ul
+      className={classNames(
+        "flex flex-col items-start gap-3",
+        "max-lg:items-stretch",
+      )}
+    >
+      {children}
+    </ul>
+  );
 };
 
 export interface CtaTileIconListItemProps {

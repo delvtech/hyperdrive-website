@@ -31,8 +31,9 @@ export interface DropdownProps
  *
  * @privateRemarks
  * This combination of features was hard to find in existing libraries. For
- * example: `headlessui` and `shadcn/ui` don't support hover states; `daisyui`
- * doesn't support portal rendering and breaks accessibility.
+ * example: `headlessui` and `radix-ui` don't support hover states; `daisyui`
+ * breaks accessibility and doesn't support portal rendering to avoid
+ * z-index/overflow issues.
  *
  * With this flexible API, we can create things like a floating dropdown menu
  * that appears on hover for large screens and have it change to a static menu
@@ -41,9 +42,11 @@ export interface DropdownProps
 export function Dropdown({ className, children, ...rest }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [button, setButton] = useState<HTMLButtonElement | null>(null);
   const [menu, setMenu] = useState<HTMLDivElement | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Ref callbacks to set the button and menu elements.
   const buttonRef = useCallback((el: HTMLButtonElement | null) => {
     setButton(el);
   }, []);
@@ -52,7 +55,6 @@ export function Dropdown({ className, children, ...rest }: DropdownProps) {
   }, []);
 
   useEffect(() => {
-    console.log("Dropdown mounted");
     // Find the button and menu elements by their data attributes if not set.
     if (!button) {
       const foundButton = containerRef.current?.querySelector(
@@ -77,10 +79,7 @@ export function Dropdown({ className, children, ...rest }: DropdownProps) {
       e.stopPropagation();
       setIsOpen((prev) => {
         if (!prev && menu) {
-          console.log("Looking for first dropdown item in", menu);
           findFirstDropdownItem(menu)?.focus();
-        } else if (!prev) {
-          console.log("No menu ref");
         }
         return !prev;
       });
@@ -88,8 +87,8 @@ export function Dropdown({ className, children, ...rest }: DropdownProps) {
     button?.addEventListener("click", handleButtonClick);
 
     // Close the dropdown when clicking outside of it. The handler is added to
-    // the "mouseup" event to ensure it's triggered even if stopPropagation is
-    // called on the "click" event.
+    // the "mouseup" event which is triggered even if propagation is stopped on
+    // the "click" event.
     function handleMouseUp(e: MouseEvent) {
       if (containerRef.current?.contains(e.target as Element)) {
         e.preventDefault();
@@ -130,44 +129,38 @@ export function Dropdown({ className, children, ...rest }: DropdownProps) {
           data-hover={isHovered || undefined}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          onKeyDown={(() => {
-            console.log("Setting keydown handler");
-            return (e) => {
-              switch (e.key) {
-                case "ArrowDown":
+          onKeyDown={(e) => {
+            switch (e.key) {
+              case "ArrowDown":
+                e.preventDefault();
+                if (e.target === button) {
+                  setIsOpen(true);
+                  if (menu) {
+                    findFirstDropdownItem(menu)?.focus();
+                  }
+                  break;
+                }
+                if (isDropdownItem(e.target)) {
+                  findNextDropdownItem(e.target)?.focus();
+                }
+                break;
+              case "ArrowUp":
+                if (isDropdownItem(e.target)) {
                   e.preventDefault();
-                  if (e.target === button) {
-                    setIsOpen(true);
-                    if (menu) {
-                      console.log("Looking for first dropdown item");
-                      findFirstDropdownItem(menu)?.focus();
-                    } else {
-                      console.log("No menu ref");
-                    }
-                    break;
-                  }
-                  if (isDropdownItem(e.target)) {
-                    findNextDropdownItem(e.target)?.focus();
-                  }
-                  break;
-                case "ArrowUp":
-                  if (isDropdownItem(e.target)) {
-                    e.preventDefault();
-                    findPreviousDropdownItem(e.target)?.focus();
-                  }
-                  break;
-                case "Tab":
-                  if (isDropdownItem(e.target)) {
-                    e.preventDefault();
-                  }
-                  break;
-                case "Escape":
-                  setIsOpen(false);
-                  button?.focus();
-                  break;
-              }
-            };
-          })()}
+                  findPreviousDropdownItem(e.target)?.focus();
+                }
+                break;
+              case "Tab":
+                if (isDropdownItem(e.target)) {
+                  e.preventDefault();
+                }
+                break;
+              case "Escape":
+                setIsOpen(false);
+                button?.focus();
+                break;
+            }
+          }}
           className={classNames(
             "group relative z-50",
             {
@@ -178,10 +171,7 @@ export function Dropdown({ className, children, ...rest }: DropdownProps) {
           )}
           {...rest}
         >
-          {
-            // Render prop
-            typeof children === "function" ? children(context) : children
-          }
+          {typeof children === "function" ? children(context) : children}
         </div>
       </DropdownContext.Provider>
     </>
@@ -208,7 +198,7 @@ Dropdown.Button = function DropdownButton({
       aria-haspopup="true"
       aria-expanded={isOpen}
       className={classNames(
-        "group-ha flex h-10 items-center gap-1 whitespace-nowrap px-1 uppercase",
+        "flex h-10 items-center gap-1 whitespace-nowrap px-1 uppercase",
         {
           "text-aquamarine": isOpen || isHovered,
         },
@@ -265,11 +255,11 @@ Dropdown.Menu = function DropdownMenu({
   children,
   ...rest
 }: DropdownMenuProps) {
-  const { isOpen, isHovered, button, open, close, menuRef } =
+  const { isHovered, isOpen, button, menu, menuRef, open, close } =
     useContext(DropdownContext);
 
   // The viewport coordinates of the menu relative to it's top-left corner.
-  const [coordnates, setCoordinates] = useState<Coordinates>();
+  const [coordinates, setCoordinates] = useState<Coordinates>();
 
   // The side and alignment of the menu relative to the button.
   const [side, align = "start"] = anchor.split(" ") as [
@@ -336,9 +326,9 @@ Dropdown.Menu = function DropdownMenu({
     }
 
     setCoordinates(position);
-  }, [anchor, side, portal, button]);
+  }, [portal, button, anchor, side]);
 
-  // Reposition the menu on open.
+  // Reposition the menu on open in case the button moved.
   useEffect(() => {
     if (isOpen) positionMenu();
   }, [isOpen, positionMenu]);
@@ -346,13 +336,18 @@ Dropdown.Menu = function DropdownMenu({
   // Reposition the menu on scroll.
   useScrollEffect(() => {
     if (isOpen) positionMenu();
-  }, [portal]);
+  }, [isOpen, positionMenu]);
 
   useEffect(() => {
     // Open/close on hover if enabled.
     if (hover && isHovered && !isOpen) {
       open(false);
-    } else if (hover && !isHovered && isOpen) {
+    } else if (
+      hover &&
+      !isHovered &&
+      isOpen &&
+      !menu?.contains(document.activeElement)
+    ) {
       close(null);
     }
 
@@ -372,7 +367,7 @@ Dropdown.Menu = function DropdownMenu({
       tabIndex={-1}
       role="menu"
       aria-hidden={!isOpen}
-      style={coordnates}
+      style={coordinates}
       className={classNames(
         "pointer-events-none absolute z-50 flex w-max flex-col gap-1.5 overflow-hidden rounded bg-[#00110C] py-3 font-mono text-[#17BB83] opacity-0 shadow-lg transition-[opacity,transform] duration-100 ease-in",
         {
@@ -407,13 +402,13 @@ Dropdown.Menu = function DropdownMenu({
           "bottom-full": !portal && side === "top",
           "left-full": !portal && side === "right",
           "top-0": !portal && isHorizontal && align === "start",
+          "right-0": !portal && isVertical && align === "end",
           "-translate-y-1/2 top-1/2":
             !portal && isHorizontal && align === "center",
           "bottom-0": !portal && isHorizontal && align === "end",
           "left-0": !portal && isVertical && align === "start",
           "-translate-x-1/2 left-1/2":
             !portal && isVertical && align === "center",
-          "right-0": !portal && isVertical && align === "end",
 
           // Portal alignment
           "!fixed": portal,
@@ -556,11 +551,9 @@ function findNextDropdownItem(element: Element): HTMLElement | null {
 }
 
 function findFirstDropdownItem(element: Element): HTMLElement | null {
-  console.log("Finding first dropdown item");
   let first = element.firstElementChild;
   while (first && !isDropdownItem(first)) {
     first = first.nextElementSibling;
   }
-  console.log("Found first dropdown item", first);
   return first;
 }
