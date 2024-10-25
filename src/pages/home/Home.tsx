@@ -702,23 +702,23 @@ export function Home() {
               )}
             >
               <InvestorCard>
-                <img src="/logos/a_capital-logo.svg" alt="a_capital" />
+                <img src="/logos/a_capital-logo.png" alt="a_capital" />
               </InvestorCard>
               <InvestorCard>
-                <img src="/logos/sva-logo.svg" alt="SVA" />
+                <img src="/logos/sva-logo.png" alt="SVA" />
               </InvestorCard>
               <InvestorCard>
                 <img
-                  src="/logos/ethereal-ventures-logo.svg"
+                  src="/logos/ethereal-ventures-logo.png"
                   alt="Ethereal Ventures"
                 />
               </InvestorCard>
               <InvestorCard>
-                <img src="/logos/hack-vc-logo.svg" alt="Hack VC" />
+                <img src="/logos/hack-vc-logo.png" alt="Hack VC" />
               </InvestorCard>
               <InvestorCard>
                 <img
-                  src="/logos/robot-ventures-logo.svg"
+                  src="/logos/robot-ventures-logo.png"
                   alt="Robot Ventures"
                   className="h-8"
                 />
@@ -731,19 +731,19 @@ export function Home() {
               )}
             >
               <InvestorCard>
-                <img src="/logos/placeholder-logo.svg" alt="Placeholder" />
+                <img src="/logos/placeholder-logo.png" alt="Placeholder" />
               </InvestorCard>
               <InvestorCard>
-                <img src="/logos/sc-logo.svg" alt="SC" />
+                <img src="/logos/sc-logo.png" alt="SC" />
               </InvestorCard>
               <InvestorCard>
                 <img
-                  src="/logos/polychain-capital-logo.svg"
+                  src="/logos/polychain-capital-logo.png"
                   alt="Polychain Capital"
                 />
               </InvestorCard>
               <InvestorCard>
-                <img src="/logos/a16z-logo.svg" alt="a16z" />
+                <img src="/logos/a16z-logo.png" alt="a16z" />
               </InvestorCard>
             </ul>
           </div>
