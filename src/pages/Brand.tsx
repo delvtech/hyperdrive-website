@@ -1,10 +1,5 @@
-import classNames from "classnames";
-import type { ReactElement } from "react";
-import { renderToStaticMarkup } from "react-dom/server";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
-import { useCopy } from "src/hooks/useCopy";
-import { useDownloadLink } from "src/hooks/useDownloadLink";
 
 export function Brand() {
   return (
@@ -195,75 +190,75 @@ export function Brand() {
   );
 }
 
-function AssetTile({
-  downloadName,
-  className,
-  svg,
-}: {
-  downloadName: string;
-  className: string;
-  svg: ReactElement;
-}) {
-  const svgString = renderToStaticMarkup(svg);
-  const downloadLink = useDownloadLink(svgString, "svg");
-  const { copy, copied } = useCopy();
+// function AssetTile({
+//   downloadName,
+//   className,
+//   svg,
+// }: {
+//   downloadName: string;
+//   className: string;
+//   svg: ReactElement;
+// }) {
+//   const svgString = renderToStaticMarkup(svg);
+//   const downloadLink = useDownloadLink(svgString, "svg");
+//   const { copy, copied } = useCopy();
 
-  return (
-    <div>
-      <div
-        className={classNames(
-          "flex aspect-video flex-col items-center justify-center border border-neutral-700",
-          className,
-        )}
-      >
-        <div className="flex w-full grow items-center justify-center">
-          {svg}
-        </div>
-        <div className="grid h-[3.25rem] w-full grid-cols-[1.5fr_0_1.5fr] gap-2 border-neutral-400/40 border-t">
-          <button
-            type="button"
-            className="mt-2 flex items-center justify-center rounded font-medium font-mono uppercase transition-all hover:bg-neutral-500/20"
-            onClick={() => {
-              copy(svgString);
-            }}
-          >
-            {copied ? "copied!" : "copy"}
-          </button>
-          <div className="w-px bg-neutral-400/40" />
-          <a
-            className="mt-2 flex items-center justify-center rounded font-medium font-mono uppercase transition-all hover:bg-neutral-500/20"
-            href={downloadLink}
-            download={downloadName}
-          >
-            download
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       <div
+//         className={classNames(
+//           "flex aspect-video flex-col items-center justify-center border border-neutral-700",
+//           className,
+//         )}
+//       >
+//         <div className="flex w-full grow items-center justify-center">
+//           {svg}
+//         </div>
+//         <div className="grid h-[3.25rem] w-full grid-cols-[1.5fr_0_1.5fr] gap-2 border-neutral-400/40 border-t">
+//           <button
+//             type="button"
+//             className="mt-2 flex items-center justify-center rounded font-medium font-mono uppercase transition-all hover:bg-neutral-500/20"
+//             onClick={() => {
+//               copy(svgString);
+//             }}
+//           >
+//             {copied ? "copied!" : "copy"}
+//           </button>
+//           <div className="w-px bg-neutral-400/40" />
+//           <a
+//             className="mt-2 flex items-center justify-center rounded font-medium font-mono uppercase transition-all hover:bg-neutral-500/20"
+//             href={downloadLink}
+//             download={downloadName}
+//           >
+//             download
+//           </a>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
 
-function ColorTile({
-  color,
-  className,
-}: {
-  color: string;
-  className?: string;
-}) {
-  const { copy, copied } = useCopy();
-  return (
-    <button
-      type="button"
-      className={classNames(
-        "flex aspect-video items-center justify-center rounded-lg border border-neutral-700 bg-neutral-900 font-medium font-mono uppercase",
-        className,
-      )}
-      style={{ backgroundColor: color }}
-      onClick={() => {
-        copy(color);
-      }}
-    >
-      {copied ? "copied!" : color}
-    </button>
-  );
-}
+// function ColorTile({
+//   color,
+//   className,
+// }: {
+//   color: string;
+//   className?: string;
+// }) {
+//   const { copy, copied } = useCopy();
+//   return (
+//     <button
+//       type="button"
+//       className={classNames(
+//         "flex aspect-video items-center justify-center rounded-lg border border-neutral-700 bg-neutral-900 font-medium font-mono uppercase",
+//         className,
+//       )}
+//       style={{ backgroundColor: color }}
+//       onClick={() => {
+//         copy(color);
+//       }}
+//     >
+//       {copied ? "copied!" : color}
+//     </button>
+//   );
+// }
