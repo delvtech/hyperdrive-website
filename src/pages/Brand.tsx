@@ -12,11 +12,16 @@ export function Brand() {
       <Header />
 
       <main className="mx-auto my-40 max-w-4xl px-[4vw]">
-        <h1 className="gradient-text text-center font-chakra text-h3">
-          Brand Assets
-        </h1>
+        <div className="space-y-6 text-center">
+          <h1 className="gradient-text text-center font-chakra text-h3">
+            Brand Assets
+          </h1>
+          <p className="spaced-mono font-light text-body-lg text-content/60">
+            Coming soon
+          </p>
+        </div>
 
-        <h2 className="mt-16 mb-6 text-body-lg">Logo Mark</h2>
+        {/* <h2 className="mt-16 mb-6 text-body-lg">Logo Mark</h2>
         <div className="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
           <AssetTile
             downloadName="hyperdrive-mark-white.svg"
@@ -182,7 +187,7 @@ export function Brand() {
           <ColorTile color="#2EFCB6" className="text-neutral-900" />
           <ColorTile color="#14D3F9" className="text-neutral-900" />
           <ColorTile color="#001B14" />
-        </div>
+        </div> */}
       </main>
 
       <Footer />
