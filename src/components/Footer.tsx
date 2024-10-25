@@ -117,7 +117,7 @@ export function Footer() {
 
           {/* Product */}
           <div>
-            <h3 className="mb-6 font-mono text-content/45">Product</h3>
+            <h3 className="mb-6 font-mono text-content/55">Product</h3>
             <ul
               className={classNames(
                 "space-y-4 font-chakra text-body-lg leading-5",
