@@ -63,11 +63,11 @@ CtaTile.IconListItem = function CtaTileIconListItem({
   return (
     <li
       className={classNames(
-        "spaced-mono inline-flex items-start gap-3 rounded border border-content/15 bg-gradient-120 from-[#2E2F36] to-[#222329] py-4 pr-8 pl-5 leading-[18px]",
+        "spaced-mono inline-flex items-center gap-3 rounded border border-content/15 bg-gradient-120 from-[#2E2F36] to-[#222329] py-4 pr-8 pl-5 leading-[18px]",
         "max-lg:gap-2 max-lg:pr-6 max-lg:pl-3",
       )}
     >
-      <img src={src} className="my-[-3px] size-6" />
+      <img src={src} className="size-6" />
       {children}
     </li>
   );
