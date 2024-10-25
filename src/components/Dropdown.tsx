@@ -3,6 +3,7 @@ import classNames from "classnames";
 import {
   type ComponentPropsWithoutRef,
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -13,11 +14,8 @@ import { createPortal } from "react-dom";
 import { Clickable, type ClickableProps } from "src/components/Clickable";
 import { useScrollEffect } from "src/hooks/useScrollEffect";
 
-export type DropdownAlignment = "start" | "center" | "end";
-
 export interface DropdownProps
   extends Omit<ComponentPropsWithoutRef<"div">, "children"> {
-  align?: DropdownAlignment;
   children:
     | React.ReactNode
     | ((context: DropdownContextType) => React.ReactNode);
@@ -33,19 +31,14 @@ export interface DropdownProps
  *
  * @privateRemarks
  * This combination of features was hard to find in existing libraries. For
- * example, `headlessui` and `shadcn/ui` don't support hover states and
- * `daisyui` doesn't support portal rendering.
+ * example: `headlessui` and `shadcn/ui` don't support hover states; `daisyui`
+ * doesn't support portal rendering and breaks accessibility.
  *
  * With this flexible API, we can create things like a floating dropdown menu
  * that appears on hover for large screens and have it change to a static menu
  * that expands on click for smaller screens.
  */
-export function Dropdown({
-  align = "start",
-  className,
-  children,
-  ...rest
-}: DropdownProps) {
+export function Dropdown({ className, children, ...rest }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -53,14 +46,13 @@ export function Dropdown({
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    function handleMouseUp(e: MouseEvent) {
-      if (containerRef.current?.contains(e.target as Element)) {
-        e.preventDefault();
-      } else {
-        setIsOpen(false);
-      }
-    }
+    // Find the button and menu elements by their data attributes.
+    buttonRef.current =
+      containerRef.current?.querySelector("[data-dropdown-button]") || null;
+    menuRef.current =
+      containerRef.current?.querySelector("[data-dropdown-menu]") || null;
 
+    // Open the dropdown when clicking the button.
     function handleButtonClick(e: MouseEvent) {
       e.preventDefault();
       e.stopPropagation();
@@ -74,13 +66,18 @@ export function Dropdown({
         return !prev;
       });
     }
-
-    buttonRef.current =
-      containerRef.current?.querySelector("[data-dropdown-button]") || null;
-    menuRef.current =
-      containerRef.current?.querySelector("[data-dropdown-menu]") || null;
-
     buttonRef.current?.addEventListener("click", handleButtonClick);
+
+    // Close the dropdown when clicking outside of it. The handler is added to
+    // the "mouseup" event to ensure it's triggered even if stopPropagation is
+    // called on the "click" event.
+    function handleMouseUp(e: MouseEvent) {
+      if (containerRef.current?.contains(e.target as Element)) {
+        e.preventDefault();
+      } else {
+        setIsOpen(false);
+      }
+    }
     window.addEventListener("mouseup", handleMouseUp);
 
     return () => {
@@ -98,12 +95,11 @@ export function Dropdown({
         setIsOpen(false);
         focusTarget?.focus();
       },
-      alignment: align,
       containerRef,
       buttonRef,
       menuRef,
     };
-  }, [isOpen, isHovered, align]);
+  }, [isOpen, isHovered]);
 
   return (
     <>
@@ -175,18 +171,17 @@ Dropdown.Button = function DropdownButton({
   children,
   ...rest
 }: DropDownButtonProps) {
-  const { isOpen, alignment, isHovered } = useContext(DropdownContext);
+  const { isOpen, isHovered } = useContext(DropdownContext);
   return (
     <button
       type="button"
       data-dropdown-button
       data-open={isOpen || undefined}
       data-closed={!isOpen || undefined}
-      data-align={alignment}
       aria-haspopup="true"
       aria-expanded={isOpen}
       className={classNames(
-        "flex h-10 items-center gap-1 whitespace-nowrap px-1 uppercase",
+        "group-ha flex h-10 items-center gap-1 whitespace-nowrap px-1 uppercase",
         {
           "text-aquamarine": isOpen || isHovered,
         },
@@ -197,13 +192,9 @@ Dropdown.Button = function DropdownButton({
     >
       {children}{" "}
       <ChevronDownIcon
-        className={classNames(
-          "lg:group-hover:-scale-y-100 size-4 transition-all duration-100",
-          {
-            "-scale-y-100": isOpen,
-            "lg:-scale-y-100": isHovered,
-          },
-        )}
+        className={classNames("size-4 transition-all duration-100", {
+          "-scale-y-100": isOpen,
+        })}
       />
     </button>
   );
@@ -211,7 +202,17 @@ Dropdown.Button = function DropdownButton({
 
 // Menu //
 
+export type DropdownSide = "top" | "right" | "bottom" | "left";
+export type DropdownAlignment = "start" | "center" | "end";
+export type DropdownAnchor =
+  | DropdownSide
+  | `${DropdownSide} ${DropdownAlignment}`;
+
 export interface DropdownMenuProps extends ComponentPropsWithoutRef<"div"> {
+  /**
+   * The alignment of the menu relative to the button.
+   */
+  anchor?: DropdownAnchor;
   /**
    * Whether the menu should open on hover.
    */
@@ -222,44 +223,114 @@ export interface DropdownMenuProps extends ComponentPropsWithoutRef<"div"> {
   portal?: boolean;
 }
 
+interface Coordinates {
+  top?: number;
+  right?: number;
+  bottom?: number;
+  left?: number;
+}
+
 Dropdown.Menu = function DropdownMenu({
+  anchor = "bottom start",
   hover = false,
   portal = false,
   className,
   children,
   ...rest
 }: DropdownMenuProps) {
-  const { isOpen, isHovered, alignment, buttonRef } =
+  const { isOpen, isHovered, buttonRef, open, close } =
     useContext(DropdownContext);
 
-  function getPosition() {
+  // The viewport coordinates of the menu relative to it's top-left corner.
+  const [coordnates, setCoordinates] = useState<Coordinates>();
+
+  // The side and alignment of the menu relative to the button.
+  const [side, align] = anchor.split(" ") as [DropdownSide, DropdownAlignment];
+  const isVertical = ["top", "bottom"].includes(side);
+  const isHorizontal = ["left", "right"].includes(side);
+
+  // Position the menu relative to the button.
+  const positionMenu = useCallback(() => {
+    // Ignore if not a portal or the button ref is not set.
     if (!portal || !buttonRef.current) {
-      console.log("No portal or button ref");
-      return {
-        left: undefined,
-        top: undefined,
-      };
+      return;
     }
+
+    const position: Coordinates = {};
     const rect = buttonRef.current.getBoundingClientRect();
-    console.log("Setting position", rect);
-    return {
-      left: rect.left,
-      top: rect.top + rect.height,
-    };
-  }
 
-  const [position, setPosition] = useState(getPosition);
+    switch (side) {
+      case "top":
+        position.top = rect.top;
+        // position.left = rect.left;
+        break;
+      case "right":
+        position.top = rect.top;
+        position.left = rect.right;
+        break;
+      case "bottom":
+        position.top = rect.bottom;
+        // position.left = rect.left;
+        break;
+      case "left":
+        position.top = rect.top;
+        position.right = window.innerWidth - rect.left;
+        break;
+    }
 
+    switch (anchor) {
+      case "top center":
+      case "bottom center":
+        position.left = rect.left + rect.width / 2;
+        break;
+      case "top end":
+      case "bottom end":
+        position.right = window.innerWidth - rect.right;
+        break;
+      case "right start":
+      case "left start":
+        position.top = rect.top;
+        break;
+      case "right center":
+      case "left center":
+        position.top = rect.top + rect.height / 2;
+        break;
+      case "right end":
+      case "left end":
+        position.bottom = window.innerHeight - rect.bottom;
+        break;
+    }
+
+    console.log("position", position);
+    console.log("rect", rect);
+    console.log("window.innerHeight", window.innerHeight);
+    setCoordinates(position);
+  }, [anchor, side, portal, buttonRef.current]);
+
+  // Reposition the menu on open.
+  useEffect(() => {
+    if (isOpen) positionMenu();
+  }, [isOpen, positionMenu]);
+
+  // Reposition the menu on scroll.
   useScrollEffect(() => {
-    if (portal) setPosition(getPosition());
+    if (portal && isOpen) {
+      console.log("scroll");
+      positionMenu();
+    }
   }, [portal]);
 
   useEffect(() => {
-    function resetPosition() {
-      setPosition(getPosition());
+    // Open/close on hover if enabled.
+    if (hover && isHovered && !isOpen) {
+      open(false);
+    } else if (hover && !isHovered && isOpen) {
+      close(null);
     }
-    window.addEventListener("resize", resetPosition);
-    return () => window.removeEventListener("resize", resetPosition);
+
+    // Reposition the menu on resize.
+    window.addEventListener("resize", positionMenu);
+    return () => window.removeEventListener("resize", positionMenu);
   });
 
   const Menu = (
@@ -267,33 +338,52 @@ Dropdown.Menu = function DropdownMenu({
       data-dropdown-menu
       data-open={isOpen || undefined}
       data-closed={!isOpen || undefined}
-      data-align={alignment}
+      data-side={side}
+      data-align={align}
       tabIndex={-1}
       role="menu"
       aria-hidden={!isOpen}
-      style={{ left: position.left, top: position.top }}
+      style={coordnates}
       className={classNames(
-        "pointer-events-none top-full z-50 flex w-max scale-y-95 flex-col gap-1.5 overflow-hidden rounded bg-[#00110C] py-3 font-mono text-[#17BB83] opacity-0 shadow-lg transition-[opacity,transform] duration-100 ease-in",
+        "pointer-events-none absolute top-full z-50 flex w-max flex-col gap-1.5 overflow-hidden rounded bg-[#00110C] py-3 font-mono text-[#17BB83] opacity-0 shadow-lg transition-[opacity,transform] duration-100 ease-in",
         {
-          fixed: portal,
-          "origin-top-right": alignment === "end",
-          "origin-top": alignment === "center",
-          "origin-top-left": alignment === "start",
+          "scale-y-95": isVertical,
+          "scale-95": isHorizontal,
 
           "!scale-100 pointer-events-auto opacity-100 duration-200 ease-out":
             isOpen,
 
+          // Transform origin
+          "origin-top-left": [
+            "right start",
+            "right",
+            "bottom",
+            "bottom start",
+          ].includes(anchor),
+          "origin-top": anchor === "bottom center",
+          "origin-top-right": ["bottom end", "left", "left start"].includes(
+            anchor,
+          ),
+          "origin-right": anchor === "left center",
+          "origin-bottom-right": ["top end", "left end"].includes(anchor),
+          "origin-bottom": anchor === "top center",
+          "origin-bottom-left": ["top", "top start", "right end"].includes(
+            anchor,
+          ),
+          "origin-left": anchor === "right center",
+
           // Non-portal alignment
-          absolute: !portal,
-          "right-0": alignment === "end" && !portal,
-          "-translate-x-1/2 left-1/2": alignment === "center" && !portal,
-          "left-0": alignment === "start" && !portal,
+          "left-0": !portal && align === "start",
+          "-translate-x-1/2 left-1/2": !portal && align === "center" && side,
+          "right-0": !portal && align === "end",
+
+          // Portal alignment
+          "!fixed": portal,
+          "-translate-x-1/2": portal && align === "center" && isVertical,
+          // "-translate-x-full": portal && align === "end" && isVertical,
+          "-translate-y-1/2": portal && align === "center" && isHorizontal,
+          "-translate-y-full": portal && align === "end" && isHorizontal,
         },
-        {
-          "lg:!scale-100 lg:pointer-events-auto lg:opacity-100 lg:duration-200 lg:ease-out":
-            hover && isHovered,
-        },
-        // "lg:hover:pointer-events-auto lg:hover:scale-100 lg:hover:opacity-100 lg:hover:duration-200 lg:hover:ease-out",
         {
           "max-lg:static max-lg:w-full max-lg:bg-transparent max-lg:pt-0 max-lg:data-[closed]:h-0 max-lg:data-[closed]:p-0":
             !portal,
@@ -306,11 +396,7 @@ Dropdown.Menu = function DropdownMenu({
     </div>
   );
 
-  if (portal) {
-    return createPortal(Menu, document.body);
-  }
-
-  return Menu;
+  return portal ? createPortal(Menu, document.body) : Menu;
 };
 
 // Item //
@@ -351,19 +437,12 @@ Dropdown.Item = function DropdownItem({
 export interface DropdownContextType {
   /**
    * Whether the dropdown is open.
-   *
-   * __Note:__ This is not the same as the menu being visible. Hover states are
-   * not considered.
    */
   isOpen: boolean;
   /**
    * Whether any part of the dropdown is hovered.
    */
   isHovered: boolean;
-  /**
-   * The alignment of the dropdown.
-   */
-  alignment: DropdownAlignment;
   /**
    * The ref of the dropdown container.
    */
@@ -378,8 +457,10 @@ export interface DropdownContextType {
   menuRef: React.RefObject<HTMLDivElement | null>;
   /**
    * Opens the dropdown menu.
+   * @param focusFirstItem - Whether to focus the first item in the menu.
+   * Defaults to `true`.
    */
-  open: () => void;
+  open: (focusFirstItem?: boolean) => void;
   /**
    * Closes the dropdown menu.
    * @param focusTarget - The element to focus after closing.
@@ -391,7 +472,6 @@ export interface DropdownContextType {
 const DropdownContext = createContext<DropdownContextType>({
   isOpen: false,
   isHovered: false,
-  alignment: "start",
   containerRef: { current: null },
   buttonRef: { current: null },
   menuRef: { current: null },
