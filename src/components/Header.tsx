@@ -132,7 +132,7 @@ export function Header({ className }: HeaderProps) {
             <div
               className={classNames(
                 "row-start-1 flex items-center gap-4 justify-self-end",
-                "max-lg:-ml-2 max-lg:col-span-2 max-lg:row-start-2 max-lg:mt-4 max-lg:justify-self-stretch max-lg:border-content/15 max-lg:border-t",
+                "max-lg:-mx-4 max-lg:col-span-2 max-lg:row-start-2 max-lg:mt-4 max-lg:flex-col max-lg:items-stretch max-lg:justify-self-stretch max-lg:border-content/15 max-lg:border-t",
                 {
                   "max-lg:hidden": !isMenuOpen,
                 },
@@ -145,12 +145,12 @@ export function Header({ className }: HeaderProps) {
                   {
                     "max-lg:hidden": !isMenuOpen,
                   },
-                  "max-lg max-lg:w-full max-lg:flex-col max-lg:items-stretch max-lg:gap-0",
+                  "max-lg:w-full max-lg:flex-col max-lg:items-stretch max-lg:gap-0",
                 )}
               >
                 {/* Learn */}
                 <Dropdown>
-                  <Dropdown.Button className="max-lg:pl-2">
+                  <Dropdown.Button className="max-lg:pr-7">
                     Learn
                   </Dropdown.Button>
                   <Dropdown.Menu hover={breakpoint.gte("lg")}>
@@ -179,7 +179,7 @@ export function Header({ className }: HeaderProps) {
 
                 {/* Developers */}
                 <Dropdown>
-                  <Dropdown.Button className="max-lg:pl-2">
+                  <Dropdown.Button className="max-lg:pr-7">
                     Developers
                   </Dropdown.Button>
                   <Dropdown.Menu hover={breakpoint.gte("lg")}>
@@ -196,7 +196,7 @@ export function Header({ className }: HeaderProps) {
 
                 {/* Community */}
                 <Dropdown>
-                  <Dropdown.Button className="max-lg:pl-2">
+                  <Dropdown.Button className="max-lg:pr-7">
                     Community
                   </Dropdown.Button>
                   <Dropdown.Menu hover={breakpoint.gte("lg")}>
@@ -231,7 +231,7 @@ export function Header({ className }: HeaderProps) {
 
                 {/* Launch Apps */}
                 <Dropdown>
-                  <Dropdown.Button className="max-lg:pl-2">
+                  <Dropdown.Button className="max-lg:pr-7">
                     Launch Apps
                   </Dropdown.Button>
                   <Dropdown.Menu
