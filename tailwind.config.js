@@ -188,8 +188,7 @@ export default {
             "--tw-gradient-stops":
               "var(--tw-gradient-from), var(--tw-gradient-to)",
             padding: theme("spacing.8"),
-            backdropFilter:
-              "var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)",
+            backdropFilter: "var(--tw-backdrop-blur)",
             "--tw-backdrop-blur": `blur(${theme("backdropBlur.DEFAULT")})`,
 
             [`@media (max-width: ${theme("screens.lg")})`]: {
