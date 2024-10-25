@@ -102,7 +102,7 @@ export default {
             marginRight: "auto",
             boxSizing: "border-box",
 
-            [`@media (max-width: ${theme("screens.lg")})`]: {
+            [`@media not all and (min-width: ${theme("screens.lg")})`]: {
               maxWidth: theme("maxWidth.3xl"),
               paddingLeft: "5vw",
               paddingRight: "5vw",
@@ -184,7 +184,7 @@ export default {
             backdropFilter: "var(--tw-backdrop-blur)",
             "--tw-backdrop-blur": `blur(${theme("backdropBlur.DEFAULT")})`,
 
-            [`@media (max-width: ${theme("screens.lg")})`]: {
+            [`@media not all (min-width: ${theme("screens.lg")})`]: {
               padding: theme("spacing.5"),
             },
           },

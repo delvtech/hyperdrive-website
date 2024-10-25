@@ -132,7 +132,7 @@ export function Header({ className }: HeaderProps) {
             <div
               className={classNames(
                 "row-start-1 flex items-center gap-4 justify-self-end",
-                "max-lg:col-span-2 max-lg:row-start-2 max-lg:mt-4 max-lg:justify-self-stretch max-lg:border-content/15 max-lg:border-t",
+                "max-lg:-ml-2 max-lg:col-span-2 max-lg:row-start-2 max-lg:mt-4 max-lg:justify-self-stretch max-lg:border-content/15 max-lg:border-t",
                 {
                   "max-lg:hidden": !isMenuOpen,
                 },
@@ -150,7 +150,9 @@ export function Header({ className }: HeaderProps) {
               >
                 {/* Learn */}
                 <Dropdown>
-                  <Dropdown.Button>Learn</Dropdown.Button>
+                  <Dropdown.Button className="max-lg:pl-2">
+                    Learn
+                  </Dropdown.Button>
                   <Dropdown.Menu hover={breakpoint.gte("lg")}>
                     <Dropdown.Item to="/docs">
                       <DocIcon className="size-4" />
@@ -177,7 +179,9 @@ export function Header({ className }: HeaderProps) {
 
                 {/* Developers */}
                 <Dropdown>
-                  <Dropdown.Button>Developers</Dropdown.Button>
+                  <Dropdown.Button className="max-lg:pl-2">
+                    Developers
+                  </Dropdown.Button>
                   <Dropdown.Menu hover={breakpoint.gte("lg")}>
                     <Dropdown.Item to="/docs/hyperdrive-for-developers">
                       <CodeDocIcon className="size-4" />
@@ -192,7 +196,9 @@ export function Header({ className }: HeaderProps) {
 
                 {/* Community */}
                 <Dropdown>
-                  <Dropdown.Button>Community</Dropdown.Button>
+                  <Dropdown.Button className="max-lg:pl-2">
+                    Community
+                  </Dropdown.Button>
                   <Dropdown.Menu hover={breakpoint.gte("lg")}>
                     <Dropdown.Item href="https://www.delv.tech/discord">
                       <DiscordLogoIcon className="size-4" />
@@ -225,7 +231,9 @@ export function Header({ className }: HeaderProps) {
 
                 {/* Launch Apps */}
                 <Dropdown>
-                  <Dropdown.Button>Launch Apps</Dropdown.Button>
+                  <Dropdown.Button className="max-lg:pl-2">
+                    Launch Apps
+                  </Dropdown.Button>
                   <Dropdown.Menu
                     hover={breakpoint.gte("lg")}
                     anchor="bottom end"
