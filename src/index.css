@@ -2,38 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  /* buttons */
-  .button {
-    @apply px-6 h-12 font-mono text-body-sm border uppercase flex gap-3 justify-center items-center font-medium tracking-widest text-neutral-100 whitespace-nowrap backdrop-blur;
-  }
-  .button-primary {
-    @apply bg-neutral-700/50 hover:bg-neutral-950 hover:shadow-[0_0_16px_rgba(21,255,171,0.2)];
-  }
-  .button-sm {
-    @apply text-caption-lg h-10;
-  }
-
-  .a {
-    @apply text-aquamarine hover:underline;
-  }
-
-  .gradient-text {
-    @apply bg-gradient-to-r from-aquamarine-500 to-sky text-transparent bg-clip-text;
-  }
-
-  .bg-card-gradient {
-    @apply bg-gradient-to-b from-[#4C618C]/20 to-[#222C40]/20 backdrop-blur-md;
-  }
-
-  .body-copy {
-    @apply text-body-lg text-neutral-300;
-  }
-  .body-copy a {
-    @apply text-aquamarine hover:underline;
-  }
-}
-
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -46,22 +14,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  @apply text-content bg-neutral-900;
+  @apply text-content bg-black;
 }
 
 code {
   @apply font-mono;
 }
-
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */

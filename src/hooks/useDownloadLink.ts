@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DownloadType, createDownloadLink } from "src/utils/createDownloadLink";
+import { type DownloadType, createDownloadLink } from "src/utils/createDownloadLink";
 
 /**
  * Returns a download link for the given data. The download link will be

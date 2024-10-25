@@ -1,54 +1,51 @@
 import classNames from "classnames";
-import { PropsWithChildren } from "react";
-import { Link, LinkProps } from "react-router-dom";
+import type { PropsWithChildren } from "react";
+import { Clickable, type ClickableProps } from "src/components/Clickable";
 
 interface BaseProps {
   /**
-   * @default neutral-500 ("#565E6F")
+   * @default content/60 ("rgb(255 255 255 / 60%)")
    */
   borderFrom?: string;
   /**
-   * @default aquamarine ("#15FFAB")
+   * @default aquamarine ("#2EFCB6")
    */
   hoverBorderFrom?: string;
   /**
-   * @default gray-800 ("#1f2937")
+   * @default content/30 ("rgb(255 255 255 / 30%)")
    */
   borderTo?: string;
   /**
-   * @default sky ("#14D3F9")
+   * @default teal ("#44E8E8")
    */
   hoverBorderTo?: string;
   /** @default 1 */
   borderWidth?: number;
 }
 
-export type GradientBorderButtonProps = BaseProps &
-  (
-    | React.ComponentPropsWithoutRef<"button">
-    | React.ComponentPropsWithoutRef<"a">
-    | LinkProps
-  );
+export type GradientBorderButtonProps = BaseProps & ClickableProps;
 
 export function GradientBorderButton({
-  borderFrom = "#565E6F",
-  hoverBorderFrom = "#15FFAB",
-  borderTo = "#1f2937",
-  hoverBorderTo = "#14D3F9",
+  borderFrom = "rgb(255 255 255 / 60%)",
+  hoverBorderFrom = "#2EFCB6",
+  borderTo = "rgb(255 255 255 / 30%)",
+  hoverBorderTo = "#44E8E8",
   borderWidth = 1,
   ...tagProps
 }: PropsWithChildren<GradientBorderButtonProps>) {
-  const style: React.CSSProperties = {
-    ...tagProps.style,
-    border: `${borderWidth}px solid transparent`,
-    position: "relative",
-  };
-
-  const children: React.ReactNode = (
-    <>
+  return (
+    <Clickable
+      {...tagProps}
+      className={classNames("button group inline-flex", tagProps.className)}
+      style={{
+        ...tagProps.style,
+        border: `${borderWidth}px solid transparent`,
+        position: "relative",
+      }}
+    >
       {/* Left line */}
       <span
-        className="absolute w-px h-full box-content opacity-100 group-hover:opacity-0 transition-all"
+        className="absolute box-content h-full w-px opacity-100 transition-all duration-150 group-hover:opacity-0"
         style={{
           background: borderFrom,
           left: -borderWidth,
@@ -57,7 +54,7 @@ export function GradientBorderButton({
       />
       {/* Left line on hover */}
       <span
-        className="absolute w-px h-full box-content opacity-0 group-hover:opacity-100 transition-all"
+        className="absolute box-content h-full w-px opacity-0 transition-all duration-150 group-hover:opacity-100"
         style={{
           background: hoverBorderFrom,
           left: -borderWidth,
@@ -66,7 +63,7 @@ export function GradientBorderButton({
       />
       {/* Top line */}
       <span
-        className="absolute w-full h-px box-content opacity-100 group-hover:opacity-0 transition-all"
+        className="absolute box-content h-px w-full opacity-100 transition-all duration-150 group-hover:opacity-0"
         style={{
           background: `linear-gradient(to right, ${borderFrom}, ${borderTo})`,
           top: -borderWidth,
@@ -75,7 +72,7 @@ export function GradientBorderButton({
       />
       {/* Top line on hover */}
       <span
-        className="absolute w-full h-px box-content opacity-0 group-hover:opacity-100 transition-all"
+        className="absolute box-content h-px w-full opacity-0 transition-all duration-150 group-hover:opacity-100"
         style={{
           background: `linear-gradient(to right, ${hoverBorderFrom}, ${hoverBorderTo})`,
           top: -borderWidth,
@@ -85,7 +82,7 @@ export function GradientBorderButton({
       {tagProps.children}
       {/* Right line */}
       <span
-        className="absolute w-px h-full box-content opacity-100 group-hover:opacity-0 transition-all"
+        className="absolute box-content h-full w-px opacity-100 transition-all duration-150 group-hover:opacity-0"
         style={{
           background: borderTo,
           right: -borderWidth,
@@ -94,7 +91,7 @@ export function GradientBorderButton({
       />
       {/* Right line on hover */}
       <span
-        className="absolute w-px h-full box-content opacity-0 group-hover:opacity-100 transition-all"
+        className="absolute box-content h-full w-px opacity-0 transition-all duration-150 group-hover:opacity-100"
         style={{
           background: hoverBorderTo,
           right: -borderWidth,
@@ -103,7 +100,7 @@ export function GradientBorderButton({
       />
       {/* Bottom line */}
       <span
-        className="absolute w-full h-px box-content opacity-100 group-hover:opacity-0 transition-all"
+        className="absolute box-content h-px w-full opacity-100 transition-all duration-150 group-hover:opacity-0"
         style={{
           background: `linear-gradient(to right, ${borderFrom}, ${borderTo})`,
           bottom: -borderWidth,
@@ -112,59 +109,13 @@ export function GradientBorderButton({
       />
       {/* Bottom line on hover */}
       <span
-        className="absolute w-full h-px box-content opacity-0 group-hover:opacity-100 transition-all"
+        className="absolute box-content h-px w-full opacity-0 transition-all duration-150 group-hover:opacity-100"
         style={{
           background: `linear-gradient(to right, ${hoverBorderFrom}, ${hoverBorderTo})`,
           bottom: -borderWidth,
           padding: `0 ${borderWidth}px`,
         }}
       />
-    </>
+    </Clickable>
   );
-
-  if (isAnchorProps(tagProps)) {
-    return (
-      <a
-        {...tagProps}
-        className={classNames("button group inline-flex", tagProps.className)}
-        style={style}
-      >
-        {children}
-      </a>
-    );
-  }
-
-  if (isLinkProps(tagProps)) {
-    return (
-      <Link
-        {...tagProps}
-        className={classNames("button group inline-flex", tagProps.className)}
-        style={style}
-      >
-        {children}
-      </Link>
-    );
-  }
-
-  return (
-    <button
-      {...tagProps}
-      className={classNames("button group inline-flex", tagProps.className)}
-      style={style}
-    >
-      {children}
-    </button>
-  );
-}
-
-function isAnchorProps(
-  props: Omit<GradientBorderButtonProps, keyof BaseProps>,
-): props is React.ComponentPropsWithoutRef<"a"> {
-  return "href" in props;
-}
-
-function isLinkProps(
-  props: Omit<GradientBorderButtonProps, keyof BaseProps>,
-): props is LinkProps {
-  return "to" in props;
 }
