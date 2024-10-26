@@ -46,14 +46,6 @@ export function Dropdown({ className, children, ...rest }: DropdownProps) {
   const [button, setButton] = useState<HTMLButtonElement | null>(null);
   const [menu, setMenu] = useState<HTMLDivElement | null>(null);
 
-  // Ref callbacks to set the button and menu elements.
-  const buttonRef = useCallback((el: HTMLButtonElement | null) => {
-    setButton(el);
-  }, []);
-  const menuRef = useCallback((el: HTMLDivElement | null) => {
-    setMenu(el);
-  }, []);
-
   useEffect(() => {
     // Find the button and menu elements by their data attributes if not set.
     if (!button) {
@@ -116,10 +108,10 @@ export function Dropdown({ className, children, ...rest }: DropdownProps) {
       containerRef,
       button,
       menu,
-      buttonRef,
-      menuRef,
+      buttonRef: setButton,
+      menuRef: setMenu,
     };
-  }, [isOpen, isHovered, button, menu, buttonRef, menuRef]);
+  }, [isOpen, isHovered, button, menu]);
 
   return (
     <>
