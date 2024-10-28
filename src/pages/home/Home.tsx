@@ -240,7 +240,7 @@ export function Home() {
             )}
           >
             {/* Hyperdrive One trade now tile */}
-            <CtaTile className={classNames("bg-aquamarine/40")}>
+            <CtaTile className="bg-aquamarine/40">
               <Link to="/app" className="button button-primary">
                 Trade now
               </Link>

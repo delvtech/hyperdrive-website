@@ -103,12 +103,7 @@ export function Header({ className }: HeaderProps) {
             <Link to="/" className="row-start-1">
               <img
                 src="/logos/delv-hyperdrive-box-white.svg"
-                className={classNames(
-                  "h-11",
-                  "max-xl:h-9",
-                  "max-md:h-7",
-                  "max-xs:h-7",
-                )}
+                className={classNames("h-11", "max-xl:h-9", "max-md:h-7")}
                 alt="Hyperdrive.box by DELV"
               />
             </Link>
