@@ -13,7 +13,11 @@ import { GitHubLogoIcon } from "src/components/icons/GitHubLogoIcon";
 import { HyperdriveLogoIcon } from "src/components/icons/HyperdriveLogoIcon";
 import { LinkedInLogoIcon } from "src/components/icons/LinkedInLogoIcon";
 import { NoteIcon } from "src/components/icons/NoteIcon";
+import { PythonLogoIcon } from "src/components/icons/PythonLogoIcon";
+import { RustLogoIcon } from "src/components/icons/RustLogoIcon";
+import { SolidityLogoIcon } from "src/components/icons/SolidityLogoIcon";
 import { StrategyIcon } from "src/components/icons/StrategyIcon";
+import { TypeScriptLogoIcon } from "src/components/icons/TypeScriptLogoIcon";
 import { WarpcastLogoIcon } from "src/components/icons/WarpcastLogoIcon";
 import { XLogoIcon } from "src/components/icons/XLogoIcon";
 import { useBreakpoint } from "src/hooks/useBreakpoint";
@@ -190,6 +194,22 @@ export function Header({ className }: HeaderProps) {
                     <Dropdown.Item href="https://github.com/delvtech/hyperdrive">
                       <GitHubLogoIcon className="size-4" />
                       GitHub
+                    </Dropdown.Item>
+                    <Dropdown.Item to="/docs/hyperdrive-for-developers/mainnet-smart-contracts">
+                      <SolidityLogoIcon className="size-4" />
+                      Smart Contracts
+                    </Dropdown.Item>
+                    <Dropdown.Item to="/docs/hyperdrive-trading-bots/agent0-overview">
+                      <PythonLogoIcon className="size-4" />
+                      Bots
+                    </Dropdown.Item>
+                    <Dropdown.Item href="https://js.hyperdrive.box/">
+                      <TypeScriptLogoIcon className="size-4" />
+                      Frontend SDK
+                    </Dropdown.Item>
+                    <Dropdown.Item href="https://docs.rs/crate/hyperdrive-math/latest">
+                      <RustLogoIcon className="size-4" />
+                      Math SDK
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
