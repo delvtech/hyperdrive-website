@@ -35,17 +35,17 @@ export function Build() {
             </p>
           </div>
           <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1">
-            <GradientBorderButton href="https://delv.tech/discord">
-              <DiscordLogoIcon className="h-6 w-6" />
-              Discord
+            <GradientBorderButton href="/docs/hyperdrive-for-developers">
+              <img src="/icons/file-icon.svg" className="size-6" />
+              Docs
             </GradientBorderButton>
             <GradientBorderButton href="https://github.com/delvtech/hyperdrive">
               <GitHubLogoIcon className="h-6 w-6" />
               GitHub
             </GradientBorderButton>
-            <GradientBorderButton href="https://github.com/delvtech/hyperdrive/blob/main/docs/Hyperdrive_Whitepaper.pdf">
-              <img src="/icons/file-icon.svg" className="h-6 w-6" />
-              Whitepaper
+            <GradientBorderButton href="https://delv.tech/discord">
+              <DiscordLogoIcon className="h-6 w-6" />
+              Discord
             </GradientBorderButton>
           </div>
         </div>
