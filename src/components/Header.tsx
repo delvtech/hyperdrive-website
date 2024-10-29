@@ -9,6 +9,7 @@ import { CodeDocIcon } from "src/components/icons/CodeDocIcon";
 import { CoreIcon } from "src/components/icons/CoreIcon";
 import { DiscordLogoIcon } from "src/components/icons/DiscordLogoIcon";
 import { DocIcon } from "src/components/icons/DocIcon";
+import { GitHubLogoIcon } from "src/components/icons/GitHubLogoIcon";
 import { HyperdriveLogoIcon } from "src/components/icons/HyperdriveLogoIcon";
 import { LinkedInLogoIcon } from "src/components/icons/LinkedInLogoIcon";
 import { NoteIcon } from "src/components/icons/NoteIcon";
@@ -185,6 +186,10 @@ export function Header({ className }: HeaderProps) {
                     <Dropdown.Item to="/build">
                       <CoreIcon className="size-4" />
                       Hyperdrive [Core]
+                    </Dropdown.Item>
+                    <Dropdown.Item href="https://github.com/delvtech/hyperdrive">
+                      <GitHubLogoIcon className="size-4" />
+                      GitHub
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
