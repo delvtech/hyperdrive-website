@@ -5,6 +5,10 @@ import { Header } from "src/components/Header";
 import { SectionDivider } from "src/components/SectionDivider";
 import { GradientBorderButton } from "src/components/buttons/GradientButton";
 import { HyperdriveLogoIcon } from "src/components/icons/HyperdriveLogoIcon";
+import { PythonLogoIcon } from "src/components/icons/PythonLogoIcon";
+import { RustLogoIcon } from "src/components/icons/RustLogoIcon";
+import { SolidityLogoIcon } from "src/components/icons/SolidityLogoIcon";
+import { TypeScriptLogoIcon } from "src/components/icons/TypeScriptLogoIcon";
 import { CtaTile } from "src/pages/home/CtaTile";
 
 export function Home() {
@@ -483,38 +487,58 @@ export function Home() {
             )}
           >
             <div className="grid grid-cols-[1fr_auto_1fr] border-content/30 border-y">
-              <Link
-                to="/docs/hyperdrive-for-developers/mainnet-smart-contracts"
-                className="col-start-2 flex h-36 items-center gap-4"
-              >
-                <img src="/icons/solidity-icon.svg" className="size-10" />
-                Smart Contracts
-              </Link>
+              <div className="col-start-2 flex h-36 items-center">
+                <Link
+                  to="/docs/hyperdrive-for-developers/mainnet-smart-contracts"
+                  className={classNames(
+                    "flex items-center gap-4 p-2 transition-all duration-100 hover:text-aquamarine",
+                    "max-lg:w-full max-lg:py-6",
+                  )}
+                >
+                  <SolidityLogoIcon className="size-8" />
+                  Smart Contracts
+                </Link>
+              </div>
               <hr className="col-span-3 border-content/30" />
-              <a
-                href="https://js.hyperdrive.box"
-                className="col-start-2 flex h-36 items-center gap-4"
-              >
-                <img src="/icons/typescript-icon.svg" className="size-10" />
-                Frontend SDK
-              </a>
+              <div className="col-start-2 flex h-36 items-center">
+                <a
+                  href="https://js.hyperdrive.box"
+                  className={classNames(
+                    "flex items-center gap-4 p-2 transition-all duration-100 hover:text-aquamarine",
+                    "max-lg:w-full max-lg:py-6",
+                  )}
+                >
+                  <TypeScriptLogoIcon className="size-8" />
+                  Frontend SDK
+                </a>
+              </div>
             </div>
             <div className="grid grid-cols-[1fr_auto_1fr] border-content/30 border-y">
-              <a
-                href="https://docs.rs/crate/hyperdrive-math/latest"
-                className="col-start-2 flex h-36 items-center gap-4"
-              >
-                <img src="/icons/rust-icon.svg" className="size-10" />
-                Math SDK
-              </a>
+              <div className="col-start-2 flex h-36 items-center">
+                <a
+                  href="https://docs.rs/crate/hyperdrive-math/latest"
+                  className={classNames(
+                    "flex items-center gap-4 p-2 transition-all duration-100 hover:text-aquamarine",
+                    "max-lg:w-full max-lg:py-6",
+                  )}
+                >
+                  <RustLogoIcon className="size-8" />
+                  Math SDK
+                </a>
+              </div>
               <hr className="col-span-3 border-content/30" />
-              <Link
-                to="/docs/hyperdrive-trading-bots/agent0-overview"
-                className="col-start-2 flex h-36 items-center gap-4"
-              >
-                <img src="/icons/python-icon.svg" className="size-10" />
-                Bots
-              </Link>
+              <div className="col-start-2 flex h-36 items-center">
+                <Link
+                  to="/docs/hyperdrive-trading-bots/agent0-overview"
+                  className={classNames(
+                    "flex items-center gap-4 p-2 transition-all duration-100 hover:text-aquamarine",
+                    "max-lg:w-full max-lg:py-6",
+                  )}
+                >
+                  <PythonLogoIcon className="size-8" />
+                  Bots
+                </Link>
+              </div>
             </div>
           </div>
 
