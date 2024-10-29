@@ -483,26 +483,38 @@ export function Home() {
             )}
           >
             <div className="grid grid-cols-[1fr_auto_1fr] border-content/30 border-y">
-              <div className="col-start-2 flex h-36 items-center gap-4">
+              <Link
+                to="/docs/hyperdrive-for-developers/mainnet-smart-contracts"
+                className="col-start-2 flex h-36 items-center gap-4"
+              >
                 <img src="/icons/solidity-icon.svg" className="size-10" />
                 Smart Contracts
-              </div>
+              </Link>
               <hr className="col-span-3 border-content/30" />
-              <div className="col-start-2 flex h-36 items-center gap-4">
+              <a
+                href="https://js.hyperdrive.box"
+                className="col-start-2 flex h-36 items-center gap-4"
+              >
                 <img src="/icons/typescript-icon.svg" className="size-10" />
                 Frontend SDK
-              </div>
+              </a>
             </div>
             <div className="grid grid-cols-[1fr_auto_1fr] border-content/30 border-y">
-              <div className="col-start-2 flex h-36 items-center gap-4">
+              <a
+                href="https://docs.rs/crate/hyperdrive-math/latest"
+                className="col-start-2 flex h-36 items-center gap-4"
+              >
                 <img src="/icons/rust-icon.svg" className="size-10" />
                 Math SDK
-              </div>
+              </a>
               <hr className="col-span-3 border-content/30" />
-              <div className="col-start-2 flex h-36 items-center gap-4">
+              <Link
+                to="/docs/hyperdrive-trading-bots/agent0-overview"
+                className="col-start-2 flex h-36 items-center gap-4"
+              >
                 <img src="/icons/python-icon.svg" className="size-10" />
                 Bots
-              </div>
+              </Link>
             </div>
           </div>
 
