@@ -13,7 +13,12 @@ export function Build() {
       <Header />
 
       {/* Hero */}
-      <div className="relative flex min-h-screen items-center justify-center px-[4vw]">
+      <div
+        className={classNames(
+          "relative flex min-h-[min(100vh,900px)] items-center justify-center px-[4vw] py-32",
+          "max-lg:py-20",
+        )}
+      >
         <img
           src="/accents/build-hero-line.svg"
           className="absolute top-1/2 right-0"
