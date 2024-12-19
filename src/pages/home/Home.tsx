@@ -623,9 +623,7 @@ export function Home() {
             >
               <div className="space-y-3">
                 <a
-                  href="https://docs.hyperdrive.box/the-hyperdrive-protocol/security"
-                  target="_blank"
-                  rel="noreferrer noopener"
+                  href="/docs/the-hyperdrive-protocol/security"
                   className="transition-all hover:text-aquamarine-500"
                 >
                   <h3 className="font-chakra text-h4.5">Audited</h3>
