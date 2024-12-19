@@ -623,7 +623,7 @@ export function Home() {
             >
               <div className="space-y-3">
                 <a
-                  href="https://github.com/delvtech/hyperdrive/tree/main/audits"
+                  href="https://docs.hyperdrive.box/the-hyperdrive-protocol/security"
                   target="_blank"
                   rel="noreferrer noopener"
                   className="transition-all hover:text-aquamarine-500"
