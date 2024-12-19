@@ -622,20 +622,39 @@ export function Home() {
               )}
             >
               <div className="space-y-3">
-                <h3 className="font-chakra text-h4.5">Audited</h3>
+                <a
+                  href="https://github.com/delvtech/hyperdrive/tree/main/audits"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="transition-all hover:text-aquamarine-500"
+                >
+                  <h3 className="font-chakra text-h4.5">Audited</h3>
+                </a>
                 <p className="font-light text-content/60">
                   Six audits of the Hyperdrive Protocol have been completed by
                   blockchain security industry leaders.
                 </p>
               </div>
               <div className="flex items-center gap-6">
-                <a href="https://spearbit.com/">
+                <a
+                  href="https://spearbit.com/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
                   <img src="/logos/spearbit-logo.svg" alt="Spearbit" />
                 </a>
-                <a href="https://chainsafe.io/">
+                <a
+                  href="https://chainsafe.io/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
                   <img src="/logos/chainsafe-logo.svg" alt="Chainsafe" />
                 </a>
-                <a href="https://www.certora.com/">
+                <a
+                  href="https://www.certora.com/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
                   <img src="/logos/certora-logo.svg" alt="Certora" />
                 </a>
               </div>

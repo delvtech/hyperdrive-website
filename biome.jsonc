@@ -23,7 +23,8 @@
     "rules": {
       "a11y": {
         "noSvgWithoutTitle": "info",
-        "useAltText": "info"
+        "useAltText": "info",
+        "noBlankTarget": "info"
       },
       "complexity": {
         "noBannedTypes": "off"
