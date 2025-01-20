@@ -23,8 +23,8 @@ import { XLogoIcon } from "src/components/icons/XLogoIcon";
 import { useBreakpoint } from "src/hooks/useBreakpoint";
 import { useScrollPosition } from "src/hooks/useScrollPosition";
 
-const SHOW_ANNOUNCEMENT_BANNER = false;
-const ANNOUNCEMENT_BANNER_EXPIRY = new Date("11/01/2024");
+const SHOW_ANNOUNCEMENT_BANNER = true;
+const ANNOUNCEMENT_BANNER_EXPIRY = new Date("2/04/2025");
 
 interface HeaderProps {
   className?: string;
@@ -65,7 +65,7 @@ export function Header({ className }: HeaderProps) {
         {showBanner && (
           <div className="flex h-10 items-center justify-center border-white/10 border-b bg-aquamarine-950 px-3 py-2 text-sm">
             <InformationCircleIcon className="mr-1 h-5 w-5" />
-            <p className="leading-none">
+            <p className="text-content/80 leading-none">
               We've updated our{" "}
               {/* <a
               href="https://delv-public.s3.us-east-2.amazonaws.com/delv-privacy-policy.pdf"
@@ -78,7 +78,7 @@ export function Header({ className }: HeaderProps) {
             and{" "} */}
               <a
                 href="https://delv-public.s3.us-east-2.amazonaws.com/delv-terms-of-service.pdf"
-                className="text-white transition-all duration-300 hover:text-aquamarine"
+                className="font-medium text-white transition-all duration-300 hover:text-aquamarine"
                 target="_blank"
                 rel="noreferrer"
               >
