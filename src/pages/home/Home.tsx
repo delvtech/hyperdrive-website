@@ -68,8 +68,8 @@ export function Home() {
                 "max-sm:text-h3",
               )}
             >
-              Access DeFi,
-              <br /> Your Way
+              Secure Rates,
+              <br /> On Your Terms
             </h1>
             <p className="font-light text-content/60">
               Powered by{" "}
